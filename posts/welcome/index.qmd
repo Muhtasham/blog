@@ -1,12 +1,15 @@
 ---
-title: "Welcome To My Blog"
-author: "Tristan O'Malley"
-date: "2022-12-23"
+title: "Hello World and welcome to the new blog!"
+author: "muhtasham"
+date: "2022-12-25"
 categories: [news]
+image: "image.jpg"
 ---
 
-This is the first post in a Quarto blog. Welcome!
+Welcome to my new blog and my new home on the internet!
 
-![](thumbnail.jpg)
+My name is Muhtasham and I am excited to share my journey and learning in the field of machine learning with all of you. After publishing on Medium for a while, I have decided to make the switch to here in order to have a more personalized space to share my thoughts, experiences, and insights on this rapidly evolving field.
 
-Since this post doesn't specify an explicit `image`, the first image in the post will be used in the listing page of posts.
+On this blog, you can expect to find articles and tutorials on a wide range of machine learning topics, including Machine Learning and Information Theory. I am passionate about staying up-to-date with the latest advancements in the field and sharing that knowledge with others. In addition to written content, I will also be sharing code tutorials and demonstrations to help readers better understand and apply the concepts I discuss.
+
+I hope that this blog will not only serve as a source of information and inspiration for those interested in machine learning, but also as a way for me to connect with like-minded individuals and continue learning from others in the community. Thank you for joining me on this journey and I look forward to sharing my knowledge and growth with all of you. This is my new home on the internet and I am excited to have you all as my virtual neighbors. Let's learn and grow together!
