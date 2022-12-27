@@ -2,7 +2,7 @@ project:
   type: website
   output-dir: docs
 website:
-  title: "To Data Science and Beyond: A Machine Learning Odyssey"
+  title: "Machine Learners Guide to Real World"
   navbar:
     right:
       - about.qmd

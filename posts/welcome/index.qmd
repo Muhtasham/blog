@@ -1,9 +1,9 @@
 ---
-title: "Hello World and welcome to the new blog!"
+title: "Herzlich Wilkommen!"
 author: "muhtasham"
 date: "2022-12-25"
 categories: [news]
-image: "image.jpg"
+image: "IMG_4667.jpg"
 ---
 
 Welcome to my new blog and my new home on the internet!
