@@ -6,12 +6,13 @@ website:
   navbar:
     right:
       - about.qmd
-      - icon: github
-        href: https://github.com/muhtasham
       - icon: twitter
         href: https://twitter.com/muhtasham9
       - icon: linkedin
-        href: https://linkedin.com/muhtahsam
+        href: https://www.linkedin.com/in/muhtasham/
+      - icon: github
+        href: https://github.com/muhtasham
+
 format:
   html:
     theme: Litera
