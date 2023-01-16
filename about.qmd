@@ -22,5 +22,7 @@ about:
 
 ---
 
-Hallo world, I'm Muhtasham passionate Machine Learning Engineer. 
+Hallo world, I'm Muhtasham Oblokulov. I design, build, and operate machine learning systems that serve customers at scale. I also (try to) write and speak about ML systems, engineering, and career.
+
+I'm currently working as a Machine Learning Engineer at [MunichRe](https://www.munichre.com/en.html). Previously, I worked at [Alyne](https://mitratech.com/products/alyne/) and [Datamics](https://consulting.datamics.com/).
 
