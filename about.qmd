@@ -30,7 +30,7 @@ I'm currently working as a Machine Learning Engineer at [MunichRe](https://www.m
 
 My current interests are efficient and scalable machine learning systems and fast and scalable AI in production.
 
-To learn more about me, you can check out my [linkedin](https://www.linkedin.com/in/muhtasham/).
+To learn more about me, you can check out my [LinkedIn](https://www.linkedin.com/in/muhtasham/).
 
 If you want to get in touch, you can send me an email, I'm generally interested in technical problems worth solving. I’m pretty happy with my career. To any recruiters/tech-bros, I'll gladly point it out to you if your manner is inappropriate.
 
