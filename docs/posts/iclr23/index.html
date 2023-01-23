@@ -9,7 +9,7 @@
 <meta name="author" content="muhtasham">
 <meta name="dcterms.date" content="2023-01-23">
 
-<title>Machine Learners Guide to Real World - ICLR’23 Transfer Learning Related Papers and their TLDR</title>
+<title>Machine Learners Guide to Real World - Exploring the Latest Advancements in Transfer Learning: A Summary of ICLR’23 Transfer Learning-Related Papers</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -100,6 +100,11 @@ ul.task-list li input[type="checkbox"] {
 </i> 
  <span class="menu-text"></span></a>
   </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://huggingface.co/muhtasham"><i class="bi bi-<i class=&quot;bi bi-gpu-card&quot;></i>" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
 </ul>
               <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
@@ -110,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">ICLR’23 Transfer Learning Related Papers and their TLDR</h1>
+      <h1 class="title">Exploring the Latest Advancements in Transfer Learning: A Summary of ICLR’23 Transfer Learning-Related Papers</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">papers</div>
                 <div class="quarto-category">iclr</div>
@@ -150,24 +155,42 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="iclr" class="level3">
-<h3 class="anchored" data-anchor-id="iclr">ICLR?</h3>
-<p><img src="painting.jpeg" title="Image by author" class="img-fluid"></p>
+<section id="intro" class="level3">
+<h3 class="anchored" data-anchor-id="intro">Intro</h3>
 <p>The International Conference on Learning Representations (ICLR) is one of the top conferences in the field of machine learning, and this year’s conference (ICLR 23) features several papers on the topic of transfer learning. Transfer learning is a technique that allows a model trained on one task to be applied to a different but related task, potentially improving performance and reducing the amount of data and computation required. Here are a few papers on transfer learning that are worth keeping an eye on at ICLR 23:</p>
+<p><img src="painting.jpeg" title="Image by author" class="img-fluid"></p>
 </section>
 <section id="papers" class="level3">
 <h3 class="anchored" data-anchor-id="papers">Papers</h3>
-<p><a href="https://openreview.net/forum?id=pWVASryOyFw">Learning Uncertainty for Unknown Domains with Zero-Target-Assumption</a> TL;DR: New framework that maximizes information uncertainty measured by entropy to select training data in NLP.</p>
+<section id="learning-uncertainty-for-unknown-domains-with-zero-target-assumption" class="level4">
+<h4 class="anchored" data-anchor-id="learning-uncertainty-for-unknown-domains-with-zero-target-assumption"><a href="https://openreview.net/forum?id=pWVASryOyFw">Learning Uncertainty for Unknown Domains with Zero-Target-Assumption</a></h4>
+<ul>
+<li>TL;DR: New framework that maximizes information uncertainty measured by entropy to select training data in NLP.</li>
+</ul>
 <p>This paper introduces a new framework called Maximum-Entropy Rewarded Reinforcement Learning (MERRL) for selecting training data for more accurate Natural Language Processing (NLP). The authors argue that conventional data selection methods, which select training samples based on test domain knowledge and not on real-life data, frequently fail in unknown domains like patent and Twitter. MERRL addresses this issue by selecting training samples that maximize information uncertainty measured by entropy, including observation entropy like empirical Shannon entropy, Min-entropy, R’enyi entropy, and prediction entropy using mutual information. The authors show that their MERRL framework using regularized A2C and SAC achieves significant improvements in language modeling, sentiment analysis, and named entity recognition over various domains, demonstrating strong generalization power on unknown test sets.</p>
-<blockquote class="blockquote">
 <p>As an Electornics Engineering background, I expresses genuine affinity to Shannon and his theory, which is the foundation of information theory and a powerful tool for understanding the limits of communication and computation.</p>
-</blockquote>
-<p><a href="https://openreview.net/forum?id=xjb563TH-GH">Representational Dissimilarity Metric Spaces for Stochastic Neural Networks</a> TL;DR: Representational dissimilarity metrics that account for noise geometry in biological and artificial neural responses.</p>
+</section>
+<section id="representational-dissimilarity-metric-spaces-for-stochastic-neural-networks" class="level4">
+<h4 class="anchored" data-anchor-id="representational-dissimilarity-metric-spaces-for-stochastic-neural-networks"><a href="https://openreview.net/forum?id=xjb563TH-GH">Representational Dissimilarity Metric Spaces for Stochastic Neural Networks</a></h4>
+<ul>
+<li>TL;DR: Representational dissimilarity metrics that account for noise geometry in biological and artificial neural responses.</li>
+</ul>
 <p>This paper addresses the problem of quantifying similarity between neural representations, such as hidden layer activation vectors, in deep learning and neuroscience research. Existing methods for comparing deterministic or trial-averaged responses ignore the scale and geometric structure of noise, which are important in neural computation. To address this, the authors propose a new approach that generalizes previously proposed shape metrics to quantify differences in stochastic representations. These new distances can be used for supervised and unsupervised analyses and are practical for large-scale data. The authors show that this approach provides insights that cannot be measured with existing metrics, such as being able to more accurately predict certain network attributes from its position in stochastic shape space.</p>
-<p><a href="https://openreview.net/forum?id=hRfJzvTYvD-">Towards Estimating Transferability using Hard Subsets</a> TL;DR: Authors propose HASTE, a strategy that ensures better transferability estimation using just a hard subset of target data.</p>
+</section>
+<section id="towards-estimating-transferability-using-hard-subsets" class="level4">
+<h4 class="anchored" data-anchor-id="towards-estimating-transferability-using-hard-subsets"><a href="https://openreview.net/forum?id=hRfJzvTYvD-">Towards Estimating Transferability using Hard Subsets</a></h4>
+<ul>
+<li>TL;DR: Authors propose HASTE, a strategy that ensures better transferability estimation using just a hard subset of target data.</li>
+</ul>
 <p>This paper presents a new strategy called HASTE (HArd Subset TransfErability) for estimating the transferability of a source model to a particular target task, using only a harder subset of target data. HASTE introduces two techniques to identify harder subsets, one class-agnostic and another class-specific. It can be used with any existing transferability metric to improve their reliability. The authors analyze the relation between HASTE and the optimal average log-likelihood and negative conditional entropy, and empirically validate theoretical bounds. The results of experiments across multiple source model architectures, target datasets, and transfer learning tasks show that HASTE-modified metrics are consistently better or on par with the state-of-the-art transferability metrics.</p>
-<p><a href="https://openreview.net/forum?id=q_PkAzGFrmq">The Role of Pre-training Data in Transfer Learning</a> TL;DR:&nbsp;We investigate the role of pretraining distribution, data curation, size, and loss and downstream transfer learning</p>
+</section>
+<section id="the-role-of-pre-training-data-in-transfer-learning" class="level4">
+<h4 class="anchored" data-anchor-id="the-role-of-pre-training-data-in-transfer-learning"><a href="https://openreview.net/forum?id=q_PkAzGFrmq">The Role of Pre-training Data in Transfer Learning</a></h4>
+<ul>
+<li>TL;DR:&nbsp;We investigate the role of pretraining distribution, data curation, size, and loss and downstream transfer learning</li>
+</ul>
 <p>This paper examines the effect of the pre-training distribution on transfer learning in the context of image classification. The study finds that the pre-training dataset is initially important for low-shot transfer, but the difference between distributions is reduced as more data is available for fine-tuning. Fine-tuning still outperforms training from scratch. The study also investigates the effect of dataset size, observing that larger pre-training datasets lead to better accuracy, but the largest difference in accuracy is seen in the few-shot regime. Additionally, the study looks at the effect of pre-training method, and finds that image-image contrastive pre-training leads to better transfer accuracy compared to language-image contrastive pre-training.</p>
+</section>
 </section>
 <section id="some-thougts" class="level3">
 <h3 class="anchored" data-anchor-id="some-thougts">Some thougts</h3>

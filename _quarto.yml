@@ -6,13 +6,14 @@ website:
   navbar:
     right:
       - about.qmd
-      - icon: twitter
-        href: https://twitter.com/muhtasham9
-      - icon: linkedin
-        href: https://www.linkedin.com/in/muhtasham/
-      - icon: github
+      - icon: gpu-card
+        href: https://huggingface.co/muhtasham
+      - icon: cpu
         href: https://github.com/muhtasham
-
+      - icon: hash
+        href: https://twitter.com/muhtasham9
+      - icon: file-earmark-person
+        href: https://www.linkedin.com/in/muhtasham/
 format:
   html:
     theme: Litera

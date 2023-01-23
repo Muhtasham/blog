@@ -1,5 +1,5 @@
 ---
-title: "Information Theory in Deep Learning Primer in layman's terms"
+title: "Understanding Information Theory in Deep Learning: A Beginner's Guide"
 author: "muhtasham"
 date: "2023-01-23"
 categories: [shannon, entropy]
