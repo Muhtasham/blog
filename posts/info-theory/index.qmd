@@ -3,7 +3,7 @@ title: "Information Theory in Deep Learning Primer in layman's terms"
 author: "muhtasham"
 date: "2023-01-23"
 categories: [shannon, entropy]
-image: "entropy.png"
+image: entropy.jpeg
 ---
 
 ## Information Theory in Deep Learning Primer

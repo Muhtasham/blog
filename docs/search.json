@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Welcome to my blog",
     "section": "",
-    "text": "ICLR’23 Transfer Learning Related Papers and their TLDR\n\n\n\n\n\n\n\npapers\n\n\niclr\n\n\ntransfer-learning\n\n\n\n\n\n\n\n\n\n\n\nJan 23, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nInformation Theory in Deep Learning Primer in layman’s terms\n\n\n\n\n\n\n\nshannon\n\n\nentropy\n\n\n\n\n\n\n\n\n\n\n\nJan 23, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n⏳ From Alps to NLP: A 2022 Recap of Exploration and Growth\n\n\n\n\n\n\n\nreflections\n\n\ngoals\n\n\n\n\n\n\n\n\n\n\n\nDec 26, 2022\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\nHerzlich Wilkommen!\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nDec 25, 2022\n\n\nmuhtasham\n\n\n\n\n\n\nNo matching items"
+    "text": "ICLR’23 Transfer Learning Related Papers and their TLDR\n\n\n\n\n\n\n\npapers\n\n\niclr\n\n\ntransfer-learning\n\n\n\n\n\n\n\n\n\n\n\nJan 23, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\nInformation Theory in Deep Learning Primer in layman’s terms\n\n\n\n\n\n\n\nshannon\n\n\nentropy\n\n\n\n\n\n\n\n\n\n\n\nJan 23, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n⏳ From Alps to NLP: A 2022 Recap of Exploration and Growth\n\n\n\n\n\n\n\nreflections\n\n\ngoals\n\n\n\n\n\n\n\n\n\n\n\nDec 26, 2022\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\nHerzlich Wilkommen!\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nDec 25, 2022\n\n\nmuhtasham\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/post-with-code/index.html",
@@ -81,6 +81,6 @@
     "href": "posts/info-theory/index.html#conclusion",
     "title": "Information Theory in Deep Learning Primer in layman’s terms",
     "section": "Conclusion",
-    "text": "Conclusion\nInformation theory provides a powerful framework for understanding and optimizing the performance of deep learning models. Concepts such as entropy, mutual information, and network capacity are essential for understanding the behavior of deep learning models and using them in real-world scenarios. The application of information theory in deep learning has inspired a lot of research in the field, including the development of new architectures, optimization methods, and regularization techniques. By understanding these concepts, we can better design and improve deep learning models for different applications."
+    "text": "Conclusion\nInformation theory provides a powerful framework for understanding and optimizing the performance of deep learning models. Concepts such as entropy, mutual information, and network capacity are essential for understanding the behavior of deep learning models and using them in real-world scenarios. The application of information theory in deep learning has inspired a lot of research in the field, including the development of new architectures, optimization methods, and regularization techniques. By understanding these concepts, we can better design and improve deep learning models for different applications.\nThanks for reading! I hope you found this information on information theory in deep learning to be informative and helpful. If you have any further questions or would like more information on any of the topics discussed, please feel free to reach out."
   }
 ]
