@@ -1,0 +1,63 @@
+---
+title: "ICLR'23 Transfer Learning Related Papers and their TLDR"
+author: "muhtasham"
+date: "2023-01-23"
+categories: [papers, iclr, transfer-learning]
+image: painting.jpeg
+---
+
+### ICLR? 
+![](painting.jpeg "Image by author")
+
+The International Conference on Learning Representations (ICLR) is one of the top conferences in the field of machine learning, and this year's conference (ICLR 23) features several papers on the topic of transfer learning. Transfer learning is a technique that allows a model trained on one task to be applied to a different but related task, potentially improving performance and reducing the amount of data and computation required. Here are a few papers on transfer learning that are worth keeping an eye on at ICLR 23:
+
+### Papers
+
+[Learning Uncertainty for Unknown Domains with Zero-Target-Assumption](https://openreview.net/forum?id=pWVASryOyFw)
+TL;DR: New framework that maximizes information uncertainty measured by entropy to select training data in NLP. 
+
+This paper introduces a new framework called Maximum-Entropy Rewarded Reinforcement Learning (MERRL) for selecting training data for more accurate Natural Language Processing (NLP). The authors argue that conventional data selection methods, which select training samples based on test domain knowledge and not on real-life data, frequently fail in unknown domains like patent and Twitter. MERRL addresses this issue by selecting training samples that maximize information uncertainty measured by entropy, including observation entropy like empirical Shannon entropy, Min-entropy, R'enyi entropy, and prediction entropy using mutual information. The authors show that their MERRL framework using regularized A2C and SAC achieves significant improvements in language modeling, sentiment analysis, and named entity recognition over various domains, demonstrating strong generalization power on unknown test sets. 
+
+
+> As an Electornics Engineering background, I expresses genuine affinity to Shannon and his theory, which is the foundation of information theory and a powerful tool for understanding the limits of communication and computation. 
+
+[Representational Dissimilarity Metric Spaces for Stochastic Neural Networks](https://openreview.net/forum?id=xjb563TH-GH)
+TL;DR: Representational dissimilarity metrics that account for noise geometry in biological and artificial neural responses. 
+
+This paper addresses the problem of quantifying similarity between neural representations, such as hidden layer activation vectors, in deep learning and neuroscience research. Existing methods for comparing deterministic or trial-averaged responses ignore the scale and geometric structure of noise, which are important in neural computation. To address this, the authors propose a new approach that generalizes previously proposed shape metrics to quantify differences in stochastic representations. These new distances can be used for supervised and unsupervised analyses and are practical for large-scale data. The authors show that this approach provides insights that cannot be measured with existing metrics, such as being able to more accurately predict certain network attributes from its position in stochastic shape space.
+
+[Towards Estimating Transferability using Hard Subsets](https://openreview.net/forum?id=hRfJzvTYvD-)
+TL;DR: Authors propose HASTE, a strategy that ensures better transferability estimation using just a hard subset of target data.
+
+This paper presents a new strategy called HASTE (HArd Subset TransfErability) for estimating the transferability of a source model to a particular target task, using only a harder subset of target data. HASTE introduces two techniques to identify harder subsets, one class-agnostic and another class-specific. It can be used with any existing transferability metric to improve their reliability. The authors analyze the relation between HASTE and the optimal average log-likelihood and negative conditional entropy, and empirically validate theoretical bounds. The results of experiments across multiple source model architectures, target datasets, and transfer learning tasks show that HASTE-modified metrics are consistently better or on par with the state-of-the-art transferability metrics.
+
+[The Role of Pre-training Data in Transfer Learning ](https://openreview.net/forum?id=q_PkAzGFrmq)
+TL;DR: We investigate the role of pretraining distribution, data curation, size, and loss and downstream transfer learning
+
+This paper examines the effect of the pre-training distribution on transfer learning in the context of image classification. The study finds that the pre-training dataset is initially important for low-shot transfer, but the difference between distributions is reduced as more data is available for fine-tuning. Fine-tuning still outperforms training from scratch. The study also investigates the effect of dataset size, observing that larger pre-training datasets lead to better accuracy, but the largest difference in accuracy is seen in the few-shot regime. Additionally, the study looks at the effect of pre-training method, and finds that image-image contrastive pre-training leads to better transfer accuracy compared to language-image contrastive pre-training.
+
+
+
+### Some thougts 
+
+It is unfortunate that the double-blind review process, while well-intentioned, can sometimes result in good research being overlooked. The process, designed to prevent bias in the selection of papers, can also make it difficult for reviewers to properly assess the work of researchers from underrepresented groups or from institutions with less prestige.
+
+Additionally, for the researchers whose work was not accepted at this year's ICLR conference, it can be disheartening and discouraging. But it's important to remember that the review process is highly competitive and that getting a paper accepted at a top conference like ICLR is a significant accomplishment. And for those whose work was not accepted, it doesn't mean that their research is not valuable or that they are not good researchers. It is also important to note that there are many other conferences, journals and outlets to present the research and get the recognition it deserves.
+
+It's also important to remember that rejection is a common experience in any field, especially in research. It's a part of the process of discovery and innovation. It's important to keep pushing forward, to continue to conduct valuable research, and to keep submitting to conferences and journals. It's also important to keep an open mind and to look for feedback and constructive criticism. And most importantly, don't give up.
+
+In short, while the double-blind review process has its drawbacks, it's important to remember that rejection is a part of the process and that good research can come from any institution or researcher. And for those whose work was not accepted, keep pushing forward and don't give up. Here is some advice from Jonathan Frankle, the author of the infamous "The Lottery Ticket Hypothesis" paper:
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Time for my usual refrain: Most papers weren&#39;t accepted to ICLR, and don&#39;t let Twitter fool you into thinking otherwise. Plenty of smart people and great papers didn&#39;t get the outcome they wanted, and you&#39;re in very good company if that&#39;s you right now.</p>&mdash; Jonathan Frankle (@jefrankle) <a href="https://twitter.com/jefrankle/status/1616958137616982016?ref_src=twsrc%5Etfw">January 22, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+### Conlusion 
+
+Overall, transfer learning is a powerful technique that allows models to be applied to different but related tasks, potentially improving performance and reducing the amount of data and computation required. The papers discussed in this blog post highlight some of the latest research in transfer learning, including methods for transferring knowledge between language and images, between different modalities, and for graph-structured data.
+
+It is clear that transfer learning is an active and rapidly growing area of research, and we can expect to see many more exciting developments in the coming years. We look forward to seeing the outcome of these papers and more at ICLR 23.
+
+In conclusion, transfer learning has many practical applications and these papers give a glimpse of the future possibilities of transfer learning, it is a promising area of research and have a lot of room for improvement. These papers will give an insight into the latest developments in the field and open up the doors for new research opportunities.
+
+### Outro  
+If you enjoyed this post, please consider sharing it with your friends and colleagues. 
+
