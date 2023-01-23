@@ -2,7 +2,7 @@
 title: "About"
 image: profile.jpeg
 about:
-  template: jolla
+  template: solana
   links:
     - icon: github
       text: GitHub
@@ -21,14 +21,10 @@ about:
       href: https://twitter.com/muhtasham9
     - icon: linkedin
       text: LinkedIn
-      href: https://www.linkedin.com/in/muhtasham/
-
-
+      href: https://www.linkedin.com/in/muhtasham
 ---
 
-### Hallo world
-
-I'm Muhtasham Oblokulov. I design, build, and operate machine learning systems. I also (try to) write and speak about ML systems, engineering, and career.
+Hello there. I'm Muhtasham Oblokulov, I design, build, and operate machine learning systems. I also (try to) write and speak about ML systems, engineering, and career.
 
 In the past I have been honoured to work under supervision of great educators and researchers such as 
 
