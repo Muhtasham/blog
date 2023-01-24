@@ -63,6 +63,7 @@ It is clear that transfer learning is an active and rapidly growing area of rese
 
 In conclusion, transfer learning has many practical applications and these papers give a glimpse of the future possibilities of transfer learning, it is a promising area of research and have a lot of room for improvement. These papers will give an insight into the latest developments in the field and open up the doors for new research opportunities.
 
-### Outro  
-If you enjoyed this post, please consider sharing it with your friends and colleagues. 
+____________________________________________________________________________________
+
+If you liked this article, you can also find me on Twitter and LinkedIn where I share more content related to machine learning and AI.
 

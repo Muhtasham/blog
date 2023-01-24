@@ -24,12 +24,12 @@ about:
       href: https://www.linkedin.com/in/muhtasham
 ---
 
-Hello there. I'm Muhtasham Oblokulov, I design, build, and operate machine learning systems. I also (try to) write and speak about ML systems, engineering, and career.
+Hello there. I'm Muhtasham Oblokulov, I design, build, and operate machine learning systems. I also (try to) write and speak about ML systems, engineering, and career. I am also co-founder of [Munich🥨NLP](https://munich-nlp.github.io/) and co-orginizer of [PyData Munich](https://www.meetup.com/pydata-munchen).
 
 In the past I have been honoured to work under supervision of great educators and researchers such as 
 
-- [Prof.Mujdat Cetin](mailto:mujdat.cetin@rochester.edu) from University of Rochester
 - [Prof.Huseyin Ozkan](mailto:huseyin.ozkan@sabanciuniv.edu) from Sabanci University 
+- [Prof.Mujdat Cetin](mailto:mujdat.cetin@rochester.edu) from University of Rochester
 - [Prof.Suayb Arsalan](mailto:suayb.arsalan@mit.edu) from Massachusetts Institute of Technology
 
 Also great mentors from industry such as
