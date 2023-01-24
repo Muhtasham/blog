@@ -28,16 +28,16 @@ Hello there. I'm Muhtasham Oblokulov, I design, build, and operate machine learn
 
 In the past I have been honoured to work under supervision of great educators and researchers such as 
 
-- [Prof.Mujdat Cetin](mujdat.cetin@rochester.edu) from University of Rochester
-- [Prof.Huseyin Ozkan](huseyin.ozkan@sabanciuniv.edu) from Sabanci University 
-- [Prof. Suayb Arsalan](suayb.arsalan@mit.edu) from Massachusetts Institute of Technology
+- [Prof.Mujdat Cetin](mailto:mujdat.cetin@rochester.edu) from University of Rochester
+- [Prof.Huseyin Ozkan](mailto:huseyin.ozkan@sabanciuniv.edu) from Sabanci University 
+- [Prof. Suayb Arsalan](mailto:suayb.arsalan@mit.edu) from Massachusetts Institute of Technology
 
 Also great mentors from industry such as
 
-- [Dr.Erdem Yoruk](e.yoruk@vispera.co) 
-- [Ergin Selim Gonen](selimgonen@gmail.com)
-- [Prof. Dr. René Brunner](rene.brunner@datamics.com)
-- [Egor Labintcev](yegor.labintcev@gmail.com)
+- [Dr.Erdem Yoruk](mailto:e.yoruk@vispera.co) 
+- [Ergin Selim Gonen](mailto:selimgonen@gmail.com)
+- [Prof. Dr. René Brunner](mailto:rene.brunner@datamics.com)
+- [Egor Labintcev](mailto:yegor.labintcev@gmail.com)
 
 I'm currently working as a Machine Learning Engineer at [Munich Re Group](https://www.munichre.com/en.html). Previously, I worked at [Alyne](https://mitratech.com/products/alyne/) and [Datamics](https://consulting.datamics.com/).To learn more about me, you can check out my [LinkedIn](https://www.linkedin.com/in/muhtasham/).
 
