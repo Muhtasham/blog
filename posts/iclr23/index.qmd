@@ -21,7 +21,7 @@ The International Conference on Learning Representations (ICLR) is one of the to
 This paper introduces a new framework called Maximum-Entropy Rewarded Reinforcement Learning (MERRL) for selecting training data for more accurate Natural Language Processing (NLP). The authors argue that conventional data selection methods, which select training samples based on test domain knowledge and not on real-life data, frequently fail in unknown domains like patent and Twitter. MERRL addresses this issue by selecting training samples that maximize information uncertainty measured by entropy, including observation entropy like empirical Shannon entropy, Min-entropy, R'enyi entropy, and prediction entropy using mutual information. The authors show that their MERRL framework using regularized A2C and SAC achieves significant improvements in language modeling, sentiment analysis, and named entity recognition over various domains, demonstrating strong generalization power on unknown test sets. 
 
 
-As an Electornics Engineering background, I expresses genuine affinity to Shannon and his theory, which is the foundation of information theory and a powerful tool for understanding the limits of communication and computation. 
+As an Electronics Engineering background, I expresses genuine affinity to Shannon and his theory, which is the foundation of information theory and a powerful tool for understanding the limits of communication and computation. 
 
 #### [Representational Dissimilarity Metric Spaces for Stochastic Neural Networks](https://openreview.net/forum?id=xjb563TH-GH)
 
