@@ -22,5 +22,8 @@
   },
   "posts/software3/index.qmd": {
     "index.html": "00df38b0"
+  },
+  "posts/feature-store/index.qmd": {
+    "index.html": "fef0bffd"
   }
 }

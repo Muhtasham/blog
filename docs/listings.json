@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/feature-store/index.html",
       "/posts/software3/index.html",
       "/posts/iclr23/index.html",
       "/posts/info-theory/index.html",
