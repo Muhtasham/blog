@@ -28,17 +28,19 @@ Hello there. I'm Muhtasham Oblokulov, I design, build, and operate machine learn
 
 In the past I have been honoured to work under supervision of great educators and researchers such as 
 
-- [Prof.Huseyin Ozkan](mailto:huseyin.ozkan@sabanciuniv.edu) from Sabanci University 
-- [Prof.Mujdat Cetin](mailto:mujdat.cetin@rochester.edu) from University of Rochester
-- [Prof.Suayb Arsalan](mailto:suayb.arsalan@mit.edu) from Massachusetts Institute of Technology
+- [Prof.Huseyin Ozkan](https://www.linkedin.com/in/huseyin-ozkan-78719a129/)
+- [Prof.Mujdat Cetin](https://www.linkedin.com/in/mujdat-cetin-038a149/)
+- [Prof.Suayb Arsalan](https://www.linkedin.com/in/suayb-s-arslan/)
 
 Also great mentors from industry such as
 
-- [Dr.Erdem Yoruk](mailto:e.yoruk@vispera.co) 
-- [Ergin Selim Gonen](mailto:selimgonen@gmail.com)
-- [Dr.René Brunner](mailto:rene.brunner@datamics.com)
-- [Egor Labintcev](mailto:yegor.labintcev@gmail.com)
+- [Dr.Erdem Yoruk](https://www.linkedin.com/in/erdem-yoruk-785532b6/)
+- [Ergin Selim Gonen](https://www.linkedin.com/in/esgnn/)
+- [Prof.René Brunner](https://www.linkedin.com/in/renebrunner/)
+- [Egor Labintcev](https://www.linkedin.com/in/egorlabintcev/)
 
 I'm currently working as a Machine Learning Engineer at [Munich Re Group](https://www.munichre.com/en.html). Previously, I worked at [Alyne](https://mitratech.com/products/alyne/) and [Datamics](https://consulting.datamics.com/).To learn more about me, you can check out my [LinkedIn](https://www.linkedin.com/in/muhtasham/).
 
-I am passionate about developing efficient and scalable machine learning systems and applying AI in production environments. I am always eager to explore and solve challenging technical problems. If you would like to connect, please feel free to reach out to me via email. Note: I will not tolerate inappropriate behavior from recruiters or tech-bros, but I am happy to provide valuable insights and guidance on data-related issues to anyone who is interested.
+I am passionate about apllied AI and developing efficient and scalable machine learning systems. I am always eager to explore and solve challenging technical problems. If you would like to connect, please feel free to reach out to me via email. 
+
+>Note: I will not tolerate inappropriate behavior from recruiters or tech-bros, but I am happy to provide valuable insights and guidance on data-related issues to anyone who is interested.
