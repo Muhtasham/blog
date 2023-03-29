@@ -1,11 +1,10 @@
-```json
-{
+---
 title: "How AI Ate Software and Now AI is Eating AI: An Exploration of Software 3.0 aka Attention"
 author: "muhtasham"
 date: "2023-01-24"
-categories: ["software"]
-image: "sunset.jpeg"
-}
+categories: [software]
+image: "inception.jpeg"
+---
 
 As we move into the era of Software 3.0, it's worth reflecting on the journey that has brought us here. Just as Software 1.0 was about the development of basic computational tools, and Software 2.0 was about the rise of machine learning and artificial intelligence, Software 3.0 is about the integration of AI with attention mechanisms to create truly intelligent systems.
 
