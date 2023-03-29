@@ -41,6 +41,6 @@ Also great mentors from industry such as
 
 I'm currently working as a Machine Learning Engineer at [Munich Re Group](https://www.munichre.com/en.html). Previously, I worked at [Alyne](https://mitratech.com/products/alyne/) and [Datamics](https://consulting.datamics.com/).To learn more about me, you can check out my [LinkedIn](https://www.linkedin.com/in/muhtasham/).
 
-I am passionate about apllied AI and developing efficient and scalable machine learning systems. I am always eager to explore and solve challenging technical problems. If you would like to connect, please feel free to reach out to me via email. 
+I am passionate about applied AI and developing efficient and scalable machine learning systems. I am always eager to explore and solve challenging technical problems. If you would like to connect, please feel free to reach out to me via email. 
 
 >Note: I will not tolerate inappropriate behavior from recruiters or tech-bros, but I am happy to provide valuable insights and guidance on data-related issues to anyone who is interested.
