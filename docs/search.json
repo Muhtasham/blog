@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Welcome to my blog",
     "section": "",
-    "text": "How AI Ate Software and Now AI is Eating AI: An Exploration of Software 3.0 aka Attention\n\n\n\n\n\n\n\nsoftware\n\n\n\n\n\n\n\n\n\n\n\nJan 24, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\nExploring the Latest Advancements in Transfer Learning: A Summary of ICLR’23 Transfer Learning-Related Papers\n\n\n\n\n\n\n\npapers\n\n\niclr\n\n\ntransfer-learning\n\n\n\n\n\n\n\n\n\n\n\nJan 23, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\nUnderstanding Information Theory in Deep Learning: A Beginner’s Guide\n\n\n\n\n\n\n\nshannon\n\n\nentropy\n\n\n\n\n\n\n\n\n\n\n\nJan 23, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n⏳ From Alps to NLP: A 2022 Recap of Exploration and Growth\n\n\n\n\n\n\n\nreflections\n\n\ngoals\n\n\n\n\n\n\n\n\n\n\n\nDec 26, 2022\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\nHerzlich Wilkommen!\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nDec 25, 2022\n\n\nmuhtasham\n\n\n\n\n\n\nNo matching items"
+    "text": "My Experience at the Philosophy of Deep Learning Conference at NYU\n\n\n\n\n\n\n\ndeep-learning\n\n\n\n\n\n\n\n\n\n\n\nMar 28, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\nHow AI Ate Software and Now AI is Eating AI: An Exploration of Software 3.0 aka Attention\n\n\n\n\n\n\n\nsoftware\n\n\n\n\n\n\n\n\n\n\n\nJan 24, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\nExploring the Latest Advancements in Transfer Learning: A Summary of ICLR’23 Transfer Learning-Related Papers\n\n\n\n\n\n\n\npapers\n\n\niclr\n\n\ntransfer-learning\n\n\n\n\n\n\n\n\n\n\n\nJan 23, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\nUnderstanding Information Theory in Deep Learning: A Beginner’s Guide\n\n\n\n\n\n\n\nshannon\n\n\nentropy\n\n\n\n\n\n\n\n\n\n\n\nJan 23, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n⏳ From Alps to NLP: A 2022 Recap of Exploration and Growth\n\n\n\n\n\n\n\nreflections\n\n\ngoals\n\n\n\n\n\n\n\n\n\n\n\nDec 26, 2022\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\nHerzlich Wilkommen!\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nDec 25, 2022\n\n\nmuhtasham\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/post-with-code/index.html",
@@ -89,5 +89,47 @@
     "title": "How AI Ate Software and Now AI is Eating AI: An Exploration of Software 3.0 aka Attention",
     "section": "",
     "text": "As we move into the era of Software 3.0, it’s worth reflecting on the journey that has brought us here. Just as Software 1.0 was about the development of basic computational tools, and Software 2.0 was about the rise of machine learning and artificial intelligence, Software 3.0 is about the integration of AI with attention mechanisms to create truly intelligent systems.\nIn the early days of AI, we focused on building systems that could mimic human intelligence using techniques like rule-based systems and decision trees. But as data became more abundant and compute power increased, we saw the rise of machine learning and the ability to train large neural networks to perform tasks like image and speech recognition with superhuman accuracy.\nThese systems, while impressive, were still limited in their ability to understand and reason about the world. They were unable to truly understand the meaning of the data they were processing, and were often opaque in their decision-making.\nEnter Software 3.0 and the integration of attention mechanisms. Attention allows AI systems to focus on the most relevant parts of a input, whether it’s an image, a text or a sound. This allows them to make more accurate predictions and decisions, while also giving them the ability to explain their thought process.\nOne example of this is the transformer architecture, which is the backbone of many state-of-the-art natural language processing models. The transformer uses self-attention to weigh the importance of each word in a sentence, allowing it to understand the meaning and context of the text.\nBut attention is not only eating AI, it’s also eating software itself. The ability to focus on relevant information and make better decisions is not limited to AI systems. It can also be applied to other areas of software development, such as user interfaces and recommendation systems.\nAs we continue to push the boundaries of what is possible with AI and attention, we can expect to see even more intelligent and explainable systems that are able to understand and reason about the world in ways that were previously impossible. Welcome to the era of Software 3.0."
+  },
+  {
+    "objectID": "posts/phildeeplearning/index.html",
+    "href": "posts/phildeeplearning/index.html",
+    "title": "My Experience at the Philosophy of Deep Learning Conference at NYU",
+    "section": "",
+    "text": "Last week, I had the incredible opportunity to attend a fascinating conference on the Philosophy of Deep Learning at New York University. The event brought together experts from various fields to discuss the philosophical implications and considerations surrounding deep learning and artificial intelligence. In this blog post, I’ll share some of the highlights from the conference, along with my thoughts on the lively atmosphere of New York City."
+  },
+  {
+    "objectID": "posts/phildeeplearning/index.html#the-pre-conference-debate-sensory-grounding-in-large-language-models",
+    "href": "posts/phildeeplearning/index.html#the-pre-conference-debate-sensory-grounding-in-large-language-models",
+    "title": "My Experience at the Philosophy of Deep Learning Conference at NYU",
+    "section": "The Pre-Conference Debate: Sensory Grounding in Large Language Models",
+    "text": "The Pre-Conference Debate: Sensory Grounding in Large Language Models\nThe conference kicked off with a thought-provoking pre-conference debate titled “Do large language models need sensory grounding for meaning and understanding?”. The debate featured esteemed speakers such as Yann LeCun and David Chalmers."
+  },
+  {
+    "objectID": "posts/phildeeplearning/index.html#yann-lecuns-bold-prediction",
+    "href": "posts/phildeeplearning/index.html#yann-lecuns-bold-prediction",
+    "title": "My Experience at the Philosophy of Deep Learning Conference at NYU",
+    "section": "Yann LeCun’s Bold Prediction",
+    "text": "Yann LeCun’s Bold Prediction\nYann LeCun, one of the pioneers in the field of deep learning, was on the “Yes” side of the debate. He made a bold prediction that nobody in their right mind will use autoregressive models 5 years from now. LeCun argued that Auto-Regressive Large Language Models (LLMs) are exponentially diverging diffusion processes, and while the probability of errors can be reduced through training, the problem cannot be entirely eliminated. His solution is to make LLMs non-autoregressive while preserving their fluency. You can find his slides here."
+  },
+  {
+    "objectID": "posts/phildeeplearning/index.html#david-chalmers-nuanced-view",
+    "href": "posts/phildeeplearning/index.html#david-chalmers-nuanced-view",
+    "title": "My Experience at the Philosophy of Deep Learning Conference at NYU",
+    "section": "David Chalmers’ Nuanced View",
+    "text": "David Chalmers’ Nuanced View\nDavid Chalmers, a renowned philosopher, took a more nuanced approach to the debate. He started his talk on the “Yes” side with a bit of philosophical history about the grounding problem, discussing thought experiments from philosophers like Avicenna. Chalmers ultimately concluded with a “No, but – it’s complicated” answer to the debate question. You can find his slides here."
+  },
+  {
+    "objectID": "posts/phildeeplearning/index.html#a-glimpse-into-other-talks",
+    "href": "posts/phildeeplearning/index.html#a-glimpse-into-other-talks",
+    "title": "My Experience at the Philosophy of Deep Learning Conference at NYU",
+    "section": "A Glimpse into Other Talks",
+    "text": "A Glimpse into Other Talks\nOne of the most interesting talks during the conference was by Tal Linzen, titled “What, if Anything, Can Large Language Models Teach Us About Human Language Acquisition?”. Linzen posited that deep learning can be a great tool for testing theoretical claims about children’s linguistic input and inductive biases if used correctly. However, he emphasized that cognitive scientists need to train new models themselves, as the “large language models” from big labs are not relevant to questions about humans. Linzen’s slides can be found here."
+  },
+  {
+    "objectID": "posts/phildeeplearning/index.html#new-york-vibes",
+    "href": "posts/phildeeplearning/index.html#new-york-vibes",
+    "title": "My Experience at the Philosophy of Deep Learning Conference at NYU",
+    "section": "New York Vibes",
+    "text": "New York Vibes\n\nThe conference experience was made even better by the electric atmosphere of New York City. Walking through the city’s bustling streets, I couldn’t help but feel the energy and excitement that makes New York such a unique place. Between conference sessions, I enjoyed exploring the city’s diverse neighborhoods, trying out new foods, and admiring the stunning skyline. There’s something truly special about being in a city that feels so alive and vibrant, and it was the perfect backdrop for a conference focused on the future of deep learning and AI.\nIn conclusion, the Philosophy of Deep Learning conference at NYU was an unforgettable experience that brought together experts from various fields to discuss the latest developments in deep learning and artificial intelligence. The insightful debates and thought-provoking talks challenged our understanding of large language models, their relationship to human cognition, and the philosophical implications of AI. Combined with the thrilling energy of New York City, the conference left me feeling inspired and eager to explore new ideas in the rapidly evolving world of AI and deep learning. I’m already looking forward to attending similar events in the future and further immersing myself in the fascinating intersection of technology and philosophy."
   }
 ]
