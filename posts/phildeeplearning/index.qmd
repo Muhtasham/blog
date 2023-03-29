@@ -2,11 +2,11 @@
 title: "My Experience at the Philosophy of Deep Learning Conference at NYU"
 author: "muhtasham"
 date: "2023-03-28"
-categories: [deep-learning]
-image: nyc.jpeg
+categories: [deep-learning, conference]
+image: banner.jpeg
 ---
 
-![](banner.jpeg "Image by author")
+![](nyc.jpeg "Image by author")
 
 Last week, I had the incredible opportunity to attend a fascinating conference on the Philosophy of Deep Learning at New York University. The event brought together experts from various fields to discuss the philosophical implications and considerations surrounding deep learning and artificial intelligence. In this blog post, I'll share some of the highlights from the conference, along with my thoughts on the lively atmosphere of New York City.
 
