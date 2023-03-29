@@ -3,11 +3,7 @@ title: "How AI Ate Software and Now AI is Eating AI: An Exploration of Software 
 author: "muhtasham"
 date: "2023-01-24"
 categories: [software]
-<<<<<<< HEAD
-image: inception.jpeg
-=======
 image: "sunset.jpeg"
->>>>>>> cea5f018cde4e2e0e48e21f491c86de78ec900fc
 ---
 
 As we move into the era of Software 3.0, it's worth reflecting on the journey that has brought us here. Just as Software 1.0 was about the development of basic computational tools, and Software 2.0 was about the rise of machine learning and artificial intelligence, Software 3.0 is about the integration of AI with attention mechanisms to create truly intelligent systems.
