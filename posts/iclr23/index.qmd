@@ -10,7 +10,7 @@ image: "painting.jpeg"
 
 The International Conference on Learning Representations (ICLR) is one of the top conferences in the field of machine learning, and this year's conference (ICLR 23) features several papers on the topic of transfer learning. Transfer learning is a technique that allows a model trained on one task to be applied to a different but related task, potentially improving performance and reducing the amount of data and computation required. Here are a few papers on transfer learning that are worth keeping an eye on at ICLR 23:
 
-![](painting.jpeg "Image by author")
+![](painting.jpeg)
 
 ### Papers
 

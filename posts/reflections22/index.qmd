@@ -10,7 +10,7 @@ image: "IMG_7689.jpeg"
 
 As I look back on the year 2022, I can't help but feel a sense of nostalgia and wonder. 
 
-![](IMG_7689.jpeg "Image by author")
+![](IMG_7689.jpeg)
 
 
 ### 🌊 Intro

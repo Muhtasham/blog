@@ -16,7 +16,7 @@ website:
         href: https://www.linkedin.com/in/muhtasham/
 format:
   html:
-    theme: Litera
+    theme: cosmo
     css: styles.css
 
 

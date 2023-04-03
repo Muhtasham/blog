@@ -1,34 +1,32 @@
 {
-  "index.qmd": {
-    "index.html": "01da03aa"
-  },
-  "posts/post-with-code/index.qmd": {
-    "index.html": "db74bc97"
-  },
   "posts/welcome/index.qmd": {
-    "index.html": "9d0525aa"
+    "index.html": "e9079b89"
   },
   "about.qmd": {
-    "about.html": "1166a8c2"
+    "about.html": "e950671b"
   },
-  "posts/reflections22/index.qmd": {
-    "index.html": "bc3c8736"
+  "posts/post-with-code/index.qmd": {
+    "index.html": "5f94c6fd"
+  },
+  "index.qmd": {
+    "index.html": "550f95fc"
+  },
+  "posts/feature-store/index.qmd": {
+    "index.html": "2387fe61"
   },
   "posts/iclr23/index.qmd": {
-    "index.html": "c2df8f4d"
+    "index.html": "6a650430"
   },
   "posts/info-theory/index.qmd": {
-    "index.html": "f4010f5b"
+    "index.html": "203d39e1"
+  },
+  "posts/phildeeplearning/index.qmd": {
+    "index.html": "1e75d200"
+  },
+  "posts/reflections22/index.qmd": {
+    "index.html": "b90d79a5"
   },
   "posts/software3/index.qmd": {
-    "index.html": "00df38b0"
-  },
-<<<<<<< HEAD
-  "posts/phildeeplearning/index.qmd": {
-    "index.html": "315cf6f3"
-=======
-  "posts/feature-store/index.qmd": {
-    "index.html": "fef0bffd"
->>>>>>> cea5f018cde4e2e0e48e21f491c86de78ec900fc
+    "index.html": "2f573d84"
   }
 }

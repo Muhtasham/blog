@@ -8,7 +8,7 @@ listing:
   sort-ui: false
   filter-ui: false
 page-layout: full
-title-block-banncer: true
+title-block-banner: true
 ---
 
 
