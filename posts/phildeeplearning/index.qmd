@@ -23,7 +23,14 @@ This meme captured the mood of the conference perfectly. Everyone seemed to be t
 
 
 ## Yann LeCun's Bold Prediction
-Yann LeCun, one of the pioneers in the field of deep learning, was on the "Yes" side of the debate. He made a bold prediction that nobody in their right mind will use autoregressive models 5 years from now. LeCun argued that Auto-Regressive Large Language Models (LLMs) are exponentially diverging diffusion processes, and while the probability of errors can be reduced through training, the problem cannot be entirely eliminated. His solution is to make LLMs non-autoregressive while preserving their fluency. You can find his slides [here](https://drive.google.com/file/d/1BU5bV3X5w65DwSMapKcsr0ZvrMRU_Nbi/view).
+Yann LeCun, one of the pioneers in the field of deep learning, was on the "Yes" side of the debate. He made a bold prediction that nobody in their right mind will use autoregressive models 5 years from now. LeCun argued that Auto-Regressive Large Language Models (LLMs) are exponentially diverging diffusion processes, and while the probability of errors can be reduced through training, the problem cannot be entirely eliminated. 
+
+In other words LLMs are like Micael Scott's famous line in The Office: 
+
+![](sentence.jpeg)
+
+His solution is to make LLMs non-autoregressive while preserving their fluency. 
+You can find his slides [here](https://drive.google.com/file/d/1BU5bV3X5w65DwSMapKcsr0ZvrMRU_Nbi/view).
 
 ## David Chalmers' Nuanced View
 David Chalmers, a renowned philosopher, took a more nuanced approach to the debate. He started his talk on the "Yes" side with a bit of philosophical history about the grounding problem, discussing thought experiments from philosophers like Avicenna. Chalmers ultimately concluded with a "No, but – it's complicated" answer to the debate question. You can find his slides [here](https://consc.net/papers/groundingdebate.pdf).
