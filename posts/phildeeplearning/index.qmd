@@ -38,6 +38,8 @@ David Chalmers, a renowned philosopher, took a more nuanced approach to the deba
 ## A Glimpse into Other Talks
 One of the most interesting talks during the conference was by Tal Linzen, titled "What, if Anything, Can Large Language Models Teach Us About Human Language Acquisition?". Linzen posited that deep learning can be a great tool for testing theoretical claims about children's linguistic input and inductive biases if used correctly. However, he emphasized that cognitive scientists need to train new models themselves, as the "large language models" from big labs are not relevant to questions about humans. Linzen's slides can be found [here](https://www.dropbox.com/s/l1r7yv0sr2cvlj3/linzen_phil_deep_learning.pdf?dl=0).
 
+Update 8 April 2023: Head to https://phildeeplearning.github.io to find individual links in the program, or to https://phildeeplearning.github.io/recordings for the whole Youtube playlist.
+
 ## New York Vibes
 
 ![](skyline.jpeg)
