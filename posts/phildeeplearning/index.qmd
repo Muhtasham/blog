@@ -23,22 +23,24 @@ This meme captured the mood of the conference perfectly. Everyone seemed to be t
 
 
 ## Yann LeCun's Bold Prediction
+
 Yann LeCun, one of the pioneers in the field of deep learning, was on the "Yes" side of the debate. He made a bold prediction that nobody in their right mind will use autoregressive models 5 years from now. LeCun argued that Auto-Regressive Large Language Models (LLMs) are exponentially diverging diffusion processes, and while the probability of errors can be reduced through training, the problem cannot be entirely eliminated. 
 
 In other words LLMs are like Micael Scott's famous line in The Office: 
 
 ![](sentence.jpeg)
 
-His solution is to make LLMs non-autoregressive while preserving their fluency. 
-You can find his slides [here](https://drive.google.com/file/d/1BU5bV3X5w65DwSMapKcsr0ZvrMRU_Nbi/view).
+His solution is to make LLMs non-autoregressive while preserving their fluency. You can find his slides [here](https://drive.google.com/file/d/1BU5bV3X5w65DwSMapKcsr0ZvrMRU_Nbi/view).
 
 ## David Chalmers' Nuanced View
+
 David Chalmers, a renowned philosopher, took a more nuanced approach to the debate. He started his talk on the "Yes" side with a bit of philosophical history about the grounding problem, discussing thought experiments from philosophers like Avicenna. Chalmers ultimately concluded with a "No, but – it's complicated" answer to the debate question. You can find his slides [here](https://consc.net/papers/groundingdebate.pdf).
 
 ## A Glimpse into Other Talks
+
 One of the most interesting talks during the conference was by Tal Linzen, titled "What, if Anything, Can Large Language Models Teach Us About Human Language Acquisition?". Linzen posited that deep learning can be a great tool for testing theoretical claims about children's linguistic input and inductive biases if used correctly. However, he emphasized that cognitive scientists need to train new models themselves, as the "large language models" from big labs are not relevant to questions about humans. Linzen's slides can be found [here](https://www.dropbox.com/s/l1r7yv0sr2cvlj3/linzen_phil_deep_learning.pdf?dl=0).
 
-Update 8 April 2023: Head to https://phildeeplearning.github.io to find individual links in the program, or to https://phildeeplearning.github.io/recordings for the whole Youtube playlist.
+Update 8 April 2023: Head to https://phildeeplearning.github.io to find individual links in the program, or for the whole (Youtube playlist)[https://phildeeplearning.github.io/recordings].
 
 ## New York Vibes
 
