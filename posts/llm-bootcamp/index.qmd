@@ -18,7 +18,7 @@ Addressing the Critical Questions
 As engineers delve into this new world, several questions arise. During the LLM Bootcamp, I explored answers to some of these pressing questions:
 
 Are there any good open-source LLMs?
-Yes, there are several open-source LLMs available, such as GPT-2, BERT, and RoBERTa. These models serve as a foundation for researchers and developers to build upon, experiment, and create new AI applications.
+Yes, there are several open-source LLMs available. These models serve as a foundation for researchers and developers to build upon, experiment, and create new AI applications.
 
 What is my moat if I rely on OpenAI APIs?
 By relying on OpenAI APIs, you gain access to cutting-edge AI technology and regular model updates, which allows you to stay competitive in the market. However, your moat comes from your unique implementation of the technology and the value-added services you provide to your customers.

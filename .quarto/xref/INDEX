@@ -28,5 +28,11 @@
   },
   "posts/software3/index.qmd": {
     "index.html": "2f573d84"
+  },
+  "posts/llm-bootcamp/index.qmd": {
+    "index.html": "769f5ad9"
+  },
+  "posts/vc-fireside-chat/index.qmd": {
+    "index.html": "b4b8818f"
   }
 }
