@@ -20,18 +20,12 @@ categories: [llm]
    - [How exactly am I supposed to test these damn things?](#test-llms)
 4. [Conclusion](#conclusion)
 
-
 ## Introduction
 <a name="introduction"></a>
 
-The world of technology is currently undergoing a monumental transformation, and my participation in the [LLM Bootcamp](https://fullstackdeeplearning.com/llm-bootcamp/) was nothing short of enlightening from my perspective. The emergence of and the potential of AI-powered applications are causing a groundbreaking ripple effect across the software industry. As I embarked on this intense learning journey, I unraveled the ever-changing landscape of techniques, tools, and vendors that are molding the future of AI.
+The world of technology is currently undergoing a monumental transformation, and my participation in the [LLM Bootcamp](https://fullstackdeeplearning.com/llm-bootcamp/) was nothing short of enlightening from my perspective. The potential of AI-powered applications is causing a ripple effect in the software industry. I learned about techniques, tools, and vendors shaping the future of AI at a well-organized bootcamp where I gained valuable insights and connections.
 
-The bootcamp was impeccably organized, allowing me to absorb valuable insights from the speakers and develop meaningful connections with my fellow participants. While it's nearly impossible to encapsulate everything I learned in a single blog post, I will attempt to highlight some of the key takeaways from this enriching experience.
-
-To start, the bootcamp was jam-packed with engaging and informative sessions.
-
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Full house 🦜<a href="https://twitter.com/full_stack_dl?ref_src=twsrc%5Etfw">@full_stack_dl</a> <a href="https://t.co/0AD9XTkUNH">pic.twitter.com/0AD9XTkUNH</a></p>&mdash; Muhtasham Oblokulov (@Muhtasham9) <a href="https://twitter.com/Muhtasham9/status/1649473725803417600?ref_src=twsrc%5Etfw">April 21, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
+While it's nearly impossible to encapsulate everything I learned in a single blog post, I will attempt to highlight some of the key takeaways from this enriching experience.
 
 
 ## The Rapid Transformation of AI-Powered Apps
@@ -47,7 +41,13 @@ As engineers delve into this new world, several questions arise. During the LLM 
 ### Are there any good open-source LLMs?
 <a name="open-source-llms"></a>
 
-Yes, there are several open-source LLMs available. These models serve as a foundation for researchers and developers to build upon, experiment, and create new AI applications. However, selecting the best model for your use case depends on various factors, including:
+Yes, there are several open-source LLMs available. These models serve as a foundation for researchers and developers to build upon, experiment, and create new AI applications. 
+
+Josh tobin had great slides on this topic, which he will release soon, in the meantime here see below for a great tweet from Eugene Yan:
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">What are some comparisons of LLMs—especially open LLMs—that discuss their licenses and performance?<br><br>The best I found is this comparison from <a href="https://twitter.com/LightningAI?ref_src=twsrc%5Etfw">@LightningAI</a>—anything else?<a href="https://t.co/LPkKvgaK6o">https://t.co/LPkKvgaK6o</a> <a href="https://t.co/GRwbBnGV4s">pic.twitter.com/GRwbBnGV4s</a></p>&mdash; Eugene Yan (@eugeneyan) <a href="https://twitter.com/eugeneyan/status/1652728897652559872?ref_src=twsrc%5Etfw">April 30, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+Selecting the best model for your use case depends on various factors, including:
 
 * Out-of-the-box quality for your task
 * Inference speed / latency
@@ -56,7 +56,11 @@ Yes, there are several open-source LLMs available. These models serve as a found
 * Data security and license permissibility
 * For most use cases, GPT-4 is an excellent starting point.
 
-**Proprietary models** often offer **superior quality** and are more suitable for commercial use due to licensing constraints. Additionally, they come with the advantage of reduced infrastructure overhead when compared to serving open-source models.
+**Proprietary models** often offer **superior quality** and are more suitable for commercial use due to licensing constraints. 
+
+> Although there maybe some of them may have been friction that include broad copyright ownership over any output, this is becoming less of the problem with OpenAI giving the power to users in combination with services like [Azure OpenAI Service](https://azure.microsoft.com/en-us/products/cognitive-services/openai-service/).
+
+Additionally, they come with the advantage of **reduced infrastructure overhead** when compared to serving open-source models.
 
 However, **open-source models** are a more fitting choice if you require extensive customization and want to ensure data security. They provide **greater flexibility** in terms of modification and adaptation to meet specific project requirements.
 
@@ -66,6 +70,8 @@ Adding to the previous discussion on selecting the best LLM for your use case, h
 * Consider "downsizing" if cost or latency is a factor: [GPT-3.5](https://platform.openai.com/docs/models/gpt-3-5) and [Claude](https://www.anthropic.com/index/introducing-claude) are both good choices with comparable performance. For even **faster and cheaper** alternatives, explore options provided by any LLM vendor, with [Anthropic's](https://www.anthropic.com) offering being the most "modern" choice.
 * Opt for [Cohere](https://cohere.com/) if you need to **fine-tune your model**: Cohere allows greater flexibility in adjusting the model to better suit your specific needs.
 * Use open-source models only when absolutely necessary: Although the open-source landscape is evolving rapidly and will likely become a more viable option in the future, for now, it's advisable to use these models **only if they are essential for your project.**
+
+> Personally I find it quite distressing that llama paper results can not be reproduced. 
 
 By considering these recommendations, you can make an informed decision about which LLM is most suitable for your project, balancing factors such as cost, performance, customization, and data security.
 
@@ -89,6 +95,8 @@ By effectively combining OpenAI APIs with these augmentation strategies, you can
 <a name="prompt-engineering"></a>
 
 In the context of AI and LLMs, a "prompt" refers to the text input given to a language model. "Prompt engineering" is the skillful process of crafting that input text to achieve desired results from the model.
+
+Lilian Weng has a great blogpost about it [here](https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/#automatic-prompt-design), and she notes that most papers on prompt engineering are tricks that can be explained in a few sentences.
 
 While the term "prompt engineering" may sound whimsical or perplexing, it is a crucial aspect of working with LLMs. By carefully designing prompts, you can harness the power of language models to **generate valuable insights**, creative ideas, and solutions to complex problems.
 
@@ -144,12 +152,27 @@ By implementing a comprehensive testing strategy that combines automated and man
 ## Conclusion
 <a name="conclusion"></a>
 
-While the insights shared in this blog post are valuable today, it's essential to acknowledge that the landscape is continually changing. 
-
-> And as we continue to witness the growth and impact of LLMs and AI in general, it’s crucial to remain agile and open to new ideas. The key takeaways from the LLM Bootcamp and related discussions serve as a stepping stone for understanding the current state of the field, but it’s up to you to keep pushing the boundaries and exploring new ways to harness the power of these transformative technologies.
+While the insights shared in this blog post are valuable today, it's essential to acknowledge that the landscape is continually changing. And as we continue to witness the growth and impact of LLMs and AI in general, it’s crucial to remain agile and open to new ideas. The key takeaways from the LLM Bootcamp and related discussions serve as a stepping stone for understanding the current state of the field, but it’s up to you to keep pushing the boundaries and exploring new ways to harness the power of these transformative technologies.
 
 In addition to this post, I have also compiled a separate write-up on a panel discussion focused on [Building a Sustainable Business](https://muhtasham.github.io/blog/posts/vc-fireside-chat/) which provides insights on how to navigate the challenges and opportunities in this burgeoning industry.
 
 As we continue to witness the growth and impact of LLMs and AI in general, it's crucial to remain agile and open to new ideas. The key takeaways from the LLM Bootcamp and related discussions serve as a stepping stone for understanding the current state of the field, but it's up to you to keep pushing the boundaries and exploring new ways to harness the power of these transformative technologies.
 
-Lastly, I would like to extend my sincere gratitude to all the readers who have taken the time to read and engage with this blog post. Your interest and curiosity drive me to continue sharing my experiences and learnings in this ever-evolving field. Thank you, and I look forward to sharing more insights with you in the future!
+In conclusion, I want to express my heartfelt thanks to all the readers who have taken the time to read and engage with this blog post. Your interest and curiosity motivate me to keep sharing my experiences and learnings in this rapidly evolving field. I appreciate your support, and I look forward to sharing more insights with you in the future!
+
+## Acknowledgements
+
+Thanks to [Eugene Yan](https://twitter.com/eugeneyan) for comments on the draft.
+
+## Citation
+Cited as:
+```
+@misc{muhtasham2023llm,
+  title={A Deep Dive into the LLM Bootcamp Experience: Revolutionizing AI-Powered Applications},
+  author={Muhtasham, Oblokulov},
+  journal={muhtasham.github.io},
+  year={2023},
+  month={Apr},
+  url={https://muhtasham.github.io/blog/posts/llm-bootcamp/}
+}
+```
