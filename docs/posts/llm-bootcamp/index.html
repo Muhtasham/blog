@@ -179,7 +179,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p><a name="introduction"></a></p>
-<p>The world of technology is currently undergoing a monumental transformation, and my participation in the <a href="https://fullstackdeeplearning.com/llm-bootcamp/">LLM Bootcamp</a> has been nothing short of enlightening. The emergence of and the potential of AI-powered applications are causing a groundbreaking ripple effect across the software industry. As I embarked on this intense learning journey, I unraveled the ever-changing landscape of techniques, tools, and vendors that are molding the future of AI.</p>
+<p>The world of technology is currently undergoing a monumental transformation, and my participation in the <a href="https://fullstackdeeplearning.com/llm-bootcamp/">LLM Bootcamp</a> was nothing short of enlightening from my perspective. The emergence of and the potential of AI-powered applications are causing a groundbreaking ripple effect across the software industry. As I embarked on this intense learning journey, I unraveled the ever-changing landscape of techniques, tools, and vendors that are molding the future of AI.</p>
 <p>The bootcamp was impeccably organized, allowing me to absorb valuable insights from the speakers and develop meaningful connections with my fellow participants. While it’s nearly impossible to encapsulate everything I learned in a single blog post, I will attempt to highlight some of the key takeaways from this enriching experience.</p>
 <p>To start, the bootcamp was jam-packed with engaging and informative sessions.</p>
 <blockquote class="twitter-tweet blockquote">
@@ -201,7 +201,8 @@ Full house 🦜<a href="https://twitter.com/full_stack_dl?ref_src=twsrc%5Etfw"><
 <p>As engineers delve into this new world, several questions arise. During the LLM Bootcamp, I explored answers to some of these pressing questions:</p>
 <section id="are-there-any-good-open-source-llms" class="level3">
 <h3 class="anchored" data-anchor-id="are-there-any-good-open-source-llms">Are there any good open-source LLMs?</h3>
-<p><a name="open-source-llms"></a> Yes, there are several open-source LLMs available. These models serve as a foundation for researchers and developers to build upon, experiment, and create new AI applications. However, selecting the best model for your use case depends on various factors, including:</p>
+<p><a name="open-source-llms"></a></p>
+<p>Yes, there are several open-source LLMs available. These models serve as a foundation for researchers and developers to build upon, experiment, and create new AI applications. However, selecting the best model for your use case depends on various factors, including:</p>
 <ul>
 <li>Out-of-the-box quality for your task</li>
 <li>Inference speed / latency</li>
@@ -210,16 +211,22 @@ Full house 🦜<a href="https://twitter.com/full_stack_dl?ref_src=twsrc%5Etfw"><
 <li>Data security and license permissibility</li>
 <li>For most use cases, GPT-4 is an excellent starting point.</li>
 </ul>
-<p>Proprietary models often offer superior quality and are more suitable for commercial use due to licensing constraints. Additionally, they come with the advantage of reduced infrastructure overhead when compared to serving open-source models.</p>
-<p>However, open-source models are a more fitting choice if you require extensive customization and want to ensure data security. They provide greater flexibility in terms of modification and adaptation to meet specific project requirements.</p>
+<blockquote class="blockquote">
+<p>Proprietary models often offer superior quality and are more suitable for commercial use due to licensing constraints.</p>
+</blockquote>
+<p>Additionally, they come with the advantage of reduced infrastructure overhead when compared to serving open-source models.</p>
+<blockquote class="blockquote">
+<p>However, open-source models are a more fitting choice if you require extensive customization and want to ensure data security.</p>
+</blockquote>
+<p>They provide greater flexibility in terms of modification and adaptation to meet specific project requirements.</p>
 <p>Adding to the previous discussion on selecting the best LLM for your use case, here are some recommendations for most projects:</p>
 <ul>
-<li>Start with GPT-4: This will help you develop a proof of concept to assess the feasibility of your task, similar to prototyping in Python.</li>
-<li>Consider “downsizing” if cost or latency is a factor: GPT-3.5 and Claude are both good choices with comparable performance. For even faster and cheaper alternatives, explore options provided by any LLM vendor, with Anthropic’s offering being the most “modern” choice.</li>
-<li>Opt for Cohere if you need to fine-tune your model: Cohere allows greater flexibility in adjusting the model to better suit your specific needs.</li>
+<li>Start with <a href="https://openai.com/product/gpt-4">GPT-4</a>: This will help you develop a proof of concept to assess the feasibility of your task, similar to prototyping in Python.</li>
+<li>Consider “downsizing” if cost or latency is a factor: <a href="https://platform.openai.com/docs/models/gpt-3-5">GPT-3.5</a> and <a href="https://www.anthropic.com/index/introducing-claude">Claude</a> are both good choices with comparable performance. For even faster and cheaper alternatives, explore options provided by any LLM vendor, with Anthropic’s offering being the most “modern” choice.</li>
+<li>Opt for <a href="https://cohere.com/">Cohere</a> if you need to fine-tune your model: Cohere allows greater flexibility in adjusting the model to better suit your specific needs.</li>
 <li>Use open-source models only when absolutely necessary: Although the open-source landscape is evolving rapidly and will likely become a more viable option in the future, for now, it’s advisable to use these models only if they are essential for your project.</li>
-<li>By considering these recommendations, you can make an informed decision about which LLM is most suitable for your project, balancing factors such as cost, performance, customization, and data security.</li>
 </ul>
+<p>By considering these recommendations, you can make an informed decision about which LLM is most suitable for your project, balancing factors such as cost, performance, customization, and data security.</p>
 </section>
 <section id="what-is-my-moat-if-i-rely-on-openai-apis" class="level3">
 <h3 class="anchored" data-anchor-id="what-is-my-moat-if-i-rely-on-openai-apis">What is my moat if I rely on OpenAI APIs?</h3>
@@ -227,9 +234,9 @@ Full house 🦜<a href="https://twitter.com/full_stack_dl?ref_src=twsrc%5Etfw"><
 <p>Utilizing OpenAI APIs provides you with access to state-of-the-art AI technology and regular model updates, which can help you maintain a competitive edge in the market. However, your competitive advantage, or “moat,” comes from your unique implementation of the technology and the value-added services you deliver to your customers.</p>
 <p>Context plays a crucial role in providing LLMs with unique and up-to-date information, but its capacity is limited. To make the most of this limited context, consider augmenting the language model through various methods:</p>
 <ul>
-<li>Augment with a larger corpus: Leverage additional data sources to enrich the context and improve the AI’s understanding of your specific domain or use case.</li>
-<li>Augment with more LLM calls: Make multiple calls to the LLM with different inputs or parameters to generate a diverse range of responses, which can then be combined or refined to produce a more accurate output.</li>
-<li>Augment with external sources: Integrate information from other sources, such as databases, APIs, or domain-specific knowledge bases, to enhance the context and further tailor the AI’s output to your needs.</li>
+<li><strong>Augment with a larger corpus</strong>: Leverage additional data sources to enrich the context and improve the AI’s understanding of your specific domain or use case.</li>
+<li><strong>Augment with more LLM calls</strong>: Make multiple calls to the LLM with different inputs or parameters to generate a diverse range of responses, which can then be combined or refined to produce a more accurate output.</li>
+<li><strong>Augment with external sources</strong>: Integrate information from other sources, such as databases, APIs, or domain-specific knowledge bases, to enhance the context and further tailor the AI’s output to your needs.</li>
 </ul>
 <p>By effectively combining OpenAI APIs with these augmentation strategies, you can create unique, high-value solutions that differentiate your offerings from competitors and strengthen your competitive advantage.</p>
 </section>
@@ -254,7 +261,8 @@ Full house 🦜<a href="https://twitter.com/full_stack_dl?ref_src=twsrc%5Etfw"><
 <section id="should-i-be-able-to-code-a-transformer-from-scratch" class="level3">
 <h3 class="anchored" data-anchor-id="should-i-be-able-to-code-a-transformer-from-scratch">Should I be able to code a Transformer from scratch?</h3>
 <p><a name="transformer-from-scratch"></a></p>
-<p>While it’s not mandatory, having a deep understanding of the underlying architecture, such as Transformers, can help you better utilize LLMs and troubleshoot issues. However, focusing on practical applications and use cases is often more valuable than delving solely into theoretical aspects. For example, during a fireside chat, Peter Welinder, VP of Product and Partnerships at OpenAI, mentioned that when they first built the API, the inference was slow, but in just three months, they were able to improve the inference speed by 100x. This example illustrates how understanding the underlying architecture, combined with using tools like <a href="https://github.com/openai/triton">Triton</a>, can help you enhance the performance of your AI applications.</p>
+<p>While it’s not mandatory, having a deep understanding of the underlying architecture, such as Transformers, can help you better utilize LLMs and troubleshoot issues. However, focusing on practical applications and use cases is often more valuable than delving solely into theoretical aspects.</p>
+<p>For example, during a fireside chat, <a href="linkedin.com/in/welinder/">Peter Welinder</a>, VP of Product and Partnerships at OpenAI, mentioned that when they first built the API, the inference was slow, but in just three months, they were able to improve the inference speed by <strong>100x</strong>. This example illustrates how understanding the underlying architecture, combined with using tools like <a href="https://github.com/openai/triton">Triton</a>, can help you enhance the performance of your AI applications.</p>
 <p>For instance, you might need to fine-tune LLMs in certain situations. Here are some recommendations:</p>
 <ul>
 <li><p>Using GPT-4 might eliminate the need for fine-tuning in most cases.</p></li>
@@ -271,16 +279,19 @@ Full house 🦜<a href="https://twitter.com/full_stack_dl?ref_src=twsrc%5Etfw"><
 <h3 class="anchored" data-anchor-id="how-exactly-am-i-supposed-to-test-these-damn-things">How exactly am I supposed to test these damn things?</h3>
 <p><a name="test-llms"></a></p>
 <p>Testing LLMs can be challenging, but it is essential to ensure the quality of your AI applications. Employ a combination of manual and automated testing, focus on edge cases, and collaborate with domain experts to validate the AI’s output for accuracy and relevance.</p>
-<p>Why test? LLMs are prone to making mistakes, and improving one aspect of your model may inadvertently compromise another. If people rely on your model, they trust you to maintain performance on their task. Since LLMs are trained on the internet, there is always a risk of drift, and qualitative success can be hard to measure. Additionally, diversity of behaviors means aggregate metrics may not be sufficient.</p>
+<p>As you may already know, LLMs are prone to making mistakes, and improving one aspect of your model may inadvertently compromise another. If people rely on your model, they trust you to maintain performance on their task. Since LLMs are trained on the internet, there is always a risk of drift, and qualitative success can be hard to measure. Additionally, diversity of behaviors means aggregate metrics may not be sufficient.</p>
 <p>Test coverage and distribution shift are closely related concepts. Distribution shift measures how far the test distribution is from a reference distribution and is used to assess data changes. Test coverage measures how well your evaluation set covers your production data and is used to find more helpful evaluation data.</p>
-<p>A key idea in LLM testing is using one LLM to evaluate another. This enables automatic evaluation, which can unlock parallel experimentation. However, you should still conduct some manual checks. Types of feedback to consider include thumbs up/down, written feedback, and corrected answers.</p>
+<p>A key idea in LLM testing is <strong>using one LLM to evaluate another</strong>. This enables automatic evaluation, which can unlock parallel experimentation. However, you should still conduct some manual checks. Types of feedback to consider include thumbs up/down, written feedback, and corrected answers.</p>
 <p>By implementing a comprehensive testing strategy that combines automated and manual testing, as well as incorporating feedback mechanisms, you can ensure the quality and performance of your AI applications remain high.</p>
 </section>
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
 <p><a name="conclusion"></a></p>
-<p>The world of AI and LLMs is evolving rapidly, and staying up-to-date with the latest advancements is crucial for anyone involved in the field. While the insights shared in this blog post are valuable today, it’s essential to acknowledge that the landscape is continually changing. I encourage you to keep exploring, learning, and adapting to the ever-shifting environment of AI-powered applications.</p>
+<p>While the insights shared in this blog post are valuable today, it’s essential to acknowledge that the landscape is continually changing.</p>
+<blockquote class="blockquote">
+<p>And as we continue to witness the growth and impact of LLMs and AI in general, it’s crucial to remain agile and open to new ideas. The key takeaways from the LLM Bootcamp and related discussions serve as a stepping stone for understanding the current state of the field, but it’s up to you to keep pushing the boundaries and exploring new ways to harness the power of these transformative technologies.</p>
+</blockquote>
 <p>In addition to this post, I have also compiled a separate write-up on a panel discussion focused on <a href="https://muhtasham.github.io/blog/posts/vc-fireside-chat/">Building a Sustainable Business</a> which provides insights on how to navigate the challenges and opportunities in this burgeoning industry.</p>
 <p>As we continue to witness the growth and impact of LLMs and AI in general, it’s crucial to remain agile and open to new ideas. The key takeaways from the LLM Bootcamp and related discussions serve as a stepping stone for understanding the current state of the field, but it’s up to you to keep pushing the boundaries and exploring new ways to harness the power of these transformative technologies.</p>
 <p>Lastly, I would like to extend my sincere gratitude to all the readers who have taken the time to read and engage with this blog post. Your interest and curiosity drive me to continue sharing my experiences and learnings in this ever-evolving field. Thank you, and I look forward to sharing more insights with you in the future!</p>
