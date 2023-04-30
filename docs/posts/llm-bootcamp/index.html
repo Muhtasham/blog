@@ -265,13 +265,14 @@ Full house 🦜<a href="https://twitter.com/full_stack_dl?ref_src=twsrc%5Etfw"><
 <p>While it’s not mandatory, having a deep understanding of the underlying architecture, such as Transformers, can help you better utilize LLMs and troubleshoot issues. However, focusing on practical applications and use cases is often more valuable than delving solely into theoretical aspects. For example, during a fireside chat, Peter Welinder, VP of Product and Partnerships at OpenAI, mentioned that when they first built the API, the inference was slow, but in just three months, they were able to improve the inference speed by 100x. This example illustrates how understanding the underlying architecture, combined with using tools like <a href="https://github.com/openai/triton">Triton</a>, can help you enhance the performance of your AI applications.</p>
 <p>For instance, you might need to fine-tune LLMs in certain situations. Here are some recommendations:</p>
 <ul>
-<li>Using GPT-4 might eliminate the need for fine-tuning in most cases.</li>
-<li>Reasons to consider fine-tuning:
+<li><p>Using GPT-4 might eliminate the need for fine-tuning in most cases.</p></li>
+<li><p>Reasons to consider fine-tuning:</p>
 <ul>
 <li>You need to deploy smaller models due to resource constraints.</li>
-<li>You have a large amount of data, and retrieval-based approaches are not performing well. *Low-rank updates or parameter-efficient tuning techniques can make fine-tuning more accessible, allowing you to optimize the LLM for specific use cases without in-depth knowledge of Transformer coding.</li>
+<li>You have a large amount of data, and retrieval-based approaches are not performing well.</li>
 </ul></li>
 </ul>
+<p>*Low-rank updates or parameter-efficient tuning techniques can make fine-tuning more accessible, allowing you to optimize the LLM for specific use cases without in-depth knowledge of Transformer coding.</p>
 <p>Ultimately, striking a balance between understanding the underlying principles and focusing on practical applications will empower you to make the most of LLMs in your projects.</p>
 </section>
 <section id="how-exactly-am-i-supposed-to-test-these-damn-things" class="level3">
