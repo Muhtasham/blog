@@ -120,7 +120,7 @@ For instance, you might need to fine-tune LLMs in certain situations. Here are s
     - You need to deploy smaller models due to resource constraints.
     - You have a large amount of data, and retrieval-based approaches are not performing well.
 
-*Low-rank updates or parameter-efficient tuning techniques can make fine-tuning more accessible, allowing you to optimize the LLM for specific use cases without in-depth knowledge of Transformer coding.
+* Low-rank updates or parameter-efficient tuning techniques can make fine-tuning more accessible, allowing you to optimize the LLM for specific use cases without in-depth knowledge of Transformer coding.
 
 Ultimately, striking a balance between understanding the underlying principles and focusing on practical applications will empower you to make the most of LLMs in your projects.
 
