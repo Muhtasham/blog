@@ -193,7 +193,7 @@ Full house 🦜<a href="https://twitter.com/full_stack_dl?ref_src=twsrc%5Etfw"><
 <section id="the-rapid-transformation-of-ai-powered-apps" class="level2">
 <h2 class="anchored" data-anchor-id="the-rapid-transformation-of-ai-powered-apps">The Rapid Transformation of AI-Powered Apps</h2>
 <p><a name="rapid-transformation"></a></p>
-<p>Before the advent of Large Language Models (LLMs), ideas often bottlenecked on the process of training models from scratch and faced further bottlenecks in scalable deployment. However, with the availability of pretrained, promptable LLM models and APIs, it is now possible to configure and serve users in just an hour. This shift has led to an entirely new ecosystem that even experienced ML professionals are striving to understand.</p>
+<p>Before the advent of Large Language Models (LLMs), ideas often bottlenecked on the process of training models from scratch and faced further bottlenecks in scalable deployment. However, with the availability of pretrained, promptable LLM models and APIs, it is now possible to <strong>configure and serve users in just an hour</strong>. This shift has led to an entirely new ecosystem that even experienced ML professionals are striving to understand.</p>
 </section>
 <section id="addressing-the-critical-questions" class="level2">
 <h2 class="anchored" data-anchor-id="addressing-the-critical-questions">Addressing the Critical Questions</h2>
@@ -211,28 +211,25 @@ Full house 🦜<a href="https://twitter.com/full_stack_dl?ref_src=twsrc%5Etfw"><
 <li>Data security and license permissibility</li>
 <li>For most use cases, GPT-4 is an excellent starting point.</li>
 </ul>
-<blockquote class="blockquote">
-<p>Proprietary models often offer superior quality and are more suitable for commercial use due to licensing constraints.</p>
-</blockquote>
-<p>Additionally, they come with the advantage of reduced infrastructure overhead when compared to serving open-source models.</p>
-<blockquote class="blockquote">
-<p>However, open-source models are a more fitting choice if you require extensive customization and want to ensure data security.</p>
-</blockquote>
-<p>They provide greater flexibility in terms of modification and adaptation to meet specific project requirements.</p>
+<p><strong>Proprietary models</strong> often offer <strong>superior quality</strong> and are more suitable for commercial use due to licensing constraints. Additionally, they come with the advantage of reduced infrastructure overhead when compared to serving open-source models.</p>
+<p>However, <strong>open-source models</strong> are a more fitting choice if you require extensive customization and want to ensure data security. They provide <strong>greater flexibility</strong> in terms of modification and adaptation to meet specific project requirements.</p>
 <p>Adding to the previous discussion on selecting the best LLM for your use case, here are some recommendations for most projects:</p>
 <ul>
-<li>Start with <a href="https://openai.com/product/gpt-4">GPT-4</a>: This will help you develop a proof of concept to assess the feasibility of your task, similar to prototyping in Python.</li>
-<li>Consider “downsizing” if cost or latency is a factor: <a href="https://platform.openai.com/docs/models/gpt-3-5">GPT-3.5</a> and <a href="https://www.anthropic.com/index/introducing-claude">Claude</a> are both good choices with comparable performance. For even faster and cheaper alternatives, explore options provided by any LLM vendor, with Anthropic’s offering being the most “modern” choice.</li>
-<li>Opt for <a href="https://cohere.com/">Cohere</a> if you need to fine-tune your model: Cohere allows greater flexibility in adjusting the model to better suit your specific needs.</li>
-<li>Use open-source models only when absolutely necessary: Although the open-source landscape is evolving rapidly and will likely become a more viable option in the future, for now, it’s advisable to use these models only if they are essential for your project.</li>
+<li>Start with <a href="https://openai.com/product/gpt-4">GPT-4</a>: This will help you develop a <strong>proof of concept</strong> to assess the feasibility of your task, similar to prototyping in Python.</li>
+<li>Consider “downsizing” if cost or latency is a factor: <a href="https://platform.openai.com/docs/models/gpt-3-5">GPT-3.5</a> and <a href="https://www.anthropic.com/index/introducing-claude">Claude</a> are both good choices with comparable performance. For even <strong>faster and cheaper</strong> alternatives, explore options provided by any LLM vendor, with Anthropic’s offering being the most “modern” choice.</li>
+<li>Opt for <a href="https://cohere.com/">Cohere</a> if you need to <strong>fine-tune your model</strong>: Cohere allows greater flexibility in adjusting the model to better suit your specific needs.</li>
+<li>Use open-source models only when absolutely necessary: Although the open-source landscape is evolving rapidly and will likely become a more viable option in the future, for now, it’s advisable to use these models <strong>only if they are essential for your project.</strong></li>
 </ul>
 <p>By considering these recommendations, you can make an informed decision about which LLM is most suitable for your project, balancing factors such as cost, performance, customization, and data security.</p>
+<blockquote class="blockquote">
+<p>We can expect GPT-3.5 <strong>quality</strong> to be available in open-source models until the end of 2023.</p>
+</blockquote>
 </section>
 <section id="what-is-my-moat-if-i-rely-on-openai-apis" class="level3">
 <h3 class="anchored" data-anchor-id="what-is-my-moat-if-i-rely-on-openai-apis">What is my moat if I rely on OpenAI APIs?</h3>
 <p><a name="moat-openai-apis"></a></p>
-<p>Utilizing OpenAI APIs provides you with access to state-of-the-art AI technology and regular model updates, which can help you maintain a competitive edge in the market. However, your competitive advantage, or “moat,” comes from your unique implementation of the technology and the value-added services you deliver to your customers.</p>
-<p>Context plays a crucial role in providing LLMs with unique and up-to-date information, but its capacity is limited. To make the most of this limited context, consider augmenting the language model through various methods:</p>
+<p>Utilizing OpenAI APIs provides you with access to state-of-the-art AI technology and regular model updates, which can help you maintain a competitive edge in the market. However, your competitive advantage, or “moat” comes from your unique implementation of the technology and the value-added services you deliver to your customers.</p>
+<p>For instance context plays a crucial role in providing LLMs with unique and up-to-date information, but its capacity is limited. To make the most of this limited context, consider augmenting the language model through various methods:</p>
 <ul>
 <li><strong>Augment with a larger corpus</strong>: Leverage additional data sources to enrich the context and improve the AI’s understanding of your specific domain or use case.</li>
 <li><strong>Augment with more LLM calls</strong>: Make multiple calls to the LLM with different inputs or parameters to generate a diverse range of responses, which can then be combined or refined to produce a more accurate output.</li>
@@ -244,7 +241,7 @@ Full house 🦜<a href="https://twitter.com/full_stack_dl?ref_src=twsrc%5Etfw"><
 <h3 class="anchored" data-anchor-id="is-prompt-engineering-some-kind-of-sick-joke">Is Prompt Engineering some kind of sick joke?</h3>
 <p><a name="prompt-engineering"></a></p>
 <p>In the context of AI and LLMs, a “prompt” refers to the text input given to a language model. “Prompt engineering” is the skillful process of crafting that input text to achieve desired results from the model.</p>
-<p>While the term “prompt engineering” may sound whimsical or perplexing, it is a crucial aspect of working with LLMs. By carefully designing prompts, you can harness the power of language models to generate valuable insights, creative ideas, and solutions to complex problems.</p>
+<p>While the term “prompt engineering” may sound whimsical or perplexing, it is a crucial aspect of working with LLMs. By carefully designing prompts, you can harness the power of language models to <strong>generate valuable insights</strong>, creative ideas, and solutions to complex problems.</p>
 <blockquote class="blockquote">
 <p>Prompts can be thought of as gateways to the vast knowledge and capabilities of AI language models.</p>
 </blockquote>
@@ -255,14 +252,14 @@ Full house 🦜<a href="https://twitter.com/full_stack_dl?ref_src=twsrc%5Etfw"><
 <h3 class="anchored" data-anchor-id="how-can-i-gather-and-use-feedback-from-users">How can I gather and use feedback from users?</h3>
 <p><a name="user-feedback"></a></p>
 <p>User feedback is crucial for improving your AI-powered applications. To gather and use feedback effectively, consider implementing feedback loops, in-app surveys, and user testing to gain insights into user preferences and any potential shortcomings of the AI.</p>
-<p>One approach to incorporating user feedback is to ask an LLM whether the new answer addresses the feedback provided for the old answer. Aim for low-friction, high-signal feedback methods that easily integrate into the user’s workflow, such as the “Accept changes” or “Thumbs up/down” patterns. Longer-form feedback also plays a role in refining AI performance.</p>
+<p>One approach to incorporating user feedback is to ask an LLM whether the new answer addresses the feedback provided for the old answer. Aim for low-friction, high-signal feedback methods that easily integrate into the user’s workflow, such as the <strong>Accept changes</strong> or <strong>Thumbs up/down</strong> patterns. Longer-form feedback also plays a role in refining AI performance.</p>
 <p>Identify themes in user feedback that the model does not address, which are often discovered by humans. Adjust the prompt to account for these themes through prompt engineering or by changing the context. The automation of this process is still an open question.</p>
 </section>
 <section id="should-i-be-able-to-code-a-transformer-from-scratch" class="level3">
 <h3 class="anchored" data-anchor-id="should-i-be-able-to-code-a-transformer-from-scratch">Should I be able to code a Transformer from scratch?</h3>
 <p><a name="transformer-from-scratch"></a></p>
 <p>While it’s not mandatory, having a deep understanding of the underlying architecture, such as Transformers, can help you better utilize LLMs and troubleshoot issues. However, focusing on practical applications and use cases is often more valuable than delving solely into theoretical aspects.</p>
-<p>For example, during a fireside chat, <a href="linkedin.com/in/welinder/">Peter Welinder</a>, VP of Product and Partnerships at OpenAI, mentioned that when they first built the API, the inference was slow, but in just three months, they were able to improve the inference speed by <strong>100x</strong>. This example illustrates how understanding the underlying architecture, combined with using tools like <a href="https://github.com/openai/triton">Triton</a>, can help you enhance the performance of your AI applications.</p>
+<p>For example, during a fireside chat, <a href="linkedin.com/in/welinder/">Peter Welinder</a>, VP of Product and Partnerships at OpenAI, mentioned that when they first built the API, the inference was slow, but in just three months, they were able to improve the inference speed by <strong>100x</strong>. This example illustrates how understanding the underlying architecture, combined with using tools like <a href="https://github.com/openai/triton">triton</a>, can help you enhance the performance of your AI applications.</p>
 <p>For instance, you might need to fine-tune LLMs in certain situations. Here are some recommendations:</p>
 <ul>
 <li><p>Using GPT-4 might eliminate the need for fine-tuning in most cases.</p></li>
@@ -273,7 +270,8 @@ Full house 🦜<a href="https://twitter.com/full_stack_dl?ref_src=twsrc%5Etfw"><
 </ul></li>
 <li><p>Low-rank updates or parameter-efficient tuning techniques can make fine-tuning more accessible, allowing you to optimize the LLM for specific use cases without in-depth knowledge of Transformer coding.</p></li>
 </ul>
-<p>Ultimately, striking a balance between understanding the underlying principles and focusing on practical applications will empower you to make the most of LLMs in your projects.</p>
+<p>Also this is a there is recent great survey on <a href="http://arxiv.org/abs/2303.15647">parameter-efficient tuning</a>.</p>
+<p>Ultimately, striking a <strong>balance</strong> between understanding the underlying principles and focusing on practical applications will empower you to make the most of LLMs in your projects.</p>
 </section>
 <section id="how-exactly-am-i-supposed-to-test-these-damn-things" class="level3">
 <h3 class="anchored" data-anchor-id="how-exactly-am-i-supposed-to-test-these-damn-things">How exactly am I supposed to test these damn things?</h3>
