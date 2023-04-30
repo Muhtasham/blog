@@ -1,5 +1,5 @@
 ---
-title: "Feature Store, a technical need or whim?"
+title: "🏬 Feature Store, a technical need or whim?"
 author: "muhtasham"
 date: "2023-02-13"
 categories: [feature-store]

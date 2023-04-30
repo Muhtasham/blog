@@ -1,5 +1,5 @@
 ---
-title: "How AI Ate Software and Now AI is Eating AI: An Exploration of Software 3.0 aka Attention"
+title: "💭 How AI Ate Software and Now AI is Eating AI: An Exploration of Software 3.0 aka Attention"
 author: "muhtasham"
 date: "2023-01-24"
 categories: [software]

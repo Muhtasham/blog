@@ -1,5 +1,5 @@
 ---
-title: "Herzlich Wilkommen!"
+title: "🤗 Herzlich Wilkommen!"
 author: "muhtasham"
 date: "2022-12-25"
 categories: [news]

@@ -1,9 +1,9 @@
 ---
-title: "Mastering the Art of Building a Defensible Business: Insights from a Discussion Panel"
+title: "🌁 Mastering the Art of Building a Defensible Business: Insights from a Discussion Panel"
 author: "muhtasham"
 date: "2023-04-26"
 image: "point-vista.jpg"
-categories: [venture-captial, startups, ai, business]
+categories: [venture-captial]
 ---
 
 ## Introduction:

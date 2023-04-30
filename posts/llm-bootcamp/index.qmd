@@ -1,9 +1,9 @@
 ---
-title: "A Deep Dive into the LLM Bootcamp Experience: Revolutionizing AI-Powered Applications"
+title: "🌉 A Deep Dive into the LLM Bootcamp Experience: Revolutionizing AI-Powered Applications"
 author: "muhtasham"
 date: "2023-04-26"
 image: "sf.jpg"
-categories: [deep-learning, bootcamp]
+categories: [llm]
 ---
 
 ![The view of the Golden Gate Bridge reminded me of the limitless possibilities that AI and LLMs can bring to our world.](sf.jpg)
@@ -55,8 +55,6 @@ Yes, there are several open-source LLMs available. These models serve as a found
 * Fine-tuneability / extensibility
 * Data security and license permissibility
 * For most use cases, GPT-4 is an excellent starting point.
-
-<blockquote class="twitter-tweet"><p lang="zxx" dir="ltr"><a href="https://t.co/YbwrZRaV7X">pic.twitter.com/YbwrZRaV7X</a></p>&mdash; Muhtasham Oblokulov (@Muhtasham9) <a href="https://twitter.com/Muhtasham9/status/1649870722800680960?ref_src=twsrc%5Etfw">April 22, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 Proprietary models often offer superior quality and are more suitable for commercial use due to licensing constraints. Additionally, they come with the advantage of reduced infrastructure overhead when compared to serving open-source models.
 

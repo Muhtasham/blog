@@ -1,8 +1,8 @@
 ---
-title: "Understanding Information Theory in Deep Learning: A Beginner's Guide"
+title: "🌫️ Understanding Information Theory in Deep Learning: A Beginner's Guide"
 author: "muhtasham"
 date: "2023-01-23"
-categories: [shannon, entropy]
+categories: [entropy]
 image: "entropy.jpeg"
 ---
 

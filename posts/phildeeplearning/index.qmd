@@ -1,8 +1,8 @@
 ---
-title: "A Philosophical Dive into Deep Learning: My Experience at the NYU Conference"
+title: "🤔 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference"
 author: "muhtasham"
 date: "2023-03-28"
-categories: [deep-learning, conference]
+categories: [conference]
 image: "banner.jpeg"
 ---
 
