@@ -6,7 +6,7 @@ image: "sf.jpg"
 categories: [llm]
 ---
 
-![The view of the Golden Gate Bridge reminded me of the limitless possibilities that AI and LLMs can bring to our world.](sf.jpg)
+![The view of the Golden Gate Bridge reminded me of the limitless possibilities that AI and LLMs can bring to our world. Image by author](sf.jpg)
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -155,8 +155,6 @@ By implementing a comprehensive testing strategy that combines automated and man
 While the insights shared in this blog post are valuable today, it's essential to acknowledge that the landscape is continually changing. And as we continue to witness the growth and impact of LLMs and AI in general, it’s crucial to remain agile and open to new ideas. The key takeaways from the LLM Bootcamp and related discussions serve as a stepping stone for understanding the current state of the field, but it’s up to you to keep pushing the boundaries and exploring new ways to harness the power of these transformative technologies.
 
 In addition to this post, I have also compiled a separate write-up on a panel discussion focused on [Building a Sustainable Business](https://muhtasham.github.io/blog/posts/vc-fireside-chat/) which provides insights on how to navigate the challenges and opportunities in this burgeoning industry.
-
-As we continue to witness the growth and impact of LLMs and AI in general, it's crucial to remain agile and open to new ideas. The key takeaways from the LLM Bootcamp and related discussions serve as a stepping stone for understanding the current state of the field, but it's up to you to keep pushing the boundaries and exploring new ways to harness the power of these transformative technologies.
 
 In conclusion, I want to express my heartfelt thanks to all the readers who have taken the time to read and engage with this blog post. Your interest and curiosity motivate me to keep sharing my experiences and learnings in this rapidly evolving field. I appreciate your support, and I look forward to sharing more insights with you in the future!
 

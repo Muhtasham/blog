@@ -158,7 +158,7 @@
     "href": "posts/llm-bootcamp/index.html",
     "title": "🌉 A Deep Dive into the LLM Bootcamp Experience: Revolutionizing AI-Powered Applications",
     "section": "",
-    "text": "The view of the Golden Gate Bridge reminded me of the limitless possibilities that AI and LLMs can bring to our world."
+    "text": "The view of the Golden Gate Bridge reminded me of the limitless possibilities that AI and LLMs can bring to our world. Image by author"
   },
   {
     "objectID": "posts/vc-fireside-chat/index.html",
@@ -186,7 +186,7 @@
     "href": "posts/llm-bootcamp/index.html#conclusion",
     "title": "🌉 A Deep Dive into the LLM Bootcamp Experience: Revolutionizing AI-Powered Applications",
     "section": "Conclusion",
-    "text": "Conclusion\n\nWhile the insights shared in this blog post are valuable today, it’s essential to acknowledge that the landscape is continually changing. And as we continue to witness the growth and impact of LLMs and AI in general, it’s crucial to remain agile and open to new ideas. The key takeaways from the LLM Bootcamp and related discussions serve as a stepping stone for understanding the current state of the field, but it’s up to you to keep pushing the boundaries and exploring new ways to harness the power of these transformative technologies.\nIn addition to this post, I have also compiled a separate write-up on a panel discussion focused on Building a Sustainable Business which provides insights on how to navigate the challenges and opportunities in this burgeoning industry.\nAs we continue to witness the growth and impact of LLMs and AI in general, it’s crucial to remain agile and open to new ideas. The key takeaways from the LLM Bootcamp and related discussions serve as a stepping stone for understanding the current state of the field, but it’s up to you to keep pushing the boundaries and exploring new ways to harness the power of these transformative technologies.\nIn conclusion, I want to express my heartfelt thanks to all the readers who have taken the time to read and engage with this blog post. Your interest and curiosity motivate me to keep sharing my experiences and learnings in this rapidly evolving field. I appreciate your support, and I look forward to sharing more insights with you in the future!"
+    "text": "Conclusion\n\nWhile the insights shared in this blog post are valuable today, it’s essential to acknowledge that the landscape is continually changing. And as we continue to witness the growth and impact of LLMs and AI in general, it’s crucial to remain agile and open to new ideas. The key takeaways from the LLM Bootcamp and related discussions serve as a stepping stone for understanding the current state of the field, but it’s up to you to keep pushing the boundaries and exploring new ways to harness the power of these transformative technologies.\nIn addition to this post, I have also compiled a separate write-up on a panel discussion focused on Building a Sustainable Business which provides insights on how to navigate the challenges and opportunities in this burgeoning industry.\nIn conclusion, I want to express my heartfelt thanks to all the readers who have taken the time to read and engage with this blog post. Your interest and curiosity motivate me to keep sharing my experiences and learnings in this rapidly evolving field. I appreciate your support, and I look forward to sharing more insights with you in the future!"
   },
   {
     "objectID": "posts/vc-fireside-chat/index.html#asking-the-right-questions-to-vcs",
@@ -292,5 +292,19 @@
     "title": "🌉 A Deep Dive into the LLM Bootcamp Experience: Revolutionizing AI-Powered Applications",
     "section": "Acknowledgements",
     "text": "Acknowledgements\nThanks to Eugene Yan for comments on the draft."
+  },
+  {
+    "objectID": "posts/vc-fireside-chat/index.html#introduction",
+    "href": "posts/vc-fireside-chat/index.html#introduction",
+    "title": "🌁 Mastering the Art of Building a Defensible Business: Insights from a Discussion Panel",
+    "section": "",
+    "text": "The landscape of artificial intelligence (AI) startups is rapidly evolving, and so are the strategies for building a successful and defensible business. A recent discussion panel featured Sarah Catanzaro (Amplify Partners) and Matt Bornstein (a16z), who shared their insights on how to navigate the challenging world of AI startups. The panel was moderated by Josh Tobin (gantry), during LLM bootcamp 2023 in San Francisco."
+  },
+  {
+    "objectID": "posts/info-theory/index.html#information-theory-in-deep-learning-primer",
+    "href": "posts/info-theory/index.html#information-theory-in-deep-learning-primer",
+    "title": "🌫️ Understanding Information Theory in Deep Learning: A Beginner’s Guide",
+    "section": "",
+    "text": "Deep learning is a branch of machine learning that has revolutionized the field of artificial intelligence. It has led to breakthroughs in computer vision, natural language processing, and many other areas. However, understanding and optimizing the performance of deep learning models can be challenging. Information theory provides a powerful mathematical framework for addressing these challenges and has played a critical role in the development of deep learning.\nIn this blog post, we will provide a primer on the key concepts of information theory that are relevant to deep learning and explain them in layman’s terms."
   }
 ]
