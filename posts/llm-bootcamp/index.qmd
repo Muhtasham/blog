@@ -43,9 +43,9 @@ As engineers delve into this new world, several questions arise. During the LLM 
 
 Yes, there are several open-source LLMs available. These models serve as a foundation for researchers and developers to build upon, experiment, and create new AI applications. 
 
-[Josh Tobin](https://www.linkedin.com/in/josh-tobin-4b3b10a9/) had great slides on this topic, which he will release soon, in the meantime, see below tweet from Eugene Yan:
+[Josh Tobin](https://www.linkedin.com/in/josh-tobin-4b3b10a9/) had great slides on this topic, which will be release soon, but in essence it is more detailed version of the below figure
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">What are some comparisons of LLMs—especially open LLMs—that discuss their licenses and performance?<br><br>The best I found is this comparison from <a href="https://twitter.com/LightningAI?ref_src=twsrc%5Etfw">@LightningAI</a>—anything else?<a href="https://t.co/LPkKvgaK6o">https://t.co/LPkKvgaK6o</a> <a href="https://t.co/GRwbBnGV4s">pic.twitter.com/GRwbBnGV4s</a></p>&mdash; Eugene Yan (@eugeneyan) <a href="https://twitter.com/eugeneyan/status/1652728897652559872?ref_src=twsrc%5Etfw">April 30, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+![Comparisons of LLMs from [LightningAI](https://lightning.ai/pages/community/community-discussions/the-ultimate-battle-of-language-models-lit-llama-vs-gpt3.5-vs-bloom-vs/)](llm-comparison.jpg)
 
 Selecting the best model for your use case depends on various factors, including:
 
@@ -71,7 +71,7 @@ Adding to the previous discussion on selecting the best LLM for your use case, h
 * Opt for [Cohere](https://cohere.com/) if you need to **fine-tune your model**: Cohere allows greater flexibility in adjusting the model to better suit your specific needs.
 * Use open-source models only when absolutely necessary: Although the open-source landscape is evolving rapidly and will likely become a more viable option in the future, for now, it's advisable to use these models **only if they are essential for your project.**
 
-> Personally I find it quite distressing that llama paper results can not be reproduced. 
+> Personally I find it quite distressing that LLAMA paper results could not be [reproduced](https://twitter.com/abacaj/status/1652066990033362944?s=20). 
 
 By considering these recommendations, you can make an informed decision about which LLM is most suitable for your project, balancing factors such as cost, performance, customization, and data security.
 
