@@ -24,7 +24,9 @@ about:
       href: https://www.linkedin.com/in/muhtasham
 ---
 
-Hello there. I'm Muhtasham Oblokulov, I design, build, and operate machine learning systems. I also (try to) write and speak about ML systems, engineering, and career. I am also co-founder of [Munich🥨NLP](https://munich-nlp.github.io/) and co-organizer of [PyData Munich](https://www.meetup.com/pydata-munchen).
+Hello and welcome! My name is Muhtasham Oblokulov, and I specialize in the design, development, and operation of machine learning systems. In addition to my hands-on work with ML technologies, I'm passionate about sharing knowledge and insights through writing and speaking engagements on topics related to ML systems, engineering, and career development.
+
+As a proud co-founder of [Munich🥨NLP](https://munich-nlp.github.io/) and co-organizer of [PyData Munich](https://www.meetup.com/pydata-munchen).I'm actively involved in fostering a vibrant community of professionals and enthusiasts who share a common interest in natural language processing and data science
 
 In the past I have been honoured to work under supervision of great educators and researchers such as 
 
@@ -41,4 +43,6 @@ Also great mentors from industry such as
 
 I'm currently working as a Machine Learning Engineer at [Munich Re Group](https://www.munichre.com/en.html). Previously, I worked at [Alyne](https://mitratech.com/products/alyne/) and [Datamics](https://consulting.datamics.com/). To learn more about me, you can check out my [LinkedIn](https://www.linkedin.com/in/muhtasham/).
 
-I am passionate about applied AI and developing efficient and scalable machine learning systems. I am always eager to explore and solve challenging technical problems. If you would like to connect, please feel free to reach out to me via email. 
+As an AI enthusiast, I'm passionate about developing efficient machine learning systems. Currently, I'm exploring MLOps for Large Language Models (LLMs) and focusing on inference optimization. I love tackling challenging technical problems and welcome opportunities for collaboration.
+
+Feel free to reach out via email to connect—I'm excited to engage in thoughtful discussions!
