@@ -43,7 +43,7 @@ As engineers delve into this new world, several questions arise. During the LLM 
 
 Yes, there are several open-source LLMs available. These models serve as a foundation for researchers and developers to build upon, experiment, and create new AI applications. 
 
-Josh tobin had great slides on this topic, which he will release soon, in the meantime here see below for a great tweet from Eugene Yan:
+[Josh Tobin](https://www.linkedin.com/in/josh-tobin-4b3b10a9/) had great slides on this topic, which he will release soon, in the meantime, see below tweet from Eugene Yan:
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">What are some comparisons of LLMs—especially open LLMs—that discuss their licenses and performance?<br><br>The best I found is this comparison from <a href="https://twitter.com/LightningAI?ref_src=twsrc%5Etfw">@LightningAI</a>—anything else?<a href="https://t.co/LPkKvgaK6o">https://t.co/LPkKvgaK6o</a> <a href="https://t.co/GRwbBnGV4s">pic.twitter.com/GRwbBnGV4s</a></p>&mdash; Eugene Yan (@eugeneyan) <a href="https://twitter.com/eugeneyan/status/1652728897652559872?ref_src=twsrc%5Etfw">April 30, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
@@ -58,7 +58,7 @@ Selecting the best model for your use case depends on various factors, including
 
 **Proprietary models** often offer **superior quality** and are more suitable for commercial use due to licensing constraints. 
 
-> Although there maybe some of them may have been friction that include broad copyright ownership over any output, this is becoming less of the problem with OpenAI giving the power to users in combination with services like [Azure OpenAI Service](https://azure.microsoft.com/en-us/products/cognitive-services/openai-service/).
+However, in the past, there have been concerns regarding broad copyright ownership over any output. Fortunately, with advancements in technology, such as the Azure OpenAI Service, these concerns are becoming less of a problem. OpenAI is now empowering users by offering services that allow for the use of proprietary models without worrying about copyright issues. This makes it easier for businesses to leverage the benefits of proprietary models while also protecting their intellectual property.
 
 Additionally, they come with the advantage of **reduced infrastructure overhead** when compared to serving open-source models.
 
