@@ -6,7 +6,7 @@ categories: [conference]
 image: "banner.jpeg"
 ---
 
-![In this blog post, I'll recount some memorable highlights from the conference and share my impressions of the dynamic atmosphere of New York City.](nyc.jpeg)
+![](skyline.jpeg)
 
 ## Table of contents
 1. [Introduction](#introduction)
@@ -17,8 +17,10 @@ image: "banner.jpeg"
 6. [New York Vibes](#new-york-vibes)
 7. [Conclusion](#conclusion)
 
+## Introduction
+<a name=introduction></a>
 
-Last week, I was fortunate enough to attend the captivating Philosophy of Deep Learning Conference at New York University. This event united experts from diverse fields to explore the philosophical aspects and implications of deep learning and artificial intelligence. 
+Last week, I was fortunate enough to attend the captivating Philosophy of Deep Learning Conference at New York University. This event united experts from diverse fields to explore the philosophical aspects and implications of deep learning and artificial intelligence.In this blog post, I'll recount some memorable highlights from the conference and share my impressions of the dynamic atmosphere of New York City.
 
 ## A Thought-Provoking Start: Sensory Grounding in Large Language Models
 <a name=a-thought-provoking-start-sensory-grounding-in-large-language-models></a>
@@ -57,8 +59,6 @@ One of the most interesting talks during the conference was by Tal Linzen, title
 
 ## New York Vibes
 <a name=new-york-vibes></a>
-
-![](skyline.jpeg)
 
 The conference experience was made even better by the electric atmosphere of New York City. Walking through the city's bustling streets, I couldn't help but feel the energy and excitement that makes New York such a unique place. Between conference sessions, I enjoyed exploring the city's diverse neighborhoods, trying out new foods, and admiring the stunning skyline. There's something truly special about being in a city that feels so alive and vibrant, and it was the perfect backdrop for a conference focused on the future of deep learning and AI.
 

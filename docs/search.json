@@ -4,7 +4,7 @@
     "href": "posts/phildeeplearning/index.html",
     "title": "🗽 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference",
     "section": "",
-    "text": "In this blog post, I’ll recount some memorable highlights from the conference and share my impressions of the dynamic atmosphere of New York City."
+    "text": "Introduction\nA Thought-Provoking Start: Sensory Grounding in Large Language Models\nYann LeCun’s Bold Prediction\nDavid Chalmers’ Nuanced View\nA Glimpse into Other Talks\nNew York Vibes\nConclusion"
   },
   {
     "objectID": "posts/phildeeplearning/index.html#the-pre-conference-debate-sensory-grounding-in-large-language-models",
@@ -39,7 +39,7 @@
     "href": "posts/phildeeplearning/index.html#new-york-vibes",
     "title": "🗽 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference",
     "section": "New York Vibes",
-    "text": "New York Vibes\n\n\nThe conference experience was made even better by the electric atmosphere of New York City. Walking through the city’s bustling streets, I couldn’t help but feel the energy and excitement that makes New York such a unique place. Between conference sessions, I enjoyed exploring the city’s diverse neighborhoods, trying out new foods, and admiring the stunning skyline. There’s something truly special about being in a city that feels so alive and vibrant, and it was the perfect backdrop for a conference focused on the future of deep learning and AI."
+    "text": "New York Vibes\n\nThe conference experience was made even better by the electric atmosphere of New York City. Walking through the city’s bustling streets, I couldn’t help but feel the energy and excitement that makes New York such a unique place. Between conference sessions, I enjoyed exploring the city’s diverse neighborhoods, trying out new foods, and admiring the stunning skyline. There’s something truly special about being in a city that feels so alive and vibrant, and it was the perfect backdrop for a conference focused on the future of deep learning and AI."
   },
   {
     "objectID": "index.html",
@@ -312,7 +312,7 @@
     "href": "posts/phildeeplearning/index.html#table-of-contents",
     "title": "🗽 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference",
     "section": "Table of contents",
-    "text": "Table of contents\n\nIntroduction\nA Thought-Provoking Start: Sensory Grounding in Large Language Models\nYann LeCun’s Bold Prediction\nDavid Chalmers’ Nuanced View\nA Glimpse into Other Talks\nNew York Vibes\nConclusion\n\nLast week, I was fortunate enough to attend the captivating Philosophy of Deep Learning Conference at New York University. This event united experts from diverse fields to explore the philosophical aspects and implications of deep learning and artificial intelligence."
+    "text": "Table of contents\n\nIntroduction\nA Thought-Provoking Start: Sensory Grounding in Large Language Models\nYann LeCun’s Bold Prediction\nDavid Chalmers’ Nuanced View\nA Glimpse into Other Talks\nNew York Vibes\nConclusion"
   },
   {
     "objectID": "posts/phildeeplearning/index.html#conclusion",
@@ -320,5 +320,12 @@
     "title": "🗽 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference",
     "section": "Conclusion",
     "text": "Conclusion\n\nIn conclusion, the Philosophy of Deep Learning conference at NYU was an unforgettable experience that brought together experts from various fields to discuss the latest developments in deep learning and artificial intelligence. The insightful debates and thought-provoking talks challenged our understanding of large language models, their relationship to human cognition, and the philosophical implications of AI. Combined with the thrilling energy of New York City, the conference left me feeling inspired and eager to explore new ideas in the rapidly evolving world of AI and deep learning. I’m already looking forward to attending similar events in the future and further immersing myself in the fascinating intersection of technology and philosophy."
+  },
+  {
+    "objectID": "posts/phildeeplearning/index.html#introduction",
+    "href": "posts/phildeeplearning/index.html#introduction",
+    "title": "🗽 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference",
+    "section": "Introduction",
+    "text": "Introduction\n\nLast week, I was fortunate enough to attend the captivating Philosophy of Deep Learning Conference at New York University. This event united experts from diverse fields to explore the philosophical aspects and implications of deep learning and artificial intelligence.In this blog post, I’ll recount some memorable highlights from the conference and share my impressions of the dynamic atmosphere of New York City."
   }
 ]
