@@ -2,9 +2,9 @@
   {
     "objectID": "posts/phildeeplearning/index.html",
     "href": "posts/phildeeplearning/index.html",
-    "title": "🤔 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference",
+    "title": "🗽 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference",
     "section": "",
-    "text": "Last week, I was fortunate enough to attend the captivating Philosophy of Deep Learning Conference at New York University. This event united experts from diverse fields to explore the philosophical aspects and implications of deep learning and artificial intelligence. In this blog post, I’ll recount some memorable highlights from the conference and share my impressions of the dynamic atmosphere of New York City."
+    "text": "In this blog post, I’ll recount some memorable highlights from the conference and share my impressions of the dynamic atmosphere of New York City."
   },
   {
     "objectID": "posts/phildeeplearning/index.html#the-pre-conference-debate-sensory-grounding-in-large-language-models",
@@ -16,37 +16,37 @@
   {
     "objectID": "posts/phildeeplearning/index.html#yann-lecuns-bold-prediction",
     "href": "posts/phildeeplearning/index.html#yann-lecuns-bold-prediction",
-    "title": "🤔 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference",
+    "title": "🗽 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference",
     "section": "Yann LeCun’s Bold Prediction",
-    "text": "Yann LeCun’s Bold Prediction\nYann LeCun, one of the pioneers in the field of deep learning, was on the “Yes” side of the debate. He made a bold prediction that nobody in their right mind will use autoregressive models 5 years from now. LeCun argued that Auto-Regressive Large Language Models (LLMs) are exponentially diverging diffusion processes, and while the probability of errors can be reduced through training, the problem cannot be entirely eliminated.\nIn other words LLMs are like Micael Scott’s famous line in The Office:\n\nHis solution is to make LLMs non-autoregressive while preserving their fluency. You can find his slides here."
+    "text": "Yann LeCun’s Bold Prediction\n\nYann LeCun, one of the pioneers in the field of deep learning, was on the “Yes” side of the debate. He made a bold prediction that nobody in their right mind will use autoregressive models 5 years from now. LeCun argued that Auto-Regressive Large Language Models (LLMs) are exponentially diverging diffusion processes, and while the probability of errors can be reduced through training, the problem cannot be entirely eliminated.\nIn other words LLMs are like Micael Scott’s famous line in The Office:\n\nHis solution is to make LLMs non-autoregressive while preserving their fluency. You can find his slides here."
   },
   {
     "objectID": "posts/phildeeplearning/index.html#david-chalmers-nuanced-view",
     "href": "posts/phildeeplearning/index.html#david-chalmers-nuanced-view",
-    "title": "🤔 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference",
+    "title": "🗽 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference",
     "section": "David Chalmers’ Nuanced View",
-    "text": "David Chalmers’ Nuanced View\nDavid Chalmers, a renowned philosopher, took a more nuanced approach to the debate. He started his talk on the “Yes” side with a bit of philosophical history about the grounding problem, discussing thought experiments from philosophers like Avicenna. Chalmers ultimately concluded with a “No, but – it’s complicated” answer to the debate question. You can find his slides here."
+    "text": "David Chalmers’ Nuanced View\n\nDavid Chalmers, a renowned philosopher, took a more nuanced approach to the debate. He started his talk on the “Yes” side with a bit of philosophical history about the grounding problem, discussing thought experiments from philosophers like Avicenna. Chalmers ultimately concluded with a “No, but – it’s complicated” answer to the debate question. You can find his slides here."
   },
   {
     "objectID": "posts/phildeeplearning/index.html#a-glimpse-into-other-talks",
     "href": "posts/phildeeplearning/index.html#a-glimpse-into-other-talks",
-    "title": "🤔 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference",
+    "title": "🗽 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference",
     "section": "A Glimpse into Other Talks",
-    "text": "A Glimpse into Other Talks\nOne of the most interesting talks during the conference was by Tal Linzen, titled “What, if Anything, Can Large Language Models Teach Us About Human Language Acquisition?”. Linzen posited that deep learning can be a great tool for testing theoretical claims about children’s linguistic input and inductive biases if used correctly. However, he emphasized that cognitive scientists need to train new models themselves, as the “large language models” from big labs are not relevant to questions about humans. Linzen’s slides can be found here.\nUpdate 8 April 2023: Head to https://phildeeplearning.github.io to find individual links in the program, or for the whole (Youtube playlist)[https://phildeeplearning.github.io/recordings]."
+    "text": "A Glimpse into Other Talks\n\nOne of the most interesting talks during the conference was by Tal Linzen, titled “What, if Anything, Can Large Language Models Teach Us About Human Language Acquisition?”. Linzen posited that deep learning can be a great tool for testing theoretical claims about children’s linguistic input and inductive biases if used correctly. However, he emphasized that cognitive scientists need to train new models themselves, as the “large language models” from big labs are not relevant to questions about humans. Linzen’s slides can be found here.\n\nUpdate 8 April 2023: Head to https://phildeeplearning.github.io to find individual links in the program, or for the whole Youtube playlist."
   },
   {
     "objectID": "posts/phildeeplearning/index.html#new-york-vibes",
     "href": "posts/phildeeplearning/index.html#new-york-vibes",
-    "title": "🤔 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference",
+    "title": "🗽 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference",
     "section": "New York Vibes",
-    "text": "New York Vibes\n\nThe conference experience was made even better by the electric atmosphere of New York City. Walking through the city’s bustling streets, I couldn’t help but feel the energy and excitement that makes New York such a unique place. Between conference sessions, I enjoyed exploring the city’s diverse neighborhoods, trying out new foods, and admiring the stunning skyline. There’s something truly special about being in a city that feels so alive and vibrant, and it was the perfect backdrop for a conference focused on the future of deep learning and AI.\nIn conclusion, the Philosophy of Deep Learning conference at NYU was an unforgettable experience that brought together experts from various fields to discuss the latest developments in deep learning and artificial intelligence. The insightful debates and thought-provoking talks challenged our understanding of large language models, their relationship to human cognition, and the philosophical implications of AI. Combined with the thrilling energy of New York City, the conference left me feeling inspired and eager to explore new ideas in the rapidly evolving world of AI and deep learning. I’m already looking forward to attending similar events in the future and further immersing myself in the fascinating intersection of technology and philosophy."
+    "text": "New York Vibes\n\n\nThe conference experience was made even better by the electric atmosphere of New York City. Walking through the city’s bustling streets, I couldn’t help but feel the energy and excitement that makes New York such a unique place. Between conference sessions, I enjoyed exploring the city’s diverse neighborhoods, trying out new foods, and admiring the stunning skyline. There’s something truly special about being in a city that feels so alive and vibrant, and it was the perfect backdrop for a conference focused on the future of deep learning and AI."
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "01001000 01100101 01101100 01101100 01101111 00100000 01110111 01101111 01110010 01101100 01100100",
     "section": "",
-    "text": "🌉 A Deep Dive into the LLM Bootcamp Experience: Revolutionizing AI-Powered Applications\n\n\n\n\n\n\n\nllm\n\n\n\n\n\n\n\n\n\n\n\nApr 26, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🌁 Mastering the Art of Building a Defensible Business: Insights from a Discussion Panel\n\n\n\n\n\n\n\nventure-captial\n\n\n\n\n\n\n\n\n\n\n\nApr 26, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🤔 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference\n\n\n\n\n\n\n\nconference\n\n\n\n\n\n\n\n\n\n\n\nMar 28, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🏬 Feature Store, a technical need or whim?\n\n\n\n\n\n\n\nfeature-store\n\n\n\n\n\n\n\n\n\n\n\nFeb 13, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n💭 How AI Ate Software and Now AI is Eating AI: An Exploration of Software 3.0 aka Attention\n\n\n\n\n\n\n\nsoftware\n\n\n\n\n\n\n\n\n\n\n\nJan 24, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🖼️ Exploring the Latest Advancements in Transfer Learning: A Summary of ICLR’23 Transfer Learning-Related Papers\n\n\n\n\n\n\n\npapers\n\n\niclr\n\n\ntransfer-learning\n\n\n\n\n\n\n\n\n\n\n\nJan 23, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🌫️ Understanding Information Theory in Deep Learning: A Beginner’s Guide\n\n\n\n\n\n\n\nentropy\n\n\n\n\n\n\n\n\n\n\n\nJan 23, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n⏳ From Alps to NLP: A 2022 Recap of Exploration and Growth\n\n\n\n\n\n\n\nreflections\n\n\ngoals\n\n\n\n\n\n\n\n\n\n\n\nDec 26, 2022\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🤗 Herzlich Wilkommen!\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nDec 25, 2022\n\n\nmuhtasham\n\n\n\n\n\n\nNo matching items"
+    "text": "🌉 A Deep Dive into the LLM Bootcamp Experience: Revolutionizing AI-Powered Applications\n\n\n\n\n\n\n\nllm\n\n\n\n\n\n\n\n\n\n\n\nApr 26, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🌁 Mastering the Art of Building a Defensible Business: Insights from a Discussion Panel\n\n\n\n\n\n\n\nventure-captial\n\n\n\n\n\n\n\n\n\n\n\nApr 26, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🗽 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference\n\n\n\n\n\n\n\nconference\n\n\n\n\n\n\n\n\n\n\n\nMar 28, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🏬 Feature Store, a technical need or whim?\n\n\n\n\n\n\n\nfeature-store\n\n\n\n\n\n\n\n\n\n\n\nFeb 13, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n💭 How AI Ate Software and Now AI is Eating AI: An Exploration of Software 3.0 aka Attention\n\n\n\n\n\n\n\nsoftware\n\n\n\n\n\n\n\n\n\n\n\nJan 24, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🖼️ Exploring the Latest Advancements in Transfer Learning: A Summary of ICLR’23 Transfer Learning-Related Papers\n\n\n\n\n\n\n\npapers\n\n\niclr\n\n\ntransfer-learning\n\n\n\n\n\n\n\n\n\n\n\nJan 23, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🌫️ Understanding Information Theory in Deep Learning: A Beginner’s Guide\n\n\n\n\n\n\n\nentropy\n\n\n\n\n\n\n\n\n\n\n\nJan 23, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n⏳ From Alps to NLP: A 2022 Recap of Exploration and Growth\n\n\n\n\n\n\n\nreflections\n\n\ngoals\n\n\n\n\n\n\n\n\n\n\n\nDec 26, 2022\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🤗 Herzlich Wilkommen!\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nDec 25, 2022\n\n\nmuhtasham\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -149,9 +149,9 @@
   {
     "objectID": "posts/phildeeplearning/index.html#a-thought-provoking-start-sensory-grounding-in-large-language-models",
     "href": "posts/phildeeplearning/index.html#a-thought-provoking-start-sensory-grounding-in-large-language-models",
-    "title": "🤔 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference",
+    "title": "🗽 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference",
     "section": "A Thought-Provoking Start: Sensory Grounding in Large Language Models",
-    "text": "A Thought-Provoking Start: Sensory Grounding in Large Language Models\nThe conference kicked off with a thought-provoking pre-conference debate titled “Do large language models need sensory grounding for meaning and understanding?”. The debate featured esteemed speakers such as Yann LeCun and David Chalmers.\nThroughout the conference, every interaction, from keynote speeches to coffee breaks, seemed to be imbued with philosophical depth.\n\nThis meme captured the mood of the conference perfectly. Everyone seemed to be thinking deeply about the implications of their work."
+    "text": "A Thought-Provoking Start: Sensory Grounding in Large Language Models\n\nThe conference kicked off with a thought-provoking pre-conference debate titled “Do large language models need sensory grounding for meaning and understanding?”. The debate featured esteemed speakers such as Yann LeCun and David Chalmers.\nThroughout the conference, every interaction, from keynote speeches to coffee breaks, seemed to be imbued with philosophical depth.\n\nThis meme captured the mood of the conference perfectly. Everyone seemed to be thinking deeply about the implications of their work."
   },
   {
     "objectID": "posts/llm-bootcamp/index.html",
@@ -306,5 +306,19 @@
     "title": "🌫️ Understanding Information Theory in Deep Learning: A Beginner’s Guide",
     "section": "",
     "text": "Deep learning is a branch of machine learning that has revolutionized the field of artificial intelligence. It has led to breakthroughs in computer vision, natural language processing, and many other areas. However, understanding and optimizing the performance of deep learning models can be challenging. Information theory provides a powerful mathematical framework for addressing these challenges and has played a critical role in the development of deep learning.\nIn this blog post, we will provide a primer on the key concepts of information theory that are relevant to deep learning and explain them in layman’s terms."
+  },
+  {
+    "objectID": "posts/phildeeplearning/index.html#table-of-contents",
+    "href": "posts/phildeeplearning/index.html#table-of-contents",
+    "title": "🗽 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference",
+    "section": "Table of contents",
+    "text": "Table of contents\n\nIntroduction\nA Thought-Provoking Start: Sensory Grounding in Large Language Models\nYann LeCun’s Bold Prediction\nDavid Chalmers’ Nuanced View\nA Glimpse into Other Talks\nNew York Vibes\nConclusion\n\nLast week, I was fortunate enough to attend the captivating Philosophy of Deep Learning Conference at New York University. This event united experts from diverse fields to explore the philosophical aspects and implications of deep learning and artificial intelligence."
+  },
+  {
+    "objectID": "posts/phildeeplearning/index.html#conclusion",
+    "href": "posts/phildeeplearning/index.html#conclusion",
+    "title": "🗽 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference",
+    "section": "Conclusion",
+    "text": "Conclusion\n\nIn conclusion, the Philosophy of Deep Learning conference at NYU was an unforgettable experience that brought together experts from various fields to discuss the latest developments in deep learning and artificial intelligence. The insightful debates and thought-provoking talks challenged our understanding of large language models, their relationship to human cognition, and the philosophical implications of AI. Combined with the thrilling energy of New York City, the conference left me feeling inspired and eager to explore new ideas in the rapidly evolving world of AI and deep learning. I’m already looking forward to attending similar events in the future and further immersing myself in the fascinating intersection of technology and philosophy."
   }
 ]

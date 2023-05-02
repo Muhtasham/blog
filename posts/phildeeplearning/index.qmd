@@ -1,17 +1,27 @@
 ---
-title: "🤔 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference"
+title: "🗽 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference"
 author: "muhtasham"
 date: "2023-03-28"
 categories: [conference]
 image: "banner.jpeg"
 ---
 
-![](nyc.jpeg)
+![In this blog post, I'll recount some memorable highlights from the conference and share my impressions of the dynamic atmosphere of New York City.](nyc.jpeg)
+
+## Table of contents
+1. [Introduction](#introduction)
+2. [A Thought-Provoking Start: Sensory Grounding in Large Language Models](#a-thought-provoking-start-sensory-grounding-in-large-language-models)
+3. [Yann LeCun's Bold Prediction](#yann-lecuns-bold-prediction)
+4. [David Chalmers' Nuanced View](#david-chalmers-nuanced-view)
+5. [A Glimpse into Other Talks](#a-glimpse-into-other-talks)
+6. [New York Vibes](#new-york-vibes)
+7. [Conclusion](#conclusion)
 
 
-Last week, I was fortunate enough to attend the captivating Philosophy of Deep Learning Conference at New York University. This event united experts from diverse fields to explore the philosophical aspects and implications of deep learning and artificial intelligence. In this blog post, I'll recount some memorable highlights from the conference and share my impressions of the dynamic atmosphere of New York City.
+Last week, I was fortunate enough to attend the captivating Philosophy of Deep Learning Conference at New York University. This event united experts from diverse fields to explore the philosophical aspects and implications of deep learning and artificial intelligence. 
 
 ## A Thought-Provoking Start: Sensory Grounding in Large Language Models
+<a name=a-thought-provoking-start-sensory-grounding-in-large-language-models></a>
 
 The conference kicked off with a thought-provoking pre-conference debate titled "Do large language models need sensory grounding for meaning and understanding?". The debate featured esteemed speakers such as Yann LeCun and David Chalmers.
 
@@ -23,6 +33,7 @@ This meme captured the mood of the conference perfectly. Everyone seemed to be t
 
 
 ## Yann LeCun's Bold Prediction
+<a name=yann-lecuns-bold-prediction></a>
 
 Yann LeCun, one of the pioneers in the field of deep learning, was on the "Yes" side of the debate. He made a bold prediction that nobody in their right mind will use autoregressive models 5 years from now. LeCun argued that Auto-Regressive Large Language Models (LLMs) are exponentially diverging diffusion processes, and while the probability of errors can be reduced through training, the problem cannot be entirely eliminated. 
 
@@ -33,19 +44,25 @@ In other words LLMs are like Micael Scott's famous line in The Office:
 His solution is to make LLMs non-autoregressive while preserving their fluency. You can find his slides [here](https://drive.google.com/file/d/1BU5bV3X5w65DwSMapKcsr0ZvrMRU_Nbi/view).
 
 ## David Chalmers' Nuanced View
+<a name=david-chalmers-nuanced-view></a>
 
 David Chalmers, a renowned philosopher, took a more nuanced approach to the debate. He started his talk on the "Yes" side with a bit of philosophical history about the grounding problem, discussing thought experiments from philosophers like Avicenna. Chalmers ultimately concluded with a "No, but – it's complicated" answer to the debate question. You can find his slides [here](https://consc.net/papers/groundingdebate.pdf).
 
 ## A Glimpse into Other Talks
+<a name=a-glimpse-into-other-talks></a>
 
 One of the most interesting talks during the conference was by Tal Linzen, titled "What, if Anything, Can Large Language Models Teach Us About Human Language Acquisition?". Linzen posited that deep learning can be a great tool for testing theoretical claims about children's linguistic input and inductive biases if used correctly. However, he emphasized that cognitive scientists need to train new models themselves, as the "large language models" from big labs are not relevant to questions about humans. Linzen's slides can be found [here](https://www.dropbox.com/s/l1r7yv0sr2cvlj3/linzen_phil_deep_learning.pdf?dl=0).
 
-Update 8 April 2023: Head to https://phildeeplearning.github.io to find individual links in the program, or for the whole (Youtube playlist)[https://phildeeplearning.github.io/recordings].
+> Update 8 April 2023: Head to https://phildeeplearning.github.io to find individual links in the program, or for the whole [Youtube playlist](https://phildeeplearning.github.io/recordings).
 
 ## New York Vibes
+<a name=new-york-vibes></a>
 
 ![](skyline.jpeg)
 
 The conference experience was made even better by the electric atmosphere of New York City. Walking through the city's bustling streets, I couldn't help but feel the energy and excitement that makes New York such a unique place. Between conference sessions, I enjoyed exploring the city's diverse neighborhoods, trying out new foods, and admiring the stunning skyline. There's something truly special about being in a city that feels so alive and vibrant, and it was the perfect backdrop for a conference focused on the future of deep learning and AI.
+
+## Conclusion
+<a name=conclusion></a>
 
 In conclusion, the Philosophy of Deep Learning conference at NYU was an unforgettable experience that brought together experts from various fields to discuss the latest developments in deep learning and artificial intelligence. The insightful debates and thought-provoking talks challenged our understanding of large language models, their relationship to human cognition, and the philosophical implications of AI. Combined with the thrilling energy of New York City, the conference left me feeling inspired and eager to explore new ideas in the rapidly evolving world of AI and deep learning. I'm already looking forward to attending similar events in the future and further immersing myself in the fascinating intersection of technology and philosophy.
