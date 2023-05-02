@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.280">
+<meta name="generator" content="quarto-1.3.340">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -19,7 +19,7 @@ div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
   width: 0.8em;
-  margin: 0 0.8em 0.2em -1.6em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
 </style>
@@ -76,37 +76,39 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">Machine Learners Guide to Real World</span>
     </a>
   </div>
+            <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://huggingface.co/muhtasham"><i class="bi bi-gpu-card" role="img">
+    <a class="nav-link" href="https://huggingface.co/muhtasham" rel="" target=""><i class="bi bi-gpu-card" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/muhtasham"><i class="bi bi-cpu" role="img">
+    <a class="nav-link" href="https://github.com/muhtasham" rel="" target=""><i class="bi bi-cpu" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/muhtasham9"><i class="bi bi-hash" role="img">
+    <a class="nav-link" href="https://twitter.com/muhtasham9" rel="" target=""><i class="bi bi-hash" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/muhtasham/"><i class="bi bi-file-earmark-person" role="img">
+    <a class="nav-link" href="https://www.linkedin.com/in/muhtasham/" rel="" target=""><i class="bi bi-file-earmark-person" role="img">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
 </ul>
-              <div id="quarto-search" class="" title="Search"></div>
+            <div class="quarto-navbar-tools">
+</div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
@@ -156,7 +158,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="sf.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">The view of the Golden Gate Bridge reminded me of the limitless possibilities that AI and LLMs can bring to our world. Image by author</figcaption><p></p>
+<figcaption class="figure-caption">The view of the Golden Gate Bridge reminded me of the limitless possibilities that AI and LLMs can bring to our world. Image by author</figcaption>
 </figure>
 </div>
 <section id="table-of-contents" class="level2">
@@ -199,7 +201,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="llm-comparison.jpg" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Comparisons of LLMs from <a href="https://lightning.ai/pages/community/community-discussions/the-ultimate-battle-of-language-models-lit-llama-vs-gpt3.5-vs-bloom-vs/">LightningAI</a></figcaption><p></p>
+<figcaption class="figure-caption">Comparisons of LLMs from <a href="https://lightning.ai/pages/community/community-discussions/the-ultimate-battle-of-language-models-lit-llama-vs-gpt3.5-vs-bloom-vs/">LightningAI</a></figcaption>
 </figure>
 </div>
 <p>Selecting the best model for your use case depends on various factors, including:</p>
@@ -213,24 +215,12 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p><strong>Proprietary models</strong> often offer <strong>superior quality</strong> and are more suitable for commercial use due to licensing constraints. These models can provide businesses with a competitive edge, as they are specifically designed and optimized for certain tasks and industries. Also, they come with the advantage of <strong>reduced infrastructure overhead</strong> when compared to serving open-source models.</p>
 <p>In the past, concerns regarding broad copyright ownership over any output generated by these models have made businesses hesitant to adopt them. However, advancements in technology, such as the Azure OpenAI Service, have begun to address these concerns. OpenAI now empowers users by offering services that enable the use of proprietary models without worrying about copyright issues. This makes it easier for businesses to leverage the benefits of proprietary models while also protecting their intellectual property.</p>
-<blockquote class="blockquote">
-<p>Some disclaimers on this topic:</p>
-<blockquote class="blockquote">
+<p><strong>Some disclaimers on this topic:</strong></p>
 <ul>
 <li>Security concerns: While the Azure OpenAI Service has made strides in alleviating copyright concerns, it’s important to acknowledge that <strong>security concerns still remain</strong>. As with any cloud-based service, there is always the potential risk of data breaches and unauthorized access to sensitive information. To mitigate these risks, OpenAI and Azure have implemented rigorous security measures and protocols, such as data encryption and access control. However, <strong>businesses should still exercise caution</strong> and perform their own <strong>due diligence</strong> when evaluating the suitability of these services for their needs.</li>
-</ul>
-</blockquote>
-<blockquote class="blockquote">
-<ul>
 <li>No Service Level Agreements (SLAs) yet: There is currently no commitment from OpenAI regarding when SLAs will be provided for these APIs. SLAs typically offer guarantees on service availability, performance, and support response times, which can be crucial for businesses that depend on these services for mission-critical applications. Without SLAs in place, businesses may find it <strong>challenging to assess the reliability</strong> and stability of these APIs, making it difficult to plan and budget for their integration into commercial projects.</li>
-</ul>
-</blockquote>
-<blockquote class="blockquote">
-<ul>
 <li>Upcoming regulations: Additionally, it’s worth noting that new regulations are on the horizon that could impact the use of proprietary models in certain regions. The European Union is currently working on the Artificial Intelligence Act (AI Act), which aims to create a legal framework for AI systems, including proprietary models. This legislation may introduce new requirements for businesses using AI, such as transparency, accountability, and data protection. As these regulations evolve, businesses should <strong>stay informed and adapt</strong> their AI strategies accordingly.</li>
 </ul>
-</blockquote>
-</blockquote>
 <p>On the other hand, <strong>open-source models</strong> are a more fitting choice if you require extensive customization and want to ensure data security. They provide <strong>greater flexibility</strong> in terms of modification and adaptation to meet specific project requirements.</p>
 <p>Adding to the previous discussion on selecting the best LLM for your use case, here are some recommendations for most projects:</p>
 <ul>
@@ -239,13 +229,9 @@ ul.task-list li input[type="checkbox"] {
 <li>Opt for <a href="https://cohere.com/">Cohere</a> if you need to <strong>fine-tune your model</strong>: Cohere allows greater flexibility in adjusting the model to better suit your specific needs.</li>
 <li>Use open-source models only when absolutely necessary: Although the open-source landscape is evolving rapidly and will likely become a more viable option in the future, for now, it’s advisable to use these models <strong>only if they are essential for your project.</strong></li>
 </ul>
-<blockquote class="blockquote">
-<p>Personally I find it quite distressing that LLAMA paper results could not be <a href="https://twitter.com/abacaj/status/1652066990033362944?s=20">reproduced</a>.</p>
-</blockquote>
+<p><em><em>Personally I find it quite distressing that LLAMA paper results could not be <a href="https://twitter.com/abacaj/status/1652066990033362944?s=20">reproduced</a>.</em></em></p>
 <p>By considering these recommendations, you can make an informed decision about which LLM is most suitable for your project, balancing factors such as cost, performance, customization, and data security.</p>
-<blockquote class="blockquote">
-<p>We can expect GPT-3.5 <strong>quality</strong> to be available in open-source models until the end of 2023.</p>
-</blockquote>
+<p><em><em>We can expect GPT-3.5 <strong>quality</strong> to be available in open-source models until the end of 2023. </em></em></p>
 </section>
 <section id="what-is-my-moat-if-i-rely-on-openai-apis" class="level3">
 <h3 class="anchored" data-anchor-id="what-is-my-moat-if-i-rely-on-openai-apis">What is my moat if I rely on OpenAI APIs?</h3>
@@ -265,9 +251,7 @@ ul.task-list li input[type="checkbox"] {
 <p>In the context of AI and LLMs, a “prompt” refers to the text input given to a language model. “Prompt engineering” is the skillful process of crafting that input text to achieve desired results from the model.</p>
 <p>Lilian Weng has a great blogpost about it <a href="https://lilianweng.github.io/posts/2023-03-15-prompt-engineering/#automatic-prompt-design">here</a>, and she notes that most papers on prompt engineering are tricks that can be explained in a few sentences.</p>
 <p>While the term “prompt engineering” may sound whimsical or perplexing, it is a crucial aspect of working with LLMs. By carefully designing prompts, you can harness the power of language models to <strong>generate valuable insights</strong>, creative ideas, and solutions to complex problems.</p>
-<blockquote class="blockquote">
-<p>Prompts can be thought of as gateways to the vast knowledge and capabilities of AI language models.</p>
-</blockquote>
+<p><em><em>Prompts can be thought of as gateways to the vast knowledge and capabilities of AI language models.</em></em></p>
 <p>They allow you to tap into the potential of these sophisticated systems, but only when you adhere to certain guidelines and best practices.</p>
 <p>Despite the seemingly mysterious nature of prompts, they are an essential tool in the AI practitioner’s toolkit, and learning how to master prompt engineering will enable you to unlock the full potential of LLMs in various applications.</p>
 </section>
@@ -360,9 +344,23 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     icon: icon
   };
   anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
   const clipboard = new window.ClipboardJS('.code-copy-button', {
-    target: function(trigger) {
-      return trigger.previousElementSibling;
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
     }
   });
   clipboard.on('success', function(e) {
@@ -427,6 +425,92 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return note.innerHTML;
     });
   }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
   const findCites = (el) => {
     const parentEl = el.parentElement;
     if (parentEl) {
