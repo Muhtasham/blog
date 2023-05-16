@@ -1,0 +1,33 @@
+---
+title: "StarCoder"
+author: "muhtasham"
+format:
+  html:
+    code-fold: false
+toc: true
+number-sections: true
+jupyter: python3
+---
+
+The model was trained on GitHub code. As such it is not an instruction model and commands like "Write a function that computes the square root." do not work well. However, by using the Tech Assistant prompt you can turn it into a capable technical assistant.
+
+
+For a demonstration of a line plot on a polar axis, see @generation.
+
+```{python}
+#| label: generation
+#| fig-cap: "inference example"
+
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+checkpoint = "bigcode/starcoder"
+device = "cpu" # cuda for GPU usage or "cpu" for CPU usage
+
+tokenizer = AutoTokenizer.from_pretrained(checkpoint, trust_remote_code=True)
+model = AutoModelForCausalLM.from_pretrained(checkpoint, trust_remote_code=True).to(device)
+
+inputs = tokenizer.encode("def print_hello_world():", return_tensors="pt").to(device)
+outputs = model.generate(inputs)
+print(tokenizer.decode(outputs[0]))
+
+```
