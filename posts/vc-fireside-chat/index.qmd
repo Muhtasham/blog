@@ -4,6 +4,7 @@ author: "muhtasham"
 date: "2023-04-26"
 image: "point-vista.jpg"
 categories: [venture-captial]
+toc: true
 ---
 
 ## Introduction:
