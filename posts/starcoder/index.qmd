@@ -6,36 +6,39 @@ format:
     code-fold: false
 toc: true
 number-sections: false
+image: "sf-stars.png"
 ---
+
+![Starry night in San Francisco Image by Author](sf-stars-clear.png)
 
 Are you tired of spending hours writing repetitive code? Do you find yourself searching through documentation and Stack Overflow for code snippets? Look no further! Introducing StarCoder, the ultimate code generation model that will revolutionize your coding experience.
 
 ## Understanding StarCoder
 
-### The Power of 15 Billion Parameters
+#### The Power of 15 Billion Parameters
 
 The Power of 15 Billion Parameters: StarCoder is a cutting-edge code generation model that boasts an impressive 15 billion parameters. Built on a decoder architecture, this model has been fine-tuned to excel in generating high-quality code across various programming languages.
 
-### Trained on The Stack
+#### Trained on The Stack
 
 The Stack, a vast collection of programming languages and metadata with a staggering 6.4 TB of permissively licensed code, served as the training ground for StarCoder. With 800GB of code spanning 86 popular programming languages, including GitHub Issues, Jupyter Notebooks, and Git Commits, StarCoder has acquired a deep understanding of diverse codebases.
 
-### Recent Techniques for Enhanced Performance
+#### Recent Techniques for Enhanced Performance
 
 StarCoder utilizes advanced techniques such as Multi Query Attention and Flash Attention to optimize memory usage and improve context length. With an impressive context window of 8,192 tokens, equivalent to several pages of code, StarCoder enables you to generate comprehensive code snippets.
 
-### StarPII: Safeguarding Privacy
+#### StarPII: Safeguarding Privacy
 
 Before training StarCoder, a separate model called StarPII was developed to ensure the removal of personally identifiable information (PII) such as IP addresses, names, and passwords. This commitment to data privacy ensures the responsible use of code generation capabilities.
 
-### Outperforming the Giants
+#### Outperforming the Giants
 
 In rigorous Human Evaluation (Human Eval) benchmarks, StarCoder surpassed many large models, including PaLM 1 540B and LLaMa 66. StarCoder's superior performance is a testament to its finely tuned code generation capabilities.
 
 ## Unleashing the Power of StarCoder
 With StarCoder, the possibilities are endless. Let's explore some exciting use cases where StarCoder's productivity gains truly shine:
 
-### 1. Efficient Code Generation
+#### 1. Efficient Code Generation
 
 StarCoder simplifies code generation by automating repetitive tasks. With just a few lines of code, you can leverage StarCoder's capabilities to generate code snippets tailored to your specific requirements. Whether you need a function definition or a complete code block, StarCoder has got you covered.
 
@@ -54,7 +57,7 @@ print(tokenizer.decode(outputs[0]))
 ```
 > Pro Tip: You can use google collab to avoid memmoru issues
 
-### 2. Fill-in-the-Middle Code Completion
+#### 2. Fill-in-the-Middle Code Completion
 
 StarCoder excels at fill-in-the-middle code completion tasks. By providing context and using special tokens, you can generate code snippets with missing parts accurately filled. This feature is particularly useful when you have an existing codebase and need to complete or modify code segments efficiently.
 
@@ -66,7 +69,7 @@ print(tokenizer.decode(outputs[0]))
 ```
 
 
-### 3. Enhancing Reasoning and Conversational Tasks
+#### 3. Enhancing Reasoning and Conversational Tasks
 
 Surprisingly, StarCoder demonstrates remarkable performance in reasoning and conversational tasks, despite not being explicitly trained on text data. The combination of well-crafted prompts and the model's inherent reasoning abilities derived from code pre-training contribute to its success. In fact, in the Helm evaluation, StarCoder achieved scores comparable to models such as Anthropic V4 and GPT-3, which are significantly larger in size.
 
