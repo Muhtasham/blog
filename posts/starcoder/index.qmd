@@ -1,12 +1,14 @@
 ---
-title: "Unleashing Productivity with StarCoder: A Revolutionary Code Generation Model"
+title: "💫 StarCoder: A Revolutionary Code Generation Model"
 author: "muhtasham"
+date: "2023-05-22"
 format:
   html:
     code-fold: false
 toc: true
 number-sections: false
 image: "sf-stars.png"
+categories: [llm]
 ---
 
 ![Starry night in San Francisco Image by Author](sf-stars-clear.png)
