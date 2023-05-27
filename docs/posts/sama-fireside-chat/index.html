@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="muhtasham">
-<meta name="dcterms.date" content="2023-04-26">
+<meta name="dcterms.date" content="2023-05-27">
 
-<title>Machine Learners Guide to Real World - 🌁 Mastering the Art of Building a Defensible Business: Insights from a Discussion Panel</title>
+<title>Machine Learners Guide to Real World - 🪩 Navigating the AI Landscape: My Takeaways from Sam Altman’s Discussion</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -117,9 +117,10 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">🌁 Mastering the Art of Building a Defensible Business: Insights from a Discussion Panel</h1>
+      <h1 class="title">🪩 Navigating the AI Landscape: My Takeaways from Sam Altman’s Discussion</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">venture-captial</div>
+                <div class="quarto-category">vc</div>
+                <div class="quarto-category">llm</div>
               </div>
                   </div>
   </div>
@@ -137,7 +138,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">April 26, 2023</p>
+        <p class="date">May 27, 2023</p>
       </div>
     </div>
     
@@ -153,18 +154,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction:</a></li>
-  <li><a href="#asking-the-right-questions-to-vcs" id="toc-asking-the-right-questions-to-vcs" class="nav-link" data-scroll-target="#asking-the-right-questions-to-vcs">Asking the Right Questions to VCs:</a></li>
-  <li><a href="#challenging-the-status-quo" id="toc-challenging-the-status-quo" class="nav-link" data-scroll-target="#challenging-the-status-quo">Challenging the Status Quo:</a></li>
-  <li><a href="#saving-money-on-gpus" id="toc-saving-money-on-gpus" class="nav-link" data-scroll-target="#saving-money-on-gpus">Saving Money on GPUs:</a></li>
-  <li><a href="#embracing-change-and-adaptation" id="toc-embracing-change-and-adaptation" class="nav-link" data-scroll-target="#embracing-change-and-adaptation">Embracing Change and Adaptation:</a></li>
-  <li><a href="#creating-value-for-users" id="toc-creating-value-for-users" class="nav-link" data-scroll-target="#creating-value-for-users">Creating Value for Users:</a></li>
-  <li><a href="#vcs-love-for-tools-and-platforms" id="toc-vcs-love-for-tools-and-platforms" class="nav-link" data-scroll-target="#vcs-love-for-tools-and-platforms">VCs’ Love for Tools and Platforms:</a></li>
-  <li><a href="#llmops-and-multimodal-markets" id="toc-llmops-and-multimodal-markets" class="nav-link" data-scroll-target="#llmops-and-multimodal-markets">LLMOps and Multimodal Markets:</a></li>
-  <li><a href="#bringing-products-and-users-to-the-table" id="toc-bringing-products-and-users-to-the-table" class="nav-link" data-scroll-target="#bringing-products-and-users-to-the-table">Bringing Products and Users to the Table:</a></li>
-  <li><a href="#turnover-technology" id="toc-turnover-technology" class="nav-link" data-scroll-target="#turnover-technology">Turnover Technology:</a></li>
-  <li><a href="#the-impermanence-of-ai-models" id="toc-the-impermanence-of-ai-models" class="nav-link" data-scroll-target="#the-impermanence-of-ai-models">The Impermanence of AI Models:</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion:</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#ai-regulation-a-pragmatic-view" id="toc-ai-regulation-a-pragmatic-view" class="nav-link" data-scroll-target="#ai-regulation-a-pragmatic-view">AI Regulation: A Pragmatic View</a></li>
+  <li><a href="#the-role-of-ai-tools-in-research" id="toc-the-role-of-ai-tools-in-research" class="nav-link" data-scroll-target="#the-role-of-ai-tools-in-research">The Role of AI Tools in Research</a></li>
+  <li><a href="#the-importance-of-user-interface" id="toc-the-importance-of-user-interface" class="nav-link" data-scroll-target="#the-importance-of-user-interface">The Importance of User Interface</a></li>
+  <li><a href="#openais-future-plans" id="toc-openais-future-plans" class="nav-link" data-scroll-target="#openais-future-plans">OpenAI’s Future Plans</a></li>
+  <li><a href="#whats-next-after-large-language-models-llms" id="toc-whats-next-after-large-language-models-llms" class="nav-link" data-scroll-target="#whats-next-after-large-language-models-llms">What’s Next After Large Language Models (LLMs)?</a></li>
+  <li><a href="#views-of-llms" id="toc-views-of-llms" class="nav-link" data-scroll-target="#views-of-llms">Views of LLMs</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -175,59 +172,53 @@ ul.task-list li input[type="checkbox"] {
 
 
 <section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction:</h2>
-<p>The landscape of artificial intelligence (AI) startups is rapidly evolving, and so are the strategies for building a successful and defensible business. A recent discussion panel featured Sarah Catanzaro (Amplify Partners) and Matt Bornstein (a16z), who shared their insights on how to navigate the challenging world of AI startups. The panel was moderated by Josh Tobin (gantry), during LLM bootcamp 2023 in San Francisco.</p>
-</section>
-<section id="asking-the-right-questions-to-vcs" class="level2">
-<h2 class="anchored" data-anchor-id="asking-the-right-questions-to-vcs">Asking the Right Questions to VCs:</h2>
-<p>The panelists emphasized the importance of asking the right questions to venture capitalists (VCs). Understanding their perspectives, investment strategies, and areas of interest can provide valuable insights for entrepreneurs seeking funding and support.</p>
-</section>
-<section id="challenging-the-status-quo" class="level2">
-<h2 class="anchored" data-anchor-id="challenging-the-status-quo">Challenging the Status Quo:</h2>
-<p>Entrepreneurs should not hesitate to test their ideas, even if they contradict the opinions of VCs. Trusting your instincts and validating your hypothesis in the market is crucial for success.</p>
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>At a recent event at my alma mater Technical University of Munich featuring Sam Altman, President of OpenAI, attendees had the opportunity to delve into a range of topics. From AI regulation, the release of future OpenAI models, to the importance of the user interface in technology, the event was a wellspring of insights. But before I share my key takeaways, let me tell you about my intriguing journey to the event.</p>
+<p>Tickets for this event were sold out within 20 minutes. However, with some innovation and the assistance of ChatGPT, I secured a ticket.</p>
+<div data-align="center">
 <blockquote class="twitter-tweet blockquote">
 <p lang="en" dir="ltr">
-Whenever a VC gives you advice, just remember that Apple flouts all the “rules” and is bigger than the entire VC industry.<br><br>1. “Hardware is Hard”<br>2. “Consumer HW is even harder”<br>3. “Start with a problem, not with a cool technology”<br>4. Can’t differentiate on quality
+Guess what? Used chatGPT to get access to event featuring <a href="https://twitter.com/sama?ref_src=twsrc%5Etfw"><span class="citation" data-cites="sama">@sama</span></a><br><br>First, generated JavaScript code to check availability of new tickets, did not succeed. <br><br>Crafted a killer press representative email for <a href="https://twitter.com/MunichNlp?ref_src=twsrc%5Etfw"><span class="citation" data-cites="MunichNlp">@MunichNlp</span></a> and got it! 🎫<br><br>Big shoutout to <a href="https://twitter.com/DLDConference?ref_src=twsrc%5Etfw"><span class="citation" data-cites="DLDConference">@DLDConference</span></a> for organizing this <a href="https://t.co/k6GtTZ0TJo">pic.twitter.com/k6GtTZ0TJo</a>
 </p>
-— Tapa Ghosh (<span class="citation" data-cites="semiDL">@semiDL</span>) <a href="https://twitter.com/semiDL/status/1652478027274780672?ref_src=twsrc%5Etfw">April 30, 2023</a>
+— Muhtasham Oblokulov (<span class="citation" data-cites="Muhtasham9">@Muhtasham9</span>) <a href="https://twitter.com/Muhtasham9/status/1661773504226766862?ref_src=twsrc%5Etfw">May 25, 2023</a>
 </blockquote>
 <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
 </section>
-<section id="saving-money-on-gpus" class="level2">
-<h2 class="anchored" data-anchor-id="saving-money-on-gpus">Saving Money on GPUs:</h2>
-<p>The panelists advised against investing heavily in GPUs before achieving product-market fit. It is essential to validate your business model and product before committing significant resources to AI hardware.</p>
+<section id="ai-regulation-a-pragmatic-view" class="level2">
+<h2 class="anchored" data-anchor-id="ai-regulation-a-pragmatic-view">AI Regulation: A Pragmatic View</h2>
+<p>Altman expressed his support for AI regulation, but emphasized the necessity for such regulations to be implemented correctly, and not just for the sake of regulation. His belief is that these should come into effect above a specific capability threshold, implying a nuanced approach that doesn’t stifle innovation but still ensures safety and ethical use of AI technology.</p>
 </section>
-<section id="embracing-change-and-adaptation" class="level2">
-<h2 class="anchored" data-anchor-id="embracing-change-and-adaptation">Embracing Change and Adaptation:</h2>
-<p>Founders should be prepared to pivot and adapt to the ever-changing AI landscape. Regular reevaluation of business strategies and product offerings is key to staying relevant and competitive.</p>
+<section id="the-role-of-ai-tools-in-research" class="level2">
+<h2 class="anchored" data-anchor-id="the-role-of-ai-tools-in-research">The Role of AI Tools in Research</h2>
+<p>OpenAI engineers and researchers are utilizing tools such as Copilot in their work. Copilot, which builds on the capability of the GPT-4 model, exemplifies how AI has become instrumental in driving innovative research, enabling researchers to augment their abilities and achieve more than was previously possible.</p>
 </section>
-<section id="creating-value-for-users" class="level2">
-<h2 class="anchored" data-anchor-id="creating-value-for-users">Creating Value for Users:</h2>
-<p>A crucial factor in building a defensible business is the amount of value your product or service creates for users. Ensuring that your offering addresses a genuine need and provides tangible benefits can help to build a loyal customer base.</p>
+<section id="the-importance-of-user-interface" class="level2">
+<h2 class="anchored" data-anchor-id="the-importance-of-user-interface">The Importance of User Interface</h2>
+<p>Altman stressed on the significance of the User Interface (UI) in technology. He posited that natural language turns out to be an excellent UI for humans, reinforcing the premise that technology should be built to align with human behavior and preferences, rather than the other way around. This underlines the importance of intuitive, user-friendly design in making complex AI systems accessible and easy to use.</p>
 </section>
-<section id="vcs-love-for-tools-and-platforms" class="level2">
-<h2 class="anchored" data-anchor-id="vcs-love-for-tools-and-platforms">VCs’ Love for Tools and Platforms:</h2>
-<p>The panelists highlighted that VCs are particularly interested in investing in tools and platforms, as they can enable the growth of entire ecosystems.</p>
+<section id="openais-future-plans" class="level2">
+<h2 class="anchored" data-anchor-id="openais-future-plans">OpenAI’s Future Plans</h2>
+<p>Altman revealed plans to release more open-source models in the future, however, he clarified that this would not extend to the upcoming GPT-6. Despite being a non-profit, Altman acknowledged the significance of the open-source market, indicating OpenAI’s continued commitment to the wider community.</p>
+<p>He also highlighted the importance of getting the 200 small things right and jointly optimizing across the stack. These ‘small things’ could refer to everything from the model’s architecture, to training data, to the end application UI, demonstrating the meticulous nature of OpenAI’s approach.</p>
 </section>
-<section id="llmops-and-multimodal-markets" class="level2">
-<h2 class="anchored" data-anchor-id="llmops-and-multimodal-markets">LLMOps and Multimodal Markets:</h2>
-<p>According to the panelists, the markets for low-latency machine learning operations (LLMOps) and multimodal AI applications are currently booming, presenting numerous opportunities for entrepreneurs.</p>
+<section id="whats-next-after-large-language-models-llms" class="level2">
+<h2 class="anchored" data-anchor-id="whats-next-after-large-language-models-llms">What’s Next After Large Language Models (LLMs)?</h2>
+<p>The future of AI, according to Altman, involves looking for the next big thing after LLMs. While the specifics were not discussed, the pursuit of groundbreaking innovation is clearly at the core of OpenAI’s mission.</p>
 </section>
-<section id="bringing-products-and-users-to-the-table" class="level2">
-<h2 class="anchored" data-anchor-id="bringing-products-and-users-to-the-table">Bringing Products and Users to the Table:</h2>
-<p>Ideally, startups should approach investors with an existing product and user base. Demonstrating traction and market interest can significantly improve the chances of securing funding.</p>
-</section>
-<section id="turnover-technology" class="level2">
-<h2 class="anchored" data-anchor-id="turnover-technology">Turnover Technology:</h2>
-<p>The panelists noted that turnover technology is a hot area for investment. Tools that help companies improve their employee turnover rates and streamline operations are particularly attractive to VCs.</p>
-</section>
-<section id="the-impermanence-of-ai-models" class="level2">
-<h2 class="anchored" data-anchor-id="the-impermanence-of-ai-models">The Impermanence of AI Models:</h2>
-<p>The panelists warned against spending too much time and resources on training AI models, as they can become obsolete within months. Additionally, entrepreneurs should consider whether their models will outperform the next generation of AI models, such as GPT-5, before investing significant resources.</p>
+<section id="views-of-llms" class="level2">
+<h2 class="anchored" data-anchor-id="views-of-llms">Views of LLMs</h2>
+<p>A noteworthy insight from Altman was his characterization of LLMs. He emphasized that people shoukd not think of LLMs as databases, they are not updated in real-time, but rather they should be thought of as reasoning engines. With the help of certain retrievers, these LLMs can address the issue of up-to-date knowledge, suggesting the future development of LLMs may involve closer integration with real-time data sources.</p>
+<p>Altman also mentioned ‘prompt injection’ for the first time in a public. While noting the possibility that LLMs might not be suited for certain purposes, he assured attendees that new approaches are being worked on, indicating exciting advancements on the horizon.</p>
 </section>
 <section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion:</h2>
-<p>Building a defensible AI business requires a combination of perseverance, adaptability, and a keen understanding of market trends. By focusing on creating value for users, targeting high-growth sectors, and making strategic investments in technology, entrepreneurs can increase their chances of success in the ever-evolving world of AI.</p>
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>Sam Altman’s talk offered valuable perspectives on the path of AI, emphasizing effective AI regulations, the importance of user-friendly interfaces, and the continued commitment to the open-source ecosystem. He underscored the role of Large Language Models (LLMs) as reasoning engines and touched upon their future development. In essence, Altman’s insights paint a future of AI that’s effectively regulated, user-centric, and collaborative, while continuously evolving to meet real-time information needs. His conversation reinforces the dynamic nature of AI and the importance of responsible stewardship as we navigate this rapidly evolving landscape.</p>
+<p>For a more immersive experience, you can watch a segment of Sam Altman’s talk in the video below:</p>
+<div data-align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/uaQZIK9gvNo?start=810" title="OpenAI's Sam Altman at TUM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="">
+</iframe>
+</div>
 
 
 </section>
