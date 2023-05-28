@@ -389,7 +389,7 @@
     "href": "posts/sama-fireside-chat/index.html#the-role-of-ai-tools-in-research",
     "title": "🪩 Navigating the AI Landscape: My Takeaways from Sam Altman’s Discussion",
     "section": "The Role of AI Tools in Research",
-    "text": "The Role of AI Tools in Research\nOpenAI engineers and researchers are utilizing tools such as Copilot in their work. Copilot, which builds on the capability of the GPT-4 model, exemplifies how AI has become instrumental in driving innovative research, enabling researchers to augment their abilities and achieve more than was previously possible."
+    "text": "The Role of AI Tools in Research\nOpenAI engineers and researchers are utilizing tools such as Copilot in their work. Copilot, which builds on the capability of the codex model by OpenAI, exemplifies how AI has become instrumental in driving innovative research, enabling researchers to augment their abilities and achieve more than was previously possible."
   },
   {
     "objectID": "posts/sama-fireside-chat/index.html#the-importance-of-user-interface",
@@ -403,7 +403,7 @@
     "href": "posts/sama-fireside-chat/index.html#openais-future-plans",
     "title": "🪩 Navigating the AI Landscape: My Takeaways from Sam Altman’s Discussion",
     "section": "OpenAI’s Future Plans",
-    "text": "OpenAI’s Future Plans\nAltman revealed plans to release more open-source models in the future, however, he clarified that this would not extend to the upcoming GPT-6. Despite being a non-profit, Altman acknowledged the significance of the open-source market, indicating OpenAI’s continued commitment to the wider community.\nHe also highlighted the importance of getting the 200 small things right and jointly optimizing across the stack. These ‘small things’ could refer to everything from the model’s architecture, to training data, to the end application UI, demonstrating the meticulous nature of OpenAI’s approach."
+    "text": "OpenAI’s Future Plans\nAltman revealed plans to release more open-source models in the future, however, he clarified that this would not extend to the upcoming GPT-5 etc. Despite being a non-profit, Altman acknowledged the significance of the open-source market, indicating OpenAI’s continued commitment to the wider community.\nHe also highlighted the importance of getting the 200 small things right and jointly optimizing across the stack. These ‘small things’ could refer to everything from the model’s architecture, to training data, to the end application UI, demonstrating the meticulous nature of OpenAI’s approach."
   },
   {
     "objectID": "posts/sama-fireside-chat/index.html#whats-next-after-large-language-models-llms",
@@ -424,13 +424,13 @@
     "href": "posts/sama-fireside-chat/index.html#conclusion",
     "title": "🪩 Navigating the AI Landscape: My Takeaways from Sam Altman’s Discussion",
     "section": "Conclusion",
-    "text": "Conclusion\nSam Altman’s talk offered valuable perspectives on the path of AI, emphasizing effective AI regulations, the importance of user-friendly interfaces, and the continued commitment to the open-source ecosystem. He underscored the role of Large Language Models (LLMs) as reasoning engines and touched upon their future development. In essence, Altman’s insights paint a future of AI that’s effectively regulated, user-centric, and collaborative, while continuously evolving to meet real-time information needs. His conversation reinforces the dynamic nature of AI and the importance of responsible stewardship as we navigate this rapidly evolving landscape.\nFor a more immersive experience, you can watch a segment of Sam Altman’s talk in the video below:"
+    "text": "Conclusion\nSam Altman’s talk offered valuable perspectives on the path of AI, emphasizing effective AI regulations, the importance of user-friendly interfaces, and the continued commitment to the open-source ecosystem. He underscored the role of Large Language Models (LLMs) as reasoning engines and touched upon their future development. In essence, Altman’s insights paint a future of AI that’s effectively regulated, user-centric, and collaborative, while continuously evolving to meet real-time information needs. His conversation reinforces the dynamic nature of AI and the importance of responsible stewardship as we navigate this rapidly evolving landscape.\nThanks for reading! If you enjoyed this article, please consider sharing it on social media. You can also follow me on Twitter for more content like this.\nFor a more immersive experience, you can watch a segment of Sam Altman’s talk in the video below:"
   },
   {
     "objectID": "posts/sama-fireside-chat/index.html#views-of-llms",
     "href": "posts/sama-fireside-chat/index.html#views-of-llms",
     "title": "🪩 Navigating the AI Landscape: My Takeaways from Sam Altman’s Discussion",
     "section": "Views of LLMs",
-    "text": "Views of LLMs\nA noteworthy insight from Altman was his characterization of LLMs. He emphasized that people shoukd not think of LLMs as databases, they are not updated in real-time, but rather they should be thought of as reasoning engines. With the help of certain retrievers, these LLMs can address the issue of up-to-date knowledge, suggesting the future development of LLMs may involve closer integration with real-time data sources.\nAltman also mentioned ‘prompt injection’ for the first time in a public. While noting the possibility that LLMs might not be suited for certain purposes, he assured attendees that new approaches are being worked on, indicating exciting advancements on the horizon."
+    "text": "Views of LLMs\nA noteworthy insight from Altman was his characterization of LLMs. He emphasized that people should not think of LLMs as databases, they are not updated in real-time, but rather they should be thought of as reasoning engines. With the help of certain retrievers, these LLMs can address the issue of up-to-date knowledge, suggesting the future development of LLMs may involve closer integration with real-time data sources.\nAltman also mentioned prompt injection for the first time in a public. While also noting the possibility that LLMs might not be suited for certain purposes, he assured attendees that new approaches are being worked on, indicating exciting advancements on the horizon."
   }
 ]
