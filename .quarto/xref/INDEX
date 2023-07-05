@@ -38,7 +38,12 @@
   "posts/starcoder/index.qmd": {
     "index.html": "64366384"
   },
+<<<<<<< HEAD
   "posts/nvidia-berlin/index.qmd": {
     "index.html": "b99f142f"
+=======
+  "posts/sama-fireside-chat/index.qmd": {
+    "index.html": "a1f34403"
+>>>>>>> 2d454afada533d4b77841f49e3c375e89dd10c13
   }
 }

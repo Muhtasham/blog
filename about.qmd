@@ -22,11 +22,14 @@ about:
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/muhtasham
+    - icon: google
+      text: Google Scholar
+      href: https://scholar.google.de/citations?user=Ce-Rb1sAAAAJ&hl=en
 ---
 
-Hello and welcome! My name is Muhtasham Oblokulov, and I specialize in the design, development, and operation of machine learning systems. In addition to my hands-on work with ML technologies, I'm passionate about sharing knowledge and insights through writing and speaking engagements on topics related to ML systems, engineering, and career development.
+Hello and welcome! My name is Muhtasham Oblokulov, and I specialize in the design, development, and operation of machine learning systems. In addition to my hands-on work with ML technologies, I'm passionate about sharing knowledge and insights through writing and speaking engagements on topics related to ML systems, engineering, and personal reflections.
 
-As a proud co-founder of [Munich🥨NLP](https://munich-nlp.github.io/) and co-organizer of [PyData Munich](https://www.meetup.com/pydata-munchen) and [Munich Langchain Meetup](https://www.meetup.com/munich-langchain-meetup-group/).I'm actively involved in fostering a vibrant community of professionals and enthusiasts who share a common interest in natural language processing and data science
+As a proud co-founder of [Munich🥨NLP](https://munich-nlp.github.io/) and co-organizer of [PyData Munich](https://www.meetup.com/pydata-munchen) and [Munich Langchain Meetup](https://www.meetup.com/munich-langchain-meetup-group/) I'm actively involved in fostering a vibrant community of professionals and enthusiasts who share a common interest in natural language processing and data science
 
 In the past I have been honoured to work under supervision of great educators and researchers such as 
 
@@ -43,8 +46,6 @@ Also great mentors from industry such as
 
 I'm currently working as a Machine Learning Engineer at [Munich Re Group](https://www.munichre.com/en.html). Previously, I worked at [Alyne](https://mitratech.com/products/alyne/) and [Datamics](https://consulting.datamics.com/). To learn more about me, you can check out my [LinkedIn](https://www.linkedin.com/in/muhtasham/).
 
-I also like like taking pictures of places I travel to, you can check out my [Instagram](https://www.instagram.com/muhtasham32/) for that.
+My current areas of interest are AI, infrastructure, open source, and (some) frontier tech. I love tackling challenging technical problems and welcome opportunities for collaboration.
 
-As an AI enthusiast, I'm passionate about developing efficient machine learning systems. Currently, I'm exploring MLOps for Large Language Models (LLMs) and focusing on inference optimization. I love tackling challenging technical problems and welcome opportunities for collaboration.
-
-Feel free to reach out via email to connect—I'm excited to engage in thoughtful discussions!
+Feel free to reach out via email to connect— I'm excited to engage in thoughtful discussions!
