@@ -1,5 +1,5 @@
 ---
-title: "🐱‍🏍 Reflections from an Evening with NVIDIA's Jensen Huang"
+title: "😎 Reflections from an Evening with NVIDIA's Jensen Huang"
 author: "muhtasham"
 date: "2023-07-04"
 toc: true

@@ -1,49 +1,44 @@
 {
-  "posts/welcome/index.qmd": {
-    "index.html": "e9079b89"
+  "posts/nvidia-berlin/index.qmd": {
+    "index.html": "b6368bbd"
   },
   "about.qmd": {
-    "about.html": "e950671b"
-  },
-  "posts/post-with-code/index.qmd": {
-    "index.html": "5f94c6fd"
-  },
-  "index.qmd": {
-    "index.html": "550f95fc"
+    "about.html": "c2fb38c3"
   },
   "posts/feature-store/index.qmd": {
-    "index.html": "2387fe61"
+    "index.html": "1872af0c"
   },
   "posts/iclr23/index.qmd": {
-    "index.html": "6a650430"
+    "index.html": "7aefcab2"
   },
   "posts/info-theory/index.qmd": {
-    "index.html": "203d39e1"
-  },
-  "posts/phildeeplearning/index.qmd": {
-    "index.html": "1e75d200"
-  },
-  "posts/reflections22/index.qmd": {
-    "index.html": "b90d79a5"
-  },
-  "posts/software3/index.qmd": {
-    "index.html": "2f573d84"
+    "index.html": "cff7dc8f"
   },
   "posts/llm-bootcamp/index.qmd": {
-    "index.html": "769f5ad9"
+    "index.html": "8c056ae3"
   },
-  "posts/vc-fireside-chat/index.qmd": {
-    "index.html": "b4b8818f"
+  "posts/phildeeplearning/index.qmd": {
+    "index.html": "bedc3628"
+  },
+  "posts/reflections22/index.qmd": {
+    "index.html": "8a3de65d"
+  },
+  "posts/sama-fireside-chat/index.qmd": {
+    "index.html": "5e14f3a5"
+  },
+  "posts/software3/index.qmd": {
+    "index.html": "139f913e"
   },
   "posts/starcoder/index.qmd": {
-    "index.html": "64366384"
+    "index.html": "202b9060"
   },
-<<<<<<< HEAD
-  "posts/nvidia-berlin/index.qmd": {
-    "index.html": "b99f142f"
-=======
-  "posts/sama-fireside-chat/index.qmd": {
-    "index.html": "a1f34403"
->>>>>>> 2d454afada533d4b77841f49e3c375e89dd10c13
+  "posts/vc-fireside-chat/index.qmd": {
+    "index.html": "9123700b"
+  },
+  "posts/welcome/index.qmd": {
+    "index.html": "036d4349"
+  },
+  "index.qmd": {
+    "index.html": "752d97bf"
   }
 }
