@@ -2,11 +2,12 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/explore-context/index.html",
       "/posts/nvidia-berlin/index.html",
       "/posts/sama-fireside-chat/index.html",
       "/posts/starcoder/index.html",
-      "/posts/llm-bootcamp/index.html",
       "/posts/vc-fireside-chat/index.html",
+      "/posts/llm-bootcamp/index.html",
       "/posts/phildeeplearning/index.html",
       "/posts/feature-store/index.html",
       "/posts/software3/index.html",

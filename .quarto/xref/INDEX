@@ -40,5 +40,11 @@
   },
   "index.qmd": {
     "index.html": "752d97bf"
+  },
+  "posts/ultimate-context-guide/index.qmd": {
+    "index.html": "eacb72c1"
+  },
+  "posts/explore-context/index.qmd": {
+    "index.html": "a92cd1e9"
   }
 }

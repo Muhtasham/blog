@@ -1,0 +1,104 @@
+---
+title: "🗾 Exploring Ways to Extend Context Length in Transformers"
+title-block-banner: true
+author: "muhtasham"
+date: "2023-08-07"
+categories: [LLM]
+toc: true
+---
+
+# Introduction 
+Diving deep into the intricacies of large language models (LLMs), one hurdle quickly becomes evident: the context length limitation. While many recognize its implications, the question remains: how can we train models on more extensive context lengths without falling into the quagmire of quadratic complexity?
+
+
+::: {.callout-note collapse="true"}
+## Expand to learn quadratic complexity in transformers
+
+Transformers, especially their self-attention mechanism, have a quadratic computational complexity in relation to the input sequence length. This arises from each token in the sequence interacting with every other token.
+
+For an input sequence of length \(N\), there are \(N^2\) interactions, causing the computational cost to be proportional to \(N^2\). This means that as the sequence length doubles, the computational cost quadruples. This rapid growth in computational demands becomes prohibitive for very long sequences, posing challenges in tasks where extended context is crucial.
+:::
+
+To put things in perspective and provide a clearer understanding, the following chart compares the context lengths of various models. This visualization can help elucidate the inherent limitations and possibilities of different transformer-based models.
+
+
+![Here is a comparison of the context and hjow much it is human terms](token_count.png)
+
+The context length of the base model varies, with Falcon allowing up to 2K tokens and LLAMA2 accommodating up to 4K tokens, but we also have models like MPT trained with Alibi attention that can in theory support up to infinite context lengths. 
+
+## Which parts of Transformer architecture, can we hack to extend context length?
+
+As you may know by heart, transformer has 4 main parts:
+
+- Tokenization
+- Embedding
+- Positional encoding
+- Transformer block (several of these)
+- Softmax
+
+![The architecture of a Transformer model  Source: LLM University](arch.png)
+
+Our quest to stretch context length will zero in on the positional encoding and the attention mechanism. Given the computational heft of attention, it's worth diving deeper into Rotary Positional Encoding (RoPE).
+
+::: {.callout-caution collapse="true"}
+## Expand to learn about positional encoding
+
+Transformers process input, Not sequentially but in parallel, hence need a way to know the order of the words
+So if you want to give lot of context to LLM, you need to make sure that you don't essentially lose the order of the words. 
+
+So this part just adds a positional vector to each word, in order to keep track of the positions of the words.
+
+![Here is simple visualisation of positional encoding Source: LLM University](pos_emb.png)
+
+Now that we know we have a unique vector corresponding to the sentence, and that this vector carries the information on all the words in the sentence and their order.
+:::
+
+## The Linear Scaling Trick
+::: {.callout-tip}
+## TL;DR
+Simple but needs minimal fine-tuning to observe the best results.
+:::
+
+Rotary position embeddings (RoPE) used by LLAMA and
+Falcon are a variant of the positional encoding and they have very.nice mathematical properties, but it turns out they are realaly bad at extrapolating, But turns out we can linearly
+interpolate by simply Downscaling and divide the
+position index by a scaling
+factor. Adn this method of Linear scaling was independently and simultaneously discovered by the Reddit user /u/kaiokendev and the [Meta team](https://arxiv.org/abs/2306.15595)
+
+![An illustration of our Position Interpolation method. Consider a Llama model pre-trained with a 2048 context window length. Upper left illustrates the normal usage of an LLM model: input position indices
+(blue dots) are within the pre-trained range. Upper right illustrates length extrapolation where models are required to operate unseen positions (red dots) up to 4096. Lower left illustrates Position Interpolation where we downscale the position indices (blue and green dots) themselves from [0, 4096] to [0, 2048] to force them
+to reside in the pretrained range](linear_interpolation.png)
+
+## Dynamic Scaling Trick
+
+::: {.callout-tip}
+## TL;DR
+More advanced technique, works okay without fine-tuning, but can benefit from it.
+:::
+
+Turns out Scaling the RoPE linearly is not optimal to evenly distribute information, In Fourier space 
+
+As an alternative to the linear scaling trick, the dynamic scaling trick wasm suggeste by [u//bloc97/](https://www.reddit.com/r/LocalLLaMA/comments/14lz7j5/ntkaware_scaled_rope_allows_llama_models_to_have/?utm_source=share&utm_medium=web2x&context=3) provides an even more efficient solution. Basically if you apply Neural Tangent Kernel (NTK) theory to this problem, it becomes clear that simply interpolating the RoPE's fourier space "linearly" is very sub-optimal, as it prevents the network to distinguish the order and positions of tokens that are very close by. Borrowing from NTK literature, scaling down the fourier features too much will eventually even prevent succesful finetunes (this is corroborated by the recent paper by Meta that suggests an upper bound of ~600x)
+
+::: {.callout-warning}
+There is Significant performance drop of RoPe Scaling methods due to static quantization, dynamic quantization should be good to go
+:::
+
+## Curse of Naive Evaluation
+After rise of this tricks many in open-source community started to use them, but they were all evaluting via perplixity, while it is good strating point it is not the best way to evaluate the performance of the model, but 
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">The first ~5 tokens in each segment contribute *most* of the loss. The shorter model has to deal with *double* the amount of early token areas!<br><br>We showed in our Shortformer paper that if you use this naïve evaluation method, longer models will always appear to be better--&gt; <a href="https://t.co/mbHsIwrYxe">pic.twitter.com/mbHsIwrYxe</a></p>&mdash; Ofir Press (@OfirPress) <a href="https://twitter.com/OfirPress/status/1679015108675239937?ref_src=twsrc%5Etfw">July 12, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+## Do We Really Need It?
+
+An observation from [Information Overload: The Challenges of Expanding Context Windows in Large Language Models
+](https://samaya.ai/blog/):
+
+> Current language models do not effectively use their entire context, and that retrieval is still
+a crucial ingredient for effectively augmenting language models with external knowledge.  
+
+I would agree to this quote, and add that this seems to be behaviur of Transformer based architecture, the ML community have really being paying "attention" to this architecture, magic.dev is doing for example, they are not using Transformers and they recently announced [LTM-1](https://magic.dev/blog/ltm-1): an LLM with a 5,000,000 token context window, which is way above, but being an undiscoloed architecture i am highly hopeful and optimistic that it utilizes the context better than Transformers, especially after speaking to the ceo of magic Eric Steinberger I was coninced they are cooking something really good.
+
+## Closing Thoughts
+Our journey through the intricacies of extending context length in LLMs showcases the constant innovation in this space. The challenges are many, but with every hurdle, the community finds novel ways to leap forward. As we continue to push the boundaries, one thing is clear: the future of LLMs 
