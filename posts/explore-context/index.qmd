@@ -3,7 +3,7 @@ title: "📈 Exploring Ways to Extend Context Length in Transformers"
 title-block-banner: true
 author: "muhtasham"
 date: "2023-08-07"
-categories: [LLM]
+categories: [llm, papers]
 toc: true
 ---
 

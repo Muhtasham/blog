@@ -46,6 +46,13 @@ Also great mentors from industry such as
 
 I'm currently working as a Machine Learning Engineer at [Munich Re Group](https://www.munichre.com/en.html). Previously, I worked at [Alyne](https://mitratech.com/products/alyne/) and [Datamics](https://consulting.datamics.com/). To learn more about me, you can check out my [LinkedIn](https://www.linkedin.com/in/muhtasham/).
 
-My current areas of interest are AI, infrastructure, open source, and (some) frontier tech. I love tackling challenging technical problems and welcome opportunities for collaboration.
+My current areas of interest are AI, infrastructure, open source, and (some) frontier tech. I love tackling challenging technical problems and welcome opportunities for collaboration. 
+
+::: {.callout-note collapse="true"}
+## Fun fact 
+I'm passionate about mobile photography. You might have noticed this from the thumbnails of my blog entries.
+
+This thought intrigues me: while visual thumbnails offer an instantaneous snapshot of an image, what serves as the equivalent for language? Our eyes can swiftly scan a set of thumbnails and capture an underlying theme from them. But when it comes to language, what provides that immediate insight? Perhaps such a concept doesn't quite fit in the realm of words.
+:::
 
 Feel free to reach out via email to connect— I'm excited to engage in thoughtful discussions!

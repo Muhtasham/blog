@@ -1,11 +1,11 @@
 ---
-title: "🪩 Navigating the AI Landscape: My Takeaways from Sam Altman's Discussion"
+title: "🔮 Navigating the AI Landscape: My Takeaways from Sam Altman's Discussion"
 author: "muhtasham"
 date: "2023-05-27"
 toc: true
 number-sections: false
 image: "greathwy.jpg"
-categories: [vc, llm]
+categories: [llm]
 ---
 
 ![](tum-dld.jpeg)

@@ -53,7 +53,7 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "Hello and welcome! My name is Muhtasham Oblokulov, and I specialize in the design, development, and operation of machine learning systems. In addition to my hands-on work with ML technologies, I’m passionate about sharing knowledge and insights through writing and speaking engagements on topics related to ML systems, engineering, and personal reflections.\nAs a proud co-founder of Munich🥨NLP and co-organizer of PyData Munich and Munich Langchain Meetup I’m actively involved in fostering a vibrant community of professionals and enthusiasts who share a common interest in natural language processing and data science\nIn the past I have been honoured to work under supervision of great educators and researchers such as\n\nProf.Huseyin Ozkan\nProf.Mujdat Cetin\nProf.Suayb Arslan\n\nAlso great mentors from industry such as\n\nDr.Erdem Yoruk\nErgin Selim Gonen\nProf.René Brunner\nEgor Labintcev\n\nI’m currently working as a Machine Learning Engineer at Munich Re Group. Previously, I worked at Alyne and Datamics. To learn more about me, you can check out my LinkedIn.\nMy current areas of interest are AI, infrastructure, open source, and (some) frontier tech. I love tackling challenging technical problems and welcome opportunities for collaboration.\nFeel free to reach out via email to connect— I’m excited to engage in thoughtful discussions!"
+    "text": "Hello and welcome! My name is Muhtasham Oblokulov, and I specialize in the design, development, and operation of machine learning systems. In addition to my hands-on work with ML technologies, I’m passionate about sharing knowledge and insights through writing and speaking engagements on topics related to ML systems, engineering, and personal reflections.\nAs a proud co-founder of Munich🥨NLP and co-organizer of PyData Munich and Munich Langchain Meetup I’m actively involved in fostering a vibrant community of professionals and enthusiasts who share a common interest in natural language processing and data science\nIn the past I have been honoured to work under supervision of great educators and researchers such as\n\nProf.Huseyin Ozkan\nProf.Mujdat Cetin\nProf.Suayb Arslan\n\nAlso great mentors from industry such as\n\nDr.Erdem Yoruk\nErgin Selim Gonen\nProf.René Brunner\nEgor Labintcev\n\nI’m currently working as a Machine Learning Engineer at Munich Re Group. Previously, I worked at Alyne and Datamics. To learn more about me, you can check out my LinkedIn.\nMy current areas of interest are AI, infrastructure, open source, and (some) frontier tech. I love tackling challenging technical problems and welcome opportunities for collaboration.\n\n\n\n\n\n\nFun fact\n\n\n\n\n\nI’m passionate about mobile photography. You might have noticed this from the thumbnails of my blog entries.\nThis thought intrigues me: while visual thumbnails offer an instantaneous snapshot of an image, what serves as the equivalent for language? Our eyes can swiftly scan a set of thumbnails and capture an underlying theme from them. But when it comes to language, what provides that immediate insight? Perhaps such a concept doesn’t quite fit in the realm of words.\n\n\n\nFeel free to reach out via email to connect— I’m excited to engage in thoughtful discussions!"
   },
   {
     "objectID": "posts/feature-store/index.html",
@@ -247,56 +247,56 @@
   {
     "objectID": "posts/sama-fireside-chat/index.html#introduction",
     "href": "posts/sama-fireside-chat/index.html#introduction",
-    "title": "🪩 Navigating the AI Landscape: My Takeaways from Sam Altman’s Discussion",
+    "title": "🔮 Navigating the AI Landscape: My Takeaways from Sam Altman’s Discussion",
     "section": "Introduction",
     "text": "Introduction\nAt a recent event at my alma mater, TU Munich featuring Sam Altman, CEO of OpenAI, attendees had the opportunity to delve into a range of topics. From AI regulation, the release of future OpenAI models, to the importance of the user interface in technology, the event was a wellspring of insights. But before I share my key takeaways, let me tell you about my intriguing journey to the event.\nTickets for this event were sold out within 20 minutes. However, as adage goes\n\nModern problems, require modern solutions.\n\nSo with some innovation and the assistance of ChatGPT, I secured a ticket.\n\n\n\nGuess what? Used chatGPT to get access to event featuring @samaFirst, generated JavaScript code to check availability of new tickets, did not succeed. Crafted a killer press representative email for @MunichNlp and got it! 🎫Big shoutout to @DLDConference for organizing this pic.twitter.com/k6GtTZ0TJo\n\n— Muhtasham Oblokulov (@Muhtasham9) May 25, 2023"
   },
   {
     "objectID": "posts/sama-fireside-chat/index.html#ai-regulation-a-pragmatic-view",
     "href": "posts/sama-fireside-chat/index.html#ai-regulation-a-pragmatic-view",
-    "title": "🪩 Navigating the AI Landscape: My Takeaways from Sam Altman’s Discussion",
+    "title": "🔮 Navigating the AI Landscape: My Takeaways from Sam Altman’s Discussion",
     "section": "AI Regulation: A Pragmatic View",
     "text": "AI Regulation: A Pragmatic View\nAltman expressed his support for AI regulation, but emphasized the necessity for such regulations to be implemented correctly, and not just for the sake of regulation. His belief is that these should come into effect above a specific capability threshold, implying a nuanced approach that doesn’t stifle innovation but still ensures safety and ethical use of AI technology."
   },
   {
     "objectID": "posts/sama-fireside-chat/index.html#the-role-of-ai-tools-in-research",
     "href": "posts/sama-fireside-chat/index.html#the-role-of-ai-tools-in-research",
-    "title": "🪩 Navigating the AI Landscape: My Takeaways from Sam Altman’s Discussion",
+    "title": "🔮 Navigating the AI Landscape: My Takeaways from Sam Altman’s Discussion",
     "section": "The Role of AI Tools in Research",
     "text": "The Role of AI Tools in Research\nOpenAI engineers and researchers are utilizing tools such as Copilot in their work. Copilot, which builds on the capability of the codex model by OpenAI, exemplifies how AI has become instrumental in driving innovative research, enabling researchers to augment their abilities and achieve more than was previously possible."
   },
   {
     "objectID": "posts/sama-fireside-chat/index.html#the-importance-of-user-interface",
     "href": "posts/sama-fireside-chat/index.html#the-importance-of-user-interface",
-    "title": "🪩 Navigating the AI Landscape: My Takeaways from Sam Altman’s Discussion",
+    "title": "🔮 Navigating the AI Landscape: My Takeaways from Sam Altman’s Discussion",
     "section": "The Importance of User Interface",
     "text": "The Importance of User Interface\nAltman stressed on the significance of the User Interface (UI) in technology. He posited that natural language turns out to be an excellent UI for humans, reinforcing the premise that technology should be built to align with human behavior and preferences, rather than the other way around. This underlines the importance of intuitive, user-friendly design in making complex AI systems accessible and easy to use.\n\n\n\nPlayfully tossing the Worldcoin ball and contemplating its UI while sharing a moment with Sam Altman"
   },
   {
     "objectID": "posts/sama-fireside-chat/index.html#openais-future-plans",
     "href": "posts/sama-fireside-chat/index.html#openais-future-plans",
-    "title": "🪩 Navigating the AI Landscape: My Takeaways from Sam Altman’s Discussion",
+    "title": "🔮 Navigating the AI Landscape: My Takeaways from Sam Altman’s Discussion",
     "section": "OpenAI’s Future Plans",
     "text": "OpenAI’s Future Plans\nAltman revealed plans to release more open-source models in the future, however, he clarified that this would not extend to the upcoming GPT-5 etc. Despite being a non-profit, Altman acknowledged the significance of the open-source market, indicating OpenAI’s continued commitment to the wider community.\nHe also highlighted the importance of getting the 200 small things right and jointly optimizing across the stack. These ‘small things’ could refer to everything from the model’s architecture, to training data, to the end application UI, demonstrating the meticulous nature of OpenAI’s approach."
   },
   {
     "objectID": "posts/sama-fireside-chat/index.html#whats-next-after-large-language-models-llms",
     "href": "posts/sama-fireside-chat/index.html#whats-next-after-large-language-models-llms",
-    "title": "🪩 Navigating the AI Landscape: My Takeaways from Sam Altman’s Discussion",
+    "title": "🔮 Navigating the AI Landscape: My Takeaways from Sam Altman’s Discussion",
     "section": "What’s Next After Large Language Models (LLMs)?",
     "text": "What’s Next After Large Language Models (LLMs)?\nThe future of AI, according to Altman, involves looking for the next big thing after LLMs. While the specifics were not discussed, the pursuit of groundbreaking innovation is clearly at the core of OpenAI’s mission."
   },
   {
     "objectID": "posts/sama-fireside-chat/index.html#views-of-llms",
     "href": "posts/sama-fireside-chat/index.html#views-of-llms",
-    "title": "🪩 Navigating the AI Landscape: My Takeaways from Sam Altman’s Discussion",
+    "title": "🔮 Navigating the AI Landscape: My Takeaways from Sam Altman’s Discussion",
     "section": "Views of LLMs",
     "text": "Views of LLMs\nA noteworthy insight from Altman was his characterization of LLMs. He emphasized that people should not think of LLMs as databases, they are not updated in real-time, but rather they should be thought of as reasoning engines. With the help of certain retrievers, these LLMs can address the issue of up-to-date knowledge, suggesting the future development of LLMs may involve closer integration with real-time data sources.\nAltman also mentioned prompt injection for the first time in a public. While also noting the possibility that LLMs might not be suited for certain purposes, he assured attendees that new approaches are being worked on, indicating exciting advancements on the horizon."
   },
   {
     "objectID": "posts/sama-fireside-chat/index.html#conclusion",
     "href": "posts/sama-fireside-chat/index.html#conclusion",
-    "title": "🪩 Navigating the AI Landscape: My Takeaways from Sam Altman’s Discussion",
+    "title": "🔮 Navigating the AI Landscape: My Takeaways from Sam Altman’s Discussion",
     "section": "Conclusion",
     "text": "Conclusion\nSam Altman’s talk offered valuable perspectives on the path of AI, emphasizing effective AI regulations, the importance of user-friendly interfaces, and the continued commitment to the open-source ecosystem. He underscored the role of Large Language Models (LLMs) as reasoning engines and touched upon their future development. In essence, Altman’s insights paint a future of AI that’s effectively regulated, user-centric, and collaborative, while continuously evolving to meet real-time information needs. His conversation reinforces the dynamic nature of AI and the importance of responsible stewardship as we navigate this rapidly evolving landscape.\nThanks for reading! If you enjoyed this article, please consider sharing it on social media. You can also follow me on Twitter for more content like this.\nFor a more immersive experience, you can watch a segment of Sam Altman’s talk in the video below:"
   },
@@ -445,7 +445,7 @@
     "href": "index.html",
     "title": "Every unknown is an invitation to expand one’s horizons.",
     "section": "",
-    "text": "📈 Exploring Ways to Extend Context Length in Transformers\n\n\n\n\n\n\n\nLLM\n\n\n\n\n\n\n\n\n\n\n\nAug 7, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🚀 Reflections from an Evening with NVIDIA’s Jensen Huang\n\n\n\n\n\n\n\nllm\n\n\ndeep-learning\n\n\n\n\n\n\n\n\n\n\n\nJul 4, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🪩 Navigating the AI Landscape: My Takeaways from Sam Altman’s Discussion\n\n\n\n\n\n\n\nvc\n\n\nllm\n\n\n\n\n\n\n\n\n\n\n\nMay 27, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n💫 StarCoder: A Revolutionary Code Generation Model\n\n\n\n\n\n\n\nllm\n\n\n\n\n\n\n\n\n\n\n\nMay 22, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🌉 A Deep Dive into the LLM Bootcamp Experience: Revolutionizing AI-Powered Applications\n\n\n\n\n\n\n\nllm\n\n\n\n\n\n\n\n\n\n\n\nApr 26, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🌁 Mastering the Art of Building a Defensible Business: Insights from a Discussion Panel\n\n\n\n\n\n\n\nventure-captial\n\n\n\n\n\n\n\n\n\n\n\nApr 26, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🗽 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference\n\n\n\n\n\n\n\nconference\n\n\n\n\n\n\n\n\n\n\n\nMar 28, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🏬 Feature Store, a technical need or whim?\n\n\n\n\n\n\n\nfeature-store\n\n\n\n\n\n\n\n\n\n\n\nFeb 13, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n💭 How AI Ate Software and Now AI is Eating AI: An Exploration of Software 3.0 aka Attention\n\n\n\n\n\n\n\nsoftware\n\n\n\n\n\n\n\n\n\n\n\nJan 24, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🖼️ Exploring the Latest Advancements in Transfer Learning: A Summary of ICLR’23 Transfer Learning-Related Papers\n\n\n\n\n\n\n\npapers\n\n\niclr\n\n\ntransfer-learning\n\n\n\n\n\n\n\n\n\n\n\nJan 23, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🌫️ Understanding Information Theory in Deep Learning: A Beginner’s Guide\n\n\n\n\n\n\n\nentropy\n\n\n\n\n\n\n\n\n\n\n\nJan 23, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n⏳ From Alps to NLP: A 2022 Recap of Exploration and Growth\n\n\n\n\n\n\n\nreflections\n\n\ngoals\n\n\n\n\n\n\n\n\n\n\n\nDec 26, 2022\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🤗 Herzlich Wilkommen!\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nDec 25, 2022\n\n\nmuhtasham\n\n\n\n\n\n\nNo matching items"
+    "text": "📈 Exploring Ways to Extend Context Length in Transformers\n\n\n\n\n\n\n\nllm\n\n\npapers\n\n\n\n\n\n\n\n\n\n\n\nAug 7, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🚀 Reflections from an Evening with NVIDIA’s Jensen Huang\n\n\n\n\n\n\n\nllm\n\n\ndeep-learning\n\n\n\n\n\n\n\n\n\n\n\nJul 4, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🔮 Navigating the AI Landscape: My Takeaways from Sam Altman’s Discussion\n\n\n\n\n\n\n\nllm\n\n\n\n\n\n\n\n\n\n\n\nMay 27, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n💫 StarCoder: A Revolutionary Code Generation Model\n\n\n\n\n\n\n\nllm\n\n\n\n\n\n\n\n\n\n\n\nMay 22, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🌉 A Deep Dive into the LLM Bootcamp Experience: Revolutionizing AI-Powered Applications\n\n\n\n\n\n\n\nllm\n\n\n\n\n\n\n\n\n\n\n\nApr 26, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🌁 Mastering the Art of Building a Defensible Business: Insights from a Discussion Panel\n\n\n\n\n\n\n\nventure-captial\n\n\n\n\n\n\n\n\n\n\n\nApr 26, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🗽 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference\n\n\n\n\n\n\n\nconference\n\n\n\n\n\n\n\n\n\n\n\nMar 28, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🏬 Feature Store, a technical need or whim?\n\n\n\n\n\n\n\nfeature-store\n\n\n\n\n\n\n\n\n\n\n\nFeb 13, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n💭 How AI Ate Software and Now AI is Eating AI: An Exploration of Software 3.0 aka Attention\n\n\n\n\n\n\n\nsoftware\n\n\n\n\n\n\n\n\n\n\n\nJan 24, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🖼️ Exploring the Latest Advancements in Transfer Learning: A Summary of ICLR’23 Transfer Learning-Related Papers\n\n\n\n\n\n\n\npapers\n\n\niclr\n\n\ntransfer-learning\n\n\n\n\n\n\n\n\n\n\n\nJan 23, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🌫️ Understanding Information Theory in Deep Learning: A Beginner’s Guide\n\n\n\n\n\n\n\nentropy\n\n\n\n\n\n\n\n\n\n\n\nJan 23, 2023\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n⏳ From Alps to NLP: A 2022 Recap of Exploration and Growth\n\n\n\n\n\n\n\nreflections\n\n\ngoals\n\n\n\n\n\n\n\n\n\n\n\nDec 26, 2022\n\n\nmuhtasham\n\n\n\n\n\n\n  \n\n\n\n\n🤗 Herzlich Wilkommen!\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nDec 25, 2022\n\n\nmuhtasham\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/ultimate-context-guide/index.html",
