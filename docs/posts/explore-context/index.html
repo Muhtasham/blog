@@ -173,7 +173,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>Diving deep into the intricacies of large language models (LLMs), one hurdle quickly becomes evident: the context length limitation. While many recognize its implications, the question remains: how can we train models on more extensive context lengths without falling into the quagmire of quadratic complexity?</p>
+<p>Diving deep into the intricacies of large language models (LLMs), one hurdle quickly becomes evident: the context length limitation. While many recognize its implications, the question remains: how can we train models on more extensive context lengths without falling into the predicament of quadratic complexity?</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -191,6 +191,7 @@ Expand to learn quadratic complexity in transformers
 </div>
 </div>
 </div>
+<p>To put things in perspective and provide a clearer understanding, the following chart compares the context lengths of various models. This visualization can help elucidate the inherent limitations and possibilities of different transformer-based models.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="token_count.png" class="img-fluid figure-img"></p>
@@ -200,7 +201,7 @@ Expand to learn quadratic complexity in transformers
 <p>The context length of the base model varies, with Falcon allowing up to 2K tokens and LLAMA2 accommodating up to 4K tokens, but we also have models like MPT trained with Alibi attention that can in theory support up to infinite context lengths.</p>
 <section id="which-parts-of-transformer-architecture-can-we-hack-to-extend-context-length" class="level2">
 <h2 class="anchored" data-anchor-id="which-parts-of-transformer-architecture-can-we-hack-to-extend-context-length">Which parts of Transformer architecture, can we hack to extend context length?</h2>
-<p>Transformers serve as the backbone of many state-of-the-art NLP model Transformer has 4 main parts:</p>
+<p>As you may know by heart, transformer has 4 main parts:</p>
 <ul>
 <li>Tokenization</li>
 <li>Embedding</li>
@@ -227,15 +228,13 @@ Expand to learn about positional encoding
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Transformers process input, Not sequentially but in parallel, hence need a way to know the order of the words So if you want to give lot of context to LLM, you need to make sure that you don’t essentially lose the order of the words.</p>
-<p>So this part just adds a positional vector to each word, in order to keep track of the positions of the words.</p>
+<p>Transformers process input, not sequentially but in parallel, hence we need a way to know the order of the words, after tokening and getting the embeddings, we need to know the order of the words, and that is what positional encoding does, it adds a positional vector to each word, in order to keep track of the positions of the words. So if you want to give lot of context to LLM, you need to make sure that you don’t essentially lose the order of the words.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="pos_emb.png" class="img-fluid figure-img"></p>
 <figcaption class="figure-caption">Here is simple visualisation of positional encoding Source: LLM University</figcaption>
 </figure>
 </div>
-<p>Now that we know we have a unique vector corresponding to the sentence, and that this vector carries the information on all the words in the sentence and their order.</p>
 </div>
 </div>
 </div>
@@ -243,54 +242,64 @@ Expand to learn about positional encoding
 <section id="the-linear-scaling-trick" class="level2">
 <h2 class="anchored" data-anchor-id="the-linear-scaling-trick">The Linear Scaling Trick</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 TL;DR
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Simple but needs minimal fine-tuning to observe the best results.</p>
 </div>
 </div>
-<p>Rotary position embeddings (RoPE) used by LLAMA and Falcon are a variant of the positional encoding and they have very.nice mathematical properties, but it turns out they are realaly bad at extrapolating, But turns out we can linearly interpolate by simply Downscaling and divide the position index by a scaling factor. Adn this method of Linear scaling was independently and simultaneously discovered by the Reddit user /u/kaiokendev and the <a href="https://arxiv.org/abs/2306.15595">Meta team</a></p>
+</div>
+<p>Rotary position embeddings (RoPE) used by LLAMA and Falcon are a variant of the positional encoding and they have very.nice mathematical properties, but it turns out they are realaly bad at extrapolating, But turns out we can linearly interpolate by simply Downscaling and divide the position index by a scaling factor.</p>
+<p>Fun fact: this method of Linear scaling was independently and simultaneously discovered by the Reddit user /u/kaiokendev and the <a href="https://arxiv.org/abs/2306.15595">Meta team</a></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="linear_interpolation.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">An illustration of our Position Interpolation method. Consider a Llama model pre-trained with a 2048 context window length. Upper left illustrates the normal usage of an LLM model: input position indices (blue dots) are within the pre-trained range. Upper right illustrates length extrapolation where models are required to operate unseen positions (red dots) up to 4096. Lower left illustrates Position Interpolation where we downscale the position indices (blue and green dots) themselves from [0, 4096] to [0, 2048] to force them to reside in the pretrained range</figcaption>
+<figcaption class="figure-caption">An illustration of our Position Interpolation method. Consider a Llama model pre-trained with a 2048 context window length. Upper left illustrates the normal usage of an LLM model: input position indices (blue dots) are within the pre-trained range. Upper right illustrates length extrapolation where models are required to operate unseen positions (red dots) up to 4096. Lower left illustrates Position Interpolation where we downscale the position indices (blue and green dots) themselves from [0, 4096] to [0, 2048] to force them to reside in the pretrained range Source: Extending Context Window of Large Language Models via Positional Interpolation</figcaption>
 </figure>
 </div>
 </section>
 <section id="dynamic-scaling-trick" class="level2">
 <h2 class="anchored" data-anchor-id="dynamic-scaling-trick">Dynamic Scaling Trick</h2>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 TL;DR
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>More advanced technique, works okay without fine-tuning, but can benefit from it.</p>
+</div>
 </div>
 </div>
 <p>Turns out Scaling the RoPE linearly is not optimal to evenly distribute information, In Fourier space</p>
 <p>As an alternative to the linear scaling trick, the dynamic scaling trick wasm suggeste by <a href="https://www.reddit.com/r/LocalLLaMA/comments/14lz7j5/ntkaware_scaled_rope_allows_llama_models_to_have/?utm_source=share&amp;utm_medium=web2x&amp;context=3">u//bloc97/</a> provides an even more efficient solution. Basically if you apply Neural Tangent Kernel (NTK) theory to this problem, it becomes clear that simply interpolating the RoPE’s fourier space “linearly” is very sub-optimal, as it prevents the network to distinguish the order and positions of tokens that are very close by. Borrowing from NTK literature, scaling down the fourier features too much will eventually even prevent succesful finetunes (this is corroborated by the recent paper by Meta that suggests an upper bound of ~600x)</p>
 <div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
 Warning
 </div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>There is Significant performance drop of RoPe Scaling methods due to static quantization, dynamic quantization should be good to go</p>
+<p>There is significant performance drop of the above mentioned RoPe scaling methods due to static quantization, dynamic quantization should be good to go though.</p>
+</div>
 </div>
 </div>
 </section>

@@ -8,7 +8,7 @@ toc: true
 ---
 
 # Introduction 
-Diving deep into the intricacies of large language models (LLMs), one hurdle quickly becomes evident: the context length limitation. While many recognize its implications, the question remains: how can we train models on more extensive context lengths without falling into the quagmire of quadratic complexity?
+Diving deep into the intricacies of large language models (LLMs), one hurdle quickly becomes evident: the context length limitation. While many recognize its implications, the question remains: how can we train models on more extensive context lengths without falling into the predicament of quadratic complexity?
 
 
 ::: {.callout-note collapse="true"}
@@ -43,18 +43,15 @@ Our quest to stretch context length will zero in on the positional encoding and 
 ::: {.callout-caution collapse="true"}
 ## Expand to learn about positional encoding
 
-Transformers process input, Not sequentially but in parallel, hence need a way to know the order of the words
+Transformers process input, not sequentially but in parallel, hence we need a way to know the order of the words, after tokening and getting the embeddings, we need to know the order of the words, and that is what positional encoding does, it adds a positional vector to each word, in order to keep track of the positions of the words. 
 So if you want to give lot of context to LLM, you need to make sure that you don't essentially lose the order of the words. 
-
-So this part just adds a positional vector to each word, in order to keep track of the positions of the words.
 
 ![Here is simple visualisation of positional encoding Source: LLM University](pos_emb.png)
 
-Now that we know we have a unique vector corresponding to the sentence, and that this vector carries the information on all the words in the sentence and their order.
 :::
 
 ## The Linear Scaling Trick
-::: {.callout-tip}
+::: {.callout-tip collapse="true"}
 ## TL;DR
 Simple but needs minimal fine-tuning to observe the best results.
 :::
@@ -63,15 +60,18 @@ Rotary position embeddings (RoPE) used by LLAMA and
 Falcon are a variant of the positional encoding and they have very.nice mathematical properties, but it turns out they are realaly bad at extrapolating, But turns out we can linearly
 interpolate by simply Downscaling and divide the
 position index by a scaling
-factor. Adn this method of Linear scaling was independently and simultaneously discovered by the Reddit user /u/kaiokendev and the [Meta team](https://arxiv.org/abs/2306.15595)
+factor. 
+
+Fun fact: this method of Linear scaling was independently and simultaneously discovered by the Reddit user /u/kaiokendev and the [Meta team](https://arxiv.org/abs/2306.15595)
 
 ![An illustration of our Position Interpolation method. Consider a Llama model pre-trained with a 2048 context window length. Upper left illustrates the normal usage of an LLM model: input position indices
 (blue dots) are within the pre-trained range. Upper right illustrates length extrapolation where models are required to operate unseen positions (red dots) up to 4096. Lower left illustrates Position Interpolation where we downscale the position indices (blue and green dots) themselves from [0, 4096] to [0, 2048] to force them
-to reside in the pretrained range](linear_interpolation.png)
+to reside in the pretrained range Source: Extending Context Window of Large Language Models via Positional Interpolation
+](linear_interpolation.png)
 
 ## Dynamic Scaling Trick
 
-::: {.callout-tip}
+::: {.callout-tip collapse="true"}
 ## TL;DR
 More advanced technique, works okay without fine-tuning, but can benefit from it.
 :::
@@ -80,8 +80,8 @@ Turns out Scaling the RoPE linearly is not optimal to evenly distribute informat
 
 As an alternative to the linear scaling trick, the dynamic scaling trick wasm suggeste by [u//bloc97/](https://www.reddit.com/r/LocalLLaMA/comments/14lz7j5/ntkaware_scaled_rope_allows_llama_models_to_have/?utm_source=share&utm_medium=web2x&context=3) provides an even more efficient solution. Basically if you apply Neural Tangent Kernel (NTK) theory to this problem, it becomes clear that simply interpolating the RoPE's fourier space "linearly" is very sub-optimal, as it prevents the network to distinguish the order and positions of tokens that are very close by. Borrowing from NTK literature, scaling down the fourier features too much will eventually even prevent succesful finetunes (this is corroborated by the recent paper by Meta that suggests an upper bound of ~600x)
 
-::: {.callout-warning}
-There is Significant performance drop of RoPe Scaling methods due to static quantization, dynamic quantization should be good to go
+::: {.callout-warning collapse="true"}
+There is significant performance drop of the above mentioned RoPe scaling methods due to static quantization, dynamic quantization should be good to go though. 
 :::
 
 ## Curse of Naive Evaluation
