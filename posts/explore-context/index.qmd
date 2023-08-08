@@ -1,5 +1,5 @@
 ---
-title: "🗾 Exploring Ways to Extend Context Length in Transformers"
+title: "📈 Exploring Ways to Extend Context Length in Transformers"
 title-block-banner: true
 author: "muhtasham"
 date: "2023-08-07"
@@ -12,23 +12,23 @@ Diving deep into the intricacies of large language models (LLMs), one hurdle qui
 
 
 ::: {.callout-note collapse="true"}
-## Expand to learn quadratic complexity in Transformers
+## "Quadratic Complexi-what?" – Dive in to Learn about Transformers' Quirks!
 
-Transformers, especially their self-attention mechanism, have a quadratic computational complexity in relation to the input sequence length. This arises from each token in the sequence interacting with every other token.
+Transformers, especially their self-attention mechanism, have a quadratic computational complexity in relation to the input sequence length. It's like that one friend who has to say hi to everyone at a party – each token in the sequence has to interact with every other token.
 
-For an input sequence of length \(N\), there are \(N^2\) interactions, causing the computational cost to be proportional to \(N^2\). This means that as the sequence length doubles, the computational cost quadruples. This rapid growth in computational demands becomes prohibitive for very long sequences, posing challenges in tasks where extended context is crucial.
+For an input sequence of length \(N\), there are \(N^2\) interactions. So, if \(N\) is the number of guests at the party, imagine the time it'd take if every guest had to greet every other guest! This results in a computational cost proportional to \(N^2\). This means that as the sequence length (or party size) doubles, the computational cost (or time to greet everyone) quadruples. And while it's great to be social, this rapid growth in computational demands becomes a major party pooper for very long sequences, posing challenges in tasks where extended context is crucial.
+
 :::
 
 To put things in perspective and provide a clearer understanding, the following chart compares the context lengths of various models. This visualization can help elucidate the inherent limitations and possibilities of different Transformer-based models.
 
-
-![Here is a comparison of the context and how much it is human terms](token_count.png)
+![Here is a comparison of the context and how much it is human terms, Source: LLM Bootcamp](token_count.png)
 
 The context length of the base model varies, with Falcon allowing up to 2K tokens and LLAMA2 accommodating up to 4K tokens, but we also have models like MPT trained with Alibi attention that can in theory support up to infinite context lengths. 
 
-## Which parts of Transformer architecture, can we hack to extend context length?
+## Which parts of Transformer architecture can we tinker with to extend context length?
 
-As you may know by heart, Transformer has 4 main parts:
+As you may know (by heart), Transformer has 4 main parts:
 
 - Tokenization
 - Embedding
@@ -36,17 +36,16 @@ As you may know by heart, Transformer has 4 main parts:
 - Transformer block (several of these)
 - Softmax
 
-![The architecture of a Transformer model  Source: LLM University](arch.png)
+![The architecture of a Transformer model, Source: LLM University](arch.png)
 
-Our quest to stretch context length will zero in on the positional encoding and the attention mechanism. Given the computational heft of attention, it's worth diving deeper into Rotary Positional Encoding (RoPE).
+Typically, to extend the context length in Transformers, we often tweak the positional encoding and/or the attention mechanism. However, considering that the attention mechanism is the most computationally demanding part of the Transformer, and given the growing "attention" (pun intended) towards open-access models like LLAMA2 and Falcon, it's beneficial to delve deeper into the nuances of positional encoding. Specifically, let's focus on the Rotary Positional Encoding (RoPE).
 
 ::: {.callout-caution collapse="true"}
-## Expand to learn about positional encoding
+## Positional encoding
 
-Transformers process input, not sequentially but in parallel, hence we need a way to know the order of the words, after tokening and getting the embeddings, we need to know the order of the words, and that is what positional encoding does, it adds a positional vector to each word, in order to keep track of the positions of the words. 
-So if you want to give lot of context to LLM, you need to make sure that you don't essentially lose the order of the words. 
+Transformers process input in parallel, not sequentially. Hence, after tokenization and embedding extraction, we need a way to maintain the order of words. This is achieved through positional encoding. It adds a positional vector to each word to keep track of word positions, ensuring the context is not lost in longer sequences.
 
-![Here is simple visualisation of positional encoding Source: LLM University](pos_emb.png)
+![Here's a bird's-eye view of positional encoding. Think of it as a GPS for words, Source: LLM University](pos_emb.png)
 
 :::
 
@@ -68,35 +67,60 @@ Fun fact: this method of Linear scaling was independently and simultaneously dis
 
 ::: {.callout-tip collapse="true"}
 ## TL;DR
-More advanced technique, works okay without fine-tuning, but can benefit from it.
+A more advanced technique that performs well even without fine-tuning but can benefit further from it.
 :::
 
-Turns out Scaling the RoPE linearly is not optimal to evenly distribute information, in Fourier space as an alternative to the linear scaling trick, the dynamic scaling trick was suggested by [u/bloc97/](https://www.reddit.com/r/LocalLLaMA/comments/14lz7j5/ntkaware_scaled_rope_allows_llama_models_to_have/?utm_source=share&utm_medium=web2x&context=3) provides an even more efficient solution. 
+The simple linear interpolation in RoPE's Fourier space isn't the most effective way to distribute information across tokens. Drawing from the Neural Tangent Kernel (NTK) theory, [u/bloc97/](https://www.reddit.com/r/LocalLLaMA/comments/14lz7j5/ntkaware_scaled_rope_allows_llama_models_to_have/) suggested a dynamic scaling trick. This approach changes the "rotation" speed of each RoPE dimension relative to the others, ensuring distinctiveness of positions even under extreme stretching.
 
-a) works quite well without fine-tuning 
-b) doesn't degrade the performance if the model is used with short sequences
-c) gracefully scales to long sequences, under a fixed parameterization
+::: {.callout-tip collapse="true"}
+## Fourier Space and its Significance
+Imagine you're listening to a song with multiple instruments playing simultaneously. To the human ear, it's a blend of sounds, but what if you wanted to understand each instrument's contribution? The Fourier transform is like a magical tool that separates the song into individual instrument notes, helping you see which instrument plays at what frequency and when.
 
+Fourier space, derived from this transformation, is essential in understanding the underlying frequencies that make up a signal. In the context of machine learning and Transformers, it's like separating intertwined data patterns, offering insights and optimizations not evident when looking at the combined sequence.
+:::
+
+
+Benefits of the dynamic scaling trick:
+
+- Efficient without the need for fine-tuning
+- Maintains performance even with short sequences
+- Scalable to very long sequences under a fixed parameterization
+
+If you're considering the quantization of RoPe-scaled models, it's essential to choose the right technique. For a deeper understanding of the implications of static and dynamic quantization, refer to the section below.
 
 ::: {.callout-warning collapse="true"}
-There is significant performance drop of the above mentioned RoPe scaling methods due to static quantization, dynamic quantization should be good to go though. 
+## Static vs. Dynamic Quantization and Performance Drop with RoPe Scaling
+
+Quantization, in the context of deep learning, refers to the process of reducing the number of bits that represent the weights and biases of a model. This reduction aids in deploying models in resource-constrained environments like mobile devices, but it can also impact the model's performance.
+
+**Static Quantization** involves converting the entire model to a quantized format at once, based on a single calibration dataset. The primary disadvantage of static quantization with RoPe scaling is its rigidity. Since the quantization process doesn't consider variations in different parts of the model or the specific nature of RoPe's behavior, it can lead to significant information loss. This results in a performance drop, especially when the model is scaled to handle longer sequences.
+
+**Dynamic Quantization**, on the other hand, quantizes layers of the model on-the-fly during model inference. It adjusts the quantization parameters dynamically based on the input data, making it more flexible and adaptive. This adaptability ensures that the quantization process aligns better with RoPe scaling methods, preserving essential details and maintaining performance.
+
+In summary, while static quantization's one-size-fits-all approach can negatively impact RoPe-scaled models, dynamic quantization's ability to adjust ensures a more robust performance.
 :::
 
 ## Curse of Naive Evaluation
-After the rise of these tricks many in open-source community started to use them, but they were all evaluating via perplexity, while it is good starting point it is not the best way to evaluate the performance of the model 
+The rise of these scaling tricks has prompted many in the open-source community to adopt them. However, most have been evaluating model performance using perplexity. Although it's a good starting point, it's not the most comprehensive metric. As highlighted by the tweet below, there are nuances in evaluation that can be overlooked:
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">The first ~5 tokens in each segment contribute *most* of the loss. The shorter model has to deal with *double* the amount of early token areas!<br><br>We showed in our Shortformer paper that if you use this naïve evaluation method, longer models will always appear to be better--&gt; <a href="https://t.co/mbHsIwrYxe">pic.twitter.com/mbHsIwrYxe</a></p>&mdash; Ofir Press (@OfirPress) <a href="https://twitter.com/OfirPress/status/1679015108675239937?ref_src=twsrc%5Etfw">July 12, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
+This tweet emphasizes the importance of considering token positions when evaluating model performance, a factor that can significantly influence perceived model efficacy.
 
 ## Do We Really Need It?
 
-An observation from [Information Overload: The Challenges of Expanding Context Windows in Large Language Models
-](https://samaya.ai/blog/):
+An observation from [Information Overload: The Challenges of Expanding Context Windows in Large Language Models](https://samaya.ai/blog/):
 
 > Current language models do not effectively use their entire context, and that retrieval is still
 a crucial ingredient for effectively augmenting language models with external knowledge.  
 
-I agree with this quote and would like to add that this behavior is typical of the Transformer-based architecture. The ML community has been paying significant "attention" to this architecture. For instance, magic.dev is not using Transformers, and they recently announced [LTM-1](https://magic.dev/blog/ltm-1), an LLM with a staggering *5,000,000* token context window. After speaking with Eric Steinberger, the CEO of magic, I am highly optimistic that their approach utilizes context more effectively than Transformers.
+## Reflection on Transformer Architectures
+
+I resonate with this quote and wish to highlight the evident trajectory within the domain of **Transformer-based architectures** in machine learning. The community, quite fittingly, has cast significant "attention" towards this design paradigm. 
+
+Interestingly, while many gravitate towards Transformers, there are noteworthy deviations. Case in point, [magic](magic.dev) has opted out of using Transformers for their novel [LTM-1](https://magic.dev/blog/ltm-1) model, a Language Model that boasts an awe-inspiring **5,000,000** token context window. 
+
+Following my insightful interaction with Eric Steinberger, the CEO of magic, at the [NVIDIA Berlin event](https://muhtasham.github.io/blog/posts/nvidia-berlin/) last month, I am inclined to believe that their approach may very well harness context in ways that could surpass traditional Transformers.
 
 ## Closing Thoughts
-Our journey through the intricacies of extending context length in LLMs showcases the constant innovation in this space. The challenges are many, but with every hurdle, the community finds novel ways to leap forward.  
+The journey into the depths of extending context lengths in LLMs is a testament to the relentless pursuit of innovation in the field. While the challenges presented are not trivial, they serve as catalysts for groundbreaking solutions. It's inspiring to witness how the community comes together, turning each challenge into an opportunity for growth and discovery. As we continue to push the boundaries, it's evident that the future of LLMs holds even more promise and potential.

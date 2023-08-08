@@ -9,7 +9,7 @@
 <meta name="author" content="muhtasham">
 <meta name="dcterms.date" content="2023-08-07">
 
-<title>Machine Learners Guide to Real World - 🗾 Exploring Ways to Extend Context Length in Transformers</title>
+<title>Machine Learners Guide to Real World - 📈 Exploring Ways to Extend Context Length in Transformers</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -115,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">🗾 Exploring Ways to Extend Context Length in Transformers</h1>
+      <h1 class="title">📈 Exploring Ways to Extend Context Length in Transformers</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">LLM</div>
               </div>
@@ -152,11 +152,12 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#which-parts-of-transformer-architecture-can-we-hack-to-extend-context-length" id="toc-which-parts-of-transformer-architecture-can-we-hack-to-extend-context-length" class="nav-link" data-scroll-target="#which-parts-of-transformer-architecture-can-we-hack-to-extend-context-length">Which parts of Transformer architecture, can we hack to extend context length?</a></li>
+  <li><a href="#which-parts-of-transformer-architecture-can-we-tinker-with-to-extend-context-length" id="toc-which-parts-of-transformer-architecture-can-we-tinker-with-to-extend-context-length" class="nav-link" data-scroll-target="#which-parts-of-transformer-architecture-can-we-tinker-with-to-extend-context-length">Which parts of Transformer architecture can we tinker with to extend context length?</a></li>
   <li><a href="#the-linear-scaling-trick" id="toc-the-linear-scaling-trick" class="nav-link" data-scroll-target="#the-linear-scaling-trick">The Linear Scaling Trick</a></li>
   <li><a href="#dynamic-scaling-trick" id="toc-dynamic-scaling-trick" class="nav-link" data-scroll-target="#dynamic-scaling-trick">Dynamic Scaling Trick</a></li>
   <li><a href="#curse-of-naive-evaluation" id="toc-curse-of-naive-evaluation" class="nav-link" data-scroll-target="#curse-of-naive-evaluation">Curse of Naive Evaluation</a></li>
   <li><a href="#do-we-really-need-it" id="toc-do-we-really-need-it" class="nav-link" data-scroll-target="#do-we-really-need-it">Do We Really Need It?</a></li>
+  <li><a href="#reflection-on-transformer-architectures" id="toc-reflection-on-transformer-architectures" class="nav-link" data-scroll-target="#reflection-on-transformer-architectures">Reflection on Transformer Architectures</a></li>
   <li><a href="#closing-thoughts" id="toc-closing-thoughts" class="nav-link" data-scroll-target="#closing-thoughts">Closing Thoughts</a></li>
   </ul>
 </nav>
@@ -176,14 +177,14 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Expand to learn quadratic complexity in Transformers
+“Quadratic Complexi-what?” – Dive in to Learn about Transformers’ Quirks!
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Transformers, especially their self-attention mechanism, have a quadratic computational complexity in relation to the input sequence length. This arises from each token in the sequence interacting with every other token.</p>
-<p>For an input sequence of length (N), there are (N^2) interactions, causing the computational cost to be proportional to (N^2). This means that as the sequence length doubles, the computational cost quadruples. This rapid growth in computational demands becomes prohibitive for very long sequences, posing challenges in tasks where extended context is crucial.</p>
+<p>Transformers, especially their self-attention mechanism, have a quadratic computational complexity in relation to the input sequence length. It’s like that one friend who has to say hi to everyone at a party – each token in the sequence has to interact with every other token.</p>
+<p>For an input sequence of length (N), there are (N^2) interactions. So, if (N) is the number of guests at the party, imagine the time it’d take if every guest had to greet every other guest! This results in a computational cost proportional to (N^2). This means that as the sequence length (or party size) doubles, the computational cost (or time to greet everyone) quadruples. And while it’s great to be social, this rapid growth in computational demands becomes a major party pooper for very long sequences, posing challenges in tasks where extended context is crucial.</p>
 </div>
 </div>
 </div>
@@ -191,14 +192,14 @@ Expand to learn quadratic complexity in Transformers
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="token_count.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Here is a comparison of the context and how much it is human terms</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Here is a comparison of the context and how much it is human terms, Source: LLM Bootcamp</figcaption><p></p>
 </figure>
 </div>
 <p>The context length of the base model varies, with Falcon allowing up to 2K tokens and LLAMA2 accommodating up to 4K tokens, but we also have models like MPT trained with Alibi attention that can in theory support up to infinite context lengths.</p>
 </section>
-<section id="which-parts-of-transformer-architecture-can-we-hack-to-extend-context-length" class="level2">
-<h2 class="anchored" data-anchor-id="which-parts-of-transformer-architecture-can-we-hack-to-extend-context-length">Which parts of Transformer architecture, can we hack to extend context length?</h2>
-<p>As you may know by heart, Transformer has 4 main parts:</p>
+<section id="which-parts-of-transformer-architecture-can-we-tinker-with-to-extend-context-length" class="level2">
+<h2 class="anchored" data-anchor-id="which-parts-of-transformer-architecture-can-we-tinker-with-to-extend-context-length">Which parts of Transformer architecture can we tinker with to extend context length?</h2>
+<p>As you may know (by heart), Transformer has 4 main parts:</p>
 <ul>
 <li>Tokenization</li>
 <li>Embedding</li>
@@ -209,27 +210,27 @@ Expand to learn quadratic complexity in Transformers
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="arch.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">The architecture of a Transformer model Source: LLM University</figcaption><p></p>
+<p></p><figcaption class="figure-caption">The architecture of a Transformer model, Source: LLM University</figcaption><p></p>
 </figure>
 </div>
-<p>Our quest to stretch context length will zero in on the positional encoding and the attention mechanism. Given the computational heft of attention, it’s worth diving deeper into Rotary Positional Encoding (RoPE).</p>
+<p>Typically, to extend the context length in Transformers, we often tweak the positional encoding and/or the attention mechanism. However, considering that the attention mechanism is the most computationally demanding part of the Transformer, and given the growing “attention” (pun intended) towards open-access models like LLAMA2 and Falcon, it’s beneficial to delve deeper into the nuances of positional encoding. Specifically, let’s focus on the Rotary Positional Encoding (RoPE).</p>
 <div class="callout-caution callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Expand to learn about positional encoding
+Positional encoding
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Transformers process input, not sequentially but in parallel, hence we need a way to know the order of the words, after tokening and getting the embeddings, we need to know the order of the words, and that is what positional encoding does, it adds a positional vector to each word, in order to keep track of the positions of the words. So if you want to give lot of context to LLM, you need to make sure that you don’t essentially lose the order of the words.</p>
+<p>Transformers process input in parallel, not sequentially. Hence, after tokenization and embedding extraction, we need a way to maintain the order of words. This is achieved through positional encoding. It adds a positional vector to each word to keep track of word positions, ensuring the context is not lost in longer sequences.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="pos_emb.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Here is simple visualisation of positional encoding Source: LLM University</figcaption><p></p>
+<p></p><figcaption class="figure-caption">Here’s a bird’s-eye view of positional encoding. Think of it as a GPS for words, Source: LLM University</figcaption><p></p>
 </figure>
 </div>
 </div>
@@ -277,35 +278,58 @@ TL;DR
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>More advanced technique, works okay without fine-tuning, but can benefit from it.</p>
+<p>A more advanced technique that performs well even without fine-tuning but can benefit further from it.</p>
 </div>
 </div>
 </div>
-<p>Turns out Scaling the RoPE linearly is not optimal to evenly distribute information, in Fourier space as an alternative to the linear scaling trick, the dynamic scaling trick was suggested by <a href="https://www.reddit.com/r/LocalLLaMA/comments/14lz7j5/ntkaware_scaled_rope_allows_llama_models_to_have/?utm_source=share&amp;utm_medium=web2x&amp;context=3">u/bloc97/</a> provides an even more efficient solution.</p>
-<ol type="a">
-<li>works quite well without fine-tuning&nbsp;</li>
-<li>doesn’t degrade the performance if the model is used with short sequences c)&nbsp;gracefully scales&nbsp;to long&nbsp;sequences, under a fixed&nbsp;parameterization</li>
-</ol>
-<div class="callout-warning callout callout-style-default callout-captioned">
+<p>The simple linear interpolation in RoPE’s Fourier space isn’t the most effective way to distribute information across tokens. Drawing from the Neural Tangent Kernel (NTK) theory, <a href="https://www.reddit.com/r/LocalLLaMA/comments/14lz7j5/ntkaware_scaled_rope_allows_llama_models_to_have/">u/bloc97/</a> suggested a dynamic scaling trick. This approach changes the “rotation” speed of each RoPE dimension relative to the others, ensuring distinctiveness of positions even under extreme stretching.</p>
+<div class="callout-tip callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-Warning
+Fourier Space and its Significance
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>There is significant performance drop of the above mentioned RoPe scaling methods due to static quantization, dynamic quantization should be good to go though.</p>
+<p>Imagine you’re listening to a song with multiple instruments playing simultaneously. To the human ear, it’s a blend of sounds, but what if you wanted to understand each instrument’s contribution? The Fourier transform is like a magical tool that separates the song into individual instrument notes, helping you see which instrument plays at what frequency and when.</p>
+<p>Fourier space, derived from this transformation, is essential in understanding the underlying frequencies that make up a signal. In the context of machine learning and Transformers, it’s like separating intertwined data patterns, offering insights and optimizations not evident when looking at the combined sequence.</p>
+</div>
+</div>
+</div>
+<p>Benefits of the dynamic scaling trick:</p>
+<ul>
+<li>Efficient without the need for fine-tuning</li>
+<li>Maintains performance even with short sequences</li>
+<li>Scalable to very long sequences under a fixed parameterization</li>
+</ul>
+<p>If you’re considering the quantization of RoPe-scaled models, it’s essential to choose the right technique. For a deeper understanding of the implications of static and dynamic quantization, refer to the section below.</p>
+<div class="callout-warning callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Static vs.&nbsp;Dynamic Quantization and Performance Drop with RoPe Scaling
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Quantization, in the context of deep learning, refers to the process of reducing the number of bits that represent the weights and biases of a model. This reduction aids in deploying models in resource-constrained environments like mobile devices, but it can also impact the model’s performance.</p>
+<p><strong>Static Quantization</strong> involves converting the entire model to a quantized format at once, based on a single calibration dataset. The primary disadvantage of static quantization with RoPe scaling is its rigidity. Since the quantization process doesn’t consider variations in different parts of the model or the specific nature of RoPe’s behavior, it can lead to significant information loss. This results in a performance drop, especially when the model is scaled to handle longer sequences.</p>
+<p><strong>Dynamic Quantization</strong>, on the other hand, quantizes layers of the model on-the-fly during model inference. It adjusts the quantization parameters dynamically based on the input data, making it more flexible and adaptive. This adaptability ensures that the quantization process aligns better with RoPe scaling methods, preserving essential details and maintaining performance.</p>
+<p>In summary, while static quantization’s one-size-fits-all approach can negatively impact RoPe-scaled models, dynamic quantization’s ability to adjust ensures a more robust performance.</p>
 </div>
 </div>
 </div>
 </section>
 <section id="curse-of-naive-evaluation" class="level2">
 <h2 class="anchored" data-anchor-id="curse-of-naive-evaluation">Curse of Naive Evaluation</h2>
-<p>After the rise of these tricks many in open-source community started to use them, but they were all evaluating via perplexity, while it is good starting point it is not the best way to evaluate the performance of the model</p>
+<p>The rise of these scaling tricks has prompted many in the open-source community to adopt them. However, most have been evaluating model performance using perplexity. Although it’s a good starting point, it’s not the most comprehensive metric. As highlighted by the tweet below, there are nuances in evaluation that can be overlooked:</p>
 <blockquote class="twitter-tweet blockquote">
 <p lang="en" dir="ltr">
 The first ~5 tokens in each segment contribute <em>most</em> of the loss. The shorter model has to deal with <em>double</em> the amount of early token areas!<br><br>We showed in our Shortformer paper that if you use this naïve evaluation method, longer models will always appear to be better–&gt; <a href="https://t.co/mbHsIwrYxe">pic.twitter.com/mbHsIwrYxe</a>
@@ -313,6 +337,7 @@ The first ~5 tokens in each segment contribute <em>most</em> of the loss. The sh
 — Ofir Press (<span class="citation" data-cites="OfirPress">@OfirPress</span>) <a href="https://twitter.com/OfirPress/status/1679015108675239937?ref_src=twsrc%5Etfw">July 12, 2023</a>
 </blockquote>
 <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>This tweet emphasizes the importance of considering token positions when evaluating model performance, a factor that can significantly influence perceived model efficacy.</p>
 </section>
 <section id="do-we-really-need-it" class="level2">
 <h2 class="anchored" data-anchor-id="do-we-really-need-it">Do We Really Need It?</h2>
@@ -320,11 +345,16 @@ The first ~5 tokens in each segment contribute <em>most</em> of the loss. The sh
 <blockquote class="blockquote">
 <p>Current language models do not effectively use their entire context, and that retrieval is still a crucial ingredient for effectively augmenting language models with external knowledge.</p>
 </blockquote>
-<p>I agree with this quote and would like to add that this behavior is typical of the Transformer-based architecture. The ML community has been paying significant “attention” to this architecture. For instance, magic.dev is not using Transformers, and they recently announced <a href="https://magic.dev/blog/ltm-1">LTM-1</a>, an LLM with a staggering <em>5,000,000</em> token context window. After speaking with Eric Steinberger, the CEO of magic, I am highly optimistic that their approach utilizes context more effectively than Transformers.</p>
+</section>
+<section id="reflection-on-transformer-architectures" class="level2">
+<h2 class="anchored" data-anchor-id="reflection-on-transformer-architectures">Reflection on Transformer Architectures</h2>
+<p>I resonate with this quote and wish to highlight the evident trajectory within the domain of <strong>Transformer-based architectures</strong> in machine learning. The community, quite fittingly, has cast significant “attention” towards this design paradigm.</p>
+<p>Interestingly, while many gravitate towards Transformers, there are noteworthy deviations. Case in point, <a href="magic.dev">magic</a> has opted out of using Transformers for their novel <a href="https://magic.dev/blog/ltm-1">LTM-1</a> model, a Language Model that boasts an awe-inspiring <strong>5,000,000</strong> token context window.</p>
+<p>Following my insightful interaction with Eric Steinberger, the CEO of magic, at the <a href="https://muhtasham.github.io/blog/posts/nvidia-berlin/">NVIDIA Berlin event</a> last month, I am inclined to believe that their approach may very well harness context in ways that could surpass traditional Transformers.</p>
 </section>
 <section id="closing-thoughts" class="level2">
 <h2 class="anchored" data-anchor-id="closing-thoughts">Closing Thoughts</h2>
-<p>Our journey through the intricacies of extending context length in LLMs showcases the constant innovation in this space. The challenges are many, but with every hurdle, the community finds novel ways to leap forward.</p>
+<p>The journey into the depths of extending context lengths in LLMs is a testament to the relentless pursuit of innovation in the field. While the challenges presented are not trivial, they serve as catalysts for groundbreaking solutions. It’s inspiring to witness how the community comes together, turning each challenge into an opportunity for growth and discovery. As we continue to push the boundaries, it’s evident that the future of LLMs holds even more promise and potential.</p>
 
 
 </section>
