@@ -1,11 +1,11 @@
 ---
-title: "😎 Reflections from an Evening with NVIDIA's Jensen Huang"
+title: "🚀 Reflections from an Evening with NVIDIA's Jensen Huang"
 author: "muhtasham"
 date: "2023-07-04"
 toc: true
 number-sections: false
 image: "cuda-galaxy.jpeg"
-categories: [venture-captial, deep-learning]
+categories: [llm, deep-learning]
 ---
 
 ![Sharing moment with Jensen](jensen-pic.png)
@@ -46,6 +46,7 @@ Jensen shared his perspective on the importance of strategic retreat, not consid
 ## Controversial question to Jensen
 
 Amidst the flood of questions and requests after the event, I took the opportunity to ask Jensen a question I have been curious, it was about regulations around AI and rising concerns of some people regarding the nationalization of NVIDIA. In response, Jensen briefly stated:
+
 > NVIDIA will not be nationalized; that's not possible. If it were to happen, many nations would complain ...
 
 
