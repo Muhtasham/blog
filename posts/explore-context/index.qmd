@@ -3,6 +3,7 @@ title: "📈 Exploring Ways to Extend Context Length in Transformers"
 title-block-banner: true
 author: "muhtasham"
 date: "2023-08-07"
+date-modified: "2023-09-01"
 categories: [llm, papers]
 toc: true
 ---
@@ -12,7 +13,7 @@ Diving deep into the intricacies of large language models (LLMs), one hurdle qui
 
 
 ::: {.callout-note collapse="true"}
-## "Quadratic Complexi-what?" – Dive in to Learn about Transformers' Quirks!
+## Quadratic Complexi-what?
 
 Transformers, especially their self-attention mechanism, have a quadratic computational complexity in relation to the input sequence length. It's like that one friend who has to say hi to everyone at a party – each token in the sequence has to interact with every other token.
 
@@ -97,8 +98,19 @@ Quantization, in the context of deep learning, refers to the process of reducing
 
 **Dynamic Quantization**, on the other hand, quantizes layers of the model on-the-fly during model inference. It adjusts the quantization parameters dynamically based on the input data, making it more flexible and adaptive. This adaptability ensures that the quantization process aligns better with RoPe scaling methods, preserving essential details and maintaining performance.
 
+Also tangential to this, some folks have started to explore modifications to softmax because quantization ends up being difficult due to large "random" values in the weights. So theres a higher than expected entropy in the weight distribution.
+
 In summary, while static quantization's one-size-fits-all approach can negatively impact RoPe-scaled models, dynamic quantization's ability to adjust ensures a more robust performance.
 :::
+
+
+## Yet another RoPE extensioN method (YaRN)
+While folks are still waiting for access of gpt4-32k, 128k open source models with YaRN is out.
+In the [paper](https://github.com/jquesnelle/yarn/blob/master/paper/yarn.pdf) authors successfully extended the context length of LLAMA 2 13B to 128k training only for additional 400 steps!
+
+YaRN allows you to extend the context using only 0.1% of original pre-training data with negligible performance loss on standardized benchmarks compared to the original model. 
+
+The only catch is that 13B model requires approximatively 360GB of VRAM for the full 128k context size using Flash Attention 2, which is not really in reach for GPU poors today, but definitely impressive and a significant innovation.
 
 ## Curse of Naive Evaluation
 The rise of these scaling tricks has prompted many in the open-source community to adopt them. However, most have been evaluating model performance using perplexity. Although it's a good starting point, it's not the most comprehensive metric. As highlighted by the tweet below, there are nuances in evaluation that can be overlooked:
@@ -123,4 +135,4 @@ Interestingly, while many gravitate towards Transformers, there are noteworthy d
 Following my insightful interaction with Eric Steinberger, the CEO of magic, at the [NVIDIA Berlin event](https://muhtasham.github.io/blog/posts/nvidia-berlin/) last month, I am inclined to believe that their approach may very well harness context in ways that could surpass traditional Transformers.
 
 ## Closing Thoughts
-The journey into the depths of extending context lengths in LLMs is a testament to the relentless pursuit of innovation in the field. While the challenges presented are not trivial, they serve as catalysts for groundbreaking solutions. It's inspiring to witness how the community comes together, turning each challenge into an opportunity for growth and discovery. As we continue to push the boundaries, it's evident that the future of LLMs holds even more promise and potential.
+The journey into the depths of extending context lengths in LLMs is a testament to the relentless pursuit of innovation in the field. While the challenges presented are not trivial, they serve as catalysts for groundbreaking solutions. It's inspiring to witness how the community comes together, turning each challenge into an opportunity for growth and discovery despite arms race for GPUs. As we continue to push the boundaries, it's evident that the future of LLMs holds even more promise and potential, LFG!

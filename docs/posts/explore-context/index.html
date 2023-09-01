@@ -140,6 +140,12 @@ ul.task-list li input[type="checkbox"] {
       </div>
     </div>
     
+      <div>
+      <div class="quarto-title-meta-heading">Modified</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">September 1, 2023</p>
+      </div>
+    </div>
       
     </div>
     
@@ -156,6 +162,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#which-parts-of-transformer-architecture-can-we-tinker-with-to-extend-context-length" id="toc-which-parts-of-transformer-architecture-can-we-tinker-with-to-extend-context-length" class="nav-link" data-scroll-target="#which-parts-of-transformer-architecture-can-we-tinker-with-to-extend-context-length">Which parts of Transformer architecture can we tinker with to extend context length?</a></li>
   <li><a href="#the-linear-scaling-trick" id="toc-the-linear-scaling-trick" class="nav-link" data-scroll-target="#the-linear-scaling-trick">The Linear Scaling Trick</a></li>
   <li><a href="#dynamic-scaling-trick" id="toc-dynamic-scaling-trick" class="nav-link" data-scroll-target="#dynamic-scaling-trick">Dynamic Scaling Trick</a></li>
+  <li><a href="#yet-another-rope-extension-method-yarn" id="toc-yet-another-rope-extension-method-yarn" class="nav-link" data-scroll-target="#yet-another-rope-extension-method-yarn">Yet another RoPE extensioN method (YaRN)</a></li>
   <li><a href="#curse-of-naive-evaluation" id="toc-curse-of-naive-evaluation" class="nav-link" data-scroll-target="#curse-of-naive-evaluation">Curse of Naive Evaluation</a></li>
   <li><a href="#do-we-really-need-it" id="toc-do-we-really-need-it" class="nav-link" data-scroll-target="#do-we-really-need-it">Do We Really Need It?</a></li>
   <li><a href="#reflection-on-transformer-architectures" id="toc-reflection-on-transformer-architectures" class="nav-link" data-scroll-target="#reflection-on-transformer-architectures">Reflection on Transformer Architectures</a></li>
@@ -178,7 +185,7 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-caption-container flex-fill">
-“Quadratic Complexi-what?” – Dive in to Learn about Transformers’ Quirks!
+Quadratic Complexi-what?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -323,10 +330,17 @@ Static vs.&nbsp;Dynamic Quantization and Performance Drop with RoPe Scaling
 <p>Quantization, in the context of deep learning, refers to the process of reducing the number of bits that represent the weights and biases of a model. This reduction aids in deploying models in resource-constrained environments like mobile devices, but it can also impact the model’s performance.</p>
 <p><strong>Static Quantization</strong> involves converting the entire model to a quantized format at once, based on a single calibration dataset. The primary disadvantage of static quantization with RoPe scaling is its rigidity. Since the quantization process doesn’t consider variations in different parts of the model or the specific nature of RoPe’s behavior, it can lead to significant information loss. This results in a performance drop, especially when the model is scaled to handle longer sequences.</p>
 <p><strong>Dynamic Quantization</strong>, on the other hand, quantizes layers of the model on-the-fly during model inference. It adjusts the quantization parameters dynamically based on the input data, making it more flexible and adaptive. This adaptability ensures that the quantization process aligns better with RoPe scaling methods, preserving essential details and maintaining performance.</p>
+<p>Also tangential to this, some folks have started to explore modifications to softmax because quantization ends up being difficult due to large “random” values in the weights. So theres a higher than expected entropy in the weight distribution.</p>
 <p>In summary, while static quantization’s one-size-fits-all approach can negatively impact RoPe-scaled models, dynamic quantization’s ability to adjust ensures a more robust performance.</p>
 </div>
 </div>
 </div>
+</section>
+<section id="yet-another-rope-extension-method-yarn" class="level2">
+<h2 class="anchored" data-anchor-id="yet-another-rope-extension-method-yarn">Yet another RoPE extensioN method (YaRN)</h2>
+<p>While folks are still waiting for access of gpt4-32k, 128k open source models with YaRN is out. In the <a href="https://github.com/jquesnelle/yarn/blob/master/paper/yarn.pdf">paper</a> authors successfully extended the context length of LLAMA 2 13B to 128k training only for additional 400 steps!</p>
+<p>YaRN allows you to extend the context using only 0.1% of original pre-training data with negligible performance loss on standardized benchmarks compared to the original model.</p>
+<p>The only catch is that 13B model requires approximatively 360GB of VRAM for the full 128k context size using Flash Attention 2, which is not really in reach for GPU poors today, but definitely impressive and a significant innovation.</p>
 </section>
 <section id="curse-of-naive-evaluation" class="level2">
 <h2 class="anchored" data-anchor-id="curse-of-naive-evaluation">Curse of Naive Evaluation</h2>
@@ -355,7 +369,7 @@ The first ~5 tokens in each segment contribute <em>most</em> of the loss. The sh
 </section>
 <section id="closing-thoughts" class="level2">
 <h2 class="anchored" data-anchor-id="closing-thoughts">Closing Thoughts</h2>
-<p>The journey into the depths of extending context lengths in LLMs is a testament to the relentless pursuit of innovation in the field. While the challenges presented are not trivial, they serve as catalysts for groundbreaking solutions. It’s inspiring to witness how the community comes together, turning each challenge into an opportunity for growth and discovery. As we continue to push the boundaries, it’s evident that the future of LLMs holds even more promise and potential.</p>
+<p>The journey into the depths of extending context lengths in LLMs is a testament to the relentless pursuit of innovation in the field. While the challenges presented are not trivial, they serve as catalysts for groundbreaking solutions. It’s inspiring to witness how the community comes together, turning each challenge into an opportunity for growth and discovery despite arms race for GPUs. As we continue to push the boundaries, it’s evident that the future of LLMs holds even more promise and potential, LFG!</p>
 
 
 </section>
