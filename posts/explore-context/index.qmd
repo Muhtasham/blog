@@ -29,7 +29,7 @@ The context length of the base model varies, with Falcon allowing up to 2K token
 
 ## Which parts of Transformer architecture can we tinker with to extend context length?
 
-As you may know (by heart), Transformer has 4 main parts:
+The Transformers (not the Autobots, mind you), have 5 main parts:
 
 - Tokenization
 - Embedding
