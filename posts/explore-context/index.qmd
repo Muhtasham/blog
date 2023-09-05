@@ -3,7 +3,7 @@ title: "📈 Exploring Ways to Extend Context Length in Transformers"
 title-block-banner: true
 author: "muhtasham"
 date: "2023-08-07"
-date-modified: "2023-09-01"
+date-modified: "2023-09-05"
 categories: [llm, papers]
 toc: true
 ---
@@ -106,11 +106,11 @@ In summary, while static quantization's one-size-fits-all approach can negativel
 
 ## Yet another RoPE extensioN method (YaRN)
 While folks are still waiting for access of gpt4-32k, 128k open source models with YaRN is out.
-In the [paper](https://github.com/jquesnelle/yarn/blob/master/paper/yarn.pdf) authors successfully extended the context length of LLAMA 2 13B to 128k training only for additional 400 steps!
+In the [paper](https://arxiv.org/abs/2309.00071) authors successfully extended the context length of LLAMA 2 13B to 128k training only for additional 400 steps!
 
 YaRN allows you to extend the context using only 0.1% of original pre-training data with negligible performance loss on standardized benchmarks compared to the original model. 
 
-The only catch is that 13B model requires approximatively 360GB of VRAM for the full 128k context size using Flash Attention 2, which is not really in reach for GPU poors today, but definitely impressive and a significant innovation.
+The only catch is that 13B model requires approximatively *360GB* of VRAM for the full 128k context size using Flash Attention 2, which is not really in reach for GPU poors today, but definitely impressive and a significant innovation.
 
 ## Curse of Naive Evaluation
 The rise of these scaling tricks has prompted many in the open-source community to adopt them. However, most have been evaluating model performance using perplexity. Although it's a good starting point, it's not the most comprehensive metric. As highlighted by the tweet below, there are nuances in evaluation that can be overlooked:
@@ -124,7 +124,11 @@ This tweet emphasizes the importance of considering token positions when evaluat
 An observation from [Information Overload: The Challenges of Expanding Context Windows in Large Language Models](https://samaya.ai/blog/):
 
 > Current language models do not effectively use their entire context, and that retrieval is still
-a crucial ingredient for effectively augmenting language models with external knowledge.  
+a crucial ingredient for effectively augmenting language models with external knowledge.
+
+Not to mention that, LLMs can be easily distracted by irrelevant context
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">This came to mind :)<a href="https://t.co/hRpaUSDdHq">https://t.co/hRpaUSDdHq</a></p>&mdash; Muhtasham O. (@Muhtasham9) <a href="https://twitter.com/Muhtasham9/status/1698747507470119314?ref_src=twsrc%5Etfw">September 4, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ## Reflection on Transformer Architectures
 

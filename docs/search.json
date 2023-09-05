@@ -578,7 +578,7 @@
     "href": "posts/explore-context/index.html#do-we-really-need-it",
     "title": "📈 Exploring Ways to Extend Context Length in Transformers",
     "section": "Do We Really Need It?",
-    "text": "Do We Really Need It?\nAn observation from Information Overload: The Challenges of Expanding Context Windows in Large Language Models:\n\nCurrent language models do not effectively use their entire context, and that retrieval is still a crucial ingredient for effectively augmenting language models with external knowledge."
+    "text": "Do We Really Need It?\nAn observation from Information Overload: The Challenges of Expanding Context Windows in Large Language Models:\n\nCurrent language models do not effectively use their entire context, and that retrieval is still a crucial ingredient for effectively augmenting language models with external knowledge.\n\nNot to mention that, LLMs can be easily distracted by irrelevant context\n\n\nThis came to mind :)https://t.co/hRpaUSDdHq\n\n— Muhtasham O. (@Muhtasham9) September 4, 2023"
   },
   {
     "objectID": "posts/explore-context/index.html#closing-thoughts",
