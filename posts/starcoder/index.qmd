@@ -47,7 +47,7 @@ StarCoder simplifies code generation by automating repetitive tasks. With just a
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
-checkpoint = "bigcode/starcoder"
+checkpoint = "bigcode/starcoderbase-1b"
 device = "cuda"  # Set to "cuda" for GPU usage or "cpu" for CPU usage
 
 tokenizer = AutoTokenizer.from_pretrained(checkpoint, trust_remote_code=True)
@@ -57,7 +57,7 @@ inputs = tokenizer.encode("def print_hello_world():", return_tensors="pt").to(de
 outputs = model.generate(inputs)
 print(tokenizer.decode(outputs[0]))
 ```
-> Pro Tip: You can use google collab to avoid memmoru issues
+> Pro Tip: You can use google collab to avoid memory issues
 
 #### 2. Fill-in-the-Middle Code Completion
 
@@ -74,6 +74,47 @@ print(tokenizer.decode(outputs[0]))
 #### 3. Enhancing Reasoning and Conversational Tasks
 
 Surprisingly, StarCoder demonstrates remarkable performance in reasoning and conversational tasks, despite not being explicitly trained on text data. The combination of well-crafted prompts and the model's inherent reasoning abilities derived from code pre-training contribute to its success. In fact, in the Helm evaluation, StarCoder achieved scores comparable to models such as Anthropic V4 and GPT-3, which are significantly larger in size.
+
+#### 4. Interacting with StarCoder through Python API
+
+For developers looking to integrate StarCoder's capabilities directly into their Python applications, the model offers a straightforward API. Below, is a Python script that demonstrates how to interact with the StarCoder model using the Hugging Face API. You can use this script to query the model and get code generation results right in your Python environment:
+
+```python
+import requests
+import json 
+import os
+
+MODEL_ID = "bigcode/starcoder"
+API_TOKEN = os.environ.get('HUGGINGFACE_API_TOKEN')
+
+if not API_TOKEN:
+    raise EnvironmentError("Please set your Hugging Face API token as an environment variable named 'HUGGINGFACE_API_TOKEN'")
+
+def query(payload, model_id, api_token):
+    headers = {"Authorization": f"Bearer {API_TOKEN}"}
+    API_URL = f"https://api-inference.huggingface.co/models/{MODEL_ID}"
+    response = requests.post(API_URL, headers=headers, json=payload)
+    print("Status Code:", response.status_code)
+    print("Response Content:", response.text)
+
+    try:
+        return response.json()
+    except json.JSONDecodeError:
+        print("Failed to decode the response as JSON.")
+        return None
+
+payload = {"inputs": "def convert_color_hsl_to_rgb(rgb_tuple):",    
+            "parameters": {"max_new_tokens": 512},
+}
+
+data = query(payload, MODEL_ID, API_TOKEN)
+```
+
+In the script above, the `API_TOKEN` is obtained from an environment variable named `HUGGINGFACE_API_TOKEN`. You can set this environment variable in your operating system or in your Python environment before running the script. Remember to keep your API token confidential to prevent unauthorized access. You can obtain your API token from the [Hugging Face website](https://huggingface.co/settings/tokens). Remember to keep your API token confidential to prevent unauthorized access.
+
+This script uses the requests and json Python libraries to send a POST request to the Hugging Face API, passing a code snippet as the input and receiving a generated code snippet as the output. Remember to install the necessary Python packages by running pip install requests before using the script.
+
+By using this script, developers can seamlessly integrate StarCoder's code generation capabilities into their Python applications, enhancing productivity and efficiency in coding tasks.
 
 ## Fine-tuning and Commercial Use
 

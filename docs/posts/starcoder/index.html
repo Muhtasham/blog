@@ -240,7 +240,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>StarCoder simplifies code generation by automating repetitive tasks. With just a few lines of code, you can leverage StarCoder’s capabilities to generate code snippets tailored to your specific requirements. Whether you need a function definition or a complete code block, StarCoder has got you covered.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> transformers <span class="im">import</span> AutoModelForCausalLM, AutoTokenizer</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>checkpoint <span class="op">=</span> <span class="st">"bigcode/starcoder"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>checkpoint <span class="op">=</span> <span class="st">"bigcode/starcoderbase-1b"</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>device <span class="op">=</span> <span class="st">"cuda"</span>  <span class="co"># Set to "cuda" for GPU usage or "cpu" for CPU usage</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>tokenizer <span class="op">=</span> AutoTokenizer.from_pretrained(checkpoint, trust_remote_code<span class="op">=</span><span class="va">True</span>)</span>
@@ -250,7 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>outputs <span class="op">=</span> model.generate(inputs)</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(tokenizer.decode(outputs[<span class="dv">0</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <blockquote class="blockquote">
-<p>Pro Tip: You can use google collab to avoid memmoru issues</p>
+<p>Pro Tip: You can use google collab to avoid memory issues</p>
 </blockquote>
 </section>
 <section id="fill-in-the-middle-code-completion" class="level4">
@@ -264,6 +264,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="enhancing-reasoning-and-conversational-tasks" class="level4">
 <h4 class="anchored" data-anchor-id="enhancing-reasoning-and-conversational-tasks">3. Enhancing Reasoning and Conversational Tasks</h4>
 <p>Surprisingly, StarCoder demonstrates remarkable performance in reasoning and conversational tasks, despite not being explicitly trained on text data. The combination of well-crafted prompts and the model’s inherent reasoning abilities derived from code pre-training contribute to its success. In fact, in the Helm evaluation, StarCoder achieved scores comparable to models such as Anthropic V4 and GPT-3, which are significantly larger in size.</p>
+</section>
+<section id="interacting-with-starcoder-through-python-api" class="level4">
+<h4 class="anchored" data-anchor-id="interacting-with-starcoder-through-python-api">4. Interacting with StarCoder through Python API</h4>
+<p>For developers looking to integrate StarCoder’s capabilities directly into their Python applications, the model offers a straightforward API. Below, is a Python script that demonstrates how to interact with the StarCoder model using the Hugging Face API. You can use this script to query the model and get code generation results right in your Python environment:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>MODEL_ID <span class="op">=</span> <span class="st">"bigcode/starcoder"</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>API_TOKEN <span class="op">=</span> os.environ.get(<span class="st">'HUGGINGFACE_API_TOKEN'</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="kw">not</span> API_TOKEN:</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">raise</span> <span class="pp">EnvironmentError</span>(<span class="st">"Please set your Hugging Face API token as an environment variable named 'HUGGINGFACE_API_TOKEN'"</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> query(payload, model_id, api_token):</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    headers <span class="op">=</span> {<span class="st">"Authorization"</span>: <span class="ss">f"Bearer </span><span class="sc">{</span>API_TOKEN<span class="sc">}</span><span class="ss">"</span>}</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    API_URL <span class="op">=</span> <span class="ss">f"https://api-inference.huggingface.co/models/</span><span class="sc">{</span>MODEL_ID<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    response <span class="op">=</span> requests.post(API_URL, headers<span class="op">=</span>headers, json<span class="op">=</span>payload)</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Status Code:"</span>, response.status_code)</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Response Content:"</span>, response.text)</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> response.json()</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> json.JSONDecodeError:</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Failed to decode the response as JSON."</span>)</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">None</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>payload <span class="op">=</span> {<span class="st">"inputs"</span>: <span class="st">"def convert_color_hsl_to_rgb(rgb_tuple):"</span>,    </span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>            <span class="st">"parameters"</span>: {<span class="st">"max_new_tokens"</span>: <span class="dv">512</span>},</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> query(payload, MODEL_ID, API_TOKEN)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In the script above, the <code>API_TOKEN</code> is obtained from an environment variable named <code>HUGGINGFACE_API_TOKEN</code>. You can set this environment variable in your operating system or in your Python environment before running the script. Remember to keep your API token confidential to prevent unauthorized access. You can obtain your API token from the <a href="https://huggingface.co/settings/tokens">Hugging Face website</a>. Remember to keep your API token confidential to prevent unauthorized access.</p>
+<p>This script uses the requests and json Python libraries to send a POST request to the Hugging Face API, passing a code snippet as the input and receiving a generated code snippet as the output. Remember to install the necessary Python packages by running pip install requests before using the script.</p>
+<p>By using this script, developers can seamlessly integrate StarCoder’s code generation capabilities into their Python applications, enhancing productivity and efficiency in coding tasks.</p>
 </section>
 </section>
 <section id="fine-tuning-and-commercial-use" class="level2">
