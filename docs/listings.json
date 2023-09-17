@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/llm-for-compiler-optimization/index.html",
       "/posts/explore-context/index.html",
       "/posts/nvidia-berlin/index.html",
       "/posts/sama-fireside-chat/index.html",

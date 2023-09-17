@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.340">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="muhtasham">
+<meta name="dcterms.date" content="2023-09-19">
+
+<title>Machine Learners Guide to Real World - 🖥️​ LLMs for Compiler Optimization: A Deep Dive</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Machine Learners Guide to Real World</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://huggingface.co/muhtasham" rel="" target=""><i class="bi bi-gpu-card" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/muhtasham" rel="" target=""><i class="bi bi-cpu" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/muhtasham9" rel="" target=""><i class="bi bi-hash" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/muhtasham/" rel="" target=""><i class="bi bi-file-earmark-person" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">🖥️​ LLMs for Compiler Optimization: A Deep Dive</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">llm</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>muhtasham </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 19, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#tldr" id="toc-tldr" class="nav-link active" data-scroll-target="#tldr"><strong>TL;DR</strong></a></li>
+  <li><a href="#understanding-the-basics" id="toc-understanding-the-basics" class="nav-link" data-scroll-target="#understanding-the-basics"><strong>Understanding the Basics</strong></a></li>
+  <li><a href="#deep-dive-into-the-technical-details" id="toc-deep-dive-into-the-technical-details" class="nav-link" data-scroll-target="#deep-dive-into-the-technical-details"><strong>Deep Dive into the Technical Details</strong></a></li>
+  <li><a href="#surprising-abilities-of-llms" id="toc-surprising-abilities-of-llms" class="nav-link" data-scroll-target="#surprising-abilities-of-llms"><strong>Surprising Abilities of LLMs</strong></a></li>
+  <li><a href="#auxiliary-learning-tasks" id="toc-auxiliary-learning-tasks" class="nav-link" data-scroll-target="#auxiliary-learning-tasks"><strong>Auxiliary Learning Tasks</strong></a></li>
+  <li><a href="#challenges-and-future-directions" id="toc-challenges-and-future-directions" class="nav-link" data-scroll-target="#challenges-and-future-directions"><strong>Challenges and Future Directions</strong></a></li>
+  <li><a href="#math-reasoning-and-logic" id="toc-math-reasoning-and-logic" class="nav-link" data-scroll-target="#math-reasoning-and-logic"><strong>Math Reasoning and Logic</strong></a></li>
+  <li><a href="#further-listening" id="toc-further-listening" class="nav-link" data-scroll-target="#further-listening"><strong>Further Listening</strong></a></li>
+  <li><a href="#my-take" id="toc-my-take" class="nav-link" data-scroll-target="#my-take"><strong>My Take</strong></a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<p>The application of Large Language Models (LLMs) in optimizing LLVM assembly for code size is emerging, but is it truly shaping a new reality or just a theoretical advancement? Over the weekend, I delved deep into a new paper titled <a href="https://arxiv.org/pdf/2309.07062.pdf">“LLMs for Compiler Optimization”</a> which explores the application of Large Language Models (LLMs) in optimizing LLVM assembly for code size.</p>
+<section id="tldr" class="level3">
+<h3 class="anchored" data-anchor-id="tldr"><strong>TL;DR</strong></h3>
+<p>The paper presents a 7B-parameter transformer model trained from scratch to optimize LLVM assembly for code size. The paper claims a 3.0% improvement in reducing instruction counts compared to the compiler, and it reportedly generates compilable code 91% of the time, perfectly emulating the compiler’s output 70% of the time. But how substantial are these improvements in real-world applications?</p>
+<p>For a deep understanding, I encourage you to read the full paper, but if you’re short on time, this blog post will give you the highlights and my take on it.</p>
+<p>In this blog post, I will break down the key takeaways from the paper and shed light on the potential of LLMs in the realm of compiler optimizations. Stay with me as we unravel the intricacies of this research and explore the frontier of compiler optimizations.</p>
+</section>
+<section id="understanding-the-basics" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-the-basics"><strong>Understanding the Basics</strong></h3>
+<p>Before we dive in, let’s understand a few terms:</p>
+<ul>
+<li><p><strong>LLVM Assembly/LLVM-IR</strong>: LLVM Intermediate Representation (IR) is akin to a universal language translator, sitting between high-level languages and machine code. It is a low-level programming language used in the LLVM compiler, a collection of modular and reusable compiler and toolchain technologies, serving as a stable and optimized bridge facilitating clear communication.</p></li>
+<li><p><strong>Compiler Optimizations</strong>: These are techniques used to enhance the code’s performance and efficiency without altering its functionality. The optimizations are performed on LLVM-IR in this context.</p></li>
+</ul>
+</section>
+<section id="deep-dive-into-the-technical-details" class="level3">
+<h3 class="anchored" data-anchor-id="deep-dive-into-the-technical-details"><strong>Deep Dive into the Technical Details</strong></h3>
+<p>The researchers presented a transformer model, trained from scratch to optimize LLVM assembly for code size. This model takes unoptimized assembly as input and suggests a list of compiler options to best optimize the program. It predicts instruction counts before and after optimization, and even the optimized code itself, enhancing its depth of understanding and optimization performance.</p>
+<p>To appreciate the depth of this research, let’s delve into the technical specifics outlined in the paper:</p>
+<section id="model-architecture-and-tokenizer" class="level4">
+<h4 class="anchored" data-anchor-id="model-architecture-and-tokenizer"><strong>1. Model Architecture and Tokenizer</strong></h4>
+<ul>
+<li><strong>Model Architecture</strong>: The researchers utilized the Llama 2 architecture with 7B parameters, characterized by 32 attention heads, 4096 hidden dimensions, and 32 layers, and initialized from scratch.</li>
+<li><strong>Byte Pair Encoding (BPE) Tokenizer</strong>: This tokenizer breaks down text into subwords or smaller units, facilitating the efficient handling of a large vocabulary. It is instrumental in processing the input data into tokens that the model can understand.</li>
+</ul>
+</section>
+<section id="sequence-length" class="level4">
+<h4 class="anchored" data-anchor-id="sequence-length"><strong>2. Sequence Length</strong></h4>
+<ul>
+<li><strong>2048 Tokens</strong>: The chosen sequence length, representing the maximum number of tokens that can be input into the model in a single batch. This choice is a balancing act between computational resources and the ability to process large LLVM-IR code sequences.</li>
+</ul>
+</section>
+<section id="tokenization-details" class="level4">
+<h4 class="anchored" data-anchor-id="tokenization-details"><strong>3. Tokenization Details</strong></h4>
+<ul>
+<li><strong>2.02 Characters per Token</strong>: The Llama 2 tokenizer, on average, represents 2.02 characters of LLVM-IR code in each token.</li>
+<li><strong>2KB Limit</strong>: This limit is derived from the tokenization rate, establishing the maximum LLVM-IR sequence size that they can train on, which is approximately 2KB.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+For Further Insight
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+For those interested in delving deeper into the nuances of tokenization, this tweet by Thomas Wolf offers an excellent analysis comparing different tokenizers and their efficiency in handling large datasets:
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+And our answers are out!<br><br>Running on 1B tokens from the web (filtered and mostly in English as details in <a href="https://t.co/8hXhqmK3ND">https://t.co/8hXhqmK3ND</a>) we got🥁<br><br>- GPT4 tokenizer (100k vocab) gives you 0.997B tokens <br>- Falcon tokenizer (64k vocab) gives you ~5% more tokens (1.04B)<br>- Llama2 tokenizer… <a href="https://t.co/suxqhHmOWp">https://t.co/suxqhHmOWp</a>
+</p>
+— Thomas Wolf (<span class="citation" data-cites="Thom_Wolf">@Thom_Wolf</span>) <a href="https://twitter.com/Thom_Wolf/status/1701206627859206450?ref_src=twsrc%5Etfw">September 11, 2023</a>
+</blockquote>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="surprising-abilities-of-llms" class="level3">
+<h3 class="anchored" data-anchor-id="surprising-abilities-of-llms"><strong>Surprising Abilities of LLMs</strong></h3>
+<p>Contrary to the initial assumption that the paper would highlight the shortcomings of LLMs, it revealed that a sufficiently trained LLM could predict and directly apply the best optimizations to an input code, bypassing the need for a compiler altogether. This was a surprising revelation, showcasing the untapped potential of LLMs in code optimization.</p>
+</section>
+<section id="auxiliary-learning-tasks" class="level3">
+<h3 class="anchored" data-anchor-id="auxiliary-learning-tasks"><strong>Auxiliary Learning Tasks</strong></h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./fig1.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figure 1 from the paper</figcaption>
+</figure>
+</div>
+<p>The model was tasked with two auxiliary functions to foster a deep understanding of code optimization mechanics, but one might wonder if this approach truly covers all the necessary grounds for optimization.</p>
+<ol type="1">
+<li>Generating instruction counts before and after applying optimizations.</li>
+<li>Producing the output IR post-optimization.</li>
+</ol>
+<p>These tasks were hypothesized to facilitate better pass-ordering decisions, a crucial aspect of compiler optimizations, and they did indeed yield promising results.</p>
+</section>
+<section id="challenges-and-future-directions" class="level3">
+<h3 class="anchored" data-anchor-id="challenges-and-future-directions"><strong>Challenges and Future Directions</strong></h3>
+<p>While the results are promising, one cannot overlook the significant limitations of the approach, including the restricted sequence length of inputs, known as the context window. The researchers targeted a 2k-token context window, necessitating the splitting of IRs into individual functions to fit within this window. This approach, albeit effective, curtails intra-function optimization and limits the context available for making optimization decisions.</p>
+<p>The paper suggests that evolving techniques for handling long sequences could potentially overcome this limitation, hinting at a promising avenue for future research.</p>
+</section>
+<section id="math-reasoning-and-logic" class="level3">
+<h3 class="anchored" data-anchor-id="math-reasoning-and-logic"><strong>Math Reasoning and Logic</strong></h3>
+<p>The paper also touched upon the challenges LLMs face in arithmetic reasoning, a vital aspect of compiler optimizations. It proposed a “chain-of-thought” approach, where models are trained to break down complex reasoning problems into incremental steps, offering a promising direction for enhancing LLMs’ capabilities.</p>
+</section>
+<section id="further-listening" class="level3">
+<h3 class="anchored" data-anchor-id="further-listening"><strong>Further Listening</strong></h3>
+<p>If you’re keen to delve deeper into the world of compilers and AI, I highly recommend listening to the latest episode of the <a href="https://latent.space/p/modular">Latent Space Podcast</a> where <a href="https://twitter.com/clattner_llvm">Chris Lattner</a> inventor of LLVM, shares insights on the future of AI software and the role of compilers in this exciting era. The podcast touches upon several intriguing points, including:</p>
+<ul>
+<li>The potential of compilers to abstract away complex processes, allowing for more efficient coding.</li>
+<li>The initiative to enhance Python’s capabilities for parallel computing through Mojo.</li>
+<li>The efforts by Modular to diversify the architectures and hardware utilized in AI, moving beyond the current reliance on transformer architectures and NVIDIA’s hardware.</li>
+</ul>
+<p>It’s a rich source of information and presents a visionary perspective on the evolving landscape of AI and compiler technologies.</p>
+</section>
+<section id="my-take" class="level3">
+<h3 class="anchored" data-anchor-id="my-take"><strong>My Take</strong></h3>
+<p>While I see potential for further exploration in this field, I maintain a cautious optimism given the early stage of this research.</p>
+<p>It would be fascinating to see if this approach could be leveraged to optimize other metrics such as runtime and energy efficiency. In fact, the practical implications of optimizing compiler configurations are currently being explored in a <a href="https://www.kaggle.com/competitions/predict-ai-model-runtime">Kaggle competition hosted by Google</a>.</p>
+<p>Scaling to larger model sizes could potentially yield better results too, as the researchers only utilized a 7B parameter model. Moreover, addressing the limitation of the context window through fine-tuning for longer contexts, as discussed in <a href="https://muhtasham.github.io/blog/posts/explore-context/">my other blog</a>, could open up avenues for more advanced optimizations.</p>
+<p>In conclusion, while the paper paints a promising picture for the role of LLMs in compiler optimizations, it is essential to remain cautious. Given that the LLAMA 2 model weights were released, it would be beneficial for the community if the weights of this specific model were also shared. However, I perfectly understand if the researchers wish to spend more time exploring all realms before releasing it to the public. As we anticipate further research in this domain, a skeptical yet hopeful eye remains necessary.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

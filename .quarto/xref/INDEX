@@ -46,5 +46,11 @@
   },
   "posts/explore-context/index.qmd": {
     "index.html": "a92cd1e9"
+  },
+  "posts/llm-for-compiler-optrimization/index.qmd": {
+    "index.html": "ebe3fe1d"
+  },
+  "posts/llm-for-compiler-optimization/index.qmd": {
+    "index.html": "5cbcf00d"
   }
 }
