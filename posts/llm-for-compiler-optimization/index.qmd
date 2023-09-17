@@ -7,13 +7,13 @@ categories: [llm, papers]
 toc: true
 ---
 
-![CDC 6600 considered to be the first successful supercomputer, Computer History Museum Image by Author](chm-min.png)
+![The CDC 6600, a pioneer in the computing world, standing as the first successful supercomputer. Its legacy echoes in the advancements discussed in this blog post. Image captured at the Computer History Museum by the author.](chm-min.png)
 
 ### **Introduction**
 
-The application of Large Language Models (LLMs) in optimizing [LLVM](https://llvm.org/) assembly for code size is emerging, but is it truly shaping a new reality or just a theoretical advancement? Over the weekend, I delved deep into a new paper titled [LLMs for Compiler Optimization](https://arxiv.org/pdf/2309.07062.pdf) which explores the application of Large Language Models (LLMs) in optimizing LLVM assembly for code size.
+The application of Large Language Models (LLMs) in optimizing [LLVM](https://llvm.org/) assembly for code size is emerging, but is it truly shaping a new reality or just a theoretical advancement? Over the weekend, I delved deep into a new paper titled [LLMs for Compiler Optimization](https://arxiv.org/pdf/2309.07062.pdf) to find out.
 
-The paper presents a 7B-parameter transformer model trained from scratch to optimize LLVM assembly for code size. The paper claims a **3.0%** improvement in reducing instruction counts compared to the compiler, and it reportedly generates compilable code **91%** of the time, perfectly emulating the compiler's output **70%** of the time. 
+The paper presents a 7B-parameter transformer model based on LLAMA 2 configuration and trained from scratch to optimize LLVM assembly for code size. The paper claims a **3.0%** improvement in reducing instruction counts compared to the compiler, and it reportedly generates compilable code **91%** of the time, perfectly emulating the compiler's output **70%** of the time. 
 
 But how substantial are these improvements in real-world applications? And what are the limitations of this approach? 
 
