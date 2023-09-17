@@ -8,7 +8,7 @@ format:
 toc: true
 number-sections: false
 image: "sf-stars.png"
-categories: [llm]
+categories: [llm, papers]
 ---
 
 ![Starry night in San Francisco Image by Author](sf-stars-clear.png)

@@ -3,11 +3,13 @@ title: "🖥️​ LLMs for Compiler Optimization: A Deep Dive"
 author: "muhtasham"
 date: "2023-09-19"
 image: "chm-min.png"
-categories: [llm]
+categories: [llm, papers]
 toc: true
 ---
 
-The application of Large Language Models (LLMs) in optimizing LLVM assembly for code size is emerging, but is it truly shaping a new reality or just a theoretical advancement? Over the weekend, I delved deep into a new paper titled ["LLMs for Compiler Optimization"](https://arxiv.org/pdf/2309.07062.pdf) which explores the application of Large Language Models (LLMs) in optimizing LLVM assembly for code size.
+![CDC 600 in Computer History Museum Image by Author](chm-min.png)
+
+The application of Large Language Models (LLMs) in optimizing LLVM assembly for code size is emerging, but is it truly shaping a new reality or just a theoretical advancement? Over the weekend, I delved deep into a new paper titled [LLMs for Compiler Optimization](https://arxiv.org/pdf/2309.07062.pdf) which explores the application of Large Language Models (LLMs) in optimizing LLVM assembly for code size.
 
 ### **TL;DR**
 The paper presents a 7B-parameter transformer model trained from scratch to optimize LLVM assembly for code size. The paper claims a 3.0% improvement in reducing instruction counts compared to the compiler, and it reportedly generates compilable code 91% of the time, perfectly emulating the compiler's output 70% of the time. But how substantial are these improvements in real-world applications? 
