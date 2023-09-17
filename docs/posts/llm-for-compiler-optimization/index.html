@@ -175,15 +175,15 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="chm-min.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">CDC 600 in Computer History Museum Image by Author</figcaption>
+<figcaption class="figure-caption">CDC 6600 considered to be the first successful supercomputer, Computer History Museum Image by Author</figcaption>
 </figure>
 </div>
 <section id="introduction" class="level3">
 <h3 class="anchored" data-anchor-id="introduction"><strong>Introduction</strong></h3>
-<p>The application of Large Language Models (LLMs) in optimizing LLVM assembly for code size is emerging, but is it truly shaping a new reality or just a theoretical advancement? Over the weekend, I delved deep into a new paper titled <a href="https://arxiv.org/pdf/2309.07062.pdf">LLMs for Compiler Optimization</a> which explores the application of Large Language Models (LLMs) in optimizing LLVM assembly for code size.</p>
-<p>The paper presents a 7B-parameter transformer model trained from scratch to optimize LLVM assembly for code size. The paper claims a <strong>3.0%</strong> improvement in reducing instruction counts compared to the compiler, and it reportedly generates compilable code <strong>91%</strong> of the time, perfectly emulating the compiler’s output <strong>70%</strong> of the time. But how substantial are these improvements in real-world applications?</p>
+<p>The application of Large Language Models (LLMs) in optimizing <a href="https://llvm.org/">LLVM</a> assembly for code size is emerging, but is it truly shaping a new reality or just a theoretical advancement? Over the weekend, I delved deep into a new paper titled <a href="https://arxiv.org/pdf/2309.07062.pdf">LLMs for Compiler Optimization</a> which explores the application of Large Language Models (LLMs) in optimizing LLVM assembly for code size.</p>
+<p>The paper presents a 7B-parameter transformer model trained from scratch to optimize LLVM assembly for code size. The paper claims a <strong>3.0%</strong> improvement in reducing instruction counts compared to the compiler, and it reportedly generates compilable code <strong>91%</strong> of the time, perfectly emulating the compiler’s output <strong>70%</strong> of the time.</p>
+<p>But how substantial are these improvements in real-world applications? And what are the limitations of this approach?</p>
 <p>For a deep understanding, I encourage you to read the full paper, but if you’re short on time, this blog post will give you the highlights and my take on it.</p>
-<p>In this blog post, I will break down the key takeaways from the paper and shed light on the potential of LLMs in the realm of compiler optimizations. Stay with me as we unravel the intricacies of this research and explore the frontier of compiler optimizations.</p>
 </section>
 <section id="understanding-the-basics" class="level3">
 <h3 class="anchored" data-anchor-id="understanding-the-basics"><strong>Understanding the Basics</strong></h3>
