@@ -3,7 +3,7 @@ title: "📈 Exploring Ways to Extend Context Length in Transformers"
 image: "long.JPG"
 author: "muhtasham"
 date: "2023-08-07"
-date-modified: "2023-09-05"
+date-modified: "2023-09-19"
 categories: [llm, papers]
 toc: true
 ---
@@ -121,10 +121,7 @@ This tweet emphasizes the importance of considering token positions when evaluat
 
 ## Do We Really Need It?
 
-An observation from [Information Overload: The Challenges of Expanding Context Windows in Large Language Models](https://samaya.ai/blog/):
-
-> Current language models do not effectively use their entire context, and that retrieval is still
-a crucial ingredient for effectively augmenting language models with external knowledge.
+Harm De Vries, in his excellent [post](https://www.harmdevries.com/post/context-length/) argues that we may be wasting attention overhead on randomly concatenated files, since about 80-90% of CommonCrawl and Github examples are shorter than 2K tokens. 
 
 Not to mention that, LLMs can be easily distracted by irrelevant context
 

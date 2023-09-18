@@ -145,7 +145,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Modified</div>
       <div class="quarto-title-meta-contents">
-        <p class="date-modified">September 5, 2023</p>
+        <p class="date-modified">September 19, 2023</p>
       </div>
     </div>
       
@@ -358,10 +358,7 @@ The first ~5 tokens in each segment contribute <em>most</em> of the loss. The sh
 </section>
 <section id="do-we-really-need-it" class="level2">
 <h2 class="anchored" data-anchor-id="do-we-really-need-it">Do We Really Need It?</h2>
-<p>An observation from <a href="https://samaya.ai/blog/">Information Overload: The Challenges of Expanding Context Windows in Large Language Models</a>:</p>
-<blockquote class="blockquote">
-<p>Current language models do not effectively use their entire context, and that retrieval is still a crucial ingredient for effectively augmenting language models with external knowledge.</p>
-</blockquote>
+<p>Harm De Vries, in his excellent <a href="https://www.harmdevries.com/post/context-length/">post</a> argues that we may be wasting attention overhead on randomly concatenated files, since about 80-90% of CommonCrawl and Github examples are shorter than 2K tokens.</p>
 <p>Not to mention that, LLMs can be easily distracted by irrelevant context</p>
 <blockquote class="twitter-tweet blockquote">
 <p lang="en" dir="ltr">
