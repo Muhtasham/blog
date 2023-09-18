@@ -132,6 +132,7 @@ Not to mention that, LLMs can be easily distracted by irrelevant context
 I resonate with this quote and wish to highlight the evident trajectory within the domain of **Transformer-based architectures** in machine learning. The community, quite fittingly, has cast significant "attention" towards this design paradigm. 
 
 Interestingly, while many gravitate towards Transformers, there are noteworthy deviations. Case in point, [magic](magic.dev) has opted out of using Transformers for their novel [LTM-1](https://magic.dev/blog/ltm-1) model, a Language Model that boasts an awe-inspiring **5,000,000** token context window. 
+That being said, I also do find the work on sub-quadratic attention models [Hyena](https://arxiv.org/abs/2302.10866), [RWKV](https://arxiv.org/abs/2305.13048), [S4etc](https://arxiv.org/abs/2111.00396) quite exciting
 
 Following my insightful interaction with Eric Steinberger, the CEO of magic, at the [NVIDIA Berlin event](https://muhtasham.github.io/blog/posts/nvidia-berlin/) last month, I am inclined to believe that their approach may very well harness context in ways that could surpass traditional Transformers.
 
