@@ -7,24 +7,21 @@ about:
     - icon: github
       text: GitHub
       href: https://github.com/muhtasham
+    - icon: google
+      text: Google Scholar
+      href: https://scholar.google.de/citations?user=Ce-Rb1sAAAAJ&hl=en
     - icon: git
       text: HuggingFace
       href: https://huggingface.co/muhtasham
     - icon: medium
       text: Medium
       href: https://medium.com/@muhtasham
-    - icon: envelope
-      text: Email
-      href: "mailto:muhtasham97[at]gmail[dot]com"
     - icon: twitter
       text: Twitter
       href: https://twitter.com/muhtasham9
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/muhtasham
-    - icon: google
-      text: Google Scholar
-      href: https://scholar.google.de/citations?user=Ce-Rb1sAAAAJ&hl=en
 ---
 
 ::: {.callout-warning collapse="true"}
