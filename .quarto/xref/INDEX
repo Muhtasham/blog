@@ -52,5 +52,8 @@
   },
   "posts/llm-for-compiler-optimization/index.qmd": {
     "index.html": "5cbcf00d"
+  },
+  "posts/os-concepts-llm/index.qmd": {
+    "index.html": "f7028e79"
   }
 }

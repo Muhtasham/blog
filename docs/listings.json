@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/os-concepts-llm/index.html",
       "/posts/llm-for-compiler-optimization/index.html",
       "/posts/explore-context/index.html",
       "/posts/nvidia-berlin/index.html",

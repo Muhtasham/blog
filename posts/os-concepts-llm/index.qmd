@@ -1,0 +1,73 @@
+---
+title: "2️⃣ Concepts from Operating Systems That Found Their Way in LLMs"
+author: "muhtasham"
+date: "2023-10-22"
+image: "punchcard.jpeg"
+categories: [llm, papers]
+toc: true
+---
+
+![A 12-row/80-column IBM punched card from the Computer History Museum](punchcard.jpeg)
+*Image by Author. This IBM punched card, an early form of data encoding, reminds us that at the core, computers don't see strings or words but numerical values. A nod to the origins, it's the OG tokenizer that set the stage for today's intricate LLMs.*
+
+### Introduction
+
+As technology grows, different areas of study often mix in unexpected ways. A great example is how ideas from computer operating systems have been used in large language models (LLMs), specifically the transformer-based ones. 
+
+Let’s explore two of these ideas: Branch Prediction and Virtual Memory Paging.
+
+### Branch Prediction in CPUs
+
+**Traditional Use in CPUs**
+
+Branch prediction is a tool used in computers to speed up how they work. When a computer has to choose between two sets of instructions, it tries to guess which set will be used next. Here’s a breakdown:
+
+1. **Prediction:** The computer makes a guess about the next set of instructions.
+2. **Speculative Sampling:** Based on that guess, the computer starts working on those instructions, even if it's not sure it's the right choice.
+3. **Correction:** If the guess is right, the computer keeps going. If it's wrong, the computer starts over and chooses the other set.
+
+**How LLMs Use This Idea**
+
+Google Deepmind used this idea to make LLMs faster in Their work [Accelerating Large Language Model Decoding with Speculative Sampling](https://arxiv.org/abs/2302.01318). Their algorithm uses a smaller draft model to make initial guesses and a larger primary model to validate them. If the draft often guesses right, operations become faster, reducing latency.
+
+There are some people speculating that OpenAI might be using speculative decoding on [GPT-4's inference](https://news.ycombinator.com/item?id=36710170). This technique speeds up how LLMs work, especially when making guesses. You can see it in action [here](https://huggingface.co/blog/assisted-generation#greedy-decoding-with-assisted-generation).
+
+### Virtual Memory Paging
+
+**Traditional Use in Computers**
+
+Virtual memory acts as a backup system for a computer's primary memory, the RAM. When the RAM is full, the computer uses a part of its storage space (like a hard drive) to keep things going. This helps the computer do more things at once.
+
+**How LLMs Use This Idea**
+
+Transformers, especially LLMs, have a concept called "KV cache" similar to RAM. To efficiently manage longer sequences that don't fit in memory, they use an approach resembling virtual memory paging.
+
+**vLLM: virtual paging for KV cache**
+
+Researchers from UC Berkley introduced this idea in a study called [Efficient Memory Management for Large Language Model Serving with PagedAttention](https://arxiv.org/abs/2309.06180).
+
+The heart of vLLM is PagedAttention. It's a fresh take on how attention works in transformers, borrowing from the paging idea in computer OS. Remarkably, without changing the original model, PagedAttention allows batching up to 5x more sequences. This means better use of GPU resources and faster operations.
+
+Also here's a rapid breakdown of some crucial SOTA LLM serving techniques as of Oct 2023:
+1. **Continuous Batching:** Increases throughput by allowing requests to immediately jump onto an ongoing GPU batch, minimizing wait time.
+2. **PagedAttention:** Much like OS's virtual paging but tailored for KV cache in LLMs, allowing 3x more simultaneous requests and thereby tripling throughput.
+3. **Speculative Decoding:** Uses a smaller draft model to make initial guesses and a larger primary model to validate them. If the draft often guesses right, operations become faster, reducing latency, like we described in the previous section.
+
+
+**MemGPT: "Virtually" Extending LLM's Limited Context Windows**
+
+[MemGPT: Towards LLMs as Operating Systems](https://arxiv.org/abs/2310.08560) also from UC Berkley is a new way to help LLMs like GPT-4 remember more information. Think of it as adding an extra brain to the LLM. This extra brain has two parts:
+
+1. **Internal Memory (LLM RAM):** A small space where the LLM keeps important information.
+2. **External Memory (LLM HDD):** A much larger space where the LLM can store and retrieve data when needed.
+
+In the realm of LLMs, context and memory are kind of like the foundational, quote unquote, RAM of our era. Andrej Karpathy has already made this comparison:
+
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">The analogy between GPTs of today to the CPUs of early days of computing are interesting. GPT is a funny kind of programmable text computer. Have to think through it more 🤔 but e.g.:<br><br>## Memory<br>GPT-4 RAM is ~log2(50K vocab size)*(32K context length)/(8 bits/byte) ~= 64kB,…</p>&mdash; Andrej Karpathy (@karpathy) <a href="https://twitter.com/karpathy/status/1644183721405464576?ref_src=twsrc%5Etfw">April 7, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+When the LLM needs data from the external memory, it breaks it into smaller pieces that fit into the internal memory. This lets LLMs handle big tasks that need lots of information.
+
+
+### Conclusion
+
+The world of tech is amazing and full of surprises. Old ideas from computer systems are now helping new technologies like LLMs work better. This shows how sharing ideas between different fields can lead to great things.

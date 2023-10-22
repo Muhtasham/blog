@@ -62,13 +62,17 @@ This thought intrigues me: while visual thumbnails offer an instantaneous snapsh
 ## Explore My Public Talks
 I have had the opportunity to share my insights and knowledge through several public talks over the years. These talks encompass various topics including LLMOps deployment, language chain technologies, and sequential multi-task learning in NLP. Feel free to delve into the resources linked below to explore the depth of these topics:
 
+- [All you need to know about LLMs](https://docs.google.com/presentation/d/1JeC0zPfwb3YdjDgArMsbp587a-opHWfSLRMlu804mSI/edit?usp=sharing)
+  - **Date:** October 21, 2023
+  - **Event:** TUM.AI Summit
+
 - [LLMOps: Deployment and Learning in Production](https://docs.google.com/presentation/d/141LQ5bNJguMLv8kdnBzR0CwsiJUGDsp8ffw5AUfLBV8/edit?usp=sharing)
   - **Date:** June 15, 2023
   - **Event:** GenerataX Mini-Conference
 
 - [Munich Lagnchain #1](https://docs.google.com/presentation/d/1BaaKqva7gZj9SpiUmnRFbEBUIKBi3FYuIj8IG9quCUk/edit?usp=sharing)
   - **Date:** June 7, 2023
-  - **Event:** Munich Lagnchain Event
+  - **Event:** Munich Lagnchain Meetup
 
 - [Sequential Multi-task Learning in NLP](https://docs.google.com/presentation/d/1ZDLwliA7snN84uxNlOhQG4fC5324o-CuQJ0nDaxbK18/edit?usp=sharing)
   - **Date:** December 15, 2022
