@@ -7,12 +7,11 @@ categories: [llm, papers]
 toc: true
 ---
 
-![A 12-row/80-column IBM punched card from the Computer History Museum](punchcard.jpeg)
-*Image by Author. This IBM punched card, an early form of data encoding, reminds us that at the core, computers don't see strings or words but numerical values. A nod to the origins, it's the OG tokenizer that set the stage for today's intricate LLMs.*
+![This IBM punched card, an early form of data encoding, reminds us that at the core, computers don't see strings or words but numerical values. A nod to the origins, it's the OG tokenizer that set the stage for today's intricate LLMs Image by Author](punchcard.jpeg)
 
 ### Introduction
 
-As technology grows, different areas of study often mix in unexpected ways. A great example is how ideas from computer operating systems have been used in large language models (LLMs), specifically the transformer-based ones. 
+Hello dear readers! I wanted to quickly share some of my learnings about how traditional computer operating system concepts are influencing the world of Large Language Models (LLMs), specifically the transformer-based ones. If I've missed anything or you have insights to share, do let me know!
 
 Let’s explore two of these ideas: Branch Prediction and Virtual Memory Paging.
 
@@ -44,11 +43,11 @@ Transformers, especially LLMs, have a concept called "KV cache" similar to RAM. 
 
 **vLLM: virtual paging for KV cache**
 
-Researchers from UC Berkley introduced this idea in a study called [Efficient Memory Management for Large Language Model Serving with PagedAttention](https://arxiv.org/abs/2309.06180).
+Researchers from UC Berkeley introduced this idea in a study called [Efficient Memory Management for Large Language Model Serving with PagedAttention](https://arxiv.org/abs/2309.06180).
 
 The heart of vLLM is PagedAttention. It's a fresh take on how attention works in transformers, borrowing from the paging idea in computer OS. Remarkably, without changing the original model, PagedAttention allows batching up to 5x more sequences. This means better use of GPU resources and faster operations.
 
-Also here's a rapid breakdown of some crucial SOTA LLM serving techniques as of Oct 2023:
+Also here's a rapid breakdown of some crucial state of the art LLM serving techniques as of Oct 2023:
 1. **Continuous Batching:** Increases throughput by allowing requests to immediately jump onto an ongoing GPU batch, minimizing wait time.
 2. **PagedAttention:** Much like OS's virtual paging but tailored for KV cache in LLMs, allowing 3x more simultaneous requests and thereby tripling throughput.
 3. **Speculative Decoding:** Uses a smaller draft model to make initial guesses and a larger primary model to validate them. If the draft often guesses right, operations become faster, reducing latency, like we described in the previous section.
@@ -61,13 +60,14 @@ Also here's a rapid breakdown of some crucial SOTA LLM serving techniques as of 
 1. **Internal Memory (LLM RAM):** A small space where the LLM keeps important information.
 2. **External Memory (LLM HDD):** A much larger space where the LLM can store and retrieve data when needed.
 
+When the LLM needs data from the external memory, it breaks it into smaller pieces that fit into the internal memory. This lets LLMs handle big tasks that need lots of information.
+
+MemGPT makes it easier to use LLMs for tasks that need a lot of memory. With this tool, we don't have to worry about the LLM running out of space.
+
 In the realm of LLMs, context and memory are kind of like the foundational, quote unquote, RAM of our era. Andrej Karpathy has already made this comparison:
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">The analogy between GPTs of today to the CPUs of early days of computing are interesting. GPT is a funny kind of programmable text computer. Have to think through it more 🤔 but e.g.:<br><br>## Memory<br>GPT-4 RAM is ~log2(50K vocab size)*(32K context length)/(8 bits/byte) ~= 64kB,…</p>&mdash; Andrej Karpathy (@karpathy) <a href="https://twitter.com/karpathy/status/1644183721405464576?ref_src=twsrc%5Etfw">April 7, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-When the LLM needs data from the external memory, it breaks it into smaller pieces that fit into the internal memory. This lets LLMs handle big tasks that need lots of information.
-
-
 ### Conclusion
 
-The world of tech is amazing and full of surprises. Old ideas from computer systems are now helping new technologies like LLMs work better. This shows how sharing ideas between different fields can lead to great things.
+Ideas and strategies often flow between different fields of tech, leading to innovations. In this case, traditional computer systems concepts are helping to improve transformer-based LLMs. This was a brief share of my learnings, and I genuinely invite and appreciate feedback, insights, and further discussions on this topic.
