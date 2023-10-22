@@ -27,7 +27,7 @@ Branch prediction is a tool used in computers to speed up how they work. When a 
 
 **How LLMs Use This Idea**
 
-Google Deepmind used this idea to make LLMs faster in Their work [Accelerating Large Language Model Decoding with Speculative Sampling](https://arxiv.org/abs/2302.01318). Their algorithm uses a smaller draft model to make initial guesses and a larger primary model to validate them. If the draft often guesses right, operations become faster, reducing latency.
+Google Deepmind used this idea to make LLMs faster in [Accelerating Large Language Model Decoding with Speculative Sampling](https://arxiv.org/abs/2302.01318). Their algorithm uses a smaller draft model to make initial guesses and a larger primary model to validate them. If the draft often guesses right, operations become faster, reducing latency.
 
 There are some people speculating that OpenAI might be using speculative decoding on [GPT-4's inference](https://news.ycombinator.com/item?id=36710170). This technique speeds up how LLMs work, especially when making guesses. You can see it in action [here](https://huggingface.co/blog/assisted-generation#greedy-decoding-with-assisted-generation).
 
@@ -35,15 +35,15 @@ There are some people speculating that OpenAI might be using speculative decodin
 
 **Traditional Use in Computers**
 
-Virtual memory acts as a backup system for a computer's primary memory, the RAM. When the RAM is full, the computer uses a part of its storage space (like a hard drive) to keep things going. This helps the computer do more things at once.
+Virtual memory acts as a backup system for a computer's primary memory, the Random Access Memmory (RAM). When the RAM is full, the computer uses a part of its storage space (like a hard drive) to keep things going. This helps the computer do more things at once.
 
 **How LLMs Use This Idea**
 
-Transformers, especially LLMs, have a concept called "KV cache" similar to RAM. To efficiently manage longer sequences that don't fit in memory, they use an approach resembling virtual memory paging.
+Transformers, especially LLMs, feature a mechanism called "KV cache," similar to RAM, that temporarily stores key-value pairs during attention operations for quick access. To efficiently handle longer sequences that don't fit in memory, they could potentially adopt techniques inspired by virtual memory paging.
 
 **vLLM: virtual paging for KV cache**
 
-Researchers from UC Berkeley introduced this idea in a study called [Efficient Memory Management for Large Language Model Serving with PagedAttention](https://arxiv.org/abs/2309.06180).
+Researchers from UC Berkeley introduced this idea in a study called [Efficient Memory Management for Large Language Model Serving with PagedAttention](https://arxiv.org/abs/2309.06180) also dubbed as vLLM.
 
 The heart of vLLM is PagedAttention. It's a fresh take on how attention works in transformers, borrowing from the paging idea in computer OS. Remarkably, without changing the original model, PagedAttention allows batching up to 5x more sequences. This means better use of GPU resources and faster operations.
 
