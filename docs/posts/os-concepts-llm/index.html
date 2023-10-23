@@ -121,6 +121,8 @@ ul.task-list li input[type="checkbox"] {
                                 <div class="quarto-categories">
                 <div class="quarto-category">llm</div>
                 <div class="quarto-category">papers</div>
+                <div class="quarto-category">security</div>
+                <div class="quarto-category">tokenizer</div>
               </div>
                   </div>
   </div>
@@ -142,6 +144,12 @@ ul.task-list li input[type="checkbox"] {
       </div>
     </div>
     
+      <div>
+      <div class="quarto-title-meta-heading">Modified</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date-modified">October 23, 2023</p>
+      </div>
+    </div>
       
     </div>
     
@@ -199,7 +207,8 @@ ul.task-list li input[type="checkbox"] {
 <section id="how-llms-use-this-idea" class="level3">
 <h3 class="anchored" data-anchor-id="how-llms-use-this-idea">How LLMs Use This Idea</h3>
 <p>Google Deepmind used similar idea to make LLMs faster in <a href="https://arxiv.org/abs/2302.01318">Accelerating Large Language Model Decoding with Speculative Sampling</a>. Their algorithm uses a smaller draft model to make initial guesses and a larger primary model to validate them. If the draft often guesses right, operations become faster, reducing latency.</p>
-<p>There are some people speculating that OpenAI might be using speculative decoding on <a href="https://news.ycombinator.com/item?id=36710170">GPT-4’s inference</a>. This technique speeds up how LLMs work, especially when making guesses. You can see it in action <a href="https://huggingface.co/blog/assisted-generation#greedy-decoding-with-assisted-generation">here</a>.</p>
+<p>There are some people speculating that OpenAI might be using speculative decoding on <a href="https://news.ycombinator.com/item?id=36710170">GPT-4’s inference</a>. If you’re interested in a visual explanation, an insightful visualization on <a href="https://huggingface.co/blog/assisted-generation#greedy-decoding-with-assisted-generation">speculative decoding/assisted generation</a> is worth checking out.</p>
+<p>Moreover, there’s an intriguing recent paper, <a href="https://arxiv.org/abs/2310.07177">Online Speculative Decoding (OSD)</a>, that takes this concept to another level. The essence of OSD is to continually refine (multiple) draft model(s) based on observed user query data, leveraging the spare computational resources in LLM serving clusters. This approach is especially useful when the draft model is not as accurate as the target model, as it can be continually refined to improve its predictive accuracy.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -262,7 +271,7 @@ Potential Security Vulnerabilities in LLMs
 </ol>
 <p>When the LLM needs data from the external memory, it breaks it into smaller pieces that fit into the internal memory. This lets LLMs handle big tasks that need lots of information.</p>
 <p>MemGPT makes it easier to use LLMs for tasks that need a lot of memory. With this tool, we don’t have to worry about the LLM running out of space.</p>
-<p>In the realm of LLMs, context and memory are kind of like the foundational, quote unquote, RAM of our era. Andrej Karpathy has already made this comparison:</p>
+<p>In the realm of LLMs, context and memory are kind of like the foundational, “RAM” of our era. Andrej Karpathy has already made this comparison:</p>
 <blockquote class="twitter-tweet blockquote">
 <p lang="en" dir="ltr">
 The analogy between GPTs of today to the CPUs of early days of computing are interesting. GPT is a funny kind of programmable text computer. Have to think through it more 🤔 but e.g.:<br><br>## Memory<br>GPT-4 RAM is ~log2(50K vocab size)*(32K context length)/(8 bits/byte) ~= 64kB,…

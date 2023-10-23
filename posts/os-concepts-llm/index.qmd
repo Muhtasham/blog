@@ -2,8 +2,9 @@
 title: "2️⃣ Concepts from Operating Systems That Found Their Way in LLMs"
 author: "muhtasham"
 date: "2023-10-22"
+date-modified: "2023-10-23"
 image: "punchcard.jpeg"
-categories: [llm, papers]
+categories: [llm, papers, security, tokenizer]
 toc: true
 ---
 
@@ -27,7 +28,9 @@ Branch prediction is a tool used in computers to speed up how they work. When a 
 
 Google Deepmind used similar idea to make LLMs faster in [Accelerating Large Language Model Decoding with Speculative Sampling](https://arxiv.org/abs/2302.01318). Their algorithm uses a smaller draft model to make initial guesses and a larger primary model to validate them. If the draft often guesses right, operations become faster, reducing latency.
 
-There are some people speculating that OpenAI might be using speculative decoding on [GPT-4's inference](https://news.ycombinator.com/item?id=36710170). This technique speeds up how LLMs work, especially when making guesses. You can see it in action [here](https://huggingface.co/blog/assisted-generation#greedy-decoding-with-assisted-generation).
+There are some people speculating that OpenAI might be using speculative decoding on [GPT-4's inference](https://news.ycombinator.com/item?id=36710170). If you're interested in a visual explanation, an insightful visualization on  [speculative decoding/assisted generation](https://huggingface.co/blog/assisted-generation#greedy-decoding-with-assisted-generation) is worth checking out.
+
+Moreover, there's an intriguing recent paper, [Online Speculative Decoding (OSD)](https://arxiv.org/abs/2310.07177), that takes this concept to another level. The essence of OSD is to continually refine (multiple) draft model(s) based on observed user query data, leveraging the spare computational resources in LLM serving clusters. This approach is especially useful when the draft model is not as accurate as the target model, as it can be continually refined to improve its predictive accuracy.
 
 ::: {.callout-caution collapse="true"}
 
@@ -96,7 +99,7 @@ When the LLM needs data from the external memory, it breaks it into smaller piec
 
 MemGPT makes it easier to use LLMs for tasks that need a lot of memory. With this tool, we don't have to worry about the LLM running out of space.
 
-In the realm of LLMs, context and memory are kind of like the foundational, quote unquote, RAM of our era. Andrej Karpathy has already made this comparison:
+In the realm of LLMs, context and memory are kind of like the foundational, "RAM" of our era. Andrej Karpathy has already made this comparison:
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">The analogy between GPTs of today to the CPUs of early days of computing are interesting. GPT is a funny kind of programmable text computer. Have to think through it more 🤔 but e.g.:<br><br>## Memory<br>GPT-4 RAM is ~log2(50K vocab size)*(32K context length)/(8 bits/byte) ~= 64kB,…</p>&mdash; Andrej Karpathy (@karpathy) <a href="https://twitter.com/karpathy/status/1644183721405464576?ref_src=twsrc%5Etfw">April 7, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
