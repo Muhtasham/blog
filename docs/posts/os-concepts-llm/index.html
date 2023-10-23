@@ -208,38 +208,33 @@ Potential Security Vulnerabilities in LLMs
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>As neural network models, especially Large Language Models (LLMs), become pivotal in various applications, understanding and addressing their security vulnerabilities is paramount.</p>
-<section id="spectre-and-its-implications-for-llms" class="level3">
-<h3 class="anchored" data-anchor-id="spectre-and-its-implications-for-llms">Spectre and Its Implications for LLMs</h3>
+<p><strong>Spectre and Its Implications for LLMs</strong></p>
 <p><a href="https://en.wikipedia.org/wiki/Spectre_(security_vulnerability)">Spectre</a> is one of the key transient execution CPU vulnerabilities, which involves timing side-channel attacks affecting modern microprocessors. The speculative execution in these processors might expose private data through observable side effects. Given that LLMs function on similar speculative principles, the risks associated with Spectre could extend to them as well.</p>
-</section>
-<section id="the-risk-of-llms-interacting-with-code-interpreters" class="level3">
-<h3 class="anchored" data-anchor-id="the-risk-of-llms-interacting-with-code-interpreters">The Risk of LLMs Interacting with Code Interpreters</h3>
+<p><strong>The Risk of LLMs Interacting with Code Interpreters</strong></p>
 <p>A significant concern arises when LLMs have access to environments capable of running code, such as the <a href="https://chat.openai.com/?model=gpt-4-code-interpreter">Code Interpreter</a>. In such scenarios, vulnerabilities could be exploited to make the LLMs run malicious code, posing even more significant security threats. It’s imperative to exercise caution and ensure secure barriers when deploying LLMs in such settings.</p>
-</section>
-<section id="safeguarding-model-weights" class="level3">
-<h3 class="anchored" data-anchor-id="safeguarding-model-weights">Safeguarding Model Weights</h3>
+<p><strong>Safeguarding Model Weights</strong></p>
 <p>LLMs often store model weights in formats that are susceptible to security breaches. An alternative to consider is “<a href="https://huggingface.co/docs/safetensors/index">Safetensors</a>” — a more secure format ensuring the safety of tensor data. Not only is it a secure choice, but Safetensors also boasts impressive speed, making it a viable option for real-time applications.</p>
-</section>
-<section id="llms-deep-neural-networks-behind-the-scenes" class="level3">
-<h3 class="anchored" data-anchor-id="llms-deep-neural-networks-behind-the-scenes">LLMs: Deep Neural Networks Behind the Scenes</h3>
+<p><strong>LLMs: Deep Neural Networks Behind the Scenes</strong></p>
 <p>It’s vital to remember that LLMs are deep neural networks (DNNs) at their core. This association brings inherent security concerns, as highlighted by research papers:</p>
 <ol type="1">
 <li><strong><a href="https://arxiv.org/abs/1812.11720">Stealing Neural Networks via Timing Side Channels</a>:</strong> This paper underscores the susceptibility of Neural Networks to timing side channel attacks and proposes a black-box Neural Network extraction technique.</li>
 <li><strong><a href="https://ieeexplore.ieee.org/document/8835365">Neural Cleanse: Identifying and Mitigating Backdoor Attacks in Neural Networks</a>:</strong> This research emphasizes the opaque nature of DNNs, making them prone to backdoor attacks. It introduces methods to detect and counter such hidden threats.</li>
 </ol>
-</section>
-<section id="learning-from-the-past-avoiding-the-mistakes-of-operating-systems" class="level3">
-<h3 class="anchored" data-anchor-id="learning-from-the-past-avoiding-the-mistakes-of-operating-systems">Learning from the Past: Avoiding the Mistakes of Operating Systems</h3>
+<p><strong>Learning from the Past: Avoiding the Mistakes of Operating Systems</strong></p>
 <p>As we venture deeper into the world of LLMs and their applications, it’s evident we’re following in the footsteps of operating systems in many ways. This parallel evolution underscores the importance of being cognizant of the pitfalls and vulnerabilities that plagued operating systems. The onus is on us to ensure that we do not repeat past mistakes, such as those seen in speculative execution vulnerabilities like Spectre.</p>
 <p>In conclusion, as the applicability of LLMs grows, it’s crucial for the research and tech communities to proactively address the looming security threats to ensure these models serve their purpose without compromising security.</p>
-</section>
 </div>
 </div>
 </div>
 <p><strong>vLLM: virtual paging for KV cache</strong></p>
 <p>Researchers from UC Berkeley introduced this idea in a study called <a href="https://arxiv.org/abs/2309.06180">Efficient Memory Management for Large Language Model Serving with PagedAttention</a> also dubbed as vLLM.</p>
 <p>The heart of vLLM is PagedAttention. It’s a fresh take on how attention works in transformers, borrowing from the paging idea in computer OS. Remarkably, without changing the original model, PagedAttention allows batching up to 5x more sequences. This means better use of GPU resources and faster operations.</p>
-<p>Also here’s a rapid breakdown of some crucial state of the art LLM serving techniques as of Oct 2023: 1. <strong>Continuous Batching:</strong> Increases throughput by allowing requests to immediately jump onto an ongoing GPU batch, minimizing wait time. 2. <strong>PagedAttention:</strong> Much like OS’s virtual paging but tailored for KV cache in LLMs, allowing 3x more simultaneous requests and thereby tripling throughput. 3. <strong>Speculative Decoding:</strong> Uses a smaller draft model to make initial guesses and a larger primary model to validate them. If the draft often guesses right, operations become faster, reducing latency, like we described in the previous section.</p>
+<p>Also here’s a rapid breakdown of some crucial state of the art LLM serving techniques as of Oct 2023:</p>
+<ol type="1">
+<li><strong>Continuous Batching:</strong> Increases throughput by allowing requests to immediately jump onto an ongoing GPU batch, minimizing wait time.</li>
+<li><strong>PagedAttention:</strong> Much like OS’s virtual paging but tailored for KV cache in LLMs, allowing 3x more simultaneous requests and thereby tripling throughput.</li>
+<li><strong>Speculative Decoding:</strong> Uses a smaller draft model to make initial guesses and a larger primary model to validate them. If the draft often guesses right, operations become faster, reducing latency, like we described in the previous section.</li>
+</ol>
 <p><strong>MemGPT: “Virtually” Extending LLM’s Limited Context Windows</strong></p>
 <p><a href="https://arxiv.org/abs/2310.08560">MemGPT: Towards LLMs as Operating Systems</a> also from UC Berkley is a new way to help LLMs like GPT-4 remember more information. Think of it as adding an extra brain to the LLM. This extra brain has two parts:</p>
 <ol type="1">
