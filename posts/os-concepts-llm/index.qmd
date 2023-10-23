@@ -11,9 +11,7 @@ toc: true
 
 ### Introduction
 
-Hello dear readers! I wanted to quickly share some of my learnings about how traditional computer operating system concepts are influencing the world of Large Language Models (LLMs), specifically the transformer-based ones. 
-
-Let’s explore two of these ideas: Branch Prediction and Virtual Memory Paging.
+Diving into the intricacies of technology often uncovers unexpected parallels. Recently, I’ve been struck by how foundational computer operating system concepts are making waves in the domain of Large Language Models (LLMs), especially the transformer variants. I will try to spotlight two concepts that I observed so far: Branch Prediction and Virtual Memory Paging.
 
 ### Branch Prediction in CPUs
 
@@ -42,6 +40,41 @@ In essence, virtual memory gives applications the illusion they're utilizing a l
 **How LLMs Use This Idea**
 
 Transformers, especially LLMs, feature a mechanism called "KV cache," similar to RAM, that temporarily stores key-value pairs during attention operations for quick access. To efficiently handle longer sequences that don't fit in memory, they could potentially adopt techniques inspired by virtual memory paging.
+
+::: {.callout-caution collapse="true"}
+
+## Potential Security Vulnerabilities in LLMs
+
+As neural network models, especially Large Language Models (LLMs), become pivotal in various applications, understanding and addressing their security vulnerabilities is paramount.
+
+### Spectre and Its Implications for LLMs
+
+[Spectre](https://en.wikipedia.org/wiki/Spectre_(security_vulnerability)) is one of the key transient execution CPU vulnerabilities, which involves timing side-channel attacks affecting modern microprocessors. The speculative execution in these processors might expose private data through observable side effects. Given that LLMs function on similar speculative principles, the risks associated with Spectre could extend to them as well.
+
+### The Risk of LLMs Interacting with Code Interpreters
+
+A significant concern arises when LLMs have access to environments capable of running code, such as the [Code Interpreter](https://chat.openai.com/?model=gpt-4-code-interpreter). In such scenarios, vulnerabilities could be exploited to make the LLMs run malicious code, posing even more significant security threats. It's imperative to exercise caution and ensure secure barriers when deploying LLMs in such settings.
+
+### Safeguarding Model Weights
+
+LLMs often store model weights in formats that are susceptible to security breaches. An alternative to consider is "[Safetensors](https://huggingface.co/docs/safetensors/index)" — a more secure format ensuring the safety of tensor data. Not only is it a secure choice, but Safetensors also boasts impressive speed, making it a viable option for real-time applications.
+
+### LLMs: Deep Neural Networks Behind the Scenes
+
+It's vital to remember that LLMs are deep neural networks (DNNs) at their core. This association brings inherent security concerns, as highlighted by research papers:
+
+1. **[Stealing Neural Networks via Timing Side Channels](https://arxiv.org/abs/1812.11720):** This paper underscores the susceptibility of Neural Networks to timing side channel attacks and proposes a black-box Neural Network extraction technique.
+2. **[Neural Cleanse: Identifying and Mitigating Backdoor Attacks in Neural Networks](https://ieeexplore.ieee.org/document/8835365):** This research emphasizes the opaque nature of DNNs, making them prone to backdoor attacks. It introduces methods to detect and counter such hidden threats.
+
+### Learning from the Past: Avoiding the Mistakes of Operating Systems
+
+As we venture deeper into the world of LLMs and their applications, it's evident we're following in the footsteps of operating systems in many ways. This parallel evolution underscores the importance of being cognizant of the pitfalls and vulnerabilities that plagued operating systems. The onus is on us to ensure that we do not repeat past mistakes, such as those seen in speculative execution vulnerabilities like Spectre.
+
+In conclusion, as the applicability of LLMs grows, it's crucial for the research and tech communities to proactively address the looming security threats to ensure these models serve their purpose without compromising security.
+
+:::
+
+
 
 **vLLM: virtual paging for KV cache**
 
