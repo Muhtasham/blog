@@ -175,7 +175,7 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <section id="introduction" class="level3">
 <h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
-<p>Hello dear readers! I wanted to quickly share some of my learnings about how traditional computer operating system concepts are influencing the world of Large Language Models (LLMs), specifically the transformer-based ones. If I’ve missed anything or you have insights to share, do let me know!</p>
+<p>Hello dear readers! I wanted to quickly share some of my learnings about how traditional computer operating system concepts are influencing the world of Large Language Models (LLMs), specifically the transformer-based ones.</p>
 <p>Let’s explore two of these ideas: Branch Prediction and Virtual Memory Paging.</p>
 </section>
 <section id="branch-prediction-in-cpus" class="level3">
@@ -188,13 +188,14 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Correction:</strong> If the guess is right, the computer keeps going. If it’s wrong, the computer starts over and chooses the other set.</li>
 </ol>
 <p><strong>How LLMs Use This Idea</strong></p>
-<p>Google Deepmind used this idea to make LLMs faster in <a href="https://arxiv.org/abs/2302.01318">Accelerating Large Language Model Decoding with Speculative Sampling</a>. Their algorithm uses a smaller draft model to make initial guesses and a larger primary model to validate them. If the draft often guesses right, operations become faster, reducing latency.</p>
+<p>Google Deepmind used similar idea to make LLMs faster in <a href="https://arxiv.org/abs/2302.01318">Accelerating Large Language Model Decoding with Speculative Sampling</a>. Their algorithm uses a smaller draft model to make initial guesses and a larger primary model to validate them. If the draft often guesses right, operations become faster, reducing latency.</p>
 <p>There are some people speculating that OpenAI might be using speculative decoding on <a href="https://news.ycombinator.com/item?id=36710170">GPT-4’s inference</a>. This technique speeds up how LLMs work, especially when making guesses. You can see it in action <a href="https://huggingface.co/blog/assisted-generation#greedy-decoding-with-assisted-generation">here</a>.</p>
 </section>
 <section id="virtual-memory-paging" class="level3">
 <h3 class="anchored" data-anchor-id="virtual-memory-paging">Virtual Memory Paging</h3>
 <p><strong>Traditional Use in Computers</strong></p>
-<p>Virtual memory acts as a backup system for a computer’s primary memory, the Random Access Memmory (RAM). When the RAM is full, the computer uses a part of its storage space (like a hard drive) to keep things going. This helps the computer do more things at once.</p>
+<p>Virtual memory is an abstraction provided by the operating system that makes it seem to an application as if it has access to more RAM than is physically available. When the actual RAM gets filled up, the operating system uses a portion of the computer’s storage space (typically the hard drive) as an extension of RAM. This process enables the computer to handle more tasks concurrently by mapping the application’s memory addresses to actual physical locations, which could be in RAM, on the hard disk, or even other storage mediums.</p>
+<p>In essence, virtual memory gives applications the illusion they’re utilizing a large, contiguous chunk of RAM, even though the reality behind the scenes might be quite different.</p>
 <p><strong>How LLMs Use This Idea</strong></p>
 <p>Transformers, especially LLMs, feature a mechanism called “KV cache,” similar to RAM, that temporarily stores key-value pairs during attention operations for quick access. To efficiently handle longer sequences that don’t fit in memory, they could potentially adopt techniques inspired by virtual memory paging.</p>
 <p><strong>vLLM: virtual paging for KV cache</strong></p>

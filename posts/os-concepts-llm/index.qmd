@@ -11,7 +11,7 @@ toc: true
 
 ### Introduction
 
-Hello dear readers! I wanted to quickly share some of my learnings about how traditional computer operating system concepts are influencing the world of Large Language Models (LLMs), specifically the transformer-based ones. If I've missed anything or you have insights to share, do let me know!
+Hello dear readers! I wanted to quickly share some of my learnings about how traditional computer operating system concepts are influencing the world of Large Language Models (LLMs), specifically the transformer-based ones. 
 
 Let’s explore two of these ideas: Branch Prediction and Virtual Memory Paging.
 
@@ -27,7 +27,7 @@ Branch prediction is a tool used in computers to speed up how they work. When a 
 
 **How LLMs Use This Idea**
 
-Google Deepmind used this idea to make LLMs faster in [Accelerating Large Language Model Decoding with Speculative Sampling](https://arxiv.org/abs/2302.01318). Their algorithm uses a smaller draft model to make initial guesses and a larger primary model to validate them. If the draft often guesses right, operations become faster, reducing latency.
+Google Deepmind used similar idea to make LLMs faster in [Accelerating Large Language Model Decoding with Speculative Sampling](https://arxiv.org/abs/2302.01318). Their algorithm uses a smaller draft model to make initial guesses and a larger primary model to validate them. If the draft often guesses right, operations become faster, reducing latency.
 
 There are some people speculating that OpenAI might be using speculative decoding on [GPT-4's inference](https://news.ycombinator.com/item?id=36710170). This technique speeds up how LLMs work, especially when making guesses. You can see it in action [here](https://huggingface.co/blog/assisted-generation#greedy-decoding-with-assisted-generation).
 
@@ -35,7 +35,9 @@ There are some people speculating that OpenAI might be using speculative decodin
 
 **Traditional Use in Computers**
 
-Virtual memory acts as a backup system for a computer's primary memory, the Random Access Memmory (RAM). When the RAM is full, the computer uses a part of its storage space (like a hard drive) to keep things going. This helps the computer do more things at once.
+Virtual memory is an abstraction provided by the operating system that makes it seem to an application as if it has access to more RAM than is physically available. When the actual RAM gets filled up, the operating system uses a portion of the computer's storage space (typically the hard drive) as an extension of RAM. This process enables the computer to handle more tasks concurrently by mapping the application's memory addresses to actual physical locations, which could be in RAM, on the hard disk, or even other storage mediums.
+
+In essence, virtual memory gives applications the illusion they're utilizing a large, contiguous chunk of RAM, even though the reality behind the scenes might be quite different.
 
 **How LLMs Use This Idea**
 
