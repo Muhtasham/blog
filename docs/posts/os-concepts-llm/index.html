@@ -155,8 +155,16 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#branch-prediction-in-cpus" id="toc-branch-prediction-in-cpus" class="nav-link" data-scroll-target="#branch-prediction-in-cpus">Branch Prediction in CPUs</a></li>
-  <li><a href="#virtual-memory-paging" id="toc-virtual-memory-paging" class="nav-link" data-scroll-target="#virtual-memory-paging">Virtual Memory Paging</a></li>
+  <li><a href="#branch-prediction-in-cpus" id="toc-branch-prediction-in-cpus" class="nav-link" data-scroll-target="#branch-prediction-in-cpus">Branch Prediction in CPUs</a>
+  <ul class="collapse">
+  <li><a href="#traditional-use-in-cpus" id="toc-traditional-use-in-cpus" class="nav-link" data-scroll-target="#traditional-use-in-cpus">Traditional Use in CPUs</a></li>
+  <li><a href="#how-llms-use-this-idea" id="toc-how-llms-use-this-idea" class="nav-link" data-scroll-target="#how-llms-use-this-idea">How LLMs Use This Idea</a></li>
+  </ul></li>
+  <li><a href="#virtual-memory-paging" id="toc-virtual-memory-paging" class="nav-link" data-scroll-target="#virtual-memory-paging">Virtual Memory Paging</a>
+  <ul class="collapse">
+  <li><a href="#traditional-use-in-computers" id="toc-traditional-use-in-computers" class="nav-link" data-scroll-target="#traditional-use-in-computers">Traditional Use in Computers</a></li>
+  <li><a href="#how-llms-use-this-idea-1" id="toc-how-llms-use-this-idea-1" class="nav-link" data-scroll-target="#how-llms-use-this-idea-1">How LLMs Use This Idea</a></li>
+  </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
@@ -173,20 +181,23 @@ ul.task-list li input[type="checkbox"] {
 <figcaption class="figure-caption">This IBM punched card, an early form of data encoding, reminds us that at the core, computers don’t see strings or words but numerical values. A nod to the origins, it’s the OG tokenizer that set the stage for today’s intricate LLMs Image by Author</figcaption>
 </figure>
 </div>
-<section id="introduction" class="level3">
-<h3 class="anchored" data-anchor-id="introduction">Introduction</h3>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>Diving into the intricacies of technology often uncovers unexpected parallels. Recently, I’ve been struck by how foundational computer operating system concepts are making waves in the domain of Large Language Models (LLMs), especially the transformer variants. I will try to spotlight two concepts that I observed so far: Branch Prediction and Virtual Memory Paging.</p>
 </section>
-<section id="branch-prediction-in-cpus" class="level3">
-<h3 class="anchored" data-anchor-id="branch-prediction-in-cpus">Branch Prediction in CPUs</h3>
-<p><strong>Traditional Use in CPUs</strong></p>
+<section id="branch-prediction-in-cpus" class="level2">
+<h2 class="anchored" data-anchor-id="branch-prediction-in-cpus">Branch Prediction in CPUs</h2>
+<section id="traditional-use-in-cpus" class="level3">
+<h3 class="anchored" data-anchor-id="traditional-use-in-cpus">Traditional Use in CPUs</h3>
 <p>Branch prediction is a tool used in computers to speed up how they work. When a computer has to choose between two sets of instructions, it tries to guess which set will be used next. Here’s a breakdown:</p>
 <ol type="1">
 <li><strong>Prediction:</strong> The computer makes a guess about the next set of instructions.</li>
 <li><strong>Speculative Sampling:</strong> Based on that guess, the computer starts working on those instructions, even if it’s not sure it’s the right choice.</li>
 <li><strong>Correction:</strong> If the guess is right, the computer keeps going. If it’s wrong, the computer starts over and chooses the other set.</li>
 </ol>
-<p><strong>How LLMs Use This Idea</strong></p>
+</section>
+<section id="how-llms-use-this-idea" class="level3">
+<h3 class="anchored" data-anchor-id="how-llms-use-this-idea">How LLMs Use This Idea</h3>
 <p>Google Deepmind used similar idea to make LLMs faster in <a href="https://arxiv.org/abs/2302.01318">Accelerating Large Language Model Decoding with Speculative Sampling</a>. Their algorithm uses a smaller draft model to make initial guesses and a larger primary model to validate them. If the draft often guesses right, operations become faster, reducing latency.</p>
 <p>There are some people speculating that OpenAI might be using speculative decoding on <a href="https://news.ycombinator.com/item?id=36710170">GPT-4’s inference</a>. This technique speeds up how LLMs work, especially when making guesses. You can see it in action <a href="https://huggingface.co/blog/assisted-generation#greedy-decoding-with-assisted-generation">here</a>.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
@@ -201,14 +212,15 @@ Potential Security Vulnerabilities in LLMs
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>As neural network models, especially Large Language Models (LLMs), become pivotal in various applications, understanding and addressing their security vulnerabilities is crucial. <strong>Spectre and Its Implications for LLMs</strong></p>
-<p><a href="https://en.wikipedia.org/wiki/Spectre_(security_vulnerability)">Spectre</a> is one of the key transient execution CPU vulnerabilities, which involves timing side-channel attacks affecting modern microprocessors. The speculative execution in these processors might expose private data through observable side effects. Given that LLMs function on similar speculative principles, the risks associated with Spectre could extend to them as well.</p>
+<p>As neural network models, especially Large Language Models (LLMs), become pivotal in various applications, understanding and addressing their security vulnerabilities is crucial.</p>
+<p><strong>Spectre and Its Implications for LLMs</strong></p>
+<p><a href="https://en.wikipedia.org/wiki/Spectre_(security_vulnerability)">Spectre</a> is one of the key transient execution CPU vulnerabilities, which involves timing side-channel attacks affecting modern microprocessors. The speculative execution in these processors might expose private data through observable side effects. While LLMs operate based on speculative principles similar in concept, it’s important to note that their speculative nature is fundamentally different. However, given that neural networks can be susceptible to timing side-channel attacks especially when LLMs interface with runtime environments capable of executing code, there is a potential for such attacks to be exploited.</p>
 <p><strong>The Risk of LLMs Interacting with Code Interpreters</strong></p>
 <p>A significant concern arises when LLMs have access to environments capable of running code, such as the <a href="https://chat.openai.com/?model=gpt-4-code-interpreter">Code Interpreter</a>. In such scenarios, vulnerabilities could be exploited to make the LLMs run malicious code, posing even more significant security threats. It’s important to exercise caution and ensure secure barriers when deploying LLMs in such settings.</p>
 <p><strong>Safeguarding Model Weights</strong></p>
-<p>LLMs often store model weights in formats that are susceptible to security breaches. An alternative to consider is “<a href="https://huggingface.co/docs/safetensors/index">Safetensors</a>” — a more secure format ensuring the safety of tensor data. Not only is it a secure choice, but Safetensors also boasts impressive speed, making it a viable option for real-time applications.</p>
+<p>Weights of machine learning models are often stored in formats, such as pickle, that are vulnerable to security breaches. An alternative to consider is “<a href="https://huggingface.co/docs/safetensors/index">Safetensors</a>” — a more secure format ensuring the safety of tensor data. Not only is it a secure choice, but Safetensors also has impressive speed.</p>
 <p><strong>LLMs: Deep Neural Networks Behind the Scenes</strong></p>
-<p>It’s vital to remember that LLMs are deep neural networks (DNNs) at their core. This association brings inherent security concerns, as highlighted by research papers:</p>
+<p>It’s important to remember that LLMs are deep neural networks (DNNs) at their core. This association brings inherent security concerns, as highlighted by these research papers:</p>
 <ol type="1">
 <li><strong><a href="https://arxiv.org/abs/1812.11720">Stealing Neural Networks via Timing Side Channels</a>:</strong> This paper underscores the susceptibility of Neural Networks to timing side channel attacks and proposes a black-box Neural Network extraction technique.</li>
 <li><strong><a href="https://ieeexplore.ieee.org/document/8835365">Neural Cleanse: Identifying and Mitigating Backdoor Attacks in Neural Networks</a>:</strong> This research emphasizes the opaque nature of DNNs, making them prone to backdoor attacks. It introduces methods to detect and counter such hidden threats.</li>
@@ -219,14 +231,19 @@ Potential Security Vulnerabilities in LLMs
 </div>
 </div>
 </section>
-<section id="virtual-memory-paging" class="level3">
-<h3 class="anchored" data-anchor-id="virtual-memory-paging">Virtual Memory Paging</h3>
-<p><strong>Traditional Use in Computers</strong></p>
+</section>
+<section id="virtual-memory-paging" class="level2">
+<h2 class="anchored" data-anchor-id="virtual-memory-paging">Virtual Memory Paging</h2>
+<section id="traditional-use-in-computers" class="level3">
+<h3 class="anchored" data-anchor-id="traditional-use-in-computers">Traditional Use in Computers</h3>
 <p>Virtual memory is an abstraction provided by the operating system that makes it seem to an application as if it has access to more RAM than is physically available. When the actual RAM gets filled up, the operating system uses a portion of the computer’s storage space (typically the hard drive) as an extension of RAM. This process enables the computer to handle more tasks concurrently by mapping the application’s memory addresses to actual physical locations, which could be in RAM, on the hard disk, or even other storage mediums.</p>
 <p>In essence, virtual memory gives applications the illusion they’re utilizing a large, contiguous chunk of RAM, even though the reality behind the scenes might be quite different.</p>
-<p><strong>How LLMs Use This Idea</strong></p>
+</section>
+<section id="how-llms-use-this-idea-1" class="level3">
+<h3 class="anchored" data-anchor-id="how-llms-use-this-idea-1">How LLMs Use This Idea</h3>
 <p>Transformers, especially LLMs, feature a mechanism called “KV cache,” similar to RAM, that temporarily stores key-value pairs during attention operations for quick access. To efficiently handle longer sequences that don’t fit in memory, they could potentially adopt techniques inspired by virtual memory paging.</p>
-<p><strong>vLLM: virtual paging for KV cache</strong></p>
+<section id="vllm-virtual-paging-for-kv-cache" class="level4">
+<h4 class="anchored" data-anchor-id="vllm-virtual-paging-for-kv-cache">vLLM: virtual paging for KV cache</h4>
 <p>Researchers from UC Berkeley introduced this idea in a study called <a href="https://arxiv.org/abs/2309.06180">Efficient Memory Management for Large Language Model Serving with PagedAttention</a> also dubbed as vLLM.</p>
 <p>The heart of vLLM is PagedAttention. It’s a fresh take on how attention works in transformers, borrowing from the paging idea in computer OS. Remarkably, without changing the original model, PagedAttention allows batching up to 5x more sequences. This means better use of GPU resources and faster operations.</p>
 <p>Also here’s a rapid breakdown of some crucial state of the art LLM serving techniques as of Oct 2023:</p>
@@ -235,7 +252,9 @@ Potential Security Vulnerabilities in LLMs
 <li><strong>PagedAttention:</strong> Much like OS’s virtual paging but tailored for KV cache in LLMs, allowing 3x more simultaneous requests and thereby tripling throughput.</li>
 <li><strong>Speculative Decoding:</strong> Uses a smaller draft model to make initial guesses and a larger primary model to validate them. If the draft often guesses right, operations become faster, reducing latency, like we described in the previous section.</li>
 </ol>
-<p><strong>MemGPT: “Virtually” Extending LLM’s Limited Context Windows</strong></p>
+</section>
+<section id="memgpt-virtually-extending-llms-limited-context-windows" class="level4">
+<h4 class="anchored" data-anchor-id="memgpt-virtually-extending-llms-limited-context-windows">MemGPT: “Virtually” Extending LLM’s Limited Context Windows</h4>
 <p><a href="https://arxiv.org/abs/2310.08560">MemGPT: Towards LLMs as Operating Systems</a> also from UC Berkley is a new way to help LLMs like GPT-4 remember more information. Think of it as adding an extra brain to the LLM. This extra brain has two parts:</p>
 <ol type="1">
 <li><strong>Internal Memory (LLM RAM):</strong> A small space where the LLM keeps important information.</li>
@@ -252,8 +271,10 @@ The analogy between GPTs of today to the CPUs of early days of computing are int
 </blockquote>
 <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </section>
-<section id="conclusion" class="level3">
-<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
 <p>Ideas and strategies often flow between different fields of tech, leading to innovations. In this case, traditional computer systems concepts are helping to improve transformer-based LLMs. This was a brief share of my learnings, and I genuinely invite and appreciate feedback, insights, and further discussions on this topic.</p>
 
 
