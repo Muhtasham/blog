@@ -2,7 +2,7 @@
 title: "2️⃣ Concepts from Operating Systems That Found Their Way in LLMs"
 author: "muhtasham"
 date: "2023-10-22"
-date-modified: "2023-10-23"
+date-modified: "2023-10-24"
 image: "punchcard.jpeg"
 categories: [llm, papers, security, tokenizer]
 toc: true
@@ -59,7 +59,7 @@ It's important to remember that LLMs are deep neural networks (DNNs) at their co
 
 **Learning from the Past: Avoiding the Mistakes of Operating Systems**
 
-As we venture deeper into the world of LLMs and their applications, it's evident we're following in the footsteps of operating systems in many ways. This parallel evolution underscores the importance of being cognizant of the pitfalls and vulnerabilities that plagued operating systems. The onus is on us to ensure that we do not repeat past mistakes, such as those seen in speculative execution vulnerabilities like Spectre.
+As we explore more about Large Language Models (LLMs) and how they can be used, it's clear that they share some similarities with operating systems. Just like operating systems had certain issues and vulnerabilities, LLMs could have them too. It's important for us to learn from those past mistakes to make sure we don't run into similar problems, like the security issues seen with Spectre, a vulnerability found in many modern microprocessors.
 
 :::
 
