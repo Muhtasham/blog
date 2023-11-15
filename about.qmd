@@ -62,7 +62,15 @@ This thought intrigues me: while visual thumbnails offer an instantaneous snapsh
 :::
 
 ## Explore My Public Talks
-I have had the opportunity to share my insights and knowledge through several public talks over the years. These talks encompass various topics including LLMOps deployment, language chain technologies, and sequential multi-task learning in NLP. Feel free to delve into the resources linked below to explore the depth of these topics:
+I have had the opportunity to share my insights and knowledge through several public talks over the years. These talks encompass various topics including GenAI, LLM deployments, Autonomous Agents, and classical NLP. Feel free to delve into the resources linked below to explore the depth of these topics:
+
+- [How to build Copilot for X](https://docs.google.com/presentation/d/1z77lvaHcSqF_rg3xQNTP3mLNRGVejye0p18kJmGNylI/edit?usp=sharing)
+  - **Date:** November 16, 2023
+  - **Event:** MLOPs Community Munich Meetup
+
+- [LLM inference primer](https://docs.google.com/presentation/d/1YgZOm7irAQNzOs4NAMz5-pE9WOgirRQ3fzNx38eHT8U/edit?usp=sharing)
+  - **Date:** November 8, 2023
+  - **Event:** NVIDIA x MunichNLP Meetup
 
 - [All you need to know about LLMs](https://docs.google.com/presentation/d/1JeC0zPfwb3YdjDgArMsbp587a-opHWfSLRMlu804mSI/edit?usp=sharing)
   - **Date:** October 21, 2023
