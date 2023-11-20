@@ -3,6 +3,9 @@ project:
   output-dir: docs
 website:
   title: "Machine Learners Guide to Real World"
+  twitter-card:
+    card-style: summary
+    creator: muhtasham9
   navbar:
     right:
       - about.qmd

@@ -2,14 +2,15 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/llm-watermark-attack/index.html",
       "/posts/os-concepts-llm/index.html",
       "/posts/llm-for-compiler-optimization/index.html",
       "/posts/explore-context/index.html",
       "/posts/nvidia-berlin/index.html",
       "/posts/sama-fireside-chat/index.html",
       "/posts/starcoder/index.html",
-      "/posts/vc-fireside-chat/index.html",
       "/posts/llm-bootcamp/index.html",
+      "/posts/vc-fireside-chat/index.html",
       "/posts/phildeeplearning/index.html",
       "/posts/iclr23/index.html",
       "/posts/reflections22/index.html",

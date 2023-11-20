@@ -55,5 +55,8 @@
   },
   "posts/os-concepts-llm/index.qmd": {
     "index.html": "f7028e79"
+  },
+  "posts/llm-watermark-attack/index.qmd": {
+    "index.html": "b1a38f14"
   }
 }
