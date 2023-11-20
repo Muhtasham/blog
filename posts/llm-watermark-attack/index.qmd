@@ -7,12 +7,9 @@ image: "attack.png"
 toc: true
 ---
 
-![Spacewar! on DEC PDP-1](attack.png)
+![From the pioneering era of Spacewar! on the DEC PDP-1, this post transitions into the contemporary sphere of language model security. Image captured at the Computer History Museum by the author.](attack.png)
 
-_From the pioneering era of Spacewar! on the DEC PDP-1, this post transitions into the contemporary sphere of language model security._
-
-As I dove into the fascinating world of language models, I recently stumbled upon a groundbreaking concept: a unique watermarking technique for large language models (LLMs), as detailed in [A Watermark for Large Language Models](https://arxiv.org/abs/2301.10226). While the idea of watermarking LLMs itself is intriguing, what captivated my attention even more were the various strategies to attack these watermarks. In this post, I'll share key insights from this research, highlighting both the innovative approach to watermarking and the intriguing complexity of its potential vulnerabilities.
-
+In this brief exploration, I delve into a groundbreaking concept: a unique watermarking technique for large language models (LLMs), as detailed in [A Watermark for Large Language Models](https://arxiv.org/abs/2301.10226). While the idea of watermarking LLMs itself is intriguing, what captivated my attention even more were the various strategies to attack these watermarks. In this post, I'll share key insights from this research, highlighting adversarial attacks.
 
 ## Threat Model and Adversarial Behavior
 Exploring the threat model, we understand the diverse ways adversaries might attempt to manipulate or remove watermarks in machine-generated text. These methods range from social media bots to CAPTCHA circumvention and academic dishonesty.
@@ -42,8 +39,5 @@ Each type carries unique challenges and implications for text integrity and comp
 - **Homoglyph and Zero-Width Attacks**: Using visually similar or invisible characters to disrupt standard tokenization.
 - **Generative Attacks**: Manipulating model output predictably, such as the "Emoji Attack."
 
-## Evaluating and Mitigating Repetitive Text
-The paper also addresses the evaluation of repetitive text and proposes strategies to mitigate related challenges.
-
 ## Conclusion
-This exploration into watermarking techniques and their vulnerabilities in LLMs reveals a dynamic and evolving field. For those interested in a more comprehensive understanding of Adversarial Attacks on LLMs, I highly recommend Lilian Weng's blog. As of 11/20/2023, she's possibly leading a team on AI Safety at OpenAI, delving deep into adversarial attacks. Amidst the current developments within OpenAI's board, Weng's insights provide a compelling read on the subject [Lilian Weng's Blog](https://lilianweng.github.io/posts/2023-10-25-adv-attack-llm/).
+This brief exploration into watermarking techniques and their vulnerabilities in LLMs touches only the surface of a much larger topic. For a more in-depth understanding of Adversarial Attacks on LLMs, Lilian Weng's blog is an excellent resource. As of 11/20/2023, she remains a pivotal figure at OpenAI, possibly leading the AI Safety team. In light of recent challenges within OpenAI's board, where attempts at adversarial tactics were met with unity and loyalty from the team, Weng's insights are particularly relevant and enlightening [Lilian Weng's Blog](https://lilianweng.github.io/posts/2023-10-25-adv-attack-llm/).

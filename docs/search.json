@@ -690,7 +690,7 @@
     "href": "posts/llm-watermark-attack/index.html",
     "title": "👾 Exploring Watermark Security in Language Models",
     "section": "",
-    "text": "Spacewar! on DEC PDP-1\nFrom the pioneering era of Spacewar! on the DEC PDP-1, this post transitions into the contemporary sphere of language model security.\nAs I dove into the fascinating world of language models, I recently stumbled upon a groundbreaking concept: a unique watermarking technique for large language models (LLMs), as detailed in A Watermark for Large Language Models. While the idea of watermarking LLMs itself is intriguing, what captivated my attention even more were the various strategies to attack these watermarks. In this post, I’ll share key insights from this research, highlighting both the innovative approach to watermarking and the intriguing complexity of its potential vulnerabilities."
+    "text": "From the pioneering era of Spacewar! on the DEC PDP-1, this post transitions into the contemporary sphere of language model security. Image captured at the Computer History Museum by the author.\nIn this brief exploration, I delve into a groundbreaking concept: a unique watermarking technique for large language models (LLMs), as detailed in A Watermark for Large Language Models. While the idea of watermarking LLMs itself is intriguing, what captivated my attention even more were the various strategies to attack these watermarks. In this post, I’ll share key insights from this research, highlighting adversarial attacks."
   },
   {
     "objectID": "posts/llm-watermark-attack/index.html#threat-model-and-adversarial-behavior",
@@ -739,6 +739,6 @@
     "href": "posts/llm-watermark-attack/index.html#conclusion",
     "title": "👾 Exploring Watermark Security in Language Models",
     "section": "Conclusion",
-    "text": "Conclusion\nThis exploration into watermarking techniques and their vulnerabilities in LLMs reveals a dynamic and evolving field. For those interested in a more comprehensive understanding of Adversarial Attacks on LLMs, I highly recommend Lilian Weng’s blog. As of 11/20/2023, she’s possibly leading a team on AI Safety at OpenAI, delving deep into adversarial attacks. Amidst the current developments within OpenAI’s board, Weng’s insights provide a compelling read on the subject Lilian Weng’s Blog."
+    "text": "Conclusion\nThis brief exploration into watermarking techniques and their vulnerabilities in LLMs touches only the surface of a much larger topic. For a more in-depth understanding of Adversarial Attacks on LLMs, Lilian Weng’s blog is an excellent resource. As of 11/20/2023, she remains a pivotal figure at OpenAI, possibly leading the AI Safety team. In light of recent challenges within OpenAI’s board, where attempts at adversarial tactics were met with unity and loyalty from the team, Weng’s insights are particularly relevant and enlightening Lilian Weng’s Blog."
   }
 ]

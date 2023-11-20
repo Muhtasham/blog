@@ -64,7 +64,7 @@ ul.task-list li input[type="checkbox"] {
 
 <link rel="stylesheet" href="../../styles.css">
 <meta name="twitter:title" content="Machine Learners Guide to Real World - 👾 Exploring Watermark Security in Language Models">
-<meta name="twitter:description" content="From the pioneering era of Spacewar! on the DEC PDP-1, this post transitions into the contemporary sphere of language model security.">
+<meta name="twitter:description" content="In this brief exploration, I delve into a groundbreaking concept: a unique watermarking technique for large language models (LLMs), as detailed in A Watermark for Large Language Models.">
 <meta name="twitter:image" content="attack.png">
 <meta name="twitter:creator" content="muhtasham9">
 <meta name="twitter:card" content="summary">
@@ -164,7 +164,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#modes-of-operation" id="toc-modes-of-operation" class="nav-link" data-scroll-target="#modes-of-operation">Modes of Operation</a></li>
   <li><a href="#attack-strategies" id="toc-attack-strategies" class="nav-link" data-scroll-target="#attack-strategies">Attack Strategies</a></li>
   <li><a href="#specific-attacks-and-mitigations" id="toc-specific-attacks-and-mitigations" class="nav-link" data-scroll-target="#specific-attacks-and-mitigations">Specific Attacks and Mitigations</a></li>
-  <li><a href="#evaluating-and-mitigating-repetitive-text" id="toc-evaluating-and-mitigating-repetitive-text" class="nav-link" data-scroll-target="#evaluating-and-mitigating-repetitive-text">Evaluating and Mitigating Repetitive Text</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
@@ -178,11 +177,10 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="attack.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">Spacewar! on DEC PDP-1</figcaption><p></p>
+<p></p><figcaption class="figure-caption">From the pioneering era of Spacewar! on the DEC PDP-1, this post transitions into the contemporary sphere of language model security. Image captured at the Computer History Museum by the author.</figcaption><p></p>
 </figure>
 </div>
-<p><em>From the pioneering era of Spacewar! on the DEC PDP-1, this post transitions into the contemporary sphere of language model security.</em></p>
-<p>As I dove into the fascinating world of language models, I recently stumbled upon a groundbreaking concept: a unique watermarking technique for large language models (LLMs), as detailed in <a href="https://arxiv.org/abs/2301.10226">A Watermark for Large Language Models</a>. While the idea of watermarking LLMs itself is intriguing, what captivated my attention even more were the various strategies to attack these watermarks. In this post, I’ll share key insights from this research, highlighting both the innovative approach to watermarking and the intriguing complexity of its potential vulnerabilities.</p>
+<p>In this brief exploration, I delve into a groundbreaking concept: a unique watermarking technique for large language models (LLMs), as detailed in <a href="https://arxiv.org/abs/2301.10226">A Watermark for Large Language Models</a>. While the idea of watermarking LLMs itself is intriguing, what captivated my attention even more were the various strategies to attack these watermarks. In this post, I’ll share key insights from this research, highlighting adversarial attacks.</p>
 <section id="threat-model-and-adversarial-behavior" class="level2">
 <h2 class="anchored" data-anchor-id="threat-model-and-adversarial-behavior">Threat Model and Adversarial Behavior</h2>
 <p>Exploring the threat model, we understand the diverse ways adversaries might attempt to manipulate or remove watermarks in machine-generated text. These methods range from social media bots to CAPTCHA circumvention and academic dishonesty.</p>
@@ -210,13 +208,9 @@ ul.task-list li input[type="checkbox"] {
 <li><strong>Generative Attacks</strong>: Manipulating model output predictably, such as the “Emoji Attack.”</li>
 </ul>
 </section>
-<section id="evaluating-and-mitigating-repetitive-text" class="level2">
-<h2 class="anchored" data-anchor-id="evaluating-and-mitigating-repetitive-text">Evaluating and Mitigating Repetitive Text</h2>
-<p>The paper also addresses the evaluation of repetitive text and proposes strategies to mitigate related challenges.</p>
-</section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>This exploration into watermarking techniques and their vulnerabilities in LLMs reveals a dynamic and evolving field. For those interested in a more comprehensive understanding of Adversarial Attacks on LLMs, I highly recommend Lilian Weng’s blog. As of 11/20/2023, she’s possibly leading a team on AI Safety at OpenAI, delving deep into adversarial attacks. Amidst the current developments within OpenAI’s board, Weng’s insights provide a compelling read on the subject <a href="https://lilianweng.github.io/posts/2023-10-25-adv-attack-llm/">Lilian Weng’s Blog</a>.</p>
+<p>This brief exploration into watermarking techniques and their vulnerabilities in LLMs touches only the surface of a much larger topic. For a more in-depth understanding of Adversarial Attacks on LLMs, Lilian Weng’s blog is an excellent resource. As of 11/20/2023, she remains a pivotal figure at OpenAI, possibly leading the AI Safety team. In light of recent challenges within OpenAI’s board, where attempts at adversarial tactics were met with unity and loyalty from the team, Weng’s insights are particularly relevant and enlightening <a href="https://lilianweng.github.io/posts/2023-10-25-adv-attack-llm/">Lilian Weng’s Blog</a>.</p>
 
 
 </section>
