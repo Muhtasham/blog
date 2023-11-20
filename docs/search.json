@@ -725,7 +725,7 @@
     "href": "posts/llm-watermark-attack/index.html#specific-attacks-and-mitigations",
     "title": "👾 Exploring Watermark Security in Language Models",
     "section": "Specific Attacks and Mitigations",
-    "text": "Specific Attacks and Mitigations\n\nParaphrasing Attacks: Ranging from manual to automated, these attacks involve rephrasing using weaker models.\nDiscreet Alterations: Minor modifications like whitespace addition or misspelling, underlining the importance of text normalization.\nTokenization Attacks: Altering text to modify sub-word tokenization, impacting the watermarking process.\nHomoglyph and Zero-Width Attacks: Using visually similar or invisible characters to disrupt standard tokenization.\nGenerative Attacks: Manipulating model output predictably, such as the “Emoji Attack.”"
+    "text": "Specific Attacks and Mitigations\n\nParaphrasing Attacks: Ranging from manual to automated, these attacks involve rephrasing using weaker models.\nDiscreet Alterations: Small changes like adding whitespaces or misspellings can affect hash computation. Proper text normalization is crucial in defending against these alterations.\nTokenization Attacks: Altering text to modify sub-word tokenization, impacting the watermarking process.\nHomoglyph and Zero-Width Attacks: Using similar-looking Unicode characters or invisible characters to disrupt tokenization, requiring input normalization for defense.\nGenerative Attacks: Prompting the model to change its output in a predictable way, such as the “Emoji Attack,” which affects the watermark’s effectiveness but requires a strong language model."
   },
   {
     "objectID": "posts/llm-watermark-attack/index.html#evaluating-and-mitigating-repetitive-text",

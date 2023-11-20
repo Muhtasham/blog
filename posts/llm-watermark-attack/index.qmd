@@ -34,10 +34,10 @@ Each type carries unique challenges and implications for text integrity and comp
 
 ## Specific Attacks and Mitigations
 - **Paraphrasing Attacks**: Ranging from manual to automated, these attacks involve rephrasing using weaker models.
-- **Discreet Alterations**: Minor modifications like whitespace addition or misspelling, underlining the importance of text normalization.
+- **Discreet Alterations**: Small changes like adding whitespaces or misspellings can affect hash computation. Proper text normalization is crucial in defending against these alterations.
 - **Tokenization Attacks**: Altering text to modify sub-word tokenization, impacting the watermarking process.
-- **Homoglyph and Zero-Width Attacks**: Using visually similar or invisible characters to disrupt standard tokenization.
-- **Generative Attacks**: Manipulating model output predictably, such as the "Emoji Attack."
+- **Homoglyph and Zero-Width Attacks**: Using similar-looking Unicode characters or invisible characters to disrupt tokenization, requiring input normalization for defense.
+- **Generative Attacks**: Prompting the model to change its output in a predictable way, such as the "Emoji Attack," which affects the watermark's effectiveness but requires a strong language model.
 
 ## Conclusion
 This brief exploration into watermarking techniques and their vulnerabilities in LLMs touches only the surface of a much larger topic. For a more in-depth understanding of Adversarial Attacks on LLMs, Lilian Weng's blog is an excellent resource. As of 11/20/2023, she remains a pivotal figure at OpenAI, possibly leading the AI Safety team. In light of recent challenges within OpenAI's board, where attempts at adversarial tactics were met with unity and loyalty from the team, Weng's insights are particularly relevant and enlightening [Lilian Weng's Blog](https://lilianweng.github.io/posts/2023-10-25-adv-attack-llm/).

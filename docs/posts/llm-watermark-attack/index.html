@@ -202,10 +202,10 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="specific-attacks-and-mitigations">Specific Attacks and Mitigations</h2>
 <ul>
 <li><strong>Paraphrasing Attacks</strong>: Ranging from manual to automated, these attacks involve rephrasing using weaker models.</li>
-<li><strong>Discreet Alterations</strong>: Minor modifications like whitespace addition or misspelling, underlining the importance of text normalization.</li>
+<li><strong>Discreet Alterations</strong>: Small changes like adding whitespaces or misspellings can affect hash computation. Proper text normalization is crucial in defending against these alterations.</li>
 <li><strong>Tokenization Attacks</strong>: Altering text to modify sub-word tokenization, impacting the watermarking process.</li>
-<li><strong>Homoglyph and Zero-Width Attacks</strong>: Using visually similar or invisible characters to disrupt standard tokenization.</li>
-<li><strong>Generative Attacks</strong>: Manipulating model output predictably, such as the “Emoji Attack.”</li>
+<li><strong>Homoglyph and Zero-Width Attacks</strong>: Using similar-looking Unicode characters or invisible characters to disrupt tokenization, requiring input normalization for defense.</li>
+<li><strong>Generative Attacks</strong>: Prompting the model to change its output in a predictable way, such as the “Emoji Attack,” which affects the watermark’s effectiveness but requires a strong language model.</li>
 </ul>
 </section>
 <section id="conclusion" class="level2">
