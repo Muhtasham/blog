@@ -1,5 +1,5 @@
 ---
-title: "👾 Exploring Watermark Security in Language Models"
+title: "👾 Watermark Security in Language Models"
 author: "muhtasham"
 date: "2023-11-20"
 categories: [llm, papers, security, tokenizer]
@@ -16,16 +16,19 @@ Exploring the threat model, we understand the diverse ways adversaries might att
 
 ## Parties Involved
 Two primary parties are central to this narrative:
+
 - **Model Owner**: Provides a text generation API, incorporating watermarks to track text origin.
 - **Attacker**: Strives to erase watermarks, aware of their presence and possibly even the underlying technology.
 
 ## Modes of Operation
 The interaction occurs in two distinct modes:
+
 - **Public Mode**: Attackers possess complete knowledge of the hashing scheme.
 - **Private Mode**: Attackers are aware of the watermark but lack insights into the key mechanisms.
 
 ## Attack Strategies
 We categorize attack strategies into three main types:
+
 1. **Text Insertion Attacks**
 2. **Text Deletion Attacks**
 3. **Text Substitution Attacks**
@@ -33,6 +36,7 @@ We categorize attack strategies into three main types:
 Each type carries unique challenges and implications for text integrity and computational efficiency.
 
 ## Specific Attacks and Mitigations
+
 - **Paraphrasing Attacks**: Ranging from manual to automated, these attacks involve rephrasing using weaker models.
 - **Discreet Alterations**: Small changes like adding whitespaces or misspellings can affect hash computation. Proper text normalization is crucial in defending against these alterations.
 - **Tokenization Attacks**: Altering text to modify sub-word tokenization, impacting the watermarking process.
