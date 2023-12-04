@@ -740,5 +740,12 @@
     "title": "👾 Watermark Security in Language Models",
     "section": "Conclusion",
     "text": "Conclusion\nThis brief exploration into watermarking techniques and their vulnerabilities in LLMs touches only the surface of a much larger topic. For a more in-depth understanding of Adversarial Attacks on LLMs, Lilian Weng’s blog is an excellent resource. As of 11/20/2023, she remains a pivotal figure at OpenAI, possibly leading the AI Safety team. In light of recent challenges within OpenAI’s board, where attempts at adversarial tactics were met with unity and loyalty from the team, Weng’s insights are particularly relevant and enlightening Lilian Weng’s Blog."
+  },
+  {
+    "objectID": "posts/os-concepts-llm/index.html#top-recommendation",
+    "href": "posts/os-concepts-llm/index.html#top-recommendation",
+    "title": "2️⃣ Concepts from Operating Systems That Found Their Way in LLMs",
+    "section": "Top recommendation",
+    "text": "Top recommendation\nIf you want to read more comperhensive write-up on this topic, I totally recommend, (At the Intersection of LLMs and Kernels - Research Roundup) [https://charlesfrye.github.io/programming/2023/11/10/llms-systems.html] by Charles Frye"
   }
 ]

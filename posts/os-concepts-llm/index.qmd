@@ -106,3 +106,8 @@ In the realm of LLMs, context and memory are kind of like the foundational, "RAM
 ## Conclusion
 
 Ideas and strategies often flow between different fields of tech, leading to innovations. In this case, traditional computer systems concepts are helping to improve transformer-based LLMs. This was a brief share of my learnings, and I genuinely invite and appreciate feedback, insights, and further discussions on this topic.
+
+## Top recommendation
+
+If you want to read more comperhensive write-up on this topic, I totally recommend, (At the Intersection of LLMs and Kernels - Research Roundup)
+[https://charlesfrye.github.io/programming/2023/11/10/llms-systems.html] by Charles Frye
