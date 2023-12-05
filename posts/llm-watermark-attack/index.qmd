@@ -2,6 +2,7 @@
 title: "👾 Watermark Security in Language Models"
 author: "muhtasham"
 date: "2023-11-20"
+date-modified: "2023-12-04"
 categories: [llm, papers, security, tokenizer]
 image: "attack.png"
 toc: true
@@ -10,6 +11,28 @@ toc: true
 ![From the pioneering era of Spacewar! on the DEC PDP-1, this post transitions into the contemporary sphere of language model security. Image captured at the Computer History Museum by the author.](attack.png)
 
 In this brief exploration, I delve into a groundbreaking concept: a unique watermarking technique for large language models (LLMs), as detailed in [A Watermark for Large Language Models](https://arxiv.org/abs/2301.10226). While the idea of watermarking LLMs itself is intriguing, what captivated my attention even more were the various strategies to attack these watermarks. In this post, I'll share key insights from this research, highlighting adversarial attacks.
+
+## The Persistent Challenge of Jailbreaking LLMs
+
+In the paper ["Jailbroken: How Does LLM Safety Training Fail?"](https://arxiv.org/abs/2307.02483), authors discuss the inherent vulnerabilities of LLMs to adversarial attacks, despite rigorous safety training. Large language models like OpenAI's GPT-4 and Anthropic’s Claude v1.3, trained for safety and harmlessness, remain susceptible to "jailbreak" attacks, designed to elicit undesired behaviors such as harmful content generation or personal information leaks. This vulnerability stems from two fundamental failure modes in safety training:
+
+- **Competing Objectives**: A conflict between the model's capabilities and safety goals, leading to a compromise in adhering to safe outputs.
+- **Mismatched Generalization**: A failure in safety training to generalize to certain domains within the model’s pretraining corpus, creating loopholes for adversarial inputs.
+
+Despite extensive safety measures, these models exhibit weaknesses against newly designed attacks, emphasizing the need for safety mechanisms as sophisticated as the model's capabilities themselves.
+
+## Advancing Adversarial Attacks on Aligned LLMs
+
+Further complicating the security landscape, the paper ["Universal and Transferable Adversarial Attacks on Aligned Language Models"](https://arxiv.org/abs/2307.15043) introduces a new class of adversarial attacks. These attacks, unlike previous ones requiring significant human ingenuity and being brittle, are automated and highly effective. The method involves appending a specially crafted suffix to queries, maximized to induce affirmative responses from the model, thus bypassing alignment safeguards aimed at preventing harmful content generation. Key highlights include:
+
+- **Automated Adversarial Suffix Generation**: Utilizing a combination of greedy and gradient-based search techniques, this approach automatically creates adversarial suffixes, significantly improving over past automatic prompt generation methods.
+- **Transferability Across Models**: These attacks are not only effective on the model they were designed for but also transfer successfully to other models, including publicly released LLMs like ChatGPT, Bard, and Claude, as well as open-source models.
+
+This advancement in adversarial attacks underscores the ongoing arms race in LLM security, where traditional posthoc repair strategies are proving insufficient against increasingly sophisticated attacks.
+
+## Implications for Watermarking in LLMs
+
+The evolving complexity of adversarial attacks presents significant challenges for watermarking LLMs. The need for robust watermarking techniques that can withstand such sophisticated attacks is paramount. As we develop these techniques, we must consider the learnings from these papers to ensure that watermarking mechanisms are not only effective but also resilient against the evolving landscape of adversarial attacks in LLMs.
 
 ## Threat Model and Adversarial Behavior
 Exploring the threat model, we understand the diverse ways adversaries might attempt to manipulate or remove watermarks in machine-generated text. These methods range from social media bots to CAPTCHA circumvention and academic dishonesty.
@@ -42,6 +65,7 @@ Each type carries unique challenges and implications for text integrity and comp
 - **Tokenization Attacks**: Altering text to modify sub-word tokenization, impacting the watermarking process.
 - **Homoglyph and Zero-Width Attacks**: Using similar-looking Unicode characters or invisible characters to disrupt tokenization, requiring input normalization for defense.
 - **Generative Attacks**: Prompting the model to change its output in a predictable way, such as the "Emoji Attack," which affects the watermark's effectiveness but requires a strong language model.
+
 
 ## Conclusion
 This brief exploration into watermarking techniques and their vulnerabilities in LLMs touches only the surface of a much larger topic. For a more in-depth understanding of Adversarial Attacks on LLMs, Lilian Weng's blog is an excellent resource. As of 11/20/2023, she remains a pivotal figure at OpenAI, possibly leading the AI Safety team. In light of recent challenges within OpenAI's board, where attempts at adversarial tactics were met with unity and loyalty from the team, Weng's insights are particularly relevant and enlightening [Lilian Weng's Blog](https://lilianweng.github.io/posts/2023-10-25-adv-attack-llm/).

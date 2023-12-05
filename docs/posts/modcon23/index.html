@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="muhtasham">
-<meta name="dcterms.date" content="2023-11-20">
+<meta name="dcterms.date" content="2023-12-04">
 
-<title>Machine Learners Guide to Real World - 👾 Watermark Security in Language Models</title>
+<title>Machine Learners Guide to Real World - 🔥 The Future of AI is Modular: Insights from ModCon 2023</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -63,9 +63,9 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta name="twitter:title" content="Machine Learners Guide to Real World - 👾 Watermark Security in Language Models">
-<meta name="twitter:description" content="In this brief exploration, I delve into a groundbreaking concept: a unique watermarking technique for large language models (LLMs), as detailed in A Watermark for Large Language Models.">
-<meta name="twitter:image" content="attack.png">
+<meta name="twitter:title" content="Machine Learners Guide to Real World - 🔥 The Future of AI is Modular: Insights from ModCon 2023">
+<meta name="twitter:description" content="Today, the landscape of AI development is on the brink of a transformative change.">
+<meta name="twitter:image" content="mac.jpeg">
 <meta name="twitter:creator" content="muhtasham9">
 <meta name="twitter:card" content="summary">
 </head>
@@ -120,12 +120,10 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">👾 Watermark Security in Language Models</h1>
+      <h1 class="title">🔥 The Future of AI is Modular: Insights from ModCon 2023</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">llm</div>
-                <div class="quarto-category">papers</div>
-                <div class="quarto-category">security</div>
-                <div class="quarto-category">tokenizer</div>
+                <div class="quarto-category">deep-learning</div>
               </div>
                   </div>
   </div>
@@ -143,16 +141,10 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">November 20, 2023</p>
+        <p class="date">December 4, 2023</p>
       </div>
     </div>
     
-      <div>
-      <div class="quarto-title-meta-heading">Modified</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date-modified">December 4, 2023</p>
-      </div>
-    </div>
       
     </div>
     
@@ -165,14 +157,16 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#the-persistent-challenge-of-jailbreaking-llms" id="toc-the-persistent-challenge-of-jailbreaking-llms" class="nav-link active" data-scroll-target="#the-persistent-challenge-of-jailbreaking-llms">The Persistent Challenge of Jailbreaking LLMs</a></li>
-  <li><a href="#advancing-adversarial-attacks-on-aligned-llms" id="toc-advancing-adversarial-attacks-on-aligned-llms" class="nav-link" data-scroll-target="#advancing-adversarial-attacks-on-aligned-llms">Advancing Adversarial Attacks on Aligned LLMs</a></li>
-  <li><a href="#implications-for-watermarking-in-llms" id="toc-implications-for-watermarking-in-llms" class="nav-link" data-scroll-target="#implications-for-watermarking-in-llms">Implications for Watermarking in LLMs</a></li>
-  <li><a href="#threat-model-and-adversarial-behavior" id="toc-threat-model-and-adversarial-behavior" class="nav-link" data-scroll-target="#threat-model-and-adversarial-behavior">Threat Model and Adversarial Behavior</a></li>
-  <li><a href="#parties-involved" id="toc-parties-involved" class="nav-link" data-scroll-target="#parties-involved">Parties Involved</a></li>
-  <li><a href="#modes-of-operation" id="toc-modes-of-operation" class="nav-link" data-scroll-target="#modes-of-operation">Modes of Operation</a></li>
-  <li><a href="#attack-strategies" id="toc-attack-strategies" class="nav-link" data-scroll-target="#attack-strategies">Attack Strategies</a></li>
-  <li><a href="#specific-attacks-and-mitigations" id="toc-specific-attacks-and-mitigations" class="nav-link" data-scroll-target="#specific-attacks-and-mitigations">Specific Attacks and Mitigations</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#the-shift-in-computing-paradigm" id="toc-the-shift-in-computing-paradigm" class="nav-link" data-scroll-target="#the-shift-in-computing-paradigm">The Shift in Computing Paradigm</a></li>
+  <li><a href="#modulars-thoughtful-approach" id="toc-modulars-thoughtful-approach" class="nav-link" data-scroll-target="#modulars-thoughtful-approach">Modular’s Thoughtful Approach</a></li>
+  <li><a href="#key-announcements-at-modcon-2023" id="toc-key-announcements-at-modcon-2023" class="nav-link" data-scroll-target="#key-announcements-at-modcon-2023">Key Announcements at ModCon 2023</a>
+  <ul class="collapse">
+  <li><a href="#max-modular-accelerated-xecution" id="toc-max-modular-accelerated-xecution" class="nav-link" data-scroll-target="#max-modular-accelerated-xecution">MAX: Modular Accelerated Xecution</a></li>
+  <li><a href="#partnerships-with-aws-and-nvidia" id="toc-partnerships-with-aws-and-nvidia" class="nav-link" data-scroll-target="#partnerships-with-aws-and-nvidia">Partnerships with AWS and NVIDIA</a></li>
+  <li><a href="#new-features-in-max-engine" id="toc-new-features-in-max-engine" class="nav-link" data-scroll-target="#new-features-in-max-engine">New Features in MAX Engine</a></li>
+  </ul></li>
+  <li><a href="#the-future-with-modular-and-max" id="toc-the-future-with-modular-and-max" class="nav-link" data-scroll-target="#the-future-with-modular-and-max">The Future with Modular and MAX</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
@@ -185,76 +179,53 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="attack.png" class="img-fluid figure-img"></p>
-<p></p><figcaption class="figure-caption">From the pioneering era of Spacewar! on the DEC PDP-1, this post transitions into the contemporary sphere of language model security. Image captured at the Computer History Museum by the author.</figcaption><p></p>
+<p><img src="mac.jpeg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">The iconic Macintosh Lisa at the Computer History Museum, symbolizing the shift from early computing to the AI age. Source code available <a href="https://info.computerhistory.org/apple-lisa-code">here</a> if you want to rewrite in Mojo 🔥</figcaption><p></p>
 </figure>
 </div>
-<p>In this brief exploration, I delve into a groundbreaking concept: a unique watermarking technique for large language models (LLMs), as detailed in <a href="https://arxiv.org/abs/2301.10226">A Watermark for Large Language Models</a>. While the idea of watermarking LLMs itself is intriguing, what captivated my attention even more were the various strategies to attack these watermarks. In this post, I’ll share key insights from this research, highlighting adversarial attacks.</p>
-<section id="the-persistent-challenge-of-jailbreaking-llms" class="level2">
-<h2 class="anchored" data-anchor-id="the-persistent-challenge-of-jailbreaking-llms">The Persistent Challenge of Jailbreaking LLMs</h2>
-<p>In the paper <a href="https://arxiv.org/abs/2307.02483">“Jailbroken: How Does LLM Safety Training Fail?”</a>, authors discuss the inherent vulnerabilities of LLMs to adversarial attacks, despite rigorous safety training. Large language models like OpenAI’s GPT-4 and Anthropic’s Claude v1.3, trained for safety and harmlessness, remain susceptible to “jailbreak” attacks, designed to elicit undesired behaviors such as harmful content generation or personal information leaks. This vulnerability stems from two fundamental failure modes in safety training:</p>
-<ul>
-<li><strong>Competing Objectives</strong>: A conflict between the model’s capabilities and safety goals, leading to a compromise in adhering to safe outputs.</li>
-<li><strong>Mismatched Generalization</strong>: A failure in safety training to generalize to certain domains within the model’s pretraining corpus, creating loopholes for adversarial inputs.</li>
-</ul>
-<p>Despite extensive safety measures, these models exhibit weaknesses against newly designed attacks, emphasizing the need for safety mechanisms as sophisticated as the model’s capabilities themselves.</p>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>Today, the landscape of AI development is on the brink of a transformative change. I had the opportunity to witness this first-hand at the ModCon conference in San Francisco, where the convergence of ideas and technology marked a new era in AI and computing.</p>
 </section>
-<section id="advancing-adversarial-attacks-on-aligned-llms" class="level2">
-<h2 class="anchored" data-anchor-id="advancing-adversarial-attacks-on-aligned-llms">Advancing Adversarial Attacks on Aligned LLMs</h2>
-<p>Further complicating the security landscape, the paper <a href="https://arxiv.org/abs/2307.15043">“Universal and Transferable Adversarial Attacks on Aligned Language Models”</a> introduces a new class of adversarial attacks. These attacks, unlike previous ones requiring significant human ingenuity and being brittle, are automated and highly effective. The method involves appending a specially crafted suffix to queries, maximized to induce affirmative responses from the model, thus bypassing alignment safeguards aimed at preventing harmful content generation. Key highlights include:</p>
-<ul>
-<li><strong>Automated Adversarial Suffix Generation</strong>: Utilizing a combination of greedy and gradient-based search techniques, this approach automatically creates adversarial suffixes, significantly improving over past automatic prompt generation methods.</li>
-<li><strong>Transferability Across Models</strong>: These attacks are not only effective on the model they were designed for but also transfer successfully to other models, including publicly released LLMs like ChatGPT, Bard, and Claude, as well as open-source models.</li>
-</ul>
-<p>This advancement in adversarial attacks underscores the ongoing arms race in LLM security, where traditional posthoc repair strategies are proving insufficient against increasingly sophisticated attacks.</p>
+<section id="the-shift-in-computing-paradigm" class="level2">
+<h2 class="anchored" data-anchor-id="the-shift-in-computing-paradigm">The Shift in Computing Paradigm</h2>
+<p>Traditional computing, once dominated by single-threaded CPU performance and programming in languages like C and C++, is now undergoing a significant transformation. The deceleration of Moore’s Law and the rapid ascent of AI necessitated a new approach - a pivot towards multi-core hardware and accelerated compute.</p>
+<p>However, this transition was met with considerable challenges. The software industry struggled to keep pace. A universal solution that could support all AI hardware without sacrificing programmability or performance was sorely missing. This led to inefficiencies, with AI engineers constantly rewriting code, hardware makers facing innovation hurdles, and high costs coupled with underutilization of resources.</p>
 </section>
-<section id="implications-for-watermarking-in-llms" class="level2">
-<h2 class="anchored" data-anchor-id="implications-for-watermarking-in-llms">Implications for Watermarking in LLMs</h2>
-<p>The evolving complexity of adversarial attacks presents significant challenges for watermarking LLMs. The need for robust watermarking techniques that can withstand such sophisticated attacks is paramount. As we develop these techniques, we must consider the learnings from these papers to ensure that watermarking mechanisms are not only effective but also resilient against the evolving landscape of adversarial attacks in LLMs.</p>
+<section id="modulars-thoughtful-approach" class="level2">
+<h2 class="anchored" data-anchor-id="modulars-thoughtful-approach">Modular’s Thoughtful Approach</h2>
+<p>Modular’s presentations at ModCon 2023 offered a wealth of insights. I’m eager to share some key takeaways, even as I continue to reflect on the full depth of the information presented. The Modular stack empowers AI developers to program in Python while achieving unparalleled performance. In my conversation with Chris Lattner, it became clear that he and his team are committed to not rushing the development process. They are focused on creating a developer-friendly product, ensuring that the Mojo programming language is not just efficient but also accessible. Mojo, as Chris puts it, is akin to “Python++,” offering the simplicity of Python with the power and precision of languages like Rust - a true beacon for future AI development.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="chris_llvm.jpeg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Sharing moment with Chris Lattner, inventor of LLVM, MLIR and CEO of Modular company behind Mojo 🔥</figcaption><p></p>
+</figure>
+</div>
 </section>
-<section id="threat-model-and-adversarial-behavior" class="level2">
-<h2 class="anchored" data-anchor-id="threat-model-and-adversarial-behavior">Threat Model and Adversarial Behavior</h2>
-<p>Exploring the threat model, we understand the diverse ways adversaries might attempt to manipulate or remove watermarks in machine-generated text. These methods range from social media bots to CAPTCHA circumvention and academic dishonesty.</p>
+<section id="key-announcements-at-modcon-2023" class="level2">
+<h2 class="anchored" data-anchor-id="key-announcements-at-modcon-2023">Key Announcements at ModCon 2023</h2>
+<section id="max-modular-accelerated-xecution" class="level3">
+<h3 class="anchored" data-anchor-id="max-modular-accelerated-xecution">MAX: Modular Accelerated Xecution</h3>
+<p>The centerpiece of ModCon 2023 was the unveiling of MAX - Modular Accelerated Xecution. This comprehensive suite simplifies AI infrastructure, providing everything needed to deploy low-latency, high-throughput generative and traditional inference pipelines. Anticipated to be available in both a free Developer Edition and a paid Enterprise Edition in early 2024, MAX is set to revolutionize the field.</p>
 </section>
-<section id="parties-involved" class="level2">
-<h2 class="anchored" data-anchor-id="parties-involved">Parties Involved</h2>
-<p>Two primary parties are central to this narrative:</p>
-<ul>
-<li><strong>Model Owner</strong>: Provides a text generation API, incorporating watermarks to track text origin.</li>
-<li><strong>Attacker</strong>: Strives to erase watermarks, aware of their presence and possibly even the underlying technology.</li>
-</ul>
+<section id="partnerships-with-aws-and-nvidia" class="level3">
+<h3 class="anchored" data-anchor-id="partnerships-with-aws-and-nvidia">Partnerships with AWS and NVIDIA</h3>
+<p>Modular also announced key partnerships. With AWS, they’re introducing the MAX Enterprise Edition exclusively to AWS production services, optimizing performance on the AWS Graviton platform. The collaboration with NVIDIA is set to unify and simplify CPU+GPU development for AI, leveraging NVIDIA’s accelerated compute platform.</p>
 </section>
-<section id="modes-of-operation" class="level2">
-<h2 class="anchored" data-anchor-id="modes-of-operation">Modes of Operation</h2>
-<p>The interaction occurs in two distinct modes:</p>
-<ul>
-<li><strong>Public Mode</strong>: Attackers possess complete knowledge of the hashing scheme.</li>
-<li><strong>Private Mode</strong>: Attackers are aware of the watermark but lack insights into the key mechanisms.</li>
-</ul>
+<section id="new-features-in-max-engine" class="level3">
+<h3 class="anchored" data-anchor-id="new-features-in-max-engine">New Features in MAX Engine</h3>
+<p>MAX Engine now boasts new capabilities, such as Mojo integration, GPU support, and the release of Mojo SDK v0.6. These enhancements are designed to substantially improve both performance and user experience.</p>
 </section>
-<section id="attack-strategies" class="level2">
-<h2 class="anchored" data-anchor-id="attack-strategies">Attack Strategies</h2>
-<p>We categorize attack strategies into three main types:</p>
-<ol type="1">
-<li><strong>Text Insertion Attacks</strong></li>
-<li><strong>Text Deletion Attacks</strong></li>
-<li><strong>Text Substitution Attacks</strong></li>
-</ol>
-<p>Each type carries unique challenges and implications for text integrity and computational efficiency.</p>
 </section>
-<section id="specific-attacks-and-mitigations" class="level2">
-<h2 class="anchored" data-anchor-id="specific-attacks-and-mitigations">Specific Attacks and Mitigations</h2>
-<ul>
-<li><strong>Paraphrasing Attacks</strong>: Ranging from manual to automated, these attacks involve rephrasing using weaker models.</li>
-<li><strong>Discreet Alterations</strong>: Small changes like adding whitespaces or misspellings can affect hash computation. Proper text normalization is crucial in defending against these alterations.</li>
-<li><strong>Tokenization Attacks</strong>: Altering text to modify sub-word tokenization, impacting the watermarking process.</li>
-<li><strong>Homoglyph and Zero-Width Attacks</strong>: Using similar-looking Unicode characters or invisible characters to disrupt tokenization, requiring input normalization for defense.</li>
-<li><strong>Generative Attacks</strong>: Prompting the model to change its output in a predictable way, such as the “Emoji Attack,” which affects the watermark’s effectiveness but requires a strong language model.</li>
-</ul>
+<section id="the-future-with-modular-and-max" class="level2">
+<h2 class="anchored" data-anchor-id="the-future-with-modular-and-max">The Future with Modular and MAX</h2>
+<p>Modular’s MAX is a groundbreaking addition to the AI landscape. It’s not just about boosting performance; it’s about streamlining AI development, making it more accessible, and paving the way for groundbreaking AI applications. The partnerships with AWS and NVIDIA further emphasize this, promising unmatched performance and ease of use for AI developers.</p>
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>This brief exploration into watermarking techniques and their vulnerabilities in LLMs touches only the surface of a much larger topic. For a more in-depth understanding of Adversarial Attacks on LLMs, Lilian Weng’s blog is an excellent resource. As of 11/20/2023, she remains a pivotal figure at OpenAI, possibly leading the AI Safety team. In light of recent challenges within OpenAI’s board, where attempts at adversarial tactics were met with unity and loyalty from the team, Weng’s insights are particularly relevant and enlightening <a href="https://lilianweng.github.io/posts/2023-10-25-adv-attack-llm/">Lilian Weng’s Blog</a>.</p>
+<p>Reflecting on my ModCon experience, the potential of MAX and Modular’s technology for the future of AI is evident. It’s a future where AI development is more cohesive, efficient, and potent - a future where AI engineers are equipped to unlock new possibilities and bring their creative visions to life.</p>
+<hr>
+<p><a href="#modcon-change-has-changed">Back to top</a></p>
 
 
 </section>

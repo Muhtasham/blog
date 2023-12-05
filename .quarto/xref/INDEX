@@ -58,5 +58,8 @@
   },
   "posts/llm-watermark-attack/index.qmd": {
     "index.html": "b1a38f14"
+  },
+  "posts/modcon23/index.qmd": {
+    "index.html": "bc0ccb38"
   }
 }

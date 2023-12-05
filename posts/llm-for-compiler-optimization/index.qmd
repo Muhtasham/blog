@@ -95,3 +95,7 @@ It would be fascinating to see if this approach could be leveraged to optimize o
 Scaling to larger model sizes could potentially yield better results too, as the researchers only utilized a 7B parameter model. Moreover, addressing the limitation of the context window through fine-tuning for longer contexts, as discussed in [my other blog](https://muhtasham.github.io/blog/posts/explore-context/), could open up avenues for more advanced optimizations.
 
 In conclusion, while the paper paints a promising picture for the role of LLMs in compiler optimizations, it is essential to remain cautious. Given that the LLAMA 2 model weights were released, it would be beneficial for the community if the weights of this specific model were also shared. However, I perfectly understand if the researchers wish to spend more time exploring all realms before releasing it to the public. As we anticipate further research in this domain, a skeptical yet hopeful eye remains necessary.
+
+---
+
+[Back to top](#modcon-change-has-changed)
