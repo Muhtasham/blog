@@ -35,6 +35,8 @@ As a proud co-founder of [Munich🥨NLP](https://munich-nlp.github.io/) and co-o
 
 I'm actively involved in fostering a vibrant community of professionals and enthusiasts who share a common interest in natural language processing and machine learning.
 
+::: {.callout-note collapse="true"}
+
 Throughout my journey, I've had the privilege to work under the supervision of several esteemed educators, researchers, and industry veterans. I am immensely grateful for their guidance and mentorship. Here, I pay homage to these remarkable individuals:
 
 #### Educators and Researchers
@@ -47,6 +49,8 @@ Throughout my journey, I've had the privilege to work under the supervision of s
 - [**Ergin Selim Gonen**](https://www.linkedin.com/in/esgnn/)
 - [**Prof. René Brunner**](https://www.linkedin.com/in/renebrunner/)
 - [**Egor Labintcev**](https://www.linkedin.com/in/egorlabintcev/)
+
+:::
 
 I'm currently working as a Machine Learning Engineer at [Munich Re Group](https://www.munichre.com/en.html). Previously, I worked at [Alyne](https://mitratech.com/products/alyne/) and [Datamics](https://consulting.datamics.com/). To learn more about me, you can check out my [LinkedIn](https://www.linkedin.com/in/muhtasham/).
 
@@ -61,7 +65,9 @@ I'm passionate about mobile photography. You might have noticed this from the th
 This thought intrigues me: while visual thumbnails offer an instantaneous snapshot of an image, what serves as the equivalent for language? Our eyes can swiftly scan a set of thumbnails and capture an underlying theme from them. But when it comes to language, what provides that immediate insight? Perhaps such a concept doesn't quite fit in the realm of words.
 :::
 
+::: {.callout-caution collapse="true"}
 ## Explore My Public Talks
+
 I have had the opportunity to share my insights and knowledge through several public talks over the years. These talks encompass various topics including GenAI, LLM deployments, Autonomous Agents, and classical NLP. Feel free to delve into the resources linked below to explore the depth of these topics:
 
 - [How to build Copilot for X](https://docs.google.com/presentation/d/1z77lvaHcSqF_rg3xQNTP3mLNRGVejye0p18kJmGNylI/edit?usp=sharing)
@@ -88,4 +94,4 @@ I have had the opportunity to share my insights and knowledge through several pu
   - **Date:** December 15, 2022
   - **Event:** Munich NLP Meetup
 
-
+:::
