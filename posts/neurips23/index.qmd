@@ -1,0 +1,52 @@
+---
+title: "🦙  NeurIPS 2023: Trends, Talks, and Technologies"
+author: "muhtasham"
+date: "2023-12-17"
+toc: true
+number-sections: false
+categories: [llm, deep-learning, conference]
+---
+
+NeurIPS 2023 was not just another conference - it was a melting pot of ideas, innovations, and conversations that are steering the future of deep learning and AI. Here are some of the highlights that made this event unforgettable:
+
+- **A Whopping 3,500+ Papers Accepted:** A testament to the burgeoning research in the field.
+- **Over 15,000 Attendees:** Reflecting the growing interest and investment in AI.
+- **Looking Ahead:** Excitingly, next year's conference will be in Vancouver, and similar events are scheduled in Vienna, including ICLR and ICML.
+
+### A Tweet That Resonated
+<blockquote class="twitter-tweet">
+<p lang="en" dir="ltr">.<a href="https://twitter.com/Thom_Wolf?ref_src=twsrc%5Etfw">@Thom_Wolf</a>: “Academia is back as we saw at NeurIPS 2023. With many private and open-source labs closing the doors on publishing their results and data, academia rises again in visibility and is shining with many impactful papers in 2023 and exciting new work coming.” <a href="https://t.co/tlOiuLOJhC">https://t.co/tlOiuLOJhC</a></p>
+&mdash; Christopher Manning (@chrmanning) <a href="https://twitter.com/chrmanning/status/1736784885677994094?ref_src=twsrc%5Etfw">December 18, 2023</a>
+</blockquote> 
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+### Insights and Interactions
+- **Math Field Medalists and LLMs:** The convergence of high-level mathematics and large language models, particularly in formal proof methods, was a hot topic.
+- **A Glimpse into the Latent Space:** Explore the conference insights through these curated links:
+  - [Papers](https://atlas.nomic.ai/map/0d01fd36-ec8f-4a4d-9291-c57ba482827b/9d693660-a910-48d9-8f5d-727fa572f1ba)
+  - [Posters](https://neurips2023.vizhub.ai/)
+- **Gemini and Mistral Teams:** Meeting the brains behind these teams was enlightening.
+- **Celebrity Encounters:** The conference was buzzing with famous personalities from the ML world.
+- **VC Presence:** There was a noticeable increase in venture capitalists, indicating growing business interest in AI.
+
+### Awards and Recognition
+The best paper awards were a highlight, showcasing groundbreaking work in the field:
+
+1. Are Emergent Abilities of Large Language Models a Mirage?
+2. Scaling Data-Constrained Language Models
+3. Direct Preference Optimization: Your Language Model is Secretly a Reward Model
+4. DecodingTrust: A Comprehensive Assessment of Trustworthiness in GPT Models
+
+### Looking into the Crystal Ball: Predictions for AI's Future
+- **Robust Language Agents:** The evolution from hype to practical applications.
+- **The Rise of Multimodality:** Thanks to advances by GPT-4V and Gemini.
+- **The Synthetic Data Revolution:** Moving beyond controversies to practical applications.
+- **The Sparsity Paradigm:** Innovations like Mixtral that are changing the game.
+
+### Emerging Technologies to Watch
+- **MOE Transformers:** The current state-of-the-art.
+- **State-Space Models:** Gaining attention but still in their infancy in terms of large-scale applications.
+
+In conclusion, NeurIPS 2023 was more than just a conference; it was a showcase of the vibrant and evolving landscape of AI and machine learning. The discussions and discoveries here are not just shaping the academic world, but also the way we think about technology in our everyday lives.
+
+---

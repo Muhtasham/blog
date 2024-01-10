@@ -3,7 +3,7 @@ title: "🌉 A Deep Dive into the LLM Bootcamp Experience: Revolutionizing AI-Po
 author: "muhtasham"
 date: "2023-04-26"
 image: "sf.jpg"
-categories: [llm]
+categories: [llm, deep-learning]
 ---
 
 ![The view of the Golden Gate Bridge reminded me of the limitless possibilities that AI and LLMs can bring to our world. Image by author](sf.jpg)

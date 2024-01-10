@@ -2,6 +2,7 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/neurips23/index.html",
       "/posts/modcon23/index.html",
       "/posts/llm-watermark-attack/index.html",
       "/posts/os-concepts-llm/index.html",

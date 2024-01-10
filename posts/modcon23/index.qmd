@@ -5,7 +5,7 @@ date: "2023-12-04"
 toc: true
 image: "mac.jpeg"
 number-sections: false
-categories: [llm, deep-learning]
+categories: [llm, deep-learning, conference]
 ---
 
 ![The iconic Macintosh Lisa at the Computer History Museum, symbolizing the shift from early computing to the AI age. Source code available [here](https://info.computerhistory.org/apple-lisa-code) if you want to rewrite in Mojo 🔥](mac.jpeg)

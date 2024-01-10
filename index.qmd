@@ -1,5 +1,5 @@
 ---
-title: "Every unknown is an invitation to expand one's horizons."
+title: "“Strive not to be a success, but rather to be of value” - Albert Einstein "
 listing:
   contents: posts
   sort: "date desc"
