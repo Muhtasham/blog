@@ -1,8 +1,9 @@
 ---
-title: "🦙  NeurIPS 2023: Trends, Talks, and Technologies"
+title: "🎷  NeurIPS 2023: Trends, Talks, and Technologies"
 author: "muhtasham"
 date: "2023-12-17"
 toc: true
+image: "nola.png"
 number-sections: false
 categories: [llm, deep-learning, conference]
 ---
@@ -11,7 +12,7 @@ NeurIPS 2023 was not just another conference - it was a melting pot of ideas, in
 
 - **A Whopping 3,500+ Papers Accepted:** A testament to the burgeoning research in the field.
 - **Over 15,000 Attendees:** Reflecting the growing interest and investment in AI.
-- **Looking Ahead:** Excitingly, next year's conference will be in Vancouver, and similar events are scheduled in Vienna, including ICLR and ICML.
+- **Looking Ahead:** Excitingly, next year's conference will be in Vancouver, and similar events are scheduled in Vienna, including ICLR and ICML, if you will be around hit me up.
 
 ### A Tweet That Resonated
 <blockquote class="twitter-tweet">
