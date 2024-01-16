@@ -49,7 +49,7 @@ In the whirl of discussions and discoveries at NeurIPS 2023, a particular tweet 
 Christopher Ré gave a standout keynote at NeurIPS23, focusing on the building blocks for foundation models. You can check out his presentation [here (pptx)](https://cs.stanford.edu/~chrismre/papers/NeurIPS23_Chris_Re_Keynote_DELIVERED.pptx) and watch the video [here](https://nips.cc/virtual/2023/invited-talk/73990).
 
 #### Integrating Classic Database Techniques
-- **FlashAttention:** He talked about how ideas from old-school databases are now being used in Machine Learning systems. For instance, FlashAttention is like a method from classical databases but speeds up ML processing by 6-10 times without losing accuracy, and it also uses 10-20 times less memory.
+- **FlashAttention:** He talked about how ideas from old-school databases are now being used in Machine Learning systems. For instance, FlashAttention is like a method from classical databases but speeds up LLM processing by 6-10 times without losing accuracy, and it also uses 10-20 times less memory.
 
 #### Approaches to Handling Long Sequences
 - **Improving Hardware for Transformers:** Technologies like FlashAttention, MQA, and Blockwise Attention are making transformers better and faster.
@@ -57,7 +57,7 @@ Christopher Ré gave a standout keynote at NeurIPS23, focusing on the building b
 - **Using Alternatives to Traditional Models:** He mentioned using different kinds of models, like RNNs, and applying signal processing techniques – a common method in machine learning – to improve them. Models like S4, Hyena, and CKConv are part of this approach.
 
 #### Attention as Signal Processing
-Christopher Ré discussed a fresh way of looking at ML: treating attention in transformers like handling signals. This involves taking in information, processing it, and outputting it in a way that's useful. A key part of this is making sure the system stays stable and reliable.
+Christopher Ré discussed a fresh way of looking at ML systems: treating attention in transformers like handling signals. This involves taking in information, processing it, and outputting it in a way that's useful. A key part of this is making sure the system stays stable and reliable.
 
 #### Takeaways
 My main takeaway from his talk is that foundation models are just starting out. There's a lot of challenges ahead, but there's also a lot of potential for making ML systems more powerful and efficient. This includes better inference, handling more data at once, working with new types of data, and building better architectures for ML systems.
