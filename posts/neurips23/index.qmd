@@ -8,13 +8,13 @@ number-sections: false
 categories: [llm, deep-learning, conference]
 ---
 
-NeurIPS 2023 was not just another conference - it was a melting pot of ideas, innovations, and conversations that are steering the future of deep learning and AI. Here are some of the highlights that made this event unforgettable:
+![“You find as a writer that there are certain spots on the planet where you write better than others, and I believe in that. And New Orleans is one of them.” — Jimmy Buffet](nola.png) 
 
-- **A Whopping 3,500+ Papers Accepted:** A testament to the burgeoning research in the field.
-- **Over 15,000 Attendees:** Reflecting the growing interest and investment in AI.
-- **Looking Ahead:** Excitingly, next year's conference will be in Vancouver, and similar events are scheduled in Vienna, including ICLR and ICML, if you will be around hit me up.
+My first journey to NeurIPS 2023 was an exhilarating whirlwind, packed with a wealth of knowledge and insights. As I reflect on this incredible experience, the sheer magnitude of the event still astounds me: a staggering 3,500+ papers were accepted, and the conference welcomed over 15,000 attendees. This blog post is my attempt to distill the essence of this unforgettable event and share some of the most striking highlights.
 
 ### A Tweet That Resonated
+In the whirl of discussions and discoveries at NeurIPS 2023, a particular tweet by @Thom_Wolf, and shared by Christopher Manning, stood out for its poignant encapsulation of a key trend at the conference. It speaks volumes about the shifting landscape in the world of AI research:
+
 <blockquote class="twitter-tweet">
 <p lang="en" dir="ltr">.<a href="https://twitter.com/Thom_Wolf?ref_src=twsrc%5Etfw">@Thom_Wolf</a>: “Academia is back as we saw at NeurIPS 2023. With many private and open-source labs closing the doors on publishing their results and data, academia rises again in visibility and is shining with many impactful papers in 2023 and exciting new work coming.” <a href="https://t.co/tlOiuLOJhC">https://t.co/tlOiuLOJhC</a></p>
 &mdash; Christopher Manning (@chrmanning) <a href="https://twitter.com/chrmanning/status/1736784885677994094?ref_src=twsrc%5Etfw">December 18, 2023</a>
@@ -22,32 +22,56 @@ NeurIPS 2023 was not just another conference - it was a melting pot of ideas, in
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 ### Insights and Interactions
-- **Math Field Medalists and LLMs:** The convergence of high-level mathematics and large language models, particularly in formal proof methods, was a hot topic.
-- **A Glimpse into the Latent Space:** Explore the conference insights through these curated links:
-  - [Papers](https://atlas.nomic.ai/map/0d01fd36-ec8f-4a4d-9291-c57ba482827b/9d693660-a910-48d9-8f5d-727fa572f1ba)
-  - [Posters](https://neurips2023.vizhub.ai/)
-- **Gemini and Mistral Teams:** Meeting the brains behind these teams was enlightening.
-- **Celebrity Encounters:** The conference was buzzing with famous personalities from the ML world.
-- **VC Presence:** There was a noticeable increase in venture capitalists, indicating growing business interest in AI.
 
-### Awards and Recognition
-The best paper awards were a highlight, showcasing groundbreaking work in the field:
+#### Math Meets AI
+- **Math Field Medalists and LLMs:** One of the most fascinating aspects of NeurIPS 2023 was the intersection of mathematics and large language models (LLMs), 
 
-1. Are Emergent Abilities of Large Language Models a Mirage?
-2. Scaling Data-Constrained Language Models
-3. Direct Preference Optimization: Your Language Model is Secretly a Reward Model
-4. DecodingTrust: A Comprehensive Assessment of Trustworthiness in GPT Models
+#### A Look at the Conference's Heart
+- **A Glimpse into the Latent Space:**The conference offered a deep dive into its rich content through an array of papers and posters. For those who couldn't attend or wish to revisit the highlights, here are some curated links that offer a window into the latent space of AI innovations::
+  - Check out the [Papers](https://atlas.nomic.ai/map/0d01fd36-ec8f-4a4d-9291-c57ba482827b/9d693660-a910-48d9-8f5d-727fa572f1ba).
+  - Have a look at the [Posters](https://neurips2023.vizhub.ai/).
 
-### Looking into the Crystal Ball: Predictions for AI's Future
-- **Robust Language Agents:** The evolution from hype to practical applications.
-- **The Rise of Multimodality:** Thanks to advances by GPT-4V and Gemini.
-- **The Synthetic Data Revolution:** Moving beyond controversies to practical applications.
-- **The Sparsity Paradigm:** Innovations like Mixtral that are changing the game.
+#### Meeting the Teams Behind the Tech
+- **Gemini and Mistral Teams:** Getting to meet the people who work on Gemini and Mistral was a highlight for me. Talking with them about how they build their tech was really insightful.
 
-### Emerging Technologies to Watch
-- **MOE Transformers:** The current state-of-the-art.
-- **State-Space Models:** Gaining attention but still in their infancy in terms of large-scale applications.
+#### Stars of the AI World
+- **Celebrity Encounters:** The conference had a lot of famous people from the AI field. It was exciting to see them in person.
 
-In conclusion, NeurIPS 2023 was more than just a conference; it was a showcase of the vibrant and evolving landscape of AI and machine learning. The discussions and discoveries here are not just shaping the academic world, but also the way we think about technology in our everyday lives.
+![Sharing moment with Tri Dao, Dylan Patel, Teknium and co at Open-Source party organized by Mistral](oss_party.jpeg)
+
+#### Business Interest in AI
+- **VC Presence:** I noticed more business people, like venture capitalists, at the conference this year. This shows that more businesses are getting interested in AI and its possibilities.
+
+![Also attended event with Daniel Gross of AI Grant, where we discussed shelf life of transformers and future AI products](daniel_gross.jpeg)
+
+### Key Insights from Christopher Ré's NeurIPS23 Keynote
+
+Christopher Ré gave a standout keynote at NeurIPS23, focusing on the building blocks for foundation models. You can check out his presentation [here (pptx)](https://cs.stanford.edu/~chrismre/papers/NeurIPS23_Chris_Re_Keynote_DELIVERED.pptx) and watch the video [here](https://nips.cc/virtual/2023/invited-talk/73990).
+
+#### Integrating Classic Database Techniques
+- **FlashAttention:** He talked about how ideas from old-school databases are now being used in Machine Learning systems. For instance, FlashAttention is like a method from classical databases but speeds up ML processing by 6-10 times without losing accuracy, and it also uses 10-20 times less memory.
+
+#### Approaches to Handling Long Sequences
+- **Improving Hardware for Transformers:** Technologies like FlashAttention, MQA, and Blockwise Attention are making transformers better and faster.
+- **Approximate Attention:** This is about making ML models pay 'just enough' attention without overdoing it. Some examples are Reformer, Performer, and Linformer.
+- **Using Alternatives to Traditional Models:** He mentioned using different kinds of models, like RNNs, and applying signal processing techniques – a common method in machine learning – to improve them. Models like S4, Hyena, and CKConv are part of this approach.
+
+#### Attention as Signal Processing
+Christopher Ré discussed a fresh way of looking at ML: treating attention in transformers like handling signals. This involves taking in information, processing it, and outputting it in a way that's useful. A key part of this is making sure the system stays stable and reliable.
+
+#### Takeaways
+My main takeaway from his talk is that foundation models are just starting out. There's a lot of challenges ahead, but there's also a lot of potential for making ML systems more powerful and efficient. This includes better inference, handling more data at once, working with new types of data, and building better architectures for ML systems.
+
+For those interested in the technical details, you can explore their work on [GitHub for SysAI building blocks](https://github.com/HazyResearch/aisys-building-blocks).
+
+
+### Emerging Trends to Watch
+
+#### Leading Developments
+- **State-Space Models:** These are gaining traction and could shape future directions.
+- **Grounded Agents:** Agents like those from MultiOn and Minion, demonstrating practical applications beyond theoretical concepts.
+
+#### Concluding Thoughts on NeurIPS 2023
+To wrap up, NeurIPS 2023 went beyond a typical conference. It was a vibrant showcase of evolving technologies, offering insights that are not only academically significant but also practically influential in shaping our interaction with technology.
 
 ---
