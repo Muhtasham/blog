@@ -10,7 +10,7 @@ categories: [llm, deep-learning, conference]
 
 ![“You find as a writer that there are certain spots on the planet where you write better than others, and I believe in that. And New Orleans is one of them.” — Jimmy Buffet](nola.png) 
 
-My first journey to NeurIPS 2023 was an exhilarating whirlwind, packed with a wealth of knowledge and insights. As I reflect on this incredible experience, the sheer magnitude of the event still astounds me: a staggering 3,500+ papers were accepted, and the conference welcomed over 15,000 attendees. This blog post is my attempt to distill the essence of this unforgettable event and share some of the most striking highlights.
+I don't think the above quote applies to me, but nevertheless wanted to share my first NeurIPS experience. To start with it was an exhilarating whirlwind, packed with a wealth of knowledge and insights. As I reflect on this incredible experience, the sheer magnitude of the event still astounds me: a staggering 3,500+ papers were accepted, and the conference welcomed over 15,000 attendees. This blog post is my attempt to distill the essence of this unforgettable event and share some of the most striking highlights.
 
 ### A Tweet That Resonated
 In the whirl of discussions and discoveries at NeurIPS 2023, a particular tweet by @Thom_Wolf, and shared by Christopher Manning, stood out for its poignant encapsulation of a key trend at the conference. It speaks volumes about the shifting landscape in the world of AI research:
