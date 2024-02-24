@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="muhtasham">
-<meta name="dcterms.date" content="2023-03-28">
+<meta name="dcterms.date" content="2024-02-24">
 
-<title>Machine Learners Guide to Real World - 🗽 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference</title>
+<title>Machine Learners Guide to Real World - 😮 GANs are so back! It´s so over</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -71,14 +71,14 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta name="twitter:title" content="Machine Learners Guide to Real World - 🗽 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference">
+<meta name="twitter:title" content="Machine Learners Guide to Real World - 😮 GANs are so back! It´s so over">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="banner.jpeg">
+<meta name="twitter:image" content="z.jpeg">
 <meta name="twitter:creator" content="muhtasham9">
 <meta name="twitter:card" content="summary">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top quarto-banner">
@@ -130,9 +130,10 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">🗽 A Philosophical Dive into Deep Learning: My Experience at the NYU Conference</h1>
+      <h1 class="title">😮 GANs are so back! It´s so over</h1>
                                 <div class="quarto-categories">
-                <div class="quarto-category">conference</div>
+                <div class="quarto-category">deep-learning</div>
+                <div class="quarto-category">papers</div>
               </div>
                   </div>
   </div>
@@ -150,7 +151,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">March 28, 2023</p>
+        <p class="date">February 24, 2024</p>
       </div>
     </div>
     
@@ -161,7 +162,9 @@ ul.task-list li input[type="checkbox"] {
   </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
@@ -169,65 +172,38 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<p><img src="skyline.jpeg" class="img-fluid"></p>
-<section id="table-of-contents" class="level2">
-<h2 class="anchored" data-anchor-id="table-of-contents">Table of contents</h2>
-<ol type="1">
-<li><a href="#introduction">Introduction</a></li>
-<li><a href="#a-thought-provoking-start-sensory-grounding-in-large-language-models">A Thought-Provoking Start: Sensory Grounding in Large Language Models</a></li>
-<li><a href="#yann-lecuns-bold-prediction">Yann LeCun’s Bold Prediction</a></li>
-<li><a href="#david-chalmers-nuanced-view">David Chalmers’ Nuanced View</a></li>
-<li><a href="#a-glimpse-into-other-talks">A Glimpse into Other Talks</a></li>
-<li><a href="#new-york-vibes">New York Vibes</a></li>
-<li><a href="#conclusion">Conclusion</a></li>
-</ol>
-</section>
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p><a name="introduction"></a></p>
-<p>Last week, I was fortunate enough to attend the captivating Philosophy of Deep Learning Conference at New York University. This event united experts from diverse fields to explore the philosophical aspects and implications of deep learning and artificial intelligence.In this blog post, I’ll recount some memorable highlights from the conference and share my impressions of the dynamic atmosphere of New York City.</p>
-</section>
-<section id="a-thought-provoking-start-sensory-grounding-in-large-language-models" class="level2">
-<h2 class="anchored" data-anchor-id="a-thought-provoking-start-sensory-grounding-in-large-language-models">A Thought-Provoking Start: Sensory Grounding in Large Language Models</h2>
-<p><a name="a-thought-provoking-start-sensory-grounding-in-large-language-models"></a></p>
-<p>The conference kicked off with a thought-provoking pre-conference debate titled “Do large language models need sensory grounding for meaning and understanding?”. The debate featured esteemed speakers such as Yann LeCun and David Chalmers.</p>
-<p>Throughout the conference, every interaction, from keynote speeches to coffee breaks, seemed to be imbued with philosophical depth.</p>
-<p><img src="william.jpg" class="img-fluid"></p>
-<p>This meme captured the mood of the conference perfectly. Everyone seemed to be thinking deeply about the implications of their work.</p>
-</section>
-<section id="yann-lecuns-bold-prediction" class="level2">
-<h2 class="anchored" data-anchor-id="yann-lecuns-bold-prediction">Yann LeCun’s Bold Prediction</h2>
-<p><a name="yann-lecuns-bold-prediction"></a></p>
-<p>Yann LeCun, one of the pioneers in the field of deep learning, was on the “Yes” side of the debate. He made a bold prediction that nobody in their right mind will use autoregressive models 5 years from now. LeCun argued that Auto-Regressive Large Language Models (LLMs) are exponentially diverging diffusion processes, and while the probability of errors can be reduced through training, the problem cannot be entirely eliminated.</p>
-<p>In other words LLMs are like Micael Scott’s famous line in The Office:</p>
-<p><img src="sentence.jpeg" class="img-fluid"></p>
-<p>His solution is to make LLMs non-autoregressive while preserving their fluency. You can find his slides <a href="https://drive.google.com/file/d/1BU5bV3X5w65DwSMapKcsr0ZvrMRU_Nbi/view">here</a>.</p>
-</section>
-<section id="david-chalmers-nuanced-view" class="level2">
-<h2 class="anchored" data-anchor-id="david-chalmers-nuanced-view">David Chalmers’ Nuanced View</h2>
-<p><a name="david-chalmers-nuanced-view"></a></p>
-<p>David Chalmers, a renowned philosopher, took a more nuanced approach to the debate. He started his talk on the “Yes” side with a bit of philosophical history about the grounding problem, discussing thought experiments from philosophers like Avicenna. Chalmers ultimately concluded with a “No, but – it’s complicated” answer to the debate question. You can find his slides <a href="https://consc.net/papers/groundingdebate.pdf">here</a>.</p>
-</section>
-<section id="a-glimpse-into-other-talks" class="level2">
-<h2 class="anchored" data-anchor-id="a-glimpse-into-other-talks">A Glimpse into Other Talks</h2>
-<p><a name="a-glimpse-into-other-talks"></a></p>
-<p>One of the most interesting talks during the conference was by Tal Linzen, titled “What, if Anything, Can Large Language Models Teach Us About Human Language Acquisition?”. Linzen posited that deep learning can be a great tool for testing theoretical claims about children’s linguistic input and inductive biases if used correctly. However, he emphasized that cognitive scientists need to train new models themselves, as the “large language models” from big labs are not relevant to questions about humans. Linzen’s slides can be found <a href="https://www.dropbox.com/s/l1r7yv0sr2cvlj3/linzen_phil_deep_learning.pdf?dl=0">here</a>.</p>
-<blockquote class="blockquote">
-<p>Update 8 April 2023: Head to https://phildeeplearning.github.io to find individual links in the program, or for the whole <a href="https://phildeeplearning.github.io/recordings">Youtube playlist</a>.</p>
+<p>Last week, an intriguing project by our friends at <a href="https://fal.ai/">fal</a> caught the internet by storm:</p>
+<blockquote class="twitter-tweet blockquote">
+<p lang="en" dir="ltr">
+This is wild<a href="https://t.co/tStncI6aip">https://t.co/tStncI6aip</a><br><br>You can clone &amp; deploy this on <a href="https://twitter.com/vercel?ref_src=twsrc%5Etfw"><span class="citation" data-cites="vercel">@vercel</span></a>. Install the <a href="https://twitter.com/fal_ai_data?ref_src=twsrc%5Etfw"><span class="citation" data-cites="fal_ai_data">@fal_ai_data</span></a> integration with a couple clicks. <a href="https://t.co/AbrJlgWkjJ">pic.twitter.com/AbrJlgWkjJ</a>
+</p>
+— Guillermo Rauch (<span class="citation" data-cites="rauchg">@rauchg</span>) <a href="https://twitter.com/rauchg/status/1761138889019077104?ref_src=twsrc%5Etfw">February 23, 2024</a>
 </blockquote>
-</section>
-<section id="new-york-vibes" class="level2">
-<h2 class="anchored" data-anchor-id="new-york-vibes">New York Vibes</h2>
-<p><a name="new-york-vibes"></a></p>
-<p>The conference experience was made even better by the electric atmosphere of New York City. Walking through the city’s bustling streets, I couldn’t help but feel the energy and excitement that makes New York such a unique place. Between conference sessions, I enjoyed exploring the city’s diverse neighborhoods, trying out new foods, and admiring the stunning skyline. There’s something truly special about being in a city that feels so alive and vibrant, and it was the perfect backdrop for a conference focused on the future of deep learning and AI.</p>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p><a name="conclusion"></a></p>
-<p>In conclusion, the Philosophy of Deep Learning conference at NYU was an unforgettable experience that brought together experts from various fields to discuss the latest developments in deep learning and artificial intelligence. The insightful debates and thought-provoking talks challenged our understanding of large language models, their relationship to human cognition, and the philosophical implications of AI. Combined with the thrilling energy of New York City, the conference left me feeling inspired and eager to explore new ideas in the rapidly evolving world of AI and deep learning. I’m already looking forward to attending similar events in the future and further immersing myself in the fascinating intersection of technology and philosophy.</p>
+<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>I was so impressed that I dove deep into the technology behind the scenes, beyond the infrastructure of fal, to share with you here.</p>
+<p><strong>Spoiler alert</strong>: <em>it involves GANs.</em></p>
+<p>GANs hold a special place in my heart since I started my ML journey with them, oh gosh it was so hard to train them due to mode collapse back in 2018. Anyway, here’s a brief overview of the key ideas from the paper <a href="https://arxiv.org/abs/2402.13929">“SDXL-Lightning: Progressive Adversarial Diffusion Distillation”</a></p>
+<p><strong>Denoising Diffusion GAN for Distillation:</strong></p>
+<ul>
+<li>The challenge with distilling diffusion models at small step sizes lies in the MSE ambiguity problem.</li>
+<li>Small steps require modeling a complex flow, where a Gaussian distribution isn’t sufficient.</li>
+<li>The solution? Distill using a GAN, with the discriminator conditioned on pairs of (x, x_nstep_denoised), sampling from either the teacher network or the student. <img src="eq1.png" class="img-fluid"> and re-use the weights from the teacher encoder for the discriminator.</li>
+</ul>
+<p><strong>Janus Artifacts:</strong></p>
+<p><img src="fig2.png" class="img-fluid"></p>
+<ul>
+<li>Despite the student model having less capacity than the teacher, leading to a mismatch, relaxing mode-coverage can reduce complexity.</li>
+<li>The approach involves fine-tuning on unconditional flows for better results.</li>
+</ul>
+<p><strong>Training Details:</strong></p>
+<ul>
+<li>The distillation process involves transitioning from 128 steps to 32 with MSE loss, and then further distilling to 32, 8, 4, 3, and 1 step with GAN loss.</li>
+<li>The process incorporates both conditional and unconditional training at each stage, employing LoRA for initial training before fully fine-tuning the model.</li>
+<li>Training spans multiple timesteps, enhancing generation capabilities even when not strictly necessary.</li>
+</ul>
+<p>Check <a href="https://huggingface.co/ByteDance/SDXL-Lightning">Model card</a> for more details.</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
