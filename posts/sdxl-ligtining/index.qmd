@@ -1,5 +1,5 @@
 ---
-title: "😮 GANs are so back! It´s so over"
+title: "😮 GANs are so back! It is so over"
 author: "muhtasham"
 date: "2024-02-24"
 toc: true
@@ -8,7 +8,7 @@ image: z.jpeg
 categories: [deep-learning, papers]
 ---
 
-Last week, an intriguing project by our friends at [fal](https://fal.ai/) caught the internet by storm:
+Last week, an intriguing project by my friends at [fal](https://fal.ai/) caught the internet by storm:
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">This is wild<a href="https://t.co/tStncI6aip">https://t.co/tStncI6aip</a><br><br>You can clone &amp; deploy this on <a href="https://twitter.com/vercel?ref_src=twsrc%5Etfw">@vercel</a>. Install the <a href="https://twitter.com/fal_ai_data?ref_src=twsrc%5Etfw">@fal_ai_data</a> integration with a couple clicks. <a href="https://t.co/AbrJlgWkjJ">pic.twitter.com/AbrJlgWkjJ</a></p>&mdash; Guillermo Rauch (@rauchg) <a href="https://twitter.com/rauchg/status/1761138889019077104?ref_src=twsrc%5Etfw">February 23, 2024</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
