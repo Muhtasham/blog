@@ -14,21 +14,14 @@ Welcome back, reader. Long time no see. This year I was locked in working on my 
 
 In this blog post we will dive deeper into the metrics, characterizing the speed of the LLM inference engine. We will explore the cutting-edge optimizations employed in modern inference engines, simulate their effects, and analyze the impact on the key metrics that matter most.
 
-## Learning Objectives
-
-By the end of this blog post, you will be able to:
-
-- Understand and measure time to first token (TTFT), end-to-end latency (E2E Latency), and inter-token latency (ITL).
-- Understand the impact of batching and inflight batching on GPU utilization and performance.
-
 ## **Latency Metrics**
 Several important metrics are available in the benchmarks:
 
-* **TTFT (Time To First Token)**: measures the time it takes for the model to generate the first token of a response. You've experienced it in the previous notebook.
+* **TTFT (Time To First Token)**: measures the time it takes for the model to generate the first token of a response. 
 * **E2E Latency (End-to-End Latency)**: measures the total time it takes for the model to generate a complete response.
 * **ITL (Inter-Token Latency)**: also known as Time Per Output Token (TPOT), measures the average time the client waits between consecutive tokens in a response in the streaming scenario.
 
-To separate the prefill characteristics from the decoding ones, TTFT and ITL are reported independently in GenAI-Perf, as shown in the image below.
+To separate the prefill characteristics from the decoding ones, TTFT and ITL are reported independently in tools like [GenAI-Perf](https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/perf_analyzer/genai-perf/README.html), as shown in the image below.
 
 ![metrics](images/metrics.png)
 
@@ -182,7 +175,8 @@ See the illustration below for a visual representation of in-flight batching in 
 ![ifb_trt-llm](images/ifb_trt-llm.png)
 
 ### Chunked Context
-To optimize performance, you can separate the prefill into chunks and batch together one chunk of prefill and multiple decodings to attempt a balance between $T_{mem}$ and $T_{math}$. This technique is implemented in TensorRT-LLM as [**Chunked Context**](https://nvidia.github.io/TensorRT-LLM/advanced/gpt-attention.html#chunked-context). It is important to keep chunks large enough to still be able to reach compute-boundness.
+To optimize performance, you can separate the prefill into chunks and batch together one chunk of prefill and multiple deco
+dings to attempt a balance between $T_{mem}$ and $T_{math}$. This technique is implemented in TensorRT-LLM as [**Chunked Context**](https://nvidia.github.io/TensorRT-LLM/advanced/gpt-attention.html#chunked-context). It is important to keep chunks large enough to still be able to reach compute-boundness.
 
 ### Max Batch Size
 
@@ -194,8 +188,6 @@ TensorRT-LLM engines have two parameters called `max_batch_size`:
 Note that the second one should be less than or equal to the first one. See the [docs](https://nvidia.github.io/TensorRT-LLM/performance/perf-best-practices.html#max-batch-size) for details.
 
 
-## Conclusion
+## Outro
 
-In this blog post we have explored the key metrics and techniques used in LLM inference, including latency and throughput metrics, and the concept of inflight batching. We have also discussed the importance of choosing the right throughput metric for system sizing and how to interpret the results.
-
-See you at the top! 
+Hope it was useful. See you at the top! 

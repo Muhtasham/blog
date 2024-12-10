@@ -238,7 +238,6 @@ window.Quarto = {
    
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
   <li><a href="#latency-metrics" id="toc-latency-metrics" class="nav-link" data-scroll-target="#latency-metrics"><strong>Latency Metrics</strong></a>
   <ul class="collapse">
   <li><a href="#estimating-inter-token-latency-itl-for-human-perception" id="toc-estimating-inter-token-latency-itl-for-human-perception" class="nav-link" data-scroll-target="#estimating-inter-token-latency-itl-for-human-perception">Estimating Inter-Token Latency (ITL) For Human Perception</a></li>
@@ -260,7 +259,7 @@ window.Quarto = {
   <li><a href="#chunked-context" id="toc-chunked-context" class="nav-link" data-scroll-target="#chunked-context">Chunked Context</a></li>
   <li><a href="#max-batch-size" id="toc-max-batch-size" class="nav-link" data-scroll-target="#max-batch-size">Max Batch Size</a></li>
   </ul></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#outro" id="toc-outro" class="nav-link" data-scroll-target="#outro">Outro</a></li>
   </ul>
 </nav>
     </div>
@@ -276,19 +275,15 @@ window.Quarto = {
 <p>Welcome back, reader. Long time no see. This year I was locked in working on my skill issues, hence did not have time to write much. But wanted to close the year with a banger.</p>
 <p>In this blog post we will dive deeper into the metrics, characterizing the speed of the LLM inference engine. We will explore the cutting-edge optimizations employed in modern inference engines, simulate their effects, and analyze the impact on the key metrics that matter most.</p>
 </section>
-<section id="learning-objectives" class="level2">
-<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
-<p>By the end of this blog post, you will be able to: - Understand and measure time to first token (TTFT), end-to-end latency (E2E Latency), and inter-token latency (ITL). - Analyze throughput metrics and simulate their dependencies on various factors. - Explore the impact of batching and inflight batching on GPU utilization and performance. - Investigate the effects of concurrency settings on latency and throughput.</p>
-</section>
 <section id="latency-metrics" class="level2">
 <h2 class="anchored" data-anchor-id="latency-metrics"><strong>Latency Metrics</strong></h2>
 <p>Several important metrics are available in the benchmarks:</p>
 <ul>
-<li><strong>TTFT (Time To First Token)</strong>: measures the time it takes for the model to generate the first token of a response. You’ve experienced it in the previous notebook.</li>
+<li><strong>TTFT (Time To First Token)</strong>: measures the time it takes for the model to generate the first token of a response.</li>
 <li><strong>E2E Latency (End-to-End Latency)</strong>: measures the total time it takes for the model to generate a complete response.</li>
 <li><strong>ITL (Inter-Token Latency)</strong>: also known as Time Per Output Token (TPOT), measures the average time the client waits between consecutive tokens in a response in the streaming scenario.</li>
 </ul>
-<p>To separate the prefill characteristics from the decoding ones, TTFT and ITL are reported independently in GenAI-Perf, as shown in the image below.</p>
+<p>To separate the prefill characteristics from the decoding ones, TTFT and ITL are reported independently in tools like <a href="https://docs.nvidia.com/deeplearning/triton-inference-server/user-guide/docs/perf_analyzer/genai-perf/README.html">GenAI-Perf</a>, as shown in the image below.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/metrics.png" class="img-fluid figure-img"></p>
@@ -461,7 +456,7 @@ Note
 </div>
 <section id="chunked-context" class="level3">
 <h3 class="anchored" data-anchor-id="chunked-context">Chunked Context</h3>
-<p>To optimize performance, you can separate the prefill into chunks and batch together one chunk of prefill and multiple decodings to attempt a balance between <span class="math inline">\(T_{mem}\)</span> and <span class="math inline">\(T_{math}\)</span>. This technique is implemented in TensorRT-LLM as <a href="https://nvidia.github.io/TensorRT-LLM/advanced/gpt-attention.html#chunked-context"><strong>Chunked Context</strong></a>. It is important to keep chunks large enough to still be able to reach compute-boundness.</p>
+<p>To optimize performance, you can separate the prefill into chunks and batch together one chunk of prefill and multiple deco dings to attempt a balance between <span class="math inline">\(T_{mem}\)</span> and <span class="math inline">\(T_{math}\)</span>. This technique is implemented in TensorRT-LLM as <a href="https://nvidia.github.io/TensorRT-LLM/advanced/gpt-attention.html#chunked-context"><strong>Chunked Context</strong></a>. It is important to keep chunks large enough to still be able to reach compute-boundness.</p>
 </section>
 <section id="max-batch-size" class="level3">
 <h3 class="anchored" data-anchor-id="max-batch-size">Max Batch Size</h3>
@@ -473,10 +468,9 @@ Note
 <p>Note that the second one should be less than or equal to the first one. See the <a href="https://nvidia.github.io/TensorRT-LLM/performance/perf-best-practices.html#max-batch-size">docs</a> for details.</p>
 </section>
 </section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>In this blog post we have explored the key metrics and techniques used in LLM inference, including latency and throughput metrics, and the concept of inflight batching. We have also discussed the importance of choosing the right throughput metric for system sizing and how to interpret the results.</p>
-<p>See you at the top!</p>
+<section id="outro" class="level2">
+<h2 class="anchored" data-anchor-id="outro">Outro</h2>
+<p>Hope it was useful. See you at the top!</p>
 
 
 </section>
