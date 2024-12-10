@@ -2,15 +2,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.43">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="muhtasham">
 <meta name="dcterms.date" content="2024-12-09">
-<meta name="description" content="Deep dive into batching strategies for LLM inference optimization with TensorRT-LLM">
+<meta name="description" content="Technical exploration of LLM inference metrics, batching strategies, and GPU optimization with TensorRT-LLM - from latency metrics to in-flight batching">
 
-<title>Machine Learners Guide to Real World – 📉 Understanding Batching Strategies</title>
+<title>🚀 LLM Inference Deep Dive: Metrics, Batching &amp; GPU Optimization – Machine Learners Guide to Real World</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -72,10 +72,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-ddd961a2510921635943dfbbd19534c4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -135,8 +135,8 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../../styles.css">
-<meta name="twitter:title" content="Machine Learners Guide to Real World - 📉 Understanding Batching Strategies">
-<meta name="twitter:description" content="Deep dive into batching strategies for LLM inference optimization with TensorRT-LLM">
+<meta name="twitter:title" content="🚀 LLM Inference Deep Dive: Metrics, Batching &amp; GPU Optimization – Machine Learners Guide to Real World">
+<meta name="twitter:description" content="Technical exploration of LLM inference metrics, batching strategies, and GPU optimization with TensorRT-LLM - from latency metrics to in-flight batching">
 <meta name="twitter:image" content="images/thumbnail.jpg">
 <meta name="twitter:creator" content="muhtasham9">
 <meta name="twitter:card" content="summary">
@@ -194,10 +194,10 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">📉 Understanding Batching Strategies</h1>
+      <h1 class="title">🚀 LLM Inference Deep Dive: Metrics, Batching &amp; GPU Optimization</h1>
                   <div>
         <div class="description">
-          Deep dive into batching strategies for LLM inference optimization with TensorRT-LLM
+          Technical exploration of LLM inference metrics, batching strategies, and GPU optimization with TensorRT-LLM - from latency metrics to in-flight batching
         </div>
       </div>
                           <div class="quarto-categories">
@@ -246,8 +246,8 @@ window.Quarto = {
   <li><a href="#batching-the-key-to-efficient-throughput" id="toc-batching-the-key-to-efficient-throughput" class="nav-link" data-scroll-target="#batching-the-key-to-efficient-throughput"><strong>Batching: The Key to Efficient Throughput</strong></a>
   <ul class="collapse">
   <li><a href="#memory-bound-and-compute-bound-functions" id="toc-memory-bound-and-compute-bound-functions" class="nav-link" data-scroll-target="#memory-bound-and-compute-bound-functions">Memory-Bound and Compute-Bound Functions</a></li>
-  <li><a href="#prefill-a-compute-bound-operation" id="toc-prefill-a-compute-bound-operation" class="nav-link" data-scroll-target="#prefill-a-compute-bound-operation"><strong>Prefill:</strong> A Compute-Bound Operation</a></li>
-  <li><a href="#decoding-a-memory-bound-operation" id="toc-decoding-a-memory-bound-operation" class="nav-link" data-scroll-target="#decoding-a-memory-bound-operation"><strong>Decoding:</strong> A Memory-Bound Operation</a></li>
+  <li><a href="#prefill" id="toc-prefill" class="nav-link" data-scroll-target="#prefill"><strong>Prefill:</strong></a></li>
+  <li><a href="#decoding" id="toc-decoding" class="nav-link" data-scroll-target="#decoding"><strong>Decoding:</strong></a></li>
   <li><a href="#arithmetic-intensity" id="toc-arithmetic-intensity" class="nav-link" data-scroll-target="#arithmetic-intensity">Arithmetic Intensity</a></li>
   </ul></li>
   <li><a href="#throughput-metrics" id="toc-throughput-metrics" class="nav-link" data-scroll-target="#throughput-metrics"><strong>Throughput Metrics</strong></a>
@@ -272,8 +272,8 @@ window.Quarto = {
 
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>Welcome back, reader. Long time no see. This year I was locked in working on my skill issues, hence did not have time to write much. But wanted to close the year with a banger.</p>
-<p>In this blog post we will dive deeper into the metrics, characterizing the speed of the LLM inference engine. We will explore the cutting-edge optimizations employed in modern inference engines, simulate their effects, and analyze the impact on the key metrics that matter most.</p>
+<p>Welcome back, reader. Long time no see. This year I was locked in working on my skill issues, hence did not have time to write much. But wanted to close the year with a deep technical dive into LLM inference optimization.</p>
+<p>In this post, we’ll dissect the key performance metrics of LLM inference engines - from TTFT and ITL to throughput measurements. We’ll explore GPU memory/compute bounds, analyze batching strategies like in-flight batching (IFB), and simulate their effects on system performance. Whether you’re optimizing inference latency or scaling deployment, understanding these fundamentals is crucial for building efficient LLM systems.</p>
 </section>
 <section id="latency-metrics" class="level2">
 <h2 class="anchored" data-anchor-id="latency-metrics"><strong>Latency Metrics</strong></h2>
@@ -310,8 +310,10 @@ window.Quarto = {
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> inter_token_latency_ms</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"READING:  230 words per minute correspond to </span><span class="sc">{</span>calculate_itl(<span class="dv">230</span>)<span class="sc">:.0f}</span><span class="ss">ms between tokens, on average"</span>)  <span class="co">## 196</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"SKIMMING: 700 words per minute correspond to </span><span class="sc">{</span>calculate_itl(<span class="dv">700</span>)<span class="sc">:.0f}</span><span class="ss">ms between tokens, on average"</span>)  <span class="co">## 64</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"READING:  230 words per minute correspond to </span><span class="sc">{</span>calculate_itl(<span class="dv">230</span>)<span class="sc">:.0f}</span><span class="ss">ms between tokens, on average"</span>)  </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">## 196</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"SKIMMING: 700 words per minute correspond to </span><span class="sc">{</span>calculate_itl(<span class="dv">700</span>)<span class="sc">:.0f}</span><span class="ss">ms between tokens, on average"</span>)  </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">## 64</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In the vast majority of the LLM inference setups, ITL is much lower than these reference values, typically around 20–40 ms. Still, it’s important to keep these numbers in mind as minimum thresholds for comfort.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -357,7 +359,7 @@ Note
 </section>
 <section id="batching-the-key-to-efficient-throughput" class="level2">
 <h2 class="anchored" data-anchor-id="batching-the-key-to-efficient-throughput"><strong>Batching: The Key to Efficient Throughput</strong></h2>
-<p>GPUs are very good at processing highly-parallelized and concurrent tasks. For example, an NVIDIA H100 GPU has 16,896 FP32 Cores per GPU and 528 Tensor Cores organized into 132 streaming multiprocessors (SMs) (<a href="https://nvdam.widen.net/s/95bdhpsgrs/nvidia_h100_tensor_core_gpu_architecture_whitepaper_v1.03#page=39"><strong>see the datasheet</strong></a>), where each core can execute an independent thread of mathematical computation and each SM can parallelize hundreds of threads (either core-enabled math operations or parallelizable memory operations) at a time. The most efficient way to utilize the GPU is to make sure all the SMs always have something to compute and some memory operations to run at any given time.</p>
+<p>GPUs are very good at processing highly-parallelized and concurrent tasks. For example, an NVIDIA H100 GPU has <code>16,896 FP32</code> Cores per GPU and 528 Tensor Cores organized into 132 streaming multiprocessors (SMs) (<a href="https://nvdam.widen.net/s/95bdhpsgrs/nvidia_h100_tensor_core_gpu_architecture_whitepaper_v1.03#page=39"><strong>see the datasheet</strong></a>), where each core can execute an independent thread of mathematical computation and each SM can parallelize hundreds of threads (either core-enabled math operations or parallelizable memory operations) at a time. The most efficient way to utilize the GPU is to make sure all the SMs always have something to compute and some memory operations to run at any given time.</p>
 <section id="memory-bound-and-compute-bound-functions" class="level3">
 <h3 class="anchored" data-anchor-id="memory-bound-and-compute-bound-functions">Memory-Bound and Compute-Bound Functions</h3>
 <p>Now consider a simplified model where a function reads its input from memory, performs math operations, and then writes its output to memory. Let’s assume <span class="math inline">\(T_{mem}\)</span> time is spent in accessing memory and <span class="math inline">\(T_{math}\)</span> time is spent performing math operations. If we further assume that memory and math portions of different threads can be overlapped:</p>
@@ -368,8 +370,8 @@ Note
 </ul>
 <p>Let’s connect these topics to the LLM operations we take for granted in typical use.</p>
 </section>
-<section id="prefill-a-compute-bound-operation" class="level3">
-<h3 class="anchored" data-anchor-id="prefill-a-compute-bound-operation"><strong>Prefill:</strong> A Compute-Bound Operation</h3>
+<section id="prefill" class="level3">
+<h3 class="anchored" data-anchor-id="prefill"><strong>Prefill:</strong></h3>
 <p><strong>During prefill, most operations are compute-bound.</strong></p>
 <ul>
 <li>Propagating the initial context requires larger matrices to interact to resolve attention across the entire prefill context.</li>
@@ -377,8 +379,8 @@ Note
 <li>Compute-bound property generally manifests after a certain prefill token limit (in my tests, around 300 tokens or more cause <span class="math inline">\(T_{math} &gt; T_{mem}\)</span> on my GPU setup).</li>
 </ul>
 </section>
-<section id="decoding-a-memory-bound-operation" class="level3">
-<h3 class="anchored" data-anchor-id="decoding-a-memory-bound-operation"><strong>Decoding:</strong> A Memory-Bound Operation</h3>
+<section id="decoding" class="level3">
+<h3 class="anchored" data-anchor-id="decoding"><strong>Decoding:</strong></h3>
 <p><strong>During decoding, most operations are memory-bound.</strong></p>
 <ul>
 <li>Generating one token at a time means the input for each next token is a single embedded token and many cached components, which results in small matrix operations during forward propagation.</li>
@@ -558,8 +560,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -670,7 +670,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
