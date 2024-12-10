@@ -1,6 +1,6 @@
 ---
-title: "📉 Understanding Batching Strategies"
-description: "Deep dive into batching strategies for LLM inference optimization with TensorRT-LLM"
+title: "🚀 LLM Inference Deep Dive: Metrics, Batching & GPU Optimization"
+description: "Technical exploration of LLM inference metrics, batching strategies, and GPU optimization with TensorRT-LLM - from latency metrics to in-flight batching"
 author: "muhtasham"
 date: "2024-12-09"
 image: "images/thumbnail.jpg"
@@ -10,9 +10,9 @@ toc: true
 
 ## Introduction
 
-Welcome back, reader. Long time no see. This year I was locked in working on my skill issues, hence did not have time to write much. But wanted to close the year with a banger.
+Welcome back, reader. Long time no see. This year I was locked in working on my skill issues, hence did not have time to write much. But wanted to close the year with a deep technical dive into LLM inference optimization.
 
-In this blog post we will dive deeper into the metrics, characterizing the speed of the LLM inference engine. We will explore the cutting-edge optimizations employed in modern inference engines, simulate their effects, and analyze the impact on the key metrics that matter most.
+In this post, we'll dissect the key performance metrics of LLM inference engines - from TTFT and ITL to throughput measurements. We'll explore GPU memory/compute bounds, analyze batching strategies like in-flight batching (IFB), and simulate their effects on system performance. Whether you're optimizing inference latency or scaling deployment, understanding these fundamentals is crucial for building efficient LLM systems.
 
 ## **Latency Metrics**
 Several important metrics are available in the benchmarks:
@@ -47,8 +47,10 @@ def calculate_itl(wpm, words_per_token=0.75):
 
     return inter_token_latency_ms
 
-print(f"READING:  230 words per minute correspond to {calculate_itl(230):.0f}ms between tokens, on average")  ## 196
-print(f"SKIMMING: 700 words per minute correspond to {calculate_itl(700):.0f}ms between tokens, on average")  ## 64
+print(f"READING:  230 words per minute correspond to {calculate_itl(230):.0f}ms between tokens, on average")  
+## 196
+print(f"SKIMMING: 700 words per minute correspond to {calculate_itl(700):.0f}ms between tokens, on average")  
+## 64
 ```
 
 In the vast majority of the LLM inference setups, ITL is much lower than these reference values, typically around 20–40 ms. Still, it's important to keep these numbers in mind as minimum thresholds for comfort.
@@ -85,7 +87,7 @@ You can check the repo for more examples and details, simulating different batch
 
 ## **Batching: The Key to Efficient Throughput**
 
-GPUs are very good at processing highly-parallelized and concurrent tasks. For example, an NVIDIA H100 GPU has 16,896 FP32 Cores per GPU and 528 Tensor Cores organized into 132 streaming multiprocessors (SMs) ([**see the datasheet**](https://nvdam.widen.net/s/95bdhpsgrs/nvidia_h100_tensor_core_gpu_architecture_whitepaper_v1.03#page=39)), where each core can execute an independent thread of mathematical computation and each SM can parallelize hundreds of threads (either core-enabled math operations or parallelizable memory operations) at a time. The most efficient way to utilize the GPU is to make sure all the SMs always have something to compute and some memory operations to run at any given time.  
+GPUs are very good at processing highly-parallelized and concurrent tasks. For example, an NVIDIA H100 GPU has `16,896 FP32` Cores per GPU and 528 Tensor Cores organized into 132 streaming multiprocessors (SMs) ([**see the datasheet**](https://nvdam.widen.net/s/95bdhpsgrs/nvidia_h100_tensor_core_gpu_architecture_whitepaper_v1.03#page=39)), where each core can execute an independent thread of mathematical computation and each SM can parallelize hundreds of threads (either core-enabled math operations or parallelizable memory operations) at a time. The most efficient way to utilize the GPU is to make sure all the SMs always have something to compute and some memory operations to run at any given time.  
 
 ### Memory-Bound and Compute-Bound Functions
 
@@ -98,7 +100,7 @@ Now consider a simplified model where a function reads its input from memory, pe
 Let's connect these topics to the LLM operations we take for granted in typical use.
 
 
-### **Prefill:** A Compute-Bound Operation
+### **Prefill:**
 
 **During prefill, most operations are compute-bound.**
 
@@ -106,7 +108,7 @@ Let's connect these topics to the LLM operations we take for granted in typical 
 - The intermediate results of the calculation are written to KV-cache (cached attention matrix values stored in memory), but that requires few memory operations.
 - Compute-bound property generally manifests after a certain prefill token limit (in my tests, around 300 tokens or more cause $T_{math} > T_{mem}$ on my GPU setup).
 
-### **Decoding:** A Memory-Bound Operation
+### **Decoding:**
 
 **During decoding, most operations are memory-bound.**
 
