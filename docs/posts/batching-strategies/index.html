@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.43">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="muhtasham">
+<meta name="dcterms.date" content="2024-12-09">
+<meta name="description" content="Deep dive into batching strategies for LLM inference optimization with TensorRT-LLM">
+
+<title>Machine Learners Guide to Real World – Understanding Batching Strategies</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+<meta name="twitter:title" content="Machine Learners Guide to Real World - Understanding Batching Strategies">
+<meta name="twitter:description" content="Deep dive into batching strategies for LLM inference optimization with TensorRT-LLM">
+<meta name="twitter:image" content="images/thumbnail.jpg">
+<meta name="twitter:creator" content="muhtasham9">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Machine Learners Guide to Real World</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://huggingface.co/muhtasham"> <i class="bi bi-gpu-card" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/muhtasham"> <i class="bi bi-cpu" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/muhtasham9"> <i class="bi bi-hash" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/muhtasham/"> <i class="bi bi-file-earmark-person" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Understanding Batching Strategies</h1>
+                  <div>
+        <div class="description">
+          Deep dive into batching strategies for LLM inference optimization with TensorRT-LLM
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">llm</div>
+                <div class="quarto-category">papers</div>
+                <div class="quarto-category">performance</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>muhtasham </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">December 9, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#key-metrics-in-llm-inference" id="toc-key-metrics-in-llm-inference" class="nav-link active" data-scroll-target="#key-metrics-in-llm-inference">Key Metrics in LLM Inference</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#latency-metrics" id="toc-latency-metrics" class="nav-link" data-scroll-target="#latency-metrics"><strong>Latency Metrics</strong></a>
+  <ul class="collapse">
+  <li><a href="#estimating-inter-token-latency-itl-for-human-perception" id="toc-estimating-inter-token-latency-itl-for-human-perception" class="nav-link" data-scroll-target="#estimating-inter-token-latency-itl-for-human-perception">Estimating Inter-Token Latency (ITL) For Human Perception</a></li>
+  </ul></li>
+  <li><a href="#simulator" id="toc-simulator" class="nav-link" data-scroll-target="#simulator">Simulator</a></li>
+  <li><a href="#batching-the-key-to-efficient-throughput" id="toc-batching-the-key-to-efficient-throughput" class="nav-link" data-scroll-target="#batching-the-key-to-efficient-throughput"><strong>Batching: The Key to Efficient Throughput</strong></a>
+  <ul class="collapse">
+  <li><a href="#memory-bound-and-compute-bound-functions" id="toc-memory-bound-and-compute-bound-functions" class="nav-link" data-scroll-target="#memory-bound-and-compute-bound-functions">Memory-Bound and Compute-Bound Functions</a></li>
+  <li><a href="#prefill-a-compute-bound-operation" id="toc-prefill-a-compute-bound-operation" class="nav-link" data-scroll-target="#prefill-a-compute-bound-operation"><strong>Prefill:</strong> A Compute-Bound Operation</a></li>
+  <li><a href="#decoding-a-memory-bound-operation" id="toc-decoding-a-memory-bound-operation" class="nav-link" data-scroll-target="#decoding-a-memory-bound-operation"><strong>Decoding:</strong> A Memory-Bound Operation</a></li>
+  <li><a href="#arithmetic-intensity" id="toc-arithmetic-intensity" class="nav-link" data-scroll-target="#arithmetic-intensity">Arithmetic Intensity</a></li>
+  </ul></li>
+  <li><a href="#throughput-metrics" id="toc-throughput-metrics" class="nav-link" data-scroll-target="#throughput-metrics"><strong>Throughput Metrics</strong></a>
+  <ul class="collapse">
+  <li><a href="#choosing-the-right-throughput-metric" id="toc-choosing-the-right-throughput-metric" class="nav-link" data-scroll-target="#choosing-the-right-throughput-metric">Choosing The Right Throughput Metric</a></li>
+  </ul></li>
+  <li><a href="#inflight-batching-ifb" id="toc-inflight-batching-ifb" class="nav-link" data-scroll-target="#inflight-batching-ifb"><strong>Inflight Batching (IFB)</strong></a>
+  <ul class="collapse">
+  <li><a href="#chunked-context" id="toc-chunked-context" class="nav-link" data-scroll-target="#chunked-context">Chunked Context</a></li>
+  <li><a href="#max-batch-size" id="toc-max-batch-size" class="nav-link" data-scroll-target="#max-batch-size">Max Batch Size</a></li>
+  </ul></li>
+  <li><a href="#additional-notes" id="toc-additional-notes" class="nav-link" data-scroll-target="#additional-notes"><strong>Additional Notes</strong></a>
+  <ul class="collapse">
+  <li><a href="#on-concurrency-and-request-rate-as-a-result-metric" id="toc-on-concurrency-and-request-rate-as-a-result-metric" class="nav-link" data-scroll-target="#on-concurrency-and-request-rate-as-a-result-metric">On concurrency and request rate as a result metric</a></li>
+  <li><a href="#on-concurrency-and-request-rate-as-an-input-parameter" id="toc-on-concurrency-and-request-rate-as-an-input-parameter" class="nav-link" data-scroll-target="#on-concurrency-and-request-rate-as-an-input-parameter">On concurrency and request rate as an input parameter</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="key-metrics-in-llm-inference" class="level2">
+<h2 class="anchored" data-anchor-id="key-metrics-in-llm-inference">Key Metrics in LLM Inference</h2>
+<p>Welcome back, reader. Long time no see. This year I was locked in working on my skill issues, hence did not have time to write much. But wanted to close the year with a banger.</p>
+<p>In this blog post we will dive deeper into the metrics, characterizing the speed of the LLM inference engine. We will explore the cutting-edge optimizations employed in modern inference engines, simulate their effects, and analyze the impact on the key metrics that matter most.</p>
+</section>
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning Objectives</h2>
+<p>By the end of this blog post, you will be able to: - Understand and measure time to first token (TTFT), end-to-end latency (E2E Latency), and inter-token latency (ITL). - Analyze throughput metrics and simulate their dependencies on various factors. - Explore the impact of batching and inflight batching on GPU utilization and performance. - Investigate the effects of concurrency settings on latency and throughput.</p>
+</section>
+<section id="latency-metrics" class="level2">
+<h2 class="anchored" data-anchor-id="latency-metrics"><strong>Latency Metrics</strong></h2>
+<p>Several important metrics are available in the benchmarks:</p>
+<ul>
+<li><strong>TTFT (Time To First Token)</strong>: measures the time it takes for the model to generate the first token of a response. You’ve experienced it in the previous notebook.</li>
+<li><strong>E2E Latency (End-to-End Latency)</strong>: measures the total time it takes for the model to generate a complete response.</li>
+<li><strong>ITL (Inter-Token Latency)</strong>: also known as Time Per Output Token (TPOT), measures the average time the client waits between consecutive tokens in a response in the streaming scenario.</li>
+</ul>
+<p>To separate the prefill characteristics from the decoding ones, TTFT and ITL are reported independently in GenAI-Perf, as shown in the image below.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/metrics.png" class="img-fluid figure-img"></p>
+<figcaption>metrics</figcaption>
+</figure>
+</div>
+<section id="estimating-inter-token-latency-itl-for-human-perception" class="level3">
+<h3 class="anchored" data-anchor-id="estimating-inter-token-latency-itl-for-human-perception">Estimating Inter-Token Latency (ITL) For Human Perception</h3>
+<p>Let us try to estimate typical inter-token latencies for human perception. Consider the following details:</p>
+<ul>
+<li>Normal reading for comprehension speed is about 200–230 words per minute (wpm).</li>
+<li>Skimming speed is 700 wpm (<a href="https://en.wikipedia.org/wiki/Speed_reading#Skimming_and_scanning">see wiki</a>).</li>
+<li>We can assume that an arbitrary token accounts for around 0.75 words, on average (as a standard simplifying assumption used a lot for English).</li>
+</ul>
+<p>Let’s convert these to ITL-compatible units of ms/token. Using reasonable average input statistics, we can expect to get decent average output statistics via some simple unit conversion.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calculate_itl(wpm, words_per_token<span class="op">=</span><span class="fl">0.75</span>):</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">## </span><span class="al">NOTE</span><span class="co">: 60 seconds to a minute, 1000 milliseconds to a second</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">## </span><span class="al">NOTE</span><span class="co">: Unit arithmetic of [t/s] = [(words/min) * (tokens/word) * (min/s)] = [(words/min) / (words/tokens) / (s/min)]</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    tokens_per_second <span class="op">=</span> wpm <span class="op">/</span> words_per_token <span class="op">/</span> <span class="dv">60</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">## </span><span class="al">NOTE</span><span class="co">: Unit arithmetic of [ms/t] = [(ms/s * s/token)] = [(ms/s) / (token/s)]</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    inter_token_latency_ms <span class="op">=</span> <span class="dv">1000</span> <span class="op">/</span> tokens_per_second</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> inter_token_latency_ms</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"READING:  230 words per minute correspond to </span><span class="sc">{</span>calculate_itl(<span class="dv">230</span>)<span class="sc">:.0f}</span><span class="ss">ms between tokens, on average"</span>)  <span class="co">## 196</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"SKIMMING: 700 words per minute correspond to </span><span class="sc">{</span>calculate_itl(<span class="dv">700</span>)<span class="sc">:.0f}</span><span class="ss">ms between tokens, on average"</span>)  <span class="co">## 64</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In the vast majority of the LLM inference setups, ITL is much lower than these reference values, typically around 20–40 ms. Still, it’s important to keep these numbers in mind as minimum thresholds for comfort.</p>
+<p><strong>NOTES:</strong></p>
+<ul>
+<li>In addition to defining a minimum threshold for comfort, you may also find it useful to identify a maximum threshold for speed in certain contexts. For example, a chat application with a lower-than-usual load might be so fast that it dumps output at an uncomfortable rate and causes the text view to scroll automatically, making it uncomfortable to read. For these cases, artificially sleeping between or iterating over streaming yields may be desirable.</li>
+<li><a href="https://github.com/ray-project/llmperf"><strong>LLMPerf</strong></a>, another common benchmarking SW, incorporates first-token latency into inter-token latency computation. Beware of comparing directly the results from different benchmarking tools.</li>
+</ul>
+</section>
+</section>
+<section id="simulator" class="level2">
+<h2 class="anchored" data-anchor-id="simulator">Simulator</h2>
+<p>Using this <a href="https://github.com/muhtasham/simulator">simulator</a>, we can model our properties of interest to their extremes and see how our system performs in asymptotic cases. Lets try to understand how Tensor-LLM assembles the requests into batches.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/simulation.png" class="img-fluid figure-img"></p>
+<figcaption>simulation</figcaption>
+</figure>
+</div>
+<p>You see two plots above. In the top plot, you can see batch composition depending on time. Each column is one LLM evaluation from the first layers to the last. The color of the cell and the letter represent the current stage of the request in the batch:</p>
+<ul>
+<li><strong>p</strong>refill (pink)</li>
+<li><strong>d</strong>ecoding (yellow)</li>
+<li><strong>e</strong>mpty slot (blue)</li>
+</ul>
+<p>The width of the <strong>p</strong>refill cell is equal to the TTFT (<span class="math inline">\(=2\)</span>) and the width of the <strong>d</strong>ecoding cell corresponds to ITL (<span class="math inline">\(=1\)</span>). Make sure to hover your mouse over the cells to get detailed information about the execution status, including width in ticks.</p>
+<p>In the bottom plot, you can see the measured latencies at the moments of measurement. For example, the pink <span class="math inline">\((2, 2)\)</span> point represents the TTFT measurement of our request: at the time of <span class="math inline">\(2\)</span> ticks the prefill has been completed and it took <span class="math inline">\(2\)</span> ticks for our request. Similarly, we represent the E2E latency of <span class="math inline">\(5\)</span> measured at <span class="math inline">\(5\)</span> ticks by the green-yellow point. Additionally, we show the current queue size by the orange line. Since we send only one request in this example, it is always equal to 0. Note that the latency scale uses the left y-axis and the queue size uses the right one. The x-axis is shared between both plots.</p>
+</section>
+<section id="batching-the-key-to-efficient-throughput" class="level2">
+<h2 class="anchored" data-anchor-id="batching-the-key-to-efficient-throughput"><strong>Batching: The Key to Efficient Throughput</strong></h2>
+<p>GPUs are very good at processing highly-parallelized and concurrent tasks. For example, an NVIDIA H100 GPU has 16,896 FP32 Cores per GPU and 528 Tensor Cores organized into 132 streaming multiprocessors (SMs) (<a href="https://nvdam.widen.net/s/95bdhpsgrs/nvidia_h100_tensor_core_gpu_architecture_whitepaper_v1.03#page=39"><strong>see the datasheet</strong></a>), where each core can execute an independent thread of mathematical computation and each SM can parallelize hundreds of threads (either core-enabled math operations or parallelizable memory operations) at a time. The most efficient way to utilize the GPU is to make sure all the SMs always have something to compute and some memory operations to run at any given time.</p>
+<section id="memory-bound-and-compute-bound-functions" class="level3">
+<h3 class="anchored" data-anchor-id="memory-bound-and-compute-bound-functions">Memory-Bound and Compute-Bound Functions</h3>
+<p>Now consider a simplified model where a function reads its input from memory, performs math operations, and then writes its output to memory. Let’s assume <span class="math inline">\(T_{mem}\)</span> time is spent in accessing memory and <span class="math inline">\(T_{math}\)</span> time is spent performing math operations. If we further assume that memory and math portions of different threads can be overlapped:</p>
+<ul>
+<li>The total time for the function is <span class="math inline">\(max(T_{mem}, T_{math})\)</span>, and the longer of the two times demonstrates what limits performance.</li>
+<li>If math time <span class="math inline">\(T_{math}\)</span> is longer we say that a function is <code>math limited</code> or <code>compute-bound</code>.</li>
+<li>If memory time <span class="math inline">\(T_{mem}\)</span> is longer then it is <code>memory limited</code> or <code>memory-bound</code>.</li>
+</ul>
+<p>Let’s connect these topics to the LLM operations we take for granted in typical use.</p>
+</section>
+<section id="prefill-a-compute-bound-operation" class="level3">
+<h3 class="anchored" data-anchor-id="prefill-a-compute-bound-operation"><strong>Prefill:</strong> A Compute-Bound Operation</h3>
+<p><strong>During prefill, most operations are compute-bound.</strong></p>
+<ul>
+<li>Propagating the initial context requires larger matrices to interact to resolve attention across the entire prefill context.</li>
+<li>The intermediate results of the calculation are written to KV-cache (cached attention matrix values stored in memory), but that requires few memory operations.</li>
+<li>Compute-bound property generally manifests after a certain prefill token limit (in my tests, around 300 tokens or more cause <span class="math inline">\(T_{math} &gt; T_{mem}\)</span> on my GPU setup).</li>
+</ul>
+</section>
+<section id="decoding-a-memory-bound-operation" class="level3">
+<h3 class="anchored" data-anchor-id="decoding-a-memory-bound-operation"><strong>Decoding:</strong> A Memory-Bound Operation</h3>
+<p><strong>During decoding, most operations are memory-bound.</strong></p>
+<ul>
+<li>Generating one token at a time means the input for each next token is a single embedded token and many cached components, which results in small matrix operations during forward propagation.</li>
+<li>The KV-cache from previously provided/generated tokens continues to grow, so retrieving requires more resources.</li>
+</ul>
+<p>To improve the efficiency, you need to increase computations per read byte of memory. The simplest way to do it is by batching the requests together. With the batch size <code>b</code> the system can load the weights of the LLM from the GPU memory to the SMs once, but compute <code>b</code> next tokens.</p>
+</section>
+<section id="arithmetic-intensity" class="level3">
+<h3 class="anchored" data-anchor-id="arithmetic-intensity">Arithmetic Intensity</h3>
+<p>To help support this model, <strong>arithmetic intensity</strong> is a common metric for evaluating the compute-boundedness of a given function. It is defined as the ratio of floating-point operations to the number of data elements accessed by the function - usually in FLOPs/byte - with a high arithmetic intensity indicating a high computational load.</p>
+<p>Below is a figure from the paper <a href="https://arxiv.org/pdf/2308.16369"><strong>SARATHI: Efficient LLM Inference by Piggybacking Decodes with Chunked Prefills</strong></a> demonstrating the arithmetic intensity of prefills and decodes for LLaMA-13B on A6000 GPU. The different colors represent different operations within the transformer block: <em>preproj</em> for preprojection, a single matrix multiplication; <em>attn</em> for attention computation, <em>preproj</em> for postprojection, and <em>ffn</em> for feed-forward network.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sarathi.png" class="img-fluid figure-img"></p>
+<figcaption>sarathi</figcaption>
+</figure>
+</div>
+</section>
+</section>
+<section id="throughput-metrics" class="level2">
+<h2 class="anchored" data-anchor-id="throughput-metrics"><strong>Throughput Metrics</strong></h2>
+<p>One of the advantages of using latency metrics is their ease of interpretation and lack of ambiguity. They can be measured regardless of the inference system’s organization, and they require no awkward normalization to become immediately interpretable!</p>
+<p>However, to get from latency benchmarks to GPU count estimations, one also needs some throughput metrics. These metrics measure the capacity of a system to process data per unit of time. Here’s a breakdown of the various throughput metrics and their implications:</p>
+<ul>
+<li><strong>Tokens per second per model instance:</strong>
+<ul>
+<li><strong>Across all phases:</strong> Measures the total processing capability of a single model instance, including pre-processing, generation, and post-processing stages.</li>
+<li><strong>Only in the generation phase (a.k.a 1/ITL):</strong> Focuses on the model’s ability to generate tokens, offering a direct measure of the model’s generative performance.</li>
+</ul></li>
+<li><strong>Tokens per second per GPU:</strong>
+<ul>
+<li>This metric can be specified for either only the generation phase or all phases, indicating how effectively a GPU is being utilized to process tokens. This helps in assessing the efficiency of the GPU in handling specific tasks within the inference pipeline.</li>
+</ul></li>
+<li><strong>Tokens per second per server:</strong>
+<ul>
+<li>Similar to the per GPU metric but scaled up to the server level. This measures the overall throughput of an entire server, which may contain multiple GPUs and model instances. It’s crucial for evaluating server-level performance and infrastructure scalability.</li>
+</ul></li>
+<li><strong>Prompts per second:</strong>
+<ul>
+<li><strong>Per Model Instance:</strong> This measures how many complete prompts a single model instance can handle in one second, providing a straightforward metric of model instance efficiency.</li>
+<li><strong>Per GPU:</strong> Reflects the number of prompts a GPU can process per second, useful for gauging GPU performance in a real-world application scenario.</li>
+<li><strong>Per Server:</strong> Measures the capacity of a server to handle prompts, indicating the throughput at the server scale.</li>
+</ul></li>
+<li><strong>Concurrent Metrics:</strong>
+<ul>
+<li><strong>Concurrent Requests:</strong> Refers to the number of requests a system can handle at the same time. It’s a critical measure of system robustness and concurrency handling.</li>
+<li><strong>Concurrent Clients:</strong> Indicates how many clients can simultaneously interact with the system without degrading performance, essential for understanding the scalability of client-server interactions.</li>
+</ul></li>
+</ul>
+<section id="choosing-the-right-throughput-metric" class="level3">
+<h3 class="anchored" data-anchor-id="choosing-the-right-throughput-metric">Choosing The Right Throughput Metric</h3>
+<p>Often, benchmarking software shortens the units to just <code>tokens/second</code>, leading to ambiguity about the applied normalization. For the purposes of sizing, the most convenient throughput metric is <code>prompts/second/server</code>, which allows benchmarkers to choose between different combinations of tensor parallelism strategies (from now on <code>TP</code>) with the number of servers being a natural parameter. In our established benchmarks, we normalize by the standard servers with 8 GPUs, meaning that we consider the throughput of 2 instances of TP4 or 8 instances of TP1. This metric also highlights the dependence of the throughput on the specific composition of requests, including input and output lengths.</p>
+</section>
+</section>
+<section id="inflight-batching-ifb" class="level2">
+<h2 class="anchored" data-anchor-id="inflight-batching-ifb"><strong>Inflight Batching (IFB)</strong></h2>
+<p>IFB is a technique used during LLM inference to balance GPU memory with compute utilization and reduce latency.</p>
+<p>During auto-regressive inference, the LLM is evaluated from the first layers to the last for every token to generate, using previous tokens to generate the next ones. The process involves:</p>
+<ul>
+<li>The first call to the LLM producing the prefill token</li>
+<li>Subsequent calls generating the decoding tokens</li>
+</ul>
+<p>IFB enables sequences at different stages (prefill and decoding) to be processed within the same batch, without requiring all requests to be completed before the next one can enter the batch.</p>
+<p><strong>Key Benefits of IFB:</strong></p>
+<ul>
+<li>Allows for a nearly constant batch size for each token, resulting in higher GPU utilization</li>
+<li>Enables new request execution to start quicker when slots are available, as the scheduler only needs to wait for the generation of the next token, not the completion of current requests</li>
+</ul>
+<p>See the illustration below for a visual representation of in-flight batching in TensorRT-LLM:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/ifb_trt-llm.png" class="img-fluid figure-img"></p>
+<figcaption>ifb_trt-llm</figcaption>
+</figure>
+</div>
+<section id="chunked-context" class="level3">
+<h3 class="anchored" data-anchor-id="chunked-context">Chunked Context</h3>
+<p>To optimize performance, you can separate the prefill into chunks and batch together one chunk of prefill and multiple decodings to attempt a balance between <span class="math inline">\(T_{mem}\)</span> and <span class="math inline">\(T_{math}\)</span>. This technique is implemented in TensorRT-LLM as <a href="https://nvidia.github.io/TensorRT-LLM/advanced/gpt-attention.html#chunked-context"><strong>Chunked Context</strong></a>. It is important to keep chunks large enough to still be able to reach compute-boundness.</p>
+</section>
+<section id="max-batch-size" class="level3">
+<h3 class="anchored" data-anchor-id="max-batch-size">Max Batch Size</h3>
+<p>TensorRT-LLM engines have two parameters called <code>max_batch_size</code>:</p>
+<ul>
+<li>One is set for the engine build and is used during the kernel selection process to make sure the resulting batch-size-capable system fits into memory.</li>
+<li>One is set for runtime and specifies how many requests can be batched together. This is the one we use in our simulation.</li>
+</ul>
+<p>Note that the second one should be less than or equal to the first one. See the <a href="https://nvidia.github.io/TensorRT-LLM/performance/perf-best-practices.html#max-batch-size">docs</a> for details.</p>
+</section>
+</section>
+<section id="additional-notes" class="level2">
+<h2 class="anchored" data-anchor-id="additional-notes"><strong>Additional Notes</strong></h2>
+<hr>
+<section id="on-concurrency-and-request-rate-as-a-result-metric" class="level3">
+<h3 class="anchored" data-anchor-id="on-concurrency-and-request-rate-as-a-result-metric">On concurrency and request rate as a result metric</h3>
+<p>To effectively measure system performance, it’s essential to consider throughput, end-to-end latency, and concurrency. A hypothetical server capable of handling 60 simultaneous requests with an e2e latency of 20 seconds each, achieves a throughput of 3 requests per second. This throughput reflects the system’s ability to process multiple requests concurrently, offsetting the high latency of individual requests.</p>
+<p>Comparatively, consider two systems: one with a batch size of 60 and a 20-second latency, and another with a batch size of 30 and a 10-second latency. Both process 3 requests per second on average, but the latter provides faster responses, demonstrating superior efficiency despite its lower concurrency.</p>
+<p>Thus, we recommend using requests per minute as the primary metric for system sizing and communication with stakeholders. This metric ensures a clear and balanced understanding of system capacity and creates an opportunity to factor in concurrency/latency requirements.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>requests_per_second <span class="op">=</span> concurrent_users <span class="op">*</span> requests_per_session <span class="op">/</span> session_duration_in_seconds</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>requests_per_minute <span class="op">=</span> <span class="dv">60</span> <span class="op">*</span> requests_per_second</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+</section>
+<section id="on-concurrency-and-request-rate-as-an-input-parameter" class="level3">
+<h3 class="anchored" data-anchor-id="on-concurrency-and-request-rate-as-an-input-parameter">On concurrency and request rate as an input parameter</h3>
+<p>For good speed measurements, we need engine batch size to be constant from token to token. Below we explain why using concurrency as an input for speed measurements helps us achieve it, and why one should avoid using the request rate as an input parameter.</p>
+<p>Let’s simulate some moderate request rate of one request in 5 ticks.</p>
+<p><strong>Overall we saw 5 use cases represented:</strong></p>
+<ol type="1">
+<li><strong>Static batching with MBS:</strong> The prefills are batched together and don’t benefit from the overlap of computations and memory-intensive operations. The E2E and TTFT latency is high. In reality, in static batching the requests wait on average E2E Latency<span class="math inline">\(/ 2\)</span> in the queue. This adds to both real TTFT and E2E Latency. That’s why nowadays static batching is almost universally deprecated for LLM inference.</li>
+<li><strong>Concurrency &lt; MBS:</strong> There are almost no free slots available and no queue is forming. The engine is running with a maximum throughput of 280 requests/1000 ticks. TTFT is 2.67 and E2E Latency is 10.14.</li>
+<li><strong>Concurrency &gt; MBS:</strong> There are almost no free slots available and a queue of size 2 is forming. The engine is running with a maximum throughput of <span class="math inline">\(360\)</span> requests/100 ticks. However, TTFT is growing with the queue size. It is now 7.87 because every request has to wait until the slots are available. E2E Latency grows with the TTFT and is now 15.14</li>
+<li><strong>Request Rate &lt; Maximum Throughput:</strong> In this situation there are free slots available. The situation is almost stationary and batch size is almost constant and equal to 3. The throughput is closely defined by the request rate we set. This is a valid measurement.</li>
+<li><strong>Request Rate &gt; Maximum Throughput:</strong> Correct maximum throughput, but invalid measurements. See the details above.</li>
+</ol>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

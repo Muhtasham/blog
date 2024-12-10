@@ -67,5 +67,8 @@
   },
   "posts/sdxl-ligtining/index.qmd": {
     "index.html": "5d698d67"
+  },
+  "posts/batching-strategies/index.qmd": {
+    "index.html": "abb71eb5"
   }
 }
