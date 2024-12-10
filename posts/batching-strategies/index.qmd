@@ -15,12 +15,11 @@ Welcome back, reader. Long time no see. This year I was locked in working on my 
 In this blog post we will dive deeper into the metrics, characterizing the speed of the LLM inference engine. We will explore the cutting-edge optimizations employed in modern inference engines, simulate their effects, and analyze the impact on the key metrics that matter most.
 
 ## Learning Objectives
-By the end of this blog post, you will be able to:
-- Understand and measure time to first token (TTFT), end-to-end latency (E2E Latency), and inter-token latency (ITL).
-- Analyze throughput metrics and simulate their dependencies on various factors.
-- Explore the impact of batching and inflight batching on GPU utilization and performance.
-- Investigate the effects of concurrency settings on latency and throughput.
 
+By the end of this blog post, you will be able to:
+
+- Understand and measure time to first token (TTFT), end-to-end latency (E2E Latency), and inter-token latency (ITL).
+- Understand the impact of batching and inflight batching on GPU utilization and performance.
 
 ## **Latency Metrics**
 Several important metrics are available in the benchmarks:
@@ -77,13 +76,19 @@ Lets try to understand how Tensor-LLM assembles the requests into batches.
 
 You see two plots above. In the top plot, you can see batch composition depending on time. Each column is one LLM evaluation from the first layers to the last. The color of the cell and the letter represent the current stage of the request in the batch:
 
-- **p**refill (pink)
-- **d**ecoding (yellow) 
-- **e**mpty slot (blue)
+Each cell in the plot represents one of three states:
 
-The width of the **p**refill cell is equal to the TTFT ($=2$) and the width of the **d**ecoding cell corresponds to ITL ($=1$). Make sure to hover your mouse over the cells to get detailed information about the execution status, including width in ticks.
+- **p**refill (pink) - Initial processing of the prompt
+- **d**ecoding (yellow) - Generating each output token
+- **e**mpty slot (blue) - No active request
+
+The width of cells indicates timing:
+- Prefill width = TTFT (2 ticks in this example)  
+- Decoding width = ITL (1 tick in this example)
 
 In the bottom plot, you can see the measured latencies at the moments of measurement. For example, the pink $(2, 2)$ point represents the TTFT measurement of our request: at the time of $2$ ticks the prefill has been completed and it took $2$ ticks for our request. Similarly, we represent the E2E latency of $5$ measured at $5$ ticks by the green-yellow point. Additionally, we show the current queue size by the orange line. Since we send only one request in this example, it is always equal to 0. Note that the latency scale uses the left y-axis and the queue size uses the right one. The x-axis is shared between both plots.
+
+You can check the repo for more examples and details, simulating different batching strategies and their effects on the system.
 
 ## **Batching: The Key to Efficient Throughput**
 
@@ -120,9 +125,9 @@ To improve the efficiency, you need to increase computations per read byte of me
 
 ### Arithmetic Intensity
 
-To help support this model, **arithmetic intensity** is a common metric for evaluating the compute-boundedness of a given function. It is defined as the ratio of floating-point operations to the number of data elements accessed by the function - usually in FLOPs/byte - with a high arithmetic intensity indicating a high computational load. 
+To help support this model, **arithmetic intensity** is a common metric for evaluating the compute-boundedness of a given function. It is defined as the ratio of floating-point operations to the number of data elements accessed by the function - usually in `FLOPs/byte` - with a high arithmetic intensity indicating a high computational load. 
 
-Below is a figure from the paper [**SARATHI: Efficient LLM Inference by Piggybacking Decodes with Chunked Prefills**](https://arxiv.org/pdf/2308.16369) demonstrating the arithmetic intensity of prefills and decodes for LLaMA-13B on A6000 GPU. The different colors represent different operations within the transformer block: *preproj* for preprojection, a single matrix multiplication; *attn* for attention computation, *preproj* for postprojection, and *ffn* for feed-forward network.
+Below is a figure from the paper [**SARATHI: Efficient LLM Inference by Piggybacking Decodes with Chunked Prefills**](https://arxiv.org/pdf/2308.16369) demonstrating the arithmetic intensity of prefills and decodes for LLaMA-13B on A6000 GPU. The different colors represent different operations within the transformer block: `preproj` for preprojection, a single matrix multiplication; `attn` for attention computation; `preproj` for postprojection; and `ffn` for feed-forward network.
 
 ![sarathi](images/sarathi.png)
 

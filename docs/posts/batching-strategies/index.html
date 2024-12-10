@@ -349,13 +349,16 @@ Note
 </figure>
 </div>
 <p>You see two plots above. In the top plot, you can see batch composition depending on time. Each column is one LLM evaluation from the first layers to the last. The color of the cell and the letter represent the current stage of the request in the batch:</p>
+<p>Each cell in the plot represents one of three states:</p>
 <ul>
-<li><strong>p</strong>refill (pink)</li>
-<li><strong>d</strong>ecoding (yellow)</li>
-<li><strong>e</strong>mpty slot (blue)</li>
+<li><strong>p</strong>refill (pink) - Initial processing of the prompt</li>
+<li><strong>d</strong>ecoding (yellow) - Generating each output token</li>
+<li><strong>e</strong>mpty slot (blue) - No active request</li>
 </ul>
-<p>The width of the <strong>p</strong>refill cell is equal to the TTFT (<span class="math inline">\(=2\)</span>) and the width of the <strong>d</strong>ecoding cell corresponds to ITL (<span class="math inline">\(=1\)</span>). Make sure to hover your mouse over the cells to get detailed information about the execution status, including width in ticks.</p>
+<p>The width of cells indicates timing: - Prefill width = TTFT (2 ticks in this example)<br>
+- Decoding width = ITL (1 tick in this example)</p>
 <p>In the bottom plot, you can see the measured latencies at the moments of measurement. For example, the pink <span class="math inline">\((2, 2)\)</span> point represents the TTFT measurement of our request: at the time of <span class="math inline">\(2\)</span> ticks the prefill has been completed and it took <span class="math inline">\(2\)</span> ticks for our request. Similarly, we represent the E2E latency of <span class="math inline">\(5\)</span> measured at <span class="math inline">\(5\)</span> ticks by the green-yellow point. Additionally, we show the current queue size by the orange line. Since we send only one request in this example, it is always equal to 0. Note that the latency scale uses the left y-axis and the queue size uses the right one. The x-axis is shared between both plots.</p>
+<p>You can check the repo for more examples and details, simulating different batching strategies and their effects on the system.</p>
 </section>
 <section id="batching-the-key-to-efficient-throughput" class="level2">
 <h2 class="anchored" data-anchor-id="batching-the-key-to-efficient-throughput"><strong>Batching: The Key to Efficient Throughput</strong></h2>
@@ -390,8 +393,8 @@ Note
 </section>
 <section id="arithmetic-intensity" class="level3">
 <h3 class="anchored" data-anchor-id="arithmetic-intensity">Arithmetic Intensity</h3>
-<p>To help support this model, <strong>arithmetic intensity</strong> is a common metric for evaluating the compute-boundedness of a given function. It is defined as the ratio of floating-point operations to the number of data elements accessed by the function - usually in FLOPs/byte - with a high arithmetic intensity indicating a high computational load.</p>
-<p>Below is a figure from the paper <a href="https://arxiv.org/pdf/2308.16369"><strong>SARATHI: Efficient LLM Inference by Piggybacking Decodes with Chunked Prefills</strong></a> demonstrating the arithmetic intensity of prefills and decodes for LLaMA-13B on A6000 GPU. The different colors represent different operations within the transformer block: <em>preproj</em> for preprojection, a single matrix multiplication; <em>attn</em> for attention computation, <em>preproj</em> for postprojection, and <em>ffn</em> for feed-forward network.</p>
+<p>To help support this model, <strong>arithmetic intensity</strong> is a common metric for evaluating the compute-boundedness of a given function. It is defined as the ratio of floating-point operations to the number of data elements accessed by the function - usually in <code>FLOPs/byte</code> - with a high arithmetic intensity indicating a high computational load.</p>
+<p>Below is a figure from the paper <a href="https://arxiv.org/pdf/2308.16369"><strong>SARATHI: Efficient LLM Inference by Piggybacking Decodes with Chunked Prefills</strong></a> demonstrating the arithmetic intensity of prefills and decodes for LLaMA-13B on A6000 GPU. The different colors represent different operations within the transformer block: <code>preproj</code> for preprojection, a single matrix multiplication; <code>attn</code> for attention computation; <code>preproj</code> for postprojection; and <code>ffn</code> for feed-forward network.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/sarathi.png" class="img-fluid figure-img"></p>
