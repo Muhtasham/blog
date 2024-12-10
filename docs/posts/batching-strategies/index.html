@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2024-12-09">
 <meta name="description" content="Deep dive into batching strategies for LLM inference optimization with TensorRT-LLM">
 
-<title>Machine Learners Guide to Real World – Understanding Batching Strategies</title>
+<title>Machine Learners Guide to Real World – 📉 Understanding Batching Strategies</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -135,7 +135,7 @@ window.Quarto = {
 </script>
 
 <link rel="stylesheet" href="../../styles.css">
-<meta name="twitter:title" content="Machine Learners Guide to Real World - Understanding Batching Strategies">
+<meta name="twitter:title" content="Machine Learners Guide to Real World - 📉 Understanding Batching Strategies">
 <meta name="twitter:description" content="Deep dive into batching strategies for LLM inference optimization with TensorRT-LLM">
 <meta name="twitter:image" content="images/thumbnail.jpg">
 <meta name="twitter:creator" content="muhtasham9">
@@ -194,7 +194,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Understanding Batching Strategies</h1>
+      <h1 class="title">📉 Understanding Batching Strategies</h1>
                   <div>
         <div class="description">
           Deep dive into batching strategies for LLM inference optimization with TensorRT-LLM
@@ -237,7 +237,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#key-metrics-in-llm-inference" id="toc-key-metrics-in-llm-inference" class="nav-link active" data-scroll-target="#key-metrics-in-llm-inference">Key Metrics in LLM Inference</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
   <li><a href="#latency-metrics" id="toc-latency-metrics" class="nav-link" data-scroll-target="#latency-metrics"><strong>Latency Metrics</strong></a>
   <ul class="collapse">
@@ -260,11 +260,7 @@ window.Quarto = {
   <li><a href="#chunked-context" id="toc-chunked-context" class="nav-link" data-scroll-target="#chunked-context">Chunked Context</a></li>
   <li><a href="#max-batch-size" id="toc-max-batch-size" class="nav-link" data-scroll-target="#max-batch-size">Max Batch Size</a></li>
   </ul></li>
-  <li><a href="#additional-notes" id="toc-additional-notes" class="nav-link" data-scroll-target="#additional-notes"><strong>Additional Notes</strong></a>
-  <ul class="collapse">
-  <li><a href="#on-concurrency-and-request-rate-as-a-result-metric" id="toc-on-concurrency-and-request-rate-as-a-result-metric" class="nav-link" data-scroll-target="#on-concurrency-and-request-rate-as-a-result-metric">On concurrency and request rate as a result metric</a></li>
-  <li><a href="#on-concurrency-and-request-rate-as-an-input-parameter" id="toc-on-concurrency-and-request-rate-as-an-input-parameter" class="nav-link" data-scroll-target="#on-concurrency-and-request-rate-as-an-input-parameter">On concurrency and request rate as an input parameter</a></li>
-  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul>
 </nav>
     </div>
@@ -275,8 +271,8 @@ window.Quarto = {
 
 
 
-<section id="key-metrics-in-llm-inference" class="level2">
-<h2 class="anchored" data-anchor-id="key-metrics-in-llm-inference">Key Metrics in LLM Inference</h2>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>Welcome back, reader. Long time no see. This year I was locked in working on my skill issues, hence did not have time to write much. But wanted to close the year with a banger.</p>
 <p>In this blog post we will dive deeper into the metrics, characterizing the speed of the LLM inference engine. We will explore the cutting-edge optimizations employed in modern inference engines, simulate their effects, and analyze the impact on the key metrics that matter most.</p>
 </section>
@@ -322,11 +318,25 @@ window.Quarto = {
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"READING:  230 words per minute correspond to </span><span class="sc">{</span>calculate_itl(<span class="dv">230</span>)<span class="sc">:.0f}</span><span class="ss">ms between tokens, on average"</span>)  <span class="co">## 196</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"SKIMMING: 700 words per minute correspond to </span><span class="sc">{</span>calculate_itl(<span class="dv">700</span>)<span class="sc">:.0f}</span><span class="ss">ms between tokens, on average"</span>)  <span class="co">## 64</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In the vast majority of the LLM inference setups, ITL is much lower than these reference values, typically around 20–40 ms. Still, it’s important to keep these numbers in mind as minimum thresholds for comfort.</p>
-<p><strong>NOTES:</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <ul>
 <li>In addition to defining a minimum threshold for comfort, you may also find it useful to identify a maximum threshold for speed in certain contexts. For example, a chat application with a lower-than-usual load might be so fast that it dumps output at an uncomfortable rate and causes the text view to scroll automatically, making it uncomfortable to read. For these cases, artificially sleeping between or iterating over streaming yields may be desirable.</li>
 <li><a href="https://github.com/ray-project/llmperf"><strong>LLMPerf</strong></a>, another common benchmarking SW, incorporates first-token latency into inter-token latency computation. Beware of comparing directly the results from different benchmarking tools.</li>
 </ul>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="simulator" class="level2">
@@ -460,33 +470,12 @@ window.Quarto = {
 <p>Note that the second one should be less than or equal to the first one. See the <a href="https://nvidia.github.io/TensorRT-LLM/performance/perf-best-practices.html#max-batch-size">docs</a> for details.</p>
 </section>
 </section>
-<section id="additional-notes" class="level2">
-<h2 class="anchored" data-anchor-id="additional-notes"><strong>Additional Notes</strong></h2>
-<hr>
-<section id="on-concurrency-and-request-rate-as-a-result-metric" class="level3">
-<h3 class="anchored" data-anchor-id="on-concurrency-and-request-rate-as-a-result-metric">On concurrency and request rate as a result metric</h3>
-<p>To effectively measure system performance, it’s essential to consider throughput, end-to-end latency, and concurrency. A hypothetical server capable of handling 60 simultaneous requests with an e2e latency of 20 seconds each, achieves a throughput of 3 requests per second. This throughput reflects the system’s ability to process multiple requests concurrently, offsetting the high latency of individual requests.</p>
-<p>Comparatively, consider two systems: one with a batch size of 60 and a 20-second latency, and another with a batch size of 30 and a 10-second latency. Both process 3 requests per second on average, but the latter provides faster responses, demonstrating superior efficiency despite its lower concurrency.</p>
-<p>Thus, we recommend using requests per minute as the primary metric for system sizing and communication with stakeholders. This metric ensures a clear and balanced understanding of system capacity and creates an opportunity to factor in concurrency/latency requirements.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>requests_per_second <span class="op">=</span> concurrent_users <span class="op">*</span> requests_per_session <span class="op">/</span> session_duration_in_seconds</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>requests_per_minute <span class="op">=</span> <span class="dv">60</span> <span class="op">*</span> requests_per_second</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
-</section>
-<section id="on-concurrency-and-request-rate-as-an-input-parameter" class="level3">
-<h3 class="anchored" data-anchor-id="on-concurrency-and-request-rate-as-an-input-parameter">On concurrency and request rate as an input parameter</h3>
-<p>For good speed measurements, we need engine batch size to be constant from token to token. Below we explain why using concurrency as an input for speed measurements helps us achieve it, and why one should avoid using the request rate as an input parameter.</p>
-<p>Let’s simulate some moderate request rate of one request in 5 ticks.</p>
-<p><strong>Overall we saw 5 use cases represented:</strong></p>
-<ol type="1">
-<li><strong>Static batching with MBS:</strong> The prefills are batched together and don’t benefit from the overlap of computations and memory-intensive operations. The E2E and TTFT latency is high. In reality, in static batching the requests wait on average E2E Latency<span class="math inline">\(/ 2\)</span> in the queue. This adds to both real TTFT and E2E Latency. That’s why nowadays static batching is almost universally deprecated for LLM inference.</li>
-<li><strong>Concurrency &lt; MBS:</strong> There are almost no free slots available and no queue is forming. The engine is running with a maximum throughput of 280 requests/1000 ticks. TTFT is 2.67 and E2E Latency is 10.14.</li>
-<li><strong>Concurrency &gt; MBS:</strong> There are almost no free slots available and a queue of size 2 is forming. The engine is running with a maximum throughput of <span class="math inline">\(360\)</span> requests/100 ticks. However, TTFT is growing with the queue size. It is now 7.87 because every request has to wait until the slots are available. E2E Latency grows with the TTFT and is now 15.14</li>
-<li><strong>Request Rate &lt; Maximum Throughput:</strong> In this situation there are free slots available. The situation is almost stationary and batch size is almost constant and equal to 3. The throughput is closely defined by the request rate we set. This is a valid measurement.</li>
-<li><strong>Request Rate &gt; Maximum Throughput:</strong> Correct maximum throughput, but invalid measurements. See the details above.</li>
-</ol>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>In this blog post we have explored the key metrics and techniques used in LLM inference, including latency and throughput metrics, and the concept of inflight batching. We have also discussed the importance of choosing the right throughput metric for system sizing and how to interpret the results.</p>
+<p>See you at the top!</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

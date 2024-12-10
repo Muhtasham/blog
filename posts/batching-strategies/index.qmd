@@ -1,5 +1,5 @@
 ---
-title: "Understanding Batching Strategies"
+title: "📉 Understanding Batching Strategies"
 description: "Deep dive into batching strategies for LLM inference optimization with TensorRT-LLM"
 author: "muhtasham"
 date: "2024-12-09"
@@ -8,7 +8,7 @@ categories: [llm, papers, performance]
 toc: true
 ---
 
-## Key Metrics in LLM Inference
+## Introduction
 
 Welcome back, reader. Long time no see. This year I was locked in working on my skill issues, hence did not have time to write much. But wanted to close the year with a banger.
 
@@ -61,10 +61,11 @@ print(f"SKIMMING: 700 words per minute correspond to {calculate_itl(700):.0f}ms 
 
 In the vast majority of the LLM inference setups, ITL is much lower than these reference values, typically around 20–40 ms. Still, it's important to keep these numbers in mind as minimum thresholds for comfort.
 
-**NOTES:** 
+::: {.callout-note collapse="true"}
 
 - In addition to defining a minimum threshold for comfort, you may also find it useful to identify a maximum threshold for speed in certain contexts. For example, a chat application with a lower-than-usual load might be so fast that it dumps output at an uncomfortable rate and causes the text view to scroll automatically, making it uncomfortable to read. For these cases, artificially sleeping between or iterating over streaming yields may be desirable. 
 - [**LLMPerf**](https://github.com/ray-project/llmperf), another common benchmarking SW, incorporates first-token latency into inter-token latency computation. Beware of comparing directly the results from different benchmarking tools.
+:::
 
 
 ## Simulator
@@ -187,3 +188,9 @@ TensorRT-LLM engines have two parameters called `max_batch_size`:
 
 Note that the second one should be less than or equal to the first one. See the [docs](https://nvidia.github.io/TensorRT-LLM/performance/perf-best-practices.html#max-batch-size) for details.
 
+
+## Conclusion
+
+In this blog post we have explored the key metrics and techniques used in LLM inference, including latency and throughput metrics, and the concept of inflight batching. We have also discussed the importance of choosing the right throughput metric for system sizing and how to interpret the results.
+
+See you at the top! 
