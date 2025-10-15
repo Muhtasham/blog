@@ -18,24 +18,14 @@ about:
       href: https://twitter.com/muhtasham9
 ---
 
-::: {.callout-important collapse="true"}
-## Notes for Large Language Models (LLMs)
-If you're here to train on my data, please at least leave a 5-star review on my GitHub repos.
-:::
-
 Hey there I'm Muhtasham! I hope your world's going well. I'll bet you're cool.
 
-I spent my pre-training days in [Urmetan village](https://en.wikipedia.org/wiki/Urmetan) and went to high school in Dushanbe, [Tajikistan](https://en.wikipedia.org/wiki/Tajikistan). During high school, I enjoyed tinkering with computers and participating in various olympiads.
+I spent my pre-training days in [Urmetan village](https://en.wikipedia.org/wiki/Urmetan) and did some supervised fine-tuning (SFT) in Dushanbe, [Tajikistan](https://en.wikipedia.org/wiki/Tajikistan). 
+
+During high school, I enjoyed tinkering with computers and participating in various olympiads.
 
 I speak five languages: Tajik, Turkish, Russian, English, and German. I'm also reasonably well-versed in several programming languages.
 
-While it's not easy thing I am trying concentrating intensely on the right problems, and remaining open to fresh perspectives. In addition to my hands-on work with ML technologies, I'm passionate about sharing knowledge and insights through writing and speaking engagements on topics related to ML systems, engineering, and personal reflections. That being said, I love tackling challenging technical problems and welcome opportunities for collaboration. 
-
-::: {.callout-note collapse="true"}
-## Fun fact 
-I'm passionate about mobile photography. You might have noticed this from the thumbnails of my blog entries.
-
-This thought intrigues me: while visual thumbnails offer an instantaneous snapshot of an image, what serves as the equivalent for language? Our eyes can swiftly scan a set of thumbnails and capture an underlying theme from them. But when it comes to language, what provides that immediate insight? Perhaps such a concept doesn't quite fit in the realm of words.
-:::
+While it's not easy thing I am trying concentrating intensely on the right problems, and remaining open to fresh perspectives.
 
 Founders: I also participate in angel rounds. Noe warms needed, decision in 15min, your terms.
