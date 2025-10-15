@@ -18,14 +18,8 @@ about:
       href: https://twitter.com/muhtasham9
 ---
 
-Hey there I'm Muhtasham! I hope your world's going well. I'll bet you're cool.
-
-I spent my pre-training days in [Urmetan village](https://en.wikipedia.org/wiki/Urmetan) and did some supervised fine-tuning (SFT) in Dushanbe, [Tajikistan](https://en.wikipedia.org/wiki/Tajikistan). 
-
-During high school, I enjoyed tinkering with computers and participating in various olympiads.
-
-I speak five languages: Tajik, Turkish, Russian, English, and German. I'm also reasonably well-versed in several programming languages.
+I love to build, this summarizes how I operate.
 
 While it's not easy thing I am trying concentrating intensely on the right problems, and remaining open to fresh perspectives.
 
-Founders: I also participate in angel rounds. Noe warms needed, decision in 15min, your terms.
+Founders: I also participate in angel rounds. No warms needed, decision in 15min, your terms.
