@@ -1,8 +1,12 @@
 project:
   type: website
   output-dir: docs
+  resources:
+    - robots.txt
+    - llms.txt
 website:
   title: "Machine Learners Guide to Real World"
+  site-url: "https://muhtasham.github.io/blog"
   twitter-card:
     card-style: summary
     creator: muhtasham9

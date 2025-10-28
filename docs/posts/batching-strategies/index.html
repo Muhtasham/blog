@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script>!function(key,origin){if(window.AR)return;window.AR={loaded:!0};var d=document,s=d.createElement("script");s.async=!0;s.src=origin+"/cdn/pixel.js";s.dataset.siteId=key;s.dataset.collectUrl=origin+"/collect";s.dataset.handshakeMessage="AcctRev pixel ready for SITE_3JHWW417.";var t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);}("SITE_3JHWW417","https://de-stealthy.fly.dev");</script>
 <noscript></noscript><meta name="twitter:title" content="🚀 LLM Inference Deep Dive: Metrics, Batching &amp; GPU Optimization – Machine Learners Guide to Real World">
 <meta name="twitter:description" content="Technical exploration of LLM inference metrics, batching strategies, and GPU optimization with TensorRT-LLM - from latency metrics to in-flight batching">
-<meta name="twitter:image" content="images/thumbnail.jpg">
+<meta name="twitter:image" content="https://muhtasham.github.io/blog/posts/batching-strategies/images/thumbnail.jpg">
 <meta name="twitter:creator" content="muhtasham9">
 <meta name="twitter:card" content="summary">
 </head><body class="nav-fixed quarto-light"><img src="https://de-stealthy.fly.dev/p.gif?s=SITE_3JHWW417&amp;e=page_view" width="1" height="1" alt="">
@@ -558,7 +558,7 @@ Note
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/muhtasham\.github\.io\/blog");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

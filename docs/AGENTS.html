@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="muhtasham">
-<meta name="dcterms.date" content="2023-05-27">
 
-<title>🔮 Navigating the AI Landscape: My Takeaways from Sam Altman’s Discussion – Machine Learners Guide to Real World</title>
+<title>agents – Machine Learners Guide to Real World</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,27 +20,62 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,27 +104,25 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <script>!function(key,origin){if(window.AR)return;window.AR={loaded:!0};var d=document,s=d.createElement("script");s.async=!0;s.src=origin+"/cdn/pixel.js";s.dataset.siteId=key;s.dataset.collectUrl=origin+"/collect";s.dataset.handshakeMessage="AcctRev pixel ready for SITE_3JHWW417.";var t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);}("SITE_3JHWW417","https://de-stealthy.fly.dev");</script>
-<noscript></noscript><meta name="twitter:title" content="🔮 Navigating the AI Landscape: My Takeaways from Sam Altman’s Discussion – Machine Learners Guide to Real World">
-<meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://muhtasham.github.io/blog/posts/sama-fireside-chat/greathwy.jpg">
+<noscript></noscript><meta name="twitter:title" content="Machine Learners Guide to Real World">
 <meta name="twitter:creator" content="muhtasham9">
 <meta name="twitter:card" content="summary">
-</head><body class="nav-fixed quarto-light"><img src="https://de-stealthy.fly.dev/p.gif?s=SITE_3JHWW417&amp;e=page_view" width="1" height="1" alt="">
+</head><body class="nav-fixed fullcontent quarto-light"><img src="https://de-stealthy.fly.dev/p.gif?s=SITE_3JHWW417&amp;e=page_view" width="1" height="1" alt="">
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="styles.css">
 
 
 
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+  <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
     </a>
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Machine Learners Guide to Real World</span>
     </a>
   </div>
@@ -102,7 +133,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html"> 
+    <a class="nav-link" href="./about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -133,125 +164,48 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">🔮 Navigating the AI Landscape: My Takeaways from Sam Altman’s Discussion</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">llm</div>
-              </div>
-                  </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>muhtasham </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">May 27, 2023</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#ai-regulation-a-pragmatic-view" id="toc-ai-regulation-a-pragmatic-view" class="nav-link" data-scroll-target="#ai-regulation-a-pragmatic-view">AI Regulation: A Pragmatic View</a></li>
-  <li><a href="#the-role-of-ai-tools-in-research" id="toc-the-role-of-ai-tools-in-research" class="nav-link" data-scroll-target="#the-role-of-ai-tools-in-research">The Role of AI Tools in Research</a></li>
-  <li><a href="#the-importance-of-user-interface" id="toc-the-importance-of-user-interface" class="nav-link" data-scroll-target="#the-importance-of-user-interface">The Importance of User Interface</a></li>
-  <li><a href="#openais-future-plans" id="toc-openais-future-plans" class="nav-link" data-scroll-target="#openais-future-plans">OpenAI’s Future Plans</a></li>
-  <li><a href="#whats-next-after-large-language-models-llms" id="toc-whats-next-after-large-language-models-llms" class="nav-link" data-scroll-target="#whats-next-after-large-language-models-llms">What’s Next After Large Language Models (LLMs)?</a></li>
-  <li><a href="#views-of-llms" id="toc-views-of-llms" class="nav-link" data-scroll-target="#views-of-llms">Views of LLMs</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
 
-
-<p><img src="tum-dld.jpeg" class="img-fluid"></p>
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>At a recent event at my alma mater, TU Munich featuring Sam Altman, CEO of OpenAI, attendees had the opportunity to delve into a range of topics. From AI regulation, the release of future OpenAI models, to the importance of the user interface in technology, the event was a wellspring of insights. But before I share my key takeaways, let me tell you about my intriguing journey to the event.</p>
-<p>Tickets for this event were sold out within 20 minutes. However, as adage goes</p>
-<blockquote class="blockquote">
-<p>Modern problems, require modern solutions.</p>
-</blockquote>
-<p>So with some innovation and the assistance of ChatGPT, I secured a ticket.</p>
-<div data-align="center">
-<blockquote class="twitter-tweet blockquote">
-<p lang="en" dir="ltr">
-Guess what? Used chatGPT to get access to event featuring <a href="https://twitter.com/sama?ref_src=twsrc%5Etfw"><span class="citation" data-cites="sama">@sama</span></a><br><br>First, generated JavaScript code to check availability of new tickets, did not succeed. <br><br>Crafted a killer press representative email for <a href="https://twitter.com/MunichNlp?ref_src=twsrc%5Etfw"><span class="citation" data-cites="MunichNlp">@MunichNlp</span></a> and got it! 🎫<br><br>Big shoutout to <a href="https://twitter.com/DLDConference?ref_src=twsrc%5Etfw"><span class="citation" data-cites="DLDConference">@DLDConference</span></a> for organizing this <a href="https://t.co/k6GtTZ0TJo">pic.twitter.com/k6GtTZ0TJo</a>
-</p>
-— Muhtasham Oblokulov (<span class="citation" data-cites="Muhtasham9">@Muhtasham9</span>) <a href="https://twitter.com/Muhtasham9/status/1661773504226766862?ref_src=twsrc%5Etfw">May 25, 2023</a>
-</blockquote>
-<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-</div>
+<section id="repository-guidelines" class="level1">
+<h1>Repository Guidelines</h1>
+<section id="project-structure-module-organization" class="level2">
+<h2 class="anchored" data-anchor-id="project-structure-module-organization">Project Structure &amp; Module Organization</h2>
+<p>Source notebooks and pages live in <code>index.qmd</code>, <code>about.qmd</code>, and topic folders under <code>posts/</code> (one <code>.qmd</code> per article). The Quarto build emits static assets into <code>docs/</code>; edit those only via regeneration. Shared assets sit at repo root: <code>_quarto.yml</code> defines site metadata, <code>styles.css</code> holds custom styling, and <code>header-snippet.html</code> injects curated analytics. Keep new media in <code>posts/&lt;slug&gt;/images/</code> and reference them with relative paths.</p>
 </section>
-<section id="ai-regulation-a-pragmatic-view" class="level2">
-<h2 class="anchored" data-anchor-id="ai-regulation-a-pragmatic-view">AI Regulation: A Pragmatic View</h2>
-<p>Altman expressed his support for AI regulation, but emphasized the necessity for such regulations to be implemented correctly, and not just for the sake of regulation. His belief is that these should come into effect above a specific capability threshold, implying a nuanced approach that doesn’t stifle innovation but still ensures safety and ethical use of AI technology.</p>
+<section id="build-test-and-development-commands" class="level2">
+<h2 class="anchored" data-anchor-id="build-test-and-development-commands">Build, Test, and Development Commands</h2>
+<p>Use Quarto for every build step:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render            <span class="co"># rebuilds the full site into docs/</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview           <span class="co"># live-reloads while editing .qmd files</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> check             <span class="co"># validates project config and external links</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Run <code>quarto preview</code> before committing layout-heavy changes so you can verify navigation, theming, and inline HTML snippets.</p>
 </section>
-<section id="the-role-of-ai-tools-in-research" class="level2">
-<h2 class="anchored" data-anchor-id="the-role-of-ai-tools-in-research">The Role of AI Tools in Research</h2>
-<p>OpenAI engineers and researchers are utilizing tools such as Copilot in their work. Copilot, which builds on the capability of the codex model by OpenAI, exemplifies how AI has become instrumental in driving innovative research, enabling researchers to augment their abilities and achieve more than was previously possible.</p>
+<section id="coding-style-naming-conventions" class="level2">
+<h2 class="anchored" data-anchor-id="coding-style-naming-conventions">Coding Style &amp; Naming Conventions</h2>
+<p>Write content in Quarto Markdown with sentence-case headings and informative link text. YAML front matter should use two-space indentation and double quotes for strings touching special characters. Favor fenced code blocks with an info string (<code>```python</code>) to enable syntax highlighting. Keep inline HTML minimal; when needed, format it compactly to match <code>header-snippet.html</code>. New post directories should follow <code>posts/&lt;yyyy-mm-title&gt;/</code> or another descriptive, kebab-case slug.</p>
 </section>
-<section id="the-importance-of-user-interface" class="level2">
-<h2 class="anchored" data-anchor-id="the-importance-of-user-interface">The Importance of User Interface</h2>
-<p>Altman stressed on the significance of the User Interface (UI) in technology. He posited that natural language turns out to be an excellent UI for humans, reinforcing the premise that technology should be built to align with human behavior and preferences, rather than the other way around. This underlines the importance of intuitive, user-friendly design in making complex AI systems accessible and easy to use.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="sama.jpg" class="img-fluid figure-img"></p>
-<figcaption>Playfully tossing the Worldcoin ball and contemplating its UI while sharing a moment with Sam Altman</figcaption>
-</figure>
-</div>
+<section id="testing-guidelines" class="level2">
+<h2 class="anchored" data-anchor-id="testing-guidelines">Testing Guidelines</h2>
+<p>No automated test suite exists, so rely on manual verification. After editing, run <code>quarto render</code> and spot-check the generated <code>docs/</code> pages for broken layouts or stale scripts. Use <code>quarto check</code> to catch missing assets and dead links. For regression checks, search with <code>rg</code> to confirm that deprecated URLs or tracking pixels have not reappeared.</p>
 </section>
-<section id="openais-future-plans" class="level2">
-<h2 class="anchored" data-anchor-id="openais-future-plans">OpenAI’s Future Plans</h2>
-<p>Altman revealed plans to release more open-source models in the future, however, he clarified that this would not extend to the upcoming GPT-5 etc. Despite being a non-profit, Altman acknowledged the significance of the open-source market, indicating OpenAI’s continued commitment to the wider community.</p>
-<p>He also highlighted the importance of <em>getting the 200 small things right</em> and jointly optimizing across the stack. These ‘small things’ could refer to everything from the model’s architecture, to training data, to the end application UI, demonstrating the meticulous nature of OpenAI’s approach.</p>
+<section id="commit-pull-request-guidelines" class="level2">
+<h2 class="anchored" data-anchor-id="commit-pull-request-guidelines">Commit &amp; Pull Request Guidelines</h2>
+<p>Compose commits in the imperative mood with concise summaries (≤72 characters) and optional detail bullets in the body; for example, <code>Remove CloudFront tracking script</code>. Group unrelated edits into separate commits to simplify review. Pull requests should outline the change scope, list verification steps (<code>quarto render</code>, manual checks), and include screenshots or GIFs when UI output shifts. Link relevant issues and call out any content requiring special review (e.g., third-party scripts).</p>
 </section>
-<section id="whats-next-after-large-language-models-llms" class="level2">
-<h2 class="anchored" data-anchor-id="whats-next-after-large-language-models-llms">What’s Next After Large Language Models (LLMs)?</h2>
-<p>The future of AI, according to Altman, involves looking for the next big thing after LLMs. While the specifics were not discussed, the pursuit of groundbreaking innovation is clearly at the core of OpenAI’s mission.</p>
-</section>
-<section id="views-of-llms" class="level2">
-<h2 class="anchored" data-anchor-id="views-of-llms">Views of LLMs</h2>
-<p>A noteworthy insight from Altman was his characterization of LLMs. He emphasized that people should not think of LLMs as databases, they are not updated in real-time, but rather they should be thought of as reasoning engines. With the help of certain retrievers, these LLMs can address the issue of up-to-date knowledge, suggesting the future development of LLMs may involve closer integration with real-time data sources.</p>
-<p>Altman also mentioned <em>prompt injection</em> for the first time in a public. While also noting the possibility that LLMs <em>might not be suited for certain purposes</em>, he assured attendees that new approaches are being worked on, indicating exciting advancements on the horizon.</p>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>Sam Altman’s talk offered valuable perspectives on the path of AI, emphasizing effective AI regulations, the importance of user-friendly interfaces, and the continued commitment to the open-source ecosystem. He underscored the role of Large Language Models (LLMs) as reasoning engines and touched upon their future development. In essence, Altman’s insights paint a future of AI that’s effectively regulated, user-centric, and collaborative, while continuously evolving to meet real-time information needs. His conversation reinforces the dynamic nature of AI and the importance of responsible stewardship as we navigate this rapidly evolving landscape.</p>
-<p>Thanks for reading! If you enjoyed this article, please consider sharing it on social media. You can also follow me on <a href="https://twitter.com/Muhtasham9">Twitter</a> for more content like this.</p>
-<p>For a more immersive experience, you can watch a segment of Sam Altman’s talk in the video below:</p>
-<div data-align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/uaQZIK9gvNo?start=810" title="OpenAI's Sam Altman at TUM" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="">
-</iframe>
-</div>
+<section id="security-configuration-tips" class="level2">
+<h2 class="anchored" data-anchor-id="security-configuration-tips">Security &amp; Configuration Tips</h2>
+<p>Review any external scripts before inclusion; define them centrally in <code>header-snippet.html</code> so they can be audited and removed quickly. Keep <code>_quarto.yml</code> synchronized with navigation changes to avoid orphaned pages. When rotating analytics or CDN assets, search the <code>docs/</code> output to ensure no legacy references remain prior to deployment.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
