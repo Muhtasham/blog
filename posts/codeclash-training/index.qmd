@@ -1,0 +1,111 @@
+---
+title: "CodeClash: Training AI Agents for Long-Horizon Programming"
+description: "Expanding code post-training beyond unit tests to competitive, long-horizon programming tasks with CodeClash's new training arenas"
+author: "muhtasham"
+date: "2026-01-07"
+image: "images/arenas.png"
+categories: [llm, agents, software-engineering]
+toc: true
+---
+
+**Excited to share the release of CC:Train - CodeClash's official training split!**
+
+Training only on narrowly defined tasks or GitHub issues doesn't lead to true AI software engineers. Models need to be trained to pursue goals rather than carry out implementation-level tasks.
+
+![CodeClash's 9 training arenas spanning Bridge, Chess, Figgie, Gomoku, Halite II/III, and MIT BattleCode 2023-2025](images/arenas.png)
+
+Folks made great headway at training on SWE-bench style tasks in 2025. **In 2026, what if we expanded code post-training to long-horizon, competitive, head-to-head coding tasks?**
+
+- **2025:** Train on SWE-bench (single tasks)
+- **2026:** Train on CodeClash (long horizon, open-ended objectives)
+
+## From Task Completion to Goal Pursuit
+
+SWE-bench-style training teaches models to **carry out implementation-level tasks**, not to **pursue goals**. When you train a model to fix a specific bug or implement a narrowly-scoped feature, you're teaching task completion. But real software engineering is goal-oriented - it's about understanding high-level objectives, making strategic decisions, and iterating based on feedback to pursue better solutions.
+
+Today's SWE agents rely on outcome-based RL with unit tests. But this breaks at long horizons: imagine coding PyTorch from scratch - how do you get dense feedback from hours-long rollouts that aren't unit-test-verifiable? We need a new paradigm.
+
+**Enter CodeClash.**
+
+As an initial step, we've released **CC:Train** - CodeClash's official training split of 9 new arenas.
+
+[CodeClash](https://codeclash.ai/) is a very long horizon SWE benchmark that requires agents to **write code, observe logs from that code running against another agent's code, rewrite their code, and then repeat that cycle**.
+
+We now have a training set for it - looking forward to models getting even better on long horizon programming.
+
+### The 9 Training Arenas
+
+- **Bridge** - Imperfect information card game
+- **Chess** - Perfect information classical board game
+- **Figgie** - Multi-player trading and strategy game
+- **Gomoku** - Classic board game with multi-player support
+- **Halite II** - Multi-player space strategy competition
+- **Halite III** - Enhanced multi-player space combat
+- **MIT BattleCode 2023** - Head-to-head programming competition
+- **MIT BattleCode 2024** - Next generation BattleCode
+- **MIT BattleCode 2025** - Latest BattleCode iteration
+
+These arenas span diverse properties:
+
+| Property | Examples |
+|----------|----------|
+| **Information** | Perfect (Chess) vs. Imperfect (Bridge) |
+| **Format** | Classical (Gomoku) vs. Custom (BattleCode) |
+| **Players** | Head-to-head (Chess) vs. Multi-player (Figgie) |
+
+## Why Competitive Code Training?
+
+The key insight is that **competition trains goal-oriented development, not task completion**.
+
+CodeClash doesn't give agents a specific bug to fix or a narrow feature to implement. Instead, it gives them a goal: **build a bot that wins**. The agent must:
+
+- Understand the game mechanics and strategic landscape
+- Design an architecture that balances multiple objectives
+- Write code, observe how it performs in competition, and iterate
+- Make judgment calls about what "better" means (faster execution? smarter strategy? more robust error handling?)
+- Pursue continuous improvement over extended sessions
+
+This is fundamentally different from SWE-bench-style training:
+
+| SWE-bench Style | CodeClash Style |
+|-----------------|-----------------|
+| "Fix this specific bug" | "Build the best bot you can" |
+| Task completion | Goal pursuit |
+| Binary pass/fail from tests | Continuous improvement from competition |
+| Implementation-level | Strategic-level |
+| Narrow scope | Open-ended optimization |
+
+Competition provides dense reward signals for goal-oriented development:
+
+- Win/loss outcomes give clear feedback on strategic decisions
+- Performance metrics (reaction time, strategy efficiency) provide gradients for improvement
+- Iterative refinement is naturally incentivized - there's always a better bot to build
+- Bad development practices (code slop, redundancy, poor organization) hurt competitive performance
+- Agents learn to balance competing objectives rather than satisfy a fixed specification
+
+Instead of asking "does this code pass tests?", we ask "can this code outcompete alternatives?" - which is much closer to how human engineers think about software quality.
+
+## What's Next: Open Questions and the Road Ahead
+
+The release of CC:Train is just the beginning. We've spent 2025 perfecting training on SWE-bench-style single tasks. In 2026, it's time to expand to truly long-horizon, goal-oriented development.
+
+We're curious about several research directions:
+
+**Can self-play RL work?** Rather than optimizing for test passage, what if we optimize for defeating other agents through competitive self-play?
+
+**Does it transfer?** Does training on Halite II/III improve performance on Halite I? What about completely different games like Gomoku? Most importantly: does training on open-ended code tasks improve performance on traditional benchmarks like SWE-bench, HumanEval, or MBPP?
+
+**Does competition improve code quality?** Competition naturally punishes bad practices - single-use scripts, redundant code, poor organization, and "code slop" that accumulates over long sessions. Can competitive training mitigate these issues?
+
+True AI software engineers won't come from training on narrower and narrower GitHub issues. They'll come from training on open-ended goals that require strategic thinking, iterating based on emergent feedback, balancing competing objectives, and developing intuition for software quality through competitive episodes.
+
+
+---
+
+CC:Train is available now at [codeclash.ai](https://codeclash.ai/). Check out the [detailed announcement](https://codeclash.ai/insights/20251231_train_split/) for full arena specifications, baseline results, and training guidelines.
+
+We're excited to see what the community builds with these arenas. If you're working on code post-training or long-horizon agent development, we'd love to hear from you on our [Slack](https://codeclash.ai/) or [GitHub](https://github.com/codeclash-ai).
+
+---
+
+*This work is a collaboration between the CodeClash team: Muhtasham Oblokulov, Aryan Siddiqui, and John Yang.*
