@@ -4,3 +4,4 @@ posts/.DS_Store
 
 **/*.quarto_ipynb
 AGENTS.md
+.DS_Store

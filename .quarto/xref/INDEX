@@ -76,5 +76,8 @@
   },
   "posts/codeclash-training/index.qmd": {
     "index.html": "f1c5e5b8"
+  },
+  "posts/codex-spark-cerebras-simulator/index.qmd": {
+    "index.html": "55083f84"
   }
 }

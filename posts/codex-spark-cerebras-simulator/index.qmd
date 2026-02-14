@@ -1,0 +1,104 @@
+---
+title: "Using Codex to Simulate the Hardware It Runs On"
+description: "Meta-Engineering, letting Codex-Spark Simulates the Silicon that it runs on"
+author: "muhtasham"
+date: "2026-02-14"
+image: "images/thumbnail.png"
+image-alt: "Cerebras defect-tolerance simulator and Codex-Spark real-time coding workflow"
+categories: [cerebras, hardware, simulation, codex-spark, real-time-llm]
+title-block-banner: true
+---
+
+## A Chip Simulating Itself
+
+**Codex-Spark** runs on **Cerebras WSE-3**. I used it to build an interactive simulator of the same chip. The hardware helped explain itself—a recursive loop of silicon and AI.
+
+This isn't just meta for fun. It's a preview of how we'll build technical tools: the hardware becomes an active participant in teaching its own architecture.
+
+## The Problem: 900,000 Cores, Guaranteed Defects
+
+When you manufacture a chip the size of a dinner plate with ~900,000 cores, defects aren't a matter of *if*—they're *how many*. Traditional chips are small enough that a single defect ruins the whole die. Wafer-scale engines like Cerebras WSE flip that model: assume defects will happen, then route around them intelligently.
+
+But how do you explain defect-tolerant mesh routing to someone who's never thought about chip yields?
+
+I'm a **Cerebras Fellow** and **Codex Ambassador**. Right after [GPT-5.3-Codex-Spark](https://openai.com/index/introducing-gpt-5-3-codex-spark/) launched, I wanted to build something immediately graspable—a single interactive page where you adjust defect rates, run remap logic, and watch packets reroute in real time.
+
+The tight iteration loop (prompt → verify → refine) made it possible to clarify both the explanation and the routing logic until everything clicked.
+
+This simulator is the result. It was built through prompting Codex-Spark and references these public sources:
+
+- [Cerebras 100x defect tolerance post](https://www.cerebras.ai/blog/100x-defect-tolerance-how-cerebras-solved-the-yield-problem)
+- [IEEE Micro: Path to Successful Wafer-Scale Integration](https://8968533.fs1.hubspotusercontent-na2.net/hubfs/8968533/IEEE%20Micro%202021-11%20Path%20to%20Wafer%20Scale%20Integration.pdf)
+- [Cerebras WSE architecture whitepaper](https://cdn.sanity.io/files/e4qjo92p/production/b3779b8136a3a03a7b31913cb680e33d68423e58.pdf)
+
+Codex-Spark is also powered by [Cerebras’ Wafer Scale Engine 3](https://www.cerebras.ai/chip), a purpose-built AI accelerator for high-speed inference that gives the model a latency-first serving tier. That is why this post is able to move from idea to working interaction so quickly.
+
+## Try It First
+
+The simulator is embedded below and uses client-side JavaScript only. Start with the defaults, then experiment.
+
+::: {.callout-note}
+**Default settings:** manufacturing tile defects **12%**, inter-tile link defects **6%**, spare-core remap budget **7%**, and **40** yield simulation runs.
+
+**Then try:**
+
+- Disable remap to see failure impact.
+- Increase link defects and compare route resilience.
+- Turn mesh links off and compare observability.
+:::
+
+```{=html}
+<iframe src="cerebras-visualization.html" title="Cerebras defect-tolerance simulator" style="width:100%; height:860px; border:0; border-radius:12px;" loading="lazy"></iframe>
+```
+
+::: {style="text-align: center; margin-top: 1rem;"}
+[Open simulator in full screen →](cerebras-visualization.html){target="_blank" style="font-size: 0.9rem;"}
+:::
+
+## How It Was Built: The Real-Time Codex-Spark Workflow
+
+This project is as much about the workflow as it is about hardware simulation. Building with Codex-Spark felt genuinely different from normal coding cycles.
+
+### What Makes It Feel Different
+
+1. **Ask, don't script**: I could just ask for concrete changes like "add a spare-core budget slider" or "make the status line conversational," and get it immediately.
+2. **Ship faster, learn faster**: each iteration was visible in seconds, so wrong assumptions were corrected in minutes, not a full afternoon.
+3. **Real-time stays real-time**: the UI updates and simulation loops stayed fluid while iterating—no waiting, no lag.
+4. **You can ask for features, not just code**: examples like source-note cards, clearer beginner text, and route status semantics were all handled the same way through conversation.
+
+### The Latency Breakthrough That Enables This
+
+As OpenAI trained Codex-Spark, they realized model speed was just part of the equation for real-time collaboration. They implemented **end-to-end latency improvements** that benefit all models:
+
+- **80% reduction** in overhead per client/server roundtrip
+- **30% reduction** in per-token overhead
+- **50% reduction** in time-to-first-token
+
+Under the hood, they streamlined how responses stream from client to server and back, rewrote key pieces of the inference stack, and reworked session initialization. Through a persistent **WebSocket connection** and targeted optimizations inside the Responses API, Codex stays responsive as you iterate.
+
+This is why "ask for a feature, see it work, ask for the next pass" actually works in practice—the latency is low enough that the conversation never breaks your flow.
+
+```{=html}
+<div class="callout callout-style-default">
+  <div class="callout-body">
+    You can literally treat this as an interactive design conversation: ask Codex to build a feature, ask it to simplify wording, then ask for the next pass. Then repeat.
+  </div>
+</div>
+```
+
+## What this simulator shows
+
+The simulation has three practical layers:
+
+- A **tile mesh**: simplified compute regions connected by a mesh network.
+- **Fault controls**: manufacturing defects, inter-tile link defects, remap budget, and reliability-run count.
+- **Packet flow + remap**: route search around blocked regions and optional repair conversion using spare capacity.
+
+Each render reports:
+
+- healthy vs defective/repaired tiles
+- bad links and blocked connectivity
+- route found / blocked outcomes
+- path length and a reliability summary from repeated random trials
+
+That output mirrors the core lesson from wafer-scale systems: local defects are manageable when routing options and spare resources are intelligently coordinated.

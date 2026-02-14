@@ -1,0 +1,1685 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cerebras Chip Visualization</title>
+    <style>
+      :root {
+        --bg: #f4f6fb;
+        --panel: #fdfdff;
+        --ink: #0f172a;
+        --subtle: #64748b;
+        --good: #2563eb;
+        --good-soft: #93c5fd;
+        --bad: #ef4444;
+        --repair: #22c55e;
+        --io: #0ea5e9;
+        --path: #fde047;
+        --mesh: #cbd5e1;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--ink);
+        background: linear-gradient(160deg, #e6f0ff 0%, #f7fbff 38%, #fff1ec 100%);
+        font-family: "Trebuchet MS", "Gill Sans", "Avenir Next", "Segoe UI", serif;
+        overflow-wrap: break-word;
+        word-break: break-word;
+      }
+
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 28px;
+        width: 100%;
+      }
+
+      .title {
+        margin: 0 0 10px;
+        font-size: 32px;
+        letter-spacing: 0.4px;
+        line-height: 1.15;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+      }
+
+      .subtitle {
+        margin: 0;
+        color: var(--subtle);
+        max-width: 900px;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+      }
+
+      .board {
+        margin-top: 22px;
+        display: grid;
+        gap: 20px;
+        grid-template-columns: minmax(0, 1fr);
+        align-items: start;
+      }
+
+      .visual {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .panel {
+        background: var(--panel);
+        border: 1px solid #dbe4ff;
+        border-radius: 16px;
+        box-shadow: 0 10px 34px rgba(15, 23, 42, 0.08);
+        padding: 16px;
+        min-width: 0;
+        width: 100%;
+        overflow: hidden;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+      }
+
+      .visual {
+        padding: 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .chip-wrap {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        min-height: min(560px, 58vw);
+        border-radius: 12px;
+        overflow: hidden;
+        display: grid;
+        flex: 1;
+      }
+
+      #wafer {
+        grid-area: 1 / 1;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+
+      #wafer3d {
+        grid-area: 1 / 1;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        display: none;
+      }
+
+      .view-toggle {
+        margin-bottom: 10px;
+        display: flex;
+        gap: 8px;
+        flex-shrink: 0;
+      }
+
+      .view-toggle button {
+        flex: 1;
+        background: #64748b;
+      }
+
+      .view-toggle .active {
+        background: #1d4ed8;
+      }
+
+      .side {
+        display: grid;
+        gap: 14px;
+        min-width: 0;
+        width: 100%;
+      }
+
+      .control {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 8px;
+        width: 100%;
+        min-width: 0;
+      }
+
+      label {
+        color: var(--subtle);
+        font-size: 14px;
+        min-width: 0;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+      }
+
+      .value {
+        font-size: 13px;
+        color: var(--ink);
+        min-width: 56px;
+        text-align: right;
+        white-space: nowrap;
+        margin-left: auto;
+      }
+
+      input[type="range"] {
+        width: 100%;
+      }
+
+      button {
+        border: 0;
+        border-radius: 10px;
+        padding: 10px 12px;
+        background: #1d4ed8;
+        color: white;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 120ms ease, filter 120ms ease;
+      }
+
+      button:hover {
+        filter: brightness(1.05);
+      }
+
+      button:active {
+        transform: translateY(1px);
+      }
+
+      .btn-row {
+        display: grid;
+        gap: 8px;
+      }
+
+      .status {
+        margin-top: 4px;
+        background: #f8fafc;
+        border: 1px dashed #bfdbfe;
+        border-radius: 10px;
+        padding: 10px;
+        min-height: 70px;
+        color: #334155;
+        font-size: 14px;
+        line-height: 1.4;
+        hyphens: auto;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+      }
+
+      .stats {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .kpi {
+        background: #f8faff;
+        border: 1px solid #dbeafe;
+        border-radius: 10px;
+        padding: 10px;
+        word-break: break-word;
+      }
+
+      .kpi b {
+        display: block;
+        margin-top: 4px;
+        font-size: 22px;
+      }
+
+      .legend {
+        display: grid;
+        gap: 8px;
+      }
+
+      .item {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        font-size: 14px;
+      }
+
+      .swatch {
+        width: 14px;
+        height: 14px;
+        border-radius: 4px;
+      }
+
+      .notes {
+        color: #334155;
+        font-size: 14px;
+        line-height: 1.5;
+        margin: 4px 0 0;
+        max-width: 100%;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+      }
+
+      .notes p {
+        margin: 0;
+        font-weight: 600;
+      }
+
+      .notes ul {
+        margin: 8px 0 0;
+        max-width: 100%;
+        padding-left: 18px;
+      }
+
+      .notes li {
+        margin: 4px 0;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+      }
+
+      .notes small {
+        display: block;
+        margin-top: 6px;
+        color: #475569;
+        line-height: 1.4;
+      }
+
+      .guide {
+        margin-top: 4px;
+      }
+
+      .tag {
+        margin-top: 2px;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: #0f172a;
+        background: #e2e8f0;
+        border-radius: 100px;
+        padding: 5px 10px;
+        font-size: 12px;
+      }
+
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .links a {
+        color: #1d4ed8;
+        font-size: 12px;
+        text-decoration: none;
+        background: #e0edff;
+        padding: 5px 8px;
+        border-radius: 7px;
+        max-width: 100%;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+      }
+
+      .links a:hover {
+        text-decoration: underline;
+      }
+
+      .link-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        display: inline-flex;
+      }
+
+      .good { fill: var(--good-soft); }
+      .bad { fill: var(--bad); }
+      .repair { fill: var(--repair); }
+      .io { fill: var(--io); }
+      .path { fill: var(--path) !important; }
+      .flow { filter: drop-shadow(0 0 8px #fbbf24cc); }
+
+      @media (max-width: 980px) {
+        .board {
+          grid-template-columns: 1fr;
+        }
+
+        .title {
+          font-size: 26px;
+        }
+
+        main {
+          padding: 16px 10px;
+        }
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .panel, .item, .btn-row, .status {
+          animation: fadeIn 0.35s ease both;
+        }
+        .btn-row { animation-delay: 0.1s; }
+        .control { animation-delay: 0.2s; }
+        .status { animation-delay: 0.25s; }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1 class="title">Cerebras Wafer-Scale Defect-Tolerance Simulator</h1>
+      <p class="subtitle">
+        This is a beginner-friendly, interactive explanation of how a wafer-scale chip stays operational when faults appear. Blue tiles are healthy compute regions, red tiles are defective, and green tiles are remapped/repair tiles. Move the controls to test defect levels, link reliability, and spare remap budget.
+      </p>
+
+      <section class="board">
+        <article class="panel visual">
+          <div class="view-toggle">
+            <button id="view2d" class="active">2D view</button>
+            <button id="view3d">3D view</button>
+          </div>
+          <div class="chip-wrap">
+            <svg id="wafer" viewBox="0 0 980 620" aria-label="cerebras-chip-visualization"></svg>
+            <canvas id="wafer3d" aria-label="cerebras-chip-3d-visualization"></canvas>
+          </div>
+        </article>
+
+        <aside class="panel side">
+          <div class="control">
+            <div class="row">
+              <label for="defectRate">Manufacturing tile defects: <span id="defectLabel"></span></label>
+              <span id="defectValue" class="value"></span>
+            </div>
+            <input id="defectRate" type="range" min="0" max="0.4" step="0.01" value="0.12" />
+          </div>
+
+          <div class="control">
+            <div class="row">
+              <label for="linkFaultRate">Inter-tile link defects: <span id="linkDefectLabel"></span></label>
+              <span id="linkDefectValue" class="value"></span>
+            </div>
+            <input id="linkFaultRate" type="range" min="0" max="0.2" step="0.01" value="0.06" />
+          </div>
+
+          <div class="control">
+            <div class="row">
+              <label for="repairBudget">Spare-core remap budget (percent): <span id="repairBudgetLabel"></span></label>
+              <span id="repairBudgetValue" class="value"></span>
+            </div>
+            <input id="repairBudget" type="range" min="0" max="20" step="1" value="7" />
+          </div>
+
+          <div class="control">
+            <div class="row">
+              <label for="simRuns">Yield simulation runs: <span id="simRunsLabel"></span></label>
+              <span id="simRunsValue" class="value"></span>
+            </div>
+            <input id="simRuns" type="range" min="10" max="120" step="10" value="40" />
+          </div>
+
+          <div class="control">
+            <label>
+              <input type="checkbox" id="allowRepair" checked />
+              <span>Enable cluster remap for small defect groups</span>
+            </label>
+            <label>
+              <input type="checkbox" id="showMesh" checked />
+              <span>Show mesh links</span>
+            </label>
+          </div>
+
+          <div class="btn-row">
+            <button id="shuffle">Generate a new chip map</button>
+            <button id="simulate">Run yield simulation</button>
+            <button id="animate">Pulse one packet path</button>
+          </div>
+
+          <div class="status" id="status">Ready</div>
+
+          <div class="notes guide">
+            <p>Start here if you are new to this topic</p>
+            <ul>
+              <li><b>Think of this as a wafer-scale chip:</b> many small compute/memory tiles connected by a mesh.</li>
+              <li><b>Each tile</b> represents an independent block with local compute and local memory access.</li>
+              <li><b>Data routing:</b> packets move from left edge (Input) to right edge (Output) via neighboring healthy tiles and links.</li>
+              <li><b>Defect behavior:</b> red tiles and red links are unusable; the path is rerouted around them when possible.</li>
+              <li><b>Remap behavior:</b> up to a small spare budget can convert selected small defect clusters into usable tiles (green).</li>
+              <li><b>Model simplification:</b> this page tracks a single test path through the chip, not full parallel traffic.</li>
+              <li><b>Outcome:</b> this shows how Cerebras can preserve compute flow even when defects are expected in large chips.</li>
+            </ul>
+          </div>
+
+          <div class="notes">
+            <p>Color and map legend (this page)</p>
+            <ul>
+              <li><b>Blue tile:</b> healthy compute tile.</li>
+              <li><b>Green tile:</b> remapped/replaced tile from spare-capacity planning.</li>
+              <li><b>Red tile:</b> defective tile (not available).</li>
+              <li><b>Red line:</b> failed inter-tile link.</li>
+              <li><b>Yellow path:</b> active packet route for this map.</li>
+            </ul>
+          </div>
+
+          <div class="stats">
+            <div class="kpi">
+              Healthy tiles
+              <b id="healthyCount">—</b>
+            </div>
+            <div class="kpi">
+              Repaired tiles
+              <b id="repairCount">—</b>
+            </div>
+            <div class="kpi">
+              Faulty links
+              <b id="linkCount">—</b>
+            </div>
+            <div class="kpi">
+              Success (no remap)
+              <b id="simSuccessNoRemap">—</b>
+            </div>
+            <div class="kpi">
+              Simulation success
+              <b id="simSuccess">—</b>
+            </div>
+            <div class="kpi">
+              Mean path (no remap)
+              <b id="simAvgPathNoRemap">—</b>
+            </div>
+            <div class="kpi">
+              Mean simulated path
+              <b id="simAvgPath">—</b>
+            </div>
+            <div class="kpi">
+              Routed packet
+              <b id="pathLength">—</b>
+            </div>
+            <div class="kpi">
+              Utilization
+              <b id="utilization">—</b>
+            </div>
+          </div>
+
+          <div class="legend">
+            <div class="item"><span class="swatch" style="background:var(--good-soft)"></span>Healthy compute tile</div>
+            <div class="item"><span class="swatch" style="background:var(--repair)"></span>Repaired / remapped tile</div>
+            <div class="item"><span class="swatch" style="background:var(--bad)"></span>Defective tile</div>
+            <div class="item"><span class="swatch" style="background:var(--io)"></span>I/O edge</div>
+            <div class="item"><span class="swatch" style="background:var(--path)"></span>Active packet path</div>
+            <div class="item"><span class="swatch" style="background:#dc2626"></span>Bad fabric link</div>
+          </div>
+
+          <div class="notes">
+            <p>What this depicts</p>
+            <ul>
+              <li>Each tile is a simplified compute/fabric region with local SRAM and packet/weight-like dataflow behavior.</li>
+              <li>Data moves only across healthy neighboring tiles and healthy inter-tile links.</li>
+              <li>Remap is based on small connected defect clusters with a locality + route-criticality scoring model.</li>
+              <li>Inter-tile links can fail and routes are remapped through alternate mesh paths when possible.</li>
+              <li>Small clustered defects can be repaired as a cluster, which is closer to practical spare-tile remap behavior.</li>
+              <li>Clustered defects may still fail if repair budget is low or components are too large for the model.</li>
+              <li>Accuracy note: this is a concept-level simulator, not a full power/timing/clock-domain model.</li>
+              <li>Real WSE systems also use additional redundancy features beyond tile-level remap, including link-layer reroute mechanisms.</li>
+            </ul>
+            <small>This simulator is intentionally educational and simplified; it helps beginners understand where locality and remap priority matter.</small>
+          </div>
+
+          <div class="notes">
+            <p>Source Notes (from cited materials)</p>
+            <ul>
+              <li>Wafer-scale size: WSE-3 is reported as ~46,225 mm² vs a H100-like GPU at ~814 mm².</li>
+              <li>Core size argument: WSE-3 core area is cited around ~0.05 mm² (about 100x smaller than an H100-style ~6.2 mm² SM core).</li>
+              <li>Yield comparison framing (blog): one 46,225 mm² wafer-scale chip per 300mm wafer vs ~72 GPU dies for an 814 mm² 5nm-style chip in their walkthrough example.</li>
+              <li>Defect tolerance outcome: blog and papers attribute WSE yield to small fault domains + rerouting + limited spare capacity; this simulator uses that same high-level idea.</li>
+              <li>WSI fabric behavior (IEEE Micro): shorter on-chip links are modeled as local inter-tile links; failed links can block mesh paths and force alternate local routing in this model.</li>
+              <li>Cerebras WSE-3 reporting: ~93% usable silicon area and ~900,000 active cores (from the public WSE-3 discussion).</li>
+              <li>Yield framing in this page is a simplification, meant to show concept-level effects of defect clusters, links, and remap budget.</li>
+            </ul>
+          </div>
+
+          <span class="tag">Based on public Cerebras defect-tolerance material</span>
+          <div class="links">
+            <a href="https://www.cerebras.ai/blog/100x-defect-tolerance-how-cerebras-solved-the-yield-problem" target="_blank" rel="noreferrer">Cerebras blog</a>
+            <a href="https://8968533.fs1.hubspotusercontent-na2.net/hubfs/8968533/IEEE%20Micro%202021-11%20Path%20to%20Wafer-Scale%20Integration.pdf" target="_blank" rel="noreferrer">IEEE Micro paper</a>
+            <a href="https://cdn.sanity.io/files/e4qjo92p/production/b3779b8136a3a03a7b31913cb680e33d68423e58.pdf" target="_blank" rel="noreferrer">WSI report</a>
+            <a href="https://cdn.sanity.io/files/e4qjo92p/production/2d7fa58e3b820715664bcf42097e86c05070c161.pdf" target="_blank" rel="noreferrer">Further details</a>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.min.js"></script>
+    <script>
+      const rows = 18;
+      const cols = 32;
+      const tileSize = 28;
+      const gap = 4;
+      const maxRepairableComponentSize = 6;
+      const centerRow = (rows - 1) / 2;
+      const centerCol = (cols - 1) / 2;
+      const linkDirections = [
+        [1, 0],
+        [-1, 0],
+        [0, 1],
+        [0, -1],
+      ];
+      const repairScoring = {
+        recoveryWeight: 260,
+        routeAffinityWeight: 210,
+        criticalityWeight: 120,
+        localityWeight: 65,
+        compactnessWeight: 90,
+        sizePenaltyPerTile: 6,
+      };
+
+      const grid = [];
+      const tileElements = new Map();
+      const threeTileElements = new Map();
+      let routePath = [];
+      let pulseTimer = null;
+      let currentRate = 0.12;
+      let currentLinkRate = 0.06;
+      let currentView = "2d";
+      let simulationRunning = false;
+      let unrecoverableDefects = 0;
+      let linkDefectCount = 0;
+      let unrepairedClusterCount = 0;
+      let maxSpareRepairs = 0;
+      const links = {
+        right: [],
+        down: [],
+      };
+
+      const svg = document.getElementById("wafer");
+      const chipWrap = document.querySelector(".chip-wrap");
+      const defectRate = document.getElementById("defectRate");
+      const repairBudget = document.getElementById("repairBudget");
+      const defectValue = document.getElementById("defectValue");
+      const defectLabel = document.getElementById("defectLabel");
+      const repairBudgetValue = document.getElementById("repairBudgetValue");
+      const repairBudgetLabel = document.getElementById("repairBudgetLabel");
+      const linkDefectRate = document.getElementById("linkFaultRate");
+      const linkDefectLabel = document.getElementById("linkDefectLabel");
+      const linkDefectValue = document.getElementById("linkDefectValue");
+      const simRuns = document.getElementById("simRuns");
+      const simRunsLabel = document.getElementById("simRunsLabel");
+      const simRunsValue = document.getElementById("simRunsValue");
+      const allowRepair = document.getElementById("allowRepair");
+      const showMesh = document.getElementById("showMesh");
+      const animateBtn = document.getElementById("animate");
+      const shuffleBtn = document.getElementById("shuffle");
+      const simulateBtn = document.getElementById("simulate");
+      const status = document.getElementById("status");
+      const healthyCount = document.getElementById("healthyCount");
+      const repairCount = document.getElementById("repairCount");
+      const simSuccessNoRemap = document.getElementById("simSuccessNoRemap");
+      const simSuccess = document.getElementById("simSuccess");
+      const simAvgPath = document.getElementById("simAvgPath");
+      const simAvgPathNoRemap = document.getElementById("simAvgPathNoRemap");
+      const linkCount = document.getElementById("linkCount");
+      const pathLength = document.getElementById("pathLength");
+      const utilization = document.getElementById("utilization");
+      const view2dBtn = document.getElementById("view2d");
+      const view3dBtn = document.getElementById("view3d");
+      const canvas3d = document.getElementById("wafer3d");
+
+      const start = { r: Math.floor(rows / 2), c: 0 };
+      const end = { r: Math.floor(rows / 2), c: cols - 1 };
+
+      const sourceColor = "fill:#0ea5e9;stroke:#0c4a6e;stroke-width:2;";
+      const sinkColor = "fill:#ec4899;stroke:#9f1239;stroke-width:2;";
+
+      let scene;
+      let camera;
+      let renderer;
+      let tileGroup;
+      let packetMesh;
+      let tileGeometry;
+      let threeInited = false;
+      let threeTickActive = false;
+      let threeAngleX = 0.62;
+      let threeTargetX = 0.62;
+      let threeAngleY = -0.84;
+      let threeTargetY = -0.84;
+      let threeZoom = 1;
+      let pointerDrag = false;
+      let lastPointerX = 0;
+      let lastPointerY = 0;
+      const rightLinkIndex = (r, c) => r * (cols - 1) + c;
+      const downLinkIndex = (r, c) => r * cols + c;
+
+      function key(r, c) {
+        return `${r}-${c}`;
+      }
+
+      function connectedBadComponents() {
+        const visited = new Set();
+        const components = [];
+        const directions = linkDirections;
+
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            const startCell = tileState(r, c);
+            if (startCell !== "bad") continue;
+            const startKey = key(r, c);
+            if (visited.has(startKey)) continue;
+
+            const component = [];
+            const queue = [{ r, c }];
+            visited.add(startKey);
+
+            while (queue.length > 0) {
+              const cur = queue.shift();
+              component.push(grid[cur.r * cols + cur.c]);
+
+              for (let i = 0; i < directions.length; i++) {
+                const nr = cur.r + directions[i][0];
+                const nc = cur.c + directions[i][1];
+                if (nr < 0 || nr >= rows || nc < 0 || nc >= cols) continue;
+                const k = key(nr, nc);
+                if (visited.has(k)) continue;
+                if (tileState(nr, nc) !== "bad") continue;
+                visited.add(k);
+                queue.push({ r: nr, c: nc });
+              }
+            }
+
+            components.push(component);
+          }
+        }
+
+        return components;
+      }
+
+      function currentBadClusterCount() {
+        return connectedBadComponents().length;
+      }
+
+      function isIO(r, c) {
+        return c === 0 || c === cols - 1;
+      }
+
+      function tileState(r, c) {
+        const t = grid[r * cols + c];
+        return t ? t.state : "bad";
+      }
+
+      function walkable(t) {
+        return t === "good" || t === "repair" || t === "io";
+      }
+
+      function linkHealth(r, c, nr, nc) {
+        if (nr === r && nc === c + 1) {
+          return links.right[rightLinkIndex(r, c)] === "good";
+        }
+        if (nr === r && nc === c - 1) {
+          return links.right[rightLinkIndex(r, c - 1)] === "good";
+        }
+        if (nr === r + 1 && nc === c) {
+          return links.down[downLinkIndex(r, c)] === "good";
+        }
+        if (nr === r - 1 && nc === c) {
+          return links.down[downLinkIndex(r - 1, c)] === "good";
+        }
+        return false;
+      }
+
+      function countBadLinks() {
+        let c = 0;
+        for (let i = 0; i < links.right.length; i++) {
+          if (links.right[i] === "bad") c++;
+        }
+        for (let i = 0; i < links.down.length; i++) {
+          if (links.down[i] === "bad") c++;
+        }
+        return c;
+      }
+
+      function tileCriticality(r, c, startDist, endDist, shortestEdges) {
+        const locality = tileLocalityScore(r, c);
+        if (!startDist || !endDist || shortestEdges < 0) return locality;
+        return locality * 0.35 + tileFlowCriticality(r, c, startDist, endDist, shortestEdges) * 0.65;
+      }
+
+      function tileLocalityScore(r, c) {
+        const rowAffinity = 1 / (1 + Math.abs(r - centerRow) * 0.45);
+        const ioAffinity = 1 / (1 + Math.abs(c - centerCol) * 0.05);
+        const edgeAffinity = 1 / (1 + Math.min(c, cols - 1 - c) * 0.2);
+        return rowAffinity * 0.65 + ioAffinity * 0.2 + edgeAffinity * 0.15;
+      }
+
+      function tileFlowCriticality(r, c, startDist, endDist, shortestEdges) {
+        if (shortestEdges < 0) return 0;
+        const ds = startDist[r][c];
+        const de = endDist[r][c];
+        if (ds < 0 || de < 0) return 0;
+        const detour = ds + de - shortestEdges;
+        return 1 / (1 + detour * detour);
+      }
+
+      function reconstructPathFromPrev(prev, dist, sourcePoint = start, target = end) {
+        if (dist[target.r][target.c] < 0) return [];
+        const path = [];
+        let cur = { r: target.r, c: target.c };
+        while (cur) {
+          path.push(cur);
+          if (cur.r === sourcePoint.r && cur.c === sourcePoint.c) break;
+          const next = prev[cur.r][cur.c];
+          if (!next) break;
+          cur = next;
+        }
+        return path.reverse();
+      }
+
+      function routeAffinityForComponent(component, routeSet) {
+        if (!routeSet || routeSet.size === 0) return 0;
+
+        let score = 0;
+        for (let i = 0; i < component.length; i++) {
+          const tile = component[i];
+          const here = key(tile.r, tile.c);
+          let local = 0;
+
+          if (routeSet.has(here)) {
+            local = 1;
+          } else {
+            for (let d = 0; d < linkDirections.length; d++) {
+              const nr = tile.r + linkDirections[d][0];
+              const nc = tile.c + linkDirections[d][1];
+              if (nr < 0 || nr >= rows || nc < 0 || nc >= cols) continue;
+              if (routeSet.has(key(nr, nc))) {
+                local = 0.55;
+                break;
+              }
+            }
+          }
+
+          if (local === 0) {
+            for (let dr = -2; dr <= 2; dr++) {
+              let nearby = false;
+              for (let dc = -2; dc <= 2; dc++) {
+                if (Math.abs(dr) + Math.abs(dc) > 2) continue;
+                const rr = tile.r + dr;
+                const cc = tile.c + dc;
+                if (rr < 0 || rr >= rows || cc < 0 || cc >= cols) continue;
+                if (routeSet.has(key(rr, cc))) {
+                  nearby = true;
+                  break;
+                }
+              }
+              if (nearby) {
+                local = 0.12;
+                break;
+              }
+            }
+          }
+
+          score += local;
+        }
+
+        return score / component.length;
+      }
+
+      function routeDistanceMap(repairedSet = null, sourcePoint = start) {
+        const dist = Array.from({ length: rows }, () => Array(cols).fill(-1));
+        const prev = Array.from({ length: rows }, () => Array(cols).fill(null));
+
+        if (!walkable(tileStateForRoute(sourcePoint.r, sourcePoint.c, repairedSet))) {
+          return { dist, prev };
+        }
+
+        const queue = [{ ...sourcePoint }];
+        dist[sourcePoint.r][sourcePoint.c] = 0;
+        let qi = 0;
+
+        while (qi < queue.length) {
+          const cur = queue[qi++];
+          for (let i = 0; i < linkDirections.length; i++) {
+            const nr = cur.r + linkDirections[i][0];
+            const nc = cur.c + linkDirections[i][1];
+            if (nr < 0 || nr >= rows || nc < 0 || nc >= cols) continue;
+            if (dist[nr][nc] !== -1) continue;
+            if (!linkHealth(cur.r, cur.c, nr, nc)) continue;
+            const ns = tileStateForRoute(nr, nc, repairedSet);
+            if (!walkable(ns)) continue;
+            dist[nr][nc] = dist[cur.r][cur.c] + 1;
+            prev[nr][nc] = { r: cur.r, c: cur.c };
+            queue.push({ r: nr, c: nc });
+          }
+        }
+
+        return { dist, prev };
+      }
+
+      function shortestRouteLength(repairedSet = null) {
+        const { dist } = routeDistanceMap(repairedSet);
+        const endDist = dist[end.r][end.c];
+        return endDist >= 0 ? endDist + 1 : 0;
+      }
+
+      function componentCompactness(component) {
+        let minR = rows;
+        let maxR = 0;
+        let minC = cols;
+        let maxC = 0;
+
+        for (let i = 0; i < component.length; i++) {
+          const tile = component[i];
+          minR = Math.min(minR, tile.r);
+          maxR = Math.max(maxR, tile.r);
+          minC = Math.min(minC, tile.c);
+          maxC = Math.max(maxC, tile.c);
+        }
+
+        return 1 / (1 + (maxR - minR) + (maxC - minC));
+      }
+
+      function buildRepairPlan(enabled = true) {
+        if (!enabled || !allowRepair.checked) return [];
+
+        const baseRouteResult = routeDistanceMap();
+        const fromStart = baseRouteResult.dist;
+        const fromEnd = routeDistanceMap(null, end).dist;
+        const baseRoutePath = reconstructPathFromPrev(baseRouteResult.prev, fromStart);
+        const baseRouteSet = new Set(baseRoutePath.map((tile) => key(tile.r, tile.c)));
+        const shortestEdges = fromStart[end.r][end.c];
+        const shortestLen = shortestEdges >= 0 ? shortestEdges + 1 : 0;
+
+        const components = connectedBadComponents().filter((component) => {
+          return component.length <= maxRepairableComponentSize;
+        });
+
+        const candidates = [];
+        for (let i = 0; i < components.length; i++) {
+          const component = components[i];
+          const componentSet = new Set(component.map((t) => key(t.r, t.c)));
+          const repairedLen = shortestRouteLength(componentSet);
+          const recoveryGain = shortestLen > 0
+            ? repairedLen > 0
+              ? (shortestLen - repairedLen) / shortestLen
+              : -1
+            : repairedLen > 0
+            ? 0.7
+            : -1;
+
+          let criticalityScore = 0;
+          for (let j = 0; j < component.length; j++) {
+            const t = component[j];
+            criticalityScore += tileCriticality(t.r, t.c, fromStart, fromEnd, shortestEdges);
+          }
+          criticalityScore /= component.length;
+          const routeAffinity = routeAffinityForComponent(component, baseRouteSet);
+          let localityScore = 0;
+          for (let j = 0; j < component.length; j++) {
+            localityScore += tileLocalityScore(component[j].r, component[j].c);
+          }
+          localityScore /= component.length;
+          const compactness = componentCompactness(component);
+          const score = (
+            repairScoring.recoveryWeight * recoveryGain
+            + repairScoring.routeAffinityWeight * routeAffinity
+            + repairScoring.criticalityWeight * criticalityScore
+            + repairScoring.localityWeight * localityScore
+            + repairScoring.compactnessWeight * compactness
+          ) - (repairScoring.sizePenaltyPerTile * component.length);
+          candidates.push({ component, score });
+        }
+
+        candidates.sort((a, b) => b.score - a.score);
+
+        const repairPool = Math.min(maxSpareRepairs, rows * cols);
+        let remaining = repairPool;
+        const selected = [];
+
+        for (let i = 0; i < candidates.length && remaining > 0; i++) {
+          const candidate = candidates[i];
+          if (candidate.score < 8) continue;
+          if (candidate.component.length > remaining) continue;
+
+          for (let j = 0; j < candidate.component.length; j++) {
+            selected.push(candidate.component[j]);
+          }
+          remaining -= candidate.component.length;
+        }
+
+        return selected;
+      }
+
+      function applyRepairPlan(plan) {
+        for (let i = 0; i < plan.length; i++) {
+          const tile = plan[i];
+          tile.state = "repair";
+        }
+      }
+
+      function tileStateForRoute(r, c, repairedSet = null) {
+        const tileKey = key(r, c);
+        if (repairedSet && repairedSet.has(tileKey)) {
+          return "repair";
+        }
+        return tileState(r, c);
+      }
+
+      function findRoute(repairedSet = null) {
+        const result = routeDistanceMap(repairedSet);
+        const dist = result.dist;
+        const prev = result.prev;
+
+        if (dist[end.r][end.c] === -1) {
+          return [];
+        }
+
+        const path = [];
+        let cur = { r: end.r, c: end.c };
+        while (cur) {
+          path.push(cur);
+          cur = prev[cur.r][cur.c];
+        }
+        return path.reverse();
+      }
+
+      function routePacket() {
+        routePath = findRoute();
+        return routePath;
+      }
+
+      function tileColor3D(state, c) {
+        if (state === "bad") return 0xef4444;
+        if (state === "repair") return 0x22c55e;
+        if (state === "io") return c === 0 ? 0x0ea5e9 : 0xec4899;
+        return 0x93c5fd;
+      }
+
+      function worldForTile(r, c) {
+        const spacing = 1.1;
+        const x = c * spacing - ((cols - 1) * spacing) / 2;
+        const z = r * spacing - ((rows - 1) * spacing) / 2;
+        return { x, z };
+      }
+
+      function initThree() {
+        if (threeInited) return true;
+        if (typeof THREE === "undefined") {
+          status.textContent = "Three.js not available. Continue with 2D mode.";
+          return false;
+        }
+
+        scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xf8fbff);
+        camera = new THREE.PerspectiveCamera(45, 1, 0.1, 5000);
+
+        renderer = new THREE.WebGLRenderer({ canvas: canvas3d, antialias: true });
+        renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
+        camera.position.set(24, 20, 24);
+        camera.up.set(0, 1, 0);
+
+        const ambient = new THREE.AmbientLight(0xffffff, 0.7);
+        const keyLight = new THREE.DirectionalLight(0xffffff, 0.9);
+        const fillLight = new THREE.DirectionalLight(0x9cc4ff, 0.7);
+        keyLight.position.set(12, 16, 8);
+        fillLight.position.set(-10, 12, -8);
+        scene.add(ambient, keyLight, fillLight);
+
+        tileGroup = new THREE.Group();
+        tileGroup.rotation.x = -Math.PI / 2.5;
+        scene.add(tileGroup);
+
+        tileGeometry = new THREE.BoxGeometry(0.9, 0.3, 0.9);
+        const packetGeometry = new THREE.SphereGeometry(0.25, 16, 12);
+        const packetMaterial = new THREE.MeshStandardMaterial({
+          color: 0xffffff,
+          emissive: 0x331100,
+        });
+        packetMesh = new THREE.Mesh(packetGeometry, packetMaterial);
+        packetMesh.visible = false;
+        tileGroup.add(packetMesh);
+
+        canvas3d.style.touchAction = "none";
+        canvas3d.addEventListener("pointerdown", (event) => {
+          pointerDrag = true;
+          lastPointerX = event.clientX;
+          lastPointerY = event.clientY;
+        });
+
+        canvas3d.addEventListener("pointermove", (event) => {
+          if (!pointerDrag) return;
+          const dx = event.clientX - lastPointerX;
+          const dy = event.clientY - lastPointerY;
+          threeTargetY += dx * 0.005;
+          threeTargetX -= dy * 0.005;
+          threeTargetX = Math.min(Math.max(threeTargetX, -1.2), 1.0);
+          lastPointerX = event.clientX;
+          lastPointerY = event.clientY;
+        });
+
+        window.addEventListener("pointerup", () => {
+          pointerDrag = false;
+        });
+
+        canvas3d.addEventListener("wheel", (event) => {
+          event.preventDefault();
+          if (event.deltaY > 0) {
+            threeZoom = Math.min(1.8, threeZoom + 0.06);
+          } else {
+            threeZoom = Math.max(0.6, threeZoom - 0.06);
+          }
+        }, { passive: false });
+
+        threeInited = true;
+        resizeThree();
+        if (!threeTickActive) {
+          animateThree();
+          threeTickActive = true;
+        }
+        return true;
+      }
+
+      function animateThree() {
+        requestAnimationFrame(animateThree);
+        if (!renderer || !camera || !scene) return;
+
+        threeAngleX += (threeTargetX - threeAngleX) * 0.1;
+        threeAngleY += (threeTargetY - threeAngleY) * 0.1;
+
+        const radius = Math.max(rows, cols) * 1.5 * threeZoom;
+        const x = Math.cos(threeAngleY) * Math.cos(threeAngleX) * radius;
+        const y = Math.sin(threeAngleX) * radius + 7;
+        const z = Math.sin(threeAngleY) * Math.cos(threeAngleX) * radius;
+        camera.position.set(x, y, z);
+        camera.lookAt(0, 0, 0);
+        renderer.render(scene, camera);
+      }
+
+      function resizeThree() {
+        if (!renderer || !camera || !canvas3d || !chipWrap) return;
+        const width = Math.max(300, Math.floor(chipWrap.clientWidth));
+        const height = Math.max(300, Math.floor(chipWrap.clientHeight));
+        renderer.setSize(width, height, false);
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+      }
+
+      function rebuildThreeGrid() {
+        if (!threeInited || !tileGroup) return;
+
+        while (tileGroup.children.length > 0) {
+          tileGroup.remove(tileGroup.children[0]);
+        }
+        threeTileElements.clear();
+
+        if (!tileGeometry) {
+          tileGeometry = new THREE.BoxGeometry(0.9, 0.3, 0.9);
+        }
+
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            const tile = grid[r * cols + c];
+            const color = tileColor3D(tile.state, c);
+            const material = new THREE.MeshStandardMaterial({
+              color,
+              roughness: 0.45,
+              metalness: 0.05,
+            });
+            const mesh = new THREE.Mesh(tileGeometry, material);
+            const pos = worldForTile(r, c);
+            mesh.position.set(pos.x, 0, pos.z);
+            mesh.userData = {
+              key: key(r, c),
+              r,
+              c,
+            };
+            tileGroup.add(mesh);
+            threeTileElements.set(key(r, c), mesh);
+          }
+        }
+
+        tileGroup.add(packetMesh);
+        paint3DTiles();
+      }
+
+      function paint3DTiles() {
+        const routeSet = new Set();
+        for (let i = 0; i < routePath.length; i++) {
+          routeSet.add(key(routePath[i].r, routePath[i].c));
+        }
+
+        for (const tile of grid) {
+          const tileKey = key(tile.r, tile.c);
+          const mesh = threeTileElements.get(tileKey);
+          if (!mesh) continue;
+
+          const base = tileColor3D(tile.state, tile.c);
+          mesh.material.color.setHex(base);
+          if (routeSet.has(tileKey) && routePath.length > 1) {
+            mesh.material.emissive.setHex(0x443100);
+            mesh.material.emissiveIntensity = 0.45;
+          } else {
+            mesh.material.emissive.setHex(0x000000);
+            mesh.material.emissiveIntensity = 0;
+          }
+        }
+
+        if (routePath.length === 0 && packetMesh) {
+          packetMesh.visible = false;
+        }
+      }
+
+      function createLayout() {
+        const contentW = cols * tileSize + (cols - 1) * gap + 40;
+        const contentH = rows * tileSize + (rows - 1) * gap + 40;
+        svg.setAttribute("viewBox", `0 0 ${contentW} ${contentH}`);
+
+        while (svg.firstChild) {
+          svg.removeChild(svg.firstChild);
+        }
+
+        const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+        const marker = document.createElementNS("http://www.w3.org/2000/svg", "marker");
+        marker.setAttribute("id", "arr");
+        marker.setAttribute("markerWidth", "9");
+        marker.setAttribute("markerHeight", "9");
+        marker.setAttribute("refX", "8");
+        marker.setAttribute("refY", "4.5");
+        marker.setAttribute("orient", "auto");
+        const mPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        mPath.setAttribute("d", "M0,0 L9,4.5 L0,9 Z");
+        mPath.setAttribute("fill", "#0f172a");
+        marker.appendChild(mPath);
+        defs.appendChild(marker);
+        svg.appendChild(defs);
+
+        const frame = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        frame.setAttribute("x", 8);
+        frame.setAttribute("y", 8);
+        frame.setAttribute("width", contentW - 16);
+        frame.setAttribute("height", contentH - 16);
+        frame.setAttribute("rx", 12);
+        frame.setAttribute("fill", "#ffffff");
+        frame.setAttribute("stroke", "#cbd5e1");
+        frame.setAttribute("stroke-width", 1.5);
+        svg.appendChild(frame);
+
+        const meshGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        meshGroup.setAttribute("id", "mesh");
+        meshGroup.setAttribute("opacity", "0.55");
+        svg.appendChild(meshGroup);
+
+        const tilesGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        tilesGroup.setAttribute("id", "tiles");
+        svg.appendChild(tilesGroup);
+
+        const pathGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        pathGroup.setAttribute("id", "path");
+        pathGroup.setAttribute("fill", "none");
+        pathGroup.setAttribute("stroke", "#0f172a");
+        pathGroup.setAttribute("stroke-width", 4);
+        pathGroup.setAttribute("stroke-linecap", "round");
+        pathGroup.setAttribute("marker-end", "url(#arr)");
+        pathGroup.style.opacity = 0.9;
+        svg.appendChild(pathGroup);
+
+        tileElements.clear();
+
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            const state = grid[r * cols + c].state;
+            const x = 20 + c * (tileSize + gap);
+            const y = 20 + r * (tileSize + gap);
+
+            const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+            rect.setAttribute("x", x);
+            rect.setAttribute("y", y);
+            rect.setAttribute("width", tileSize);
+            rect.setAttribute("height", tileSize);
+            rect.setAttribute("rx", 5);
+            rect.setAttribute("data-r", r);
+            rect.setAttribute("data-c", c);
+
+            if (state === "io") {
+              rect.setAttribute("fill", "#0ea5e9");
+              if (c === 0) rect.setAttribute("style", sourceColor);
+              else if (c === cols - 1) rect.setAttribute("style", sinkColor);
+            } else if (state === "good") {
+              rect.setAttribute("fill", "#93c5fd");
+            } else if (state === "repair") {
+              rect.setAttribute("fill", "#22c55e");
+            } else {
+              rect.setAttribute("fill", "#ef4444");
+            }
+
+            rect.setAttribute("stroke", "#fff");
+            rect.setAttribute("stroke-width", 1);
+            rect.setAttribute("class", `cell ${state}`);
+            const title = document.createElementNS("http://www.w3.org/2000/svg", "title");
+            title.textContent = `(${r}, ${c}) ${state}`;
+            rect.appendChild(title);
+
+            tilesGroup.appendChild(rect);
+            tileElements.set(key(r, c), rect);
+          }
+        }
+      }
+
+      function randomizeGrid({
+        includeRepair = allowRepair.checked,
+      } = {}) {
+        grid.length = 0;
+        const failRate = Number(defectRate.value);
+        const failLinkRate = Number(linkDefectRate.value);
+        maxSpareRepairs = Math.floor(rows * cols * (Number(repairBudget.value) / 100));
+        currentRate = failRate;
+        currentLinkRate = failLinkRate;
+
+        links.right.length = 0;
+        links.down.length = 0;
+
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            let state = "good";
+            if (isIO(r, c)) {
+              state = "io";
+            } else {
+              const p = Math.random();
+              if (p < failRate) state = "bad";
+            }
+            grid.push({ r, c, state });
+          }
+        }
+
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols - 1; c++) {
+            links.right.push(Math.random() < failLinkRate ? "bad" : "good");
+          }
+        }
+
+        for (let r = 0; r < rows - 1; r++) {
+          for (let c = 0; c < cols; c++) {
+            links.down.push(Math.random() < failLinkRate ? "bad" : "good");
+          }
+        }
+
+        if (includeRepair) {
+          const repairPlan = buildRepairPlan(true);
+          applyRepairPlan(repairPlan);
+        }
+
+        unrecoverableDefects = grid.filter((t) => t.state === "bad").length;
+        linkDefectCount = countBadLinks();
+        unrepairedClusterCount = currentBadClusterCount();
+      }
+
+      function drawMesh(show = true) {
+        const meshGroup = document.getElementById("mesh");
+        while (meshGroup.firstChild) {
+          meshGroup.removeChild(meshGroup.firstChild);
+        }
+        if (!show) return;
+
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            const from = tileState(r, c);
+            const toRightWalkable = c + 1 < cols ? tileState(r, c + 1) : "bad";
+            const rightHealthy = c + 1 < cols ? links.right[rightLinkIndex(r, c)] === "good" : false;
+            const x = 20 + c * (tileSize + gap) + tileSize / 2;
+            const y = 20 + r * (tileSize + gap) + tileSize / 2;
+
+            if (c + 1 < cols && walkable(from) && walkable(toRightWalkable)) {
+              const x2 = 20 + (c + 1) * (tileSize + gap) + tileSize / 2;
+              const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+              line.setAttribute("x1", x);
+              line.setAttribute("y1", y);
+              line.setAttribute("x2", x2);
+              line.setAttribute("y2", y);
+              if (rightHealthy) {
+                line.setAttribute("stroke", "var(--mesh)");
+              } else {
+                line.setAttribute("stroke", "#dc2626");
+                line.setAttribute("stroke-dasharray", "4 4");
+              }
+              line.setAttribute("stroke-width", 1.6);
+              meshGroup.appendChild(line);
+            }
+
+            if (r + 1 < rows) {
+              const toDownWalkable = tileState(r + 1, c);
+              const downHealthy = links.down[downLinkIndex(r, c)] === "good";
+              if (!walkable(from) || !walkable(toDownWalkable)) continue;
+              const y2 = 20 + (r + 1) * (tileSize + gap) + tileSize / 2;
+              const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+              line.setAttribute("x1", x);
+              line.setAttribute("y1", y);
+              line.setAttribute("x2", x);
+              line.setAttribute("y2", y2);
+              if (downHealthy) {
+                line.setAttribute("stroke", "var(--mesh)");
+              } else {
+                line.setAttribute("stroke", "#dc2626");
+                line.setAttribute("stroke-dasharray", "4 4");
+              }
+              line.setAttribute("stroke-width", 1.6);
+              meshGroup.appendChild(line);
+            }
+          }
+        }
+      }
+
+      
+      function cloneGridState() {
+        return {
+          grid: grid.map((tile) => ({ r: tile.r, c: tile.c, state: tile.state })),
+          right: links.right.slice(),
+          down: links.down.slice(),
+          rate: currentRate,
+          linkRate: currentLinkRate,
+        };
+      }
+
+      function restoreGridState(snapshot) {
+        grid.length = 0;
+        for (let i = 0; i < snapshot.grid.length; i++) {
+          const tile = snapshot.grid[i];
+          grid.push({ r: tile.r, c: tile.c, state: tile.state });
+        }
+        links.right = snapshot.right.slice();
+        links.down = snapshot.down.slice();
+        currentRate = snapshot.rate;
+        currentLinkRate = snapshot.linkRate;
+        maxSpareRepairs = Math.floor(rows * cols * (Number(repairBudget.value) / 100));
+        unrecoverableDefects = grid.filter((t) => t.state === "bad").length;
+        linkDefectCount = countBadLinks();
+        unrepairedClusterCount = currentBadClusterCount();
+      }
+
+      function runReliabilitySimulation() {
+        if (simulationRunning) return;
+        simulationRunning = true;
+        simulateBtn.disabled = true;
+        simulateBtn.textContent = "Running simulation...";
+        clearInterval(pulseTimer);
+        pulseTimer = null;
+        if (packetMesh) {
+          packetMesh.visible = false;
+        }
+
+        const iterations = Number(simRuns.value);
+        const withRemapEnabled = allowRepair.checked;
+        const savedGrid = cloneGridState();
+        let successesWithRemap = 0;
+        let totalPathWithRemap = 0;
+        let successesNoRemap = 0;
+        let totalPathNoRemap = 0;
+
+        for (let i = 0; i < iterations; i++) {
+          randomizeGrid({ includeRepair: false });
+
+          const noRemapLen = shortestRouteLength();
+          if (noRemapLen > 0) {
+            successesNoRemap++;
+            totalPathNoRemap += noRemapLen;
+          }
+
+          if (withRemapEnabled) {
+            const preRemap = cloneGridState();
+            const repairPlan = buildRepairPlan(true);
+            applyRepairPlan(repairPlan);
+            const remapLen = shortestRouteLength();
+            if (remapLen > 0) {
+              successesWithRemap++;
+              totalPathWithRemap += remapLen;
+            }
+            restoreGridState(preRemap);
+          } else {
+            if (noRemapLen > 0) {
+              successesWithRemap++;
+              totalPathWithRemap += noRemapLen;
+            }
+          }
+        }
+
+        restoreGridState(savedGrid);
+        createLayout();
+        drawMesh(showMesh.checked);
+        paintTiles();
+
+        const remapPassRate = Math.round((successesWithRemap / iterations) * 1000) / 10;
+        const noRemapPassRate = Math.round((successesNoRemap / iterations) * 1000) / 10;
+        simSuccessNoRemap.textContent = `${successesNoRemap}/${iterations} (${noRemapPassRate}%)`;
+        simSuccess.textContent = `${successesWithRemap}/${iterations} (${remapPassRate}%)`;
+        simAvgPathNoRemap.textContent = successesNoRemap
+          ? `${Math.round((totalPathNoRemap / successesNoRemap) * 10) / 10}`
+          : "—";
+        simAvgPath.textContent = successesWithRemap
+          ? `${Math.round((totalPathWithRemap / successesWithRemap) * 10) / 10}`
+          : "—";
+        status.textContent = `Simulation complete over ${iterations} chips. Tile fault: ${Math.round(currentRate * 100)}%, link fault: ${Math.round(currentLinkRate * 100)}%.`;
+
+        simulateBtn.disabled = false;
+        simulateBtn.textContent = "Run reliability simulation";
+        simulationRunning = false;
+      }
+
+      function paintTiles() {
+        let bad = 0;
+        let repair = 0;
+        let healthy = 0;
+        const total = rows * cols;
+
+        for (const tile of grid) {
+          const k = key(tile.r, tile.c);
+          const el = tileElements.get(k);
+          if (!el) continue;
+          el.classList.remove("path", "flow");
+
+          if (tile.state === "bad") {
+            bad++;
+          } else {
+            if (tile.state === "repair") {
+              repair++;
+            } else {
+              healthy++;
+            }
+            if (tile.state === "io") {
+              el.setAttribute("fill", tile.c === 0 ? "#0ea5e9" : "#ec4899");
+            } else if (tile.state === "repair") {
+              el.setAttribute("fill", "var(--repair)");
+            } else {
+              el.setAttribute("fill", "var(--good-soft)");
+            }
+          }
+        }
+
+        const usable = total - bad;
+        healthyCount.textContent = `${usable} / ${total}`;
+        repairCount.textContent = repair.toString();
+        linkCount.textContent = `${linkDefectCount}`;
+        const ratio = Math.round((usable / total) * 100);
+        utilization.textContent = `${ratio}%`;
+
+        routePacket();
+
+        const pathEdges = document.getElementById("path");
+        while (pathEdges.firstChild) {
+          pathEdges.removeChild(pathEdges.firstChild);
+        }
+
+        if (routePath.length > 1) {
+          for (let i = 0; i < routePath.length - 1; i++) {
+            const a = routePath[i];
+            const b = routePath[i + 1];
+            const ax = 20 + a.c * (tileSize + gap) + tileSize / 2;
+            const ay = 20 + a.r * (tileSize + gap) + tileSize / 2;
+            const bx = 20 + b.c * (tileSize + gap) + tileSize / 2;
+            const by = 20 + b.r * (tileSize + gap) + tileSize / 2;
+            const ln = document.createElementNS("http://www.w3.org/2000/svg", "line");
+            ln.setAttribute("x1", ax);
+            ln.setAttribute("y1", ay);
+            ln.setAttribute("x2", bx);
+            ln.setAttribute("y2", by);
+            ln.setAttribute("class", "route-segment");
+            pathEdges.appendChild(ln);
+          }
+          pathLength.textContent = `${routePath.length}`;
+          if (bad === 0 && linkDefectCount === 0) {
+            status.textContent = "Route found with no faulty tiles or links in this map.";
+          } else if (allowRepair.checked) {
+            const repairedText = `Used ${repair} spare repairs.`;
+            const clusterText = unrepairedClusterCount > 0
+              ? `${unrepairedClusterCount} unrepaired defect clusters remain.`
+              : "No unrepaired defect clusters remain.";
+            const linkText = linkDefectCount > 0
+              ? `${linkDefectCount} bad links remain.`
+              : "No bad links remain.";
+            status.textContent = `Route found. Packet follows remapped + healthy nodes around blocked areas. ${repairedText} ${clusterText} ${linkText}`.trim();
+          } else {
+            status.textContent = "Route found by avoiding unrepaired faulty tiles.";
+          }
+        } else {
+          pathLength.textContent = "blocked";
+          const repairText = allowRepair.checked
+            ? `${unrepairedClusterCount} unrepaired defect clusters; ${linkDefectCount} bad links.`
+            : "Try lowering defects and checking mesh links.";
+          status.textContent = `No valid route from input to output. ${repairText}`;
+        }
+
+        if (threeInited) paint3DTiles();
+      }
+
+      function setPacketPosition(stepIndex) {
+        if (!packetMesh || routePath.length === 0) return;
+        const p = routePath[stepIndex];
+        if (!p) {
+          packetMesh.visible = false;
+          return;
+        }
+        const pos = worldForTile(p.r, p.c);
+        packetMesh.position.set(pos.x, 0.5, pos.z);
+        packetMesh.visible = true;
+      }
+
+      function clearPulse() {
+        routePath.forEach((p) => {
+          const el = tileElements.get(key(p.r, p.c));
+          if (el) el.classList.remove("flow");
+        });
+
+        if (packetMesh) {
+          packetMesh.visible = false;
+        }
+        if (threeInited) paint3DTiles();
+      }
+
+      function pulsePath() {
+        clearInterval(pulseTimer);
+        clearPulse();
+
+        if (!routePath || routePath.length === 0) {
+          status.textContent = "No route to animate.";
+          return;
+        }
+
+        let i = 0;
+        pulseTimer = setInterval(() => {
+          if (i > 0) {
+            const prev = tileElements.get(key(routePath[i - 1].r, routePath[i - 1].c));
+            if (prev) prev.classList.remove("flow");
+          }
+
+          if (i >= routePath.length) {
+            const tail = tileElements.get(key(routePath[routePath.length - 1].r, routePath[routePath.length - 1].c));
+            if (tail) tail.classList.remove("flow");
+            clearInterval(pulseTimer);
+            pulseTimer = null;
+            if (packetMesh) packetMesh.visible = false;
+            status.textContent = "Packet delivered. Toggle regenerate for a new map.";
+            return;
+          }
+
+          const p = routePath[i++];
+          const tile = tileElements.get(key(p.r, p.c));
+          if (tile) tile.classList.add("path", "flow");
+          setPacketPosition(i - 1);
+        }, 80);
+      }
+
+      function setView(view) {
+        if (view === "3d" && !threeInited) {
+          const ok = initThree();
+          if (!ok) {
+            view2dBtn.classList.add("active");
+            view3dBtn.classList.remove("active");
+            return;
+          }
+          rebuildThreeGrid();
+        }
+
+        currentView = view;
+        svg.style.display = view === "3d" ? "none" : "block";
+        canvas3d.style.display = view === "3d" ? "block" : "none";
+        if (view === "3d") {
+          resizeThree();
+          if (threeInited) paint3DTiles();
+        }
+        view2dBtn.classList.toggle("active", view === "2d");
+        view3dBtn.classList.toggle("active", view === "3d");
+      }
+
+      function redrawAll() {
+        clearInterval(pulseTimer);
+        randomizeGrid();
+        createLayout();
+        drawMesh(showMesh.checked);
+        paintTiles();
+        defectValue.textContent = `${Math.round(currentRate * 100)}%`;
+        defectLabel.textContent = `fault probability`;
+        repairBudgetValue.textContent = `${Number(repairBudget.value)}%`;
+        repairBudgetLabel.textContent = `spare-core remap budget (percent)`;
+        linkDefectValue.textContent = `${Math.round(currentLinkRate * 100)}%`;
+        linkDefectLabel.textContent = `fabric link fault probability`;
+        repairBudget.disabled = !allowRepair.checked;
+        simRunsValue.textContent = `${Number(simRuns.value)} runs`;
+        simRunsLabel.textContent = `reliability simulation`;
+        simSuccessNoRemap.textContent = "—";
+        simSuccess.textContent = "—";
+        simAvgPathNoRemap.textContent = "—";
+        simAvgPath.textContent = "—";
+        status.textContent = "Start here if you are new: tune controls, generate a chip map, then run the packet path or reliability simulation.";
+
+        if (threeInited) {
+          rebuildThreeGrid();
+        }
+      }
+
+      function onShowMeshChange() {
+        if (currentView === "2d") {
+          drawMesh(showMesh.checked);
+        }
+      }
+
+      defectRate.addEventListener("input", redrawAll);
+      repairBudget.addEventListener("input", redrawAll);
+      simRuns.addEventListener("input", redrawAll);
+      allowRepair.addEventListener("change", redrawAll);
+      linkDefectRate.addEventListener("input", redrawAll);
+      showMesh.addEventListener("change", onShowMeshChange);
+      shuffleBtn.addEventListener("click", redrawAll);
+      animateBtn.addEventListener("click", pulsePath);
+      simulateBtn.addEventListener("click", runReliabilitySimulation);
+      view2dBtn.addEventListener("click", () => setView("2d"));
+      view3dBtn.addEventListener("click", () => setView("3d"));
+      window.addEventListener("resize", () => {
+        if (currentView === "3d") resizeThree();
+      });
+
+      redrawAll();
+      setView("2d");
+    </script>
+  </body>
+</html>
