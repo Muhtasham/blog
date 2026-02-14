@@ -6,17 +6,17 @@
     <title>Cerebras Chip Visualization</title>
     <style>
       :root {
-        --bg: #f4f6fb;
-        --panel: #fdfdff;
-        --ink: #0f172a;
-        --subtle: #64748b;
-        --good: #2563eb;
-        --good-soft: #93c5fd;
-        --bad: #ef4444;
-        --repair: #22c55e;
-        --io: #0ea5e9;
-        --path: #fde047;
-        --mesh: #cbd5e1;
+        --bg: #f3e8c9;
+        --panel: #fbf3de;
+        --ink: #3f2f1d;
+        --subtle: #6e573d;
+        --good: #b8852f;
+        --good-soft: #d7b16a;
+        --bad: #8c2f36;
+        --repair: #5d9348;
+        --io: #9c6b39;
+        --path: #f6cc57;
+        --mesh: #c7ad82;
       }
 
       * {
@@ -27,10 +27,11 @@
         margin: 0;
         min-height: 100vh;
         color: var(--ink);
-        background: linear-gradient(160deg, #e6f0ff 0%, #f7fbff 38%, #fff1ec 100%);
+        background: linear-gradient(160deg, #f6e8c5 0%, #f7f0d8 40%, #f6e8c5 100%);
         font-family: "Trebuchet MS", "Gill Sans", "Avenir Next", "Segoe UI", serif;
         overflow-wrap: break-word;
         word-break: break-word;
+        scroll-behavior: smooth;
       }
 
       main {
@@ -72,9 +73,9 @@
 
       .panel {
         background: var(--panel);
-        border: 1px solid #dbe4ff;
+        border: 1px solid #e4cf9f;
         border-radius: 16px;
-        box-shadow: 0 10px 34px rgba(15, 23, 42, 0.08);
+        box-shadow: 0 10px 34px rgba(58, 44, 24, 0.08);
         padding: 16px;
         min-width: 0;
         width: 100%;
@@ -126,11 +127,11 @@
 
       .view-toggle button {
         flex: 1;
-        background: #64748b;
+        background: #7a5e3a;
       }
 
       .view-toggle .active {
-        background: #1d4ed8;
+        background: #b8852f;
       }
 
       .side {
@@ -138,6 +139,25 @@
         gap: 14px;
         min-width: 0;
         width: 100%;
+        position: sticky;
+        top: 10px;
+      }
+
+      .control-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        min-width: 0;
+      }
+
+      .control-head h2 {
+        margin: 0;
+        font-size: 13px;
+        color: #4d3920;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        white-space: nowrap;
       }
 
       .control {
@@ -180,11 +200,12 @@
         border: 0;
         border-radius: 10px;
         padding: 10px 12px;
-        background: #1d4ed8;
+        background: #b8852f;
         color: white;
         font-weight: 600;
         cursor: pointer;
         transition: transform 120ms ease, filter 120ms ease;
+        white-space: nowrap;
       }
 
       button:hover {
@@ -195,24 +216,106 @@
         transform: translateY(1px);
       }
 
+      button.secondary {
+        background: #4d3920;
+      }
+
       .btn-row {
         display: grid;
         gap: 8px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .single-action {
+        grid-template-columns: 1fr;
+      }
+
+      .action-bar {
+        margin-top: 10px;
+        margin-bottom: 6px;
+      }
+
+      .result-frame {
+        background: #f8efce;
+        border: 1px solid #e3ca97;
+      }
+
+      .result-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin: 6px 0 8px;
+        color: #4d3920;
+        font-size: 13px;
+      }
+
+      .result-meta span {
+        background: #eadcb3;
+        border-radius: 999px;
+        padding: 4px 8px;
+      }
+
+      .result-bars {
+        display: flex;
+        align-items: flex-end;
+        gap: 5px;
+        min-height: 86px;
+        padding: 8px;
+        border-radius: 10px;
+        border: 1px solid #e2ca99;
+        background: #fffbea;
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
+
+      .result-bar {
+        width: 8px;
+        min-height: 6px;
+        border-radius: 6px 6px 2px 2px;
+        opacity: 0.95;
+      }
+
+      .result-bar.success {
+        background: #5d9348;
+      }
+
+      .result-bar.fail {
+        background: #8c2f36;
+      }
+
+      .three-only-controls {
+        display: none;
+      }
+
+      body.view-3d .three-only-controls {
+        display: flex;
       }
 
       .status {
         margin-top: 4px;
-        background: #f8fafc;
-        border: 1px dashed #bfdbfe;
+        background: #fff9ea;
+        border: 1px dashed #d9bd87;
         border-radius: 10px;
         padding: 10px;
         min-height: 70px;
-        color: #334155;
+        color: #4a3720;
         font-size: 14px;
         line-height: 1.4;
         hyphens: auto;
         overflow-wrap: anywhere;
         word-break: break-word;
+      }
+
+      .guide {
+        border-left: 3px solid #b8852f;
+        padding-left: 10px;
+      }
+
+      .micro-note {
+        margin: 6px 0 0;
+        color: #4e3b23;
+        font-size: 12px;
+        line-height: 1.35;
       }
 
       .stats {
@@ -222,8 +325,8 @@
       }
 
       .kpi {
-        background: #f8faff;
-        border: 1px solid #dbeafe;
+        background: #fff9ea;
+        border: 1px solid #e2ccb7;
         border-radius: 10px;
         padding: 10px;
         word-break: break-word;
@@ -254,7 +357,7 @@
       }
 
       .notes {
-        color: #334155;
+        color: #4a3820;
         font-size: 14px;
         line-height: 1.5;
         margin: 4px 0 0;
@@ -283,7 +386,7 @@
       .notes small {
         display: block;
         margin-top: 6px;
-        color: #475569;
+        color: #62482a;
         line-height: 1.4;
       }
 
@@ -291,16 +394,41 @@
         margin-top: 4px;
       }
 
+      .hide-on-capture {
+        display: block;
+      }
+
       .tag {
         margin-top: 2px;
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        color: #0f172a;
-        background: #e2e8f0;
+        color: #4a3318;
+        background: #e7d7b5;
         border-radius: 100px;
         padding: 5px 10px;
         font-size: 12px;
+      }
+
+      .control .row-range {
+        align-items: center;
+      }
+
+      .range-caption {
+        color: #62482a;
+        font-size: 12px;
+        margin-top: -2px;
+        margin-bottom: -2px;
+      }
+
+      .flow-dot {
+        display: inline-flex;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--path);
+        box-shadow: 0 0 0 3px rgba(253, 224, 71, 0.15);
+        margin-right: 6px;
       }
 
       .links {
@@ -310,10 +438,10 @@
       }
 
       .links a {
-        color: #1d4ed8;
+        color: #6f4b16;
         font-size: 12px;
         text-decoration: none;
-        background: #e0edff;
+        background: #f0ddaf;
         padding: 5px 8px;
         border-radius: 7px;
         max-width: 100%;
@@ -337,7 +465,25 @@
       .repair { fill: var(--repair); }
       .io { fill: var(--io); }
       .path { fill: var(--path) !important; }
-      .flow { filter: drop-shadow(0 0 8px #fbbf24cc); }
+      .flow { filter: drop-shadow(0 0 8px rgba(246, 204, 87, 0.72)); }
+      .cluster-outline {
+        stroke-width: 2.2;
+        fill: none;
+        stroke-dasharray: 4 3;
+        opacity: 0.95;
+        pointer-events: none;
+      }
+      .cluster-label {
+        fill: #6e2a2a;
+        font-size: 11px;
+        font-weight: 700;
+        pointer-events: none;
+        text-anchor: middle;
+      }
+
+      body.capture-mode .hide-on-capture {
+        display: none;
+      }
 
       @media (max-width: 980px) {
         .board {
@@ -378,7 +524,7 @@
     <main>
       <h1 class="title">Cerebras Wafer-Scale Defect-Tolerance Simulator</h1>
       <p class="subtitle">
-        This is a beginner-friendly, interactive explanation of how a wafer-scale chip stays operational when faults appear. Blue tiles are healthy compute regions, red tiles are defective, and green tiles are remapped/repair tiles. Move the controls to test defect levels, link reliability, and spare remap budget.
+        An interactive systems view of how a wafer-scale chip stays operational when faults appear. Gold tiles are healthy compute regions, muted copper-red tiles are defective, and olive-amber tiles are repaired/active spare tiles. Move the controls to test defect rates, link failures, and remap budget.
       </p>
 
       <section class="board">
@@ -387,6 +533,15 @@
             <button id="view2d" class="active">2D view</button>
             <button id="view3d">3D view</button>
           </div>
+        <div class="btn-row action-bar">
+            <button id="shuffle">Generate a new chip map</button>
+            <button id="animate">Pulse one packet path</button>
+        </div>
+          <div class="micro-note hide-on-capture">Reliability simulation runs 40 randomized maps with current sliders and remap policy.</div>
+          <div class="control-head three-only-controls">
+            <h2>3D controls</h2>
+            <button id="resetView" class="secondary">Reset 3D camera</button>
+          </div>
           <div class="chip-wrap">
             <svg id="wafer" viewBox="0 0 980 620" aria-label="cerebras-chip-visualization"></svg>
             <canvas id="wafer3d" aria-label="cerebras-chip-3d-visualization"></canvas>
@@ -394,6 +549,24 @@
         </article>
 
         <aside class="panel side">
+          <div class="control">
+            <div class="control-head">
+              <h2>Display controls</h2>
+              <label>
+                <input type="checkbox" id="captureMode" checked />
+                <span>Demo mode (hide long notes)</span>
+              </label>
+            </div>
+            <label>
+              <input type="checkbox" id="autoRotate3d" checked />
+              <span>Auto-rotate 3D scene</span>
+            </label>
+            <label>
+              <input type="checkbox" id="showClusters" checked />
+              <span>Show defect cluster outlines</span>
+            </label>
+          </div>
+
           <div class="control">
             <div class="row">
               <label for="defectRate">Manufacturing tile defects: <span id="defectLabel"></span></label>
@@ -419,17 +592,13 @@
           </div>
 
           <div class="control">
-            <div class="row">
-              <label for="simRuns">Yield simulation runs: <span id="simRunsLabel"></span></label>
-              <span id="simRunsValue" class="value"></span>
-            </div>
-            <input id="simRuns" type="range" min="10" max="120" step="10" value="40" />
-          </div>
-
-          <div class="control">
             <label>
               <input type="checkbox" id="allowRepair" checked />
               <span>Enable cluster remap for small defect groups</span>
+            </label>
+            <label>
+              <input type="checkbox" id="pulseLoop" />
+              <span>Loop packet pulse for continuous demo capture</span>
             </label>
             <label>
               <input type="checkbox" id="showMesh" checked />
@@ -437,35 +606,53 @@
             </label>
           </div>
 
-          <div class="btn-row">
-            <button id="shuffle">Generate a new chip map</button>
-            <button id="simulate">Run yield simulation</button>
-            <button id="animate">Pulse one packet path</button>
+          <div class="control">
+            <div class="row row-range">
+              <label for="pulseSpeed">Packet pulse speed: <span id="pulseSpeedLabel"></span></label>
+              <span id="pulseSpeedValue" class="value"></span>
+            </div>
+            <input id="pulseSpeed" type="range" min="30" max="220" step="10" value="95" />
+            <div class="range-caption"><span class="flow-dot"></span>Lower number = faster motion.</div>
+          </div>
+
+          <div class="control">
+            <div class="btn-row single-action">
+              <button id="runSimulation">Run reliability simulation</button>
+            </div>
           </div>
 
           <div class="status" id="status">Ready</div>
 
+          <div class="control result-frame">
+            <div class="control-head">
+              <h2>Reliability run visual</h2>
+            </div>
+            <div class="result-meta">
+              <span id="reliabilitySuccessStat">Success: —</span>
+              <span id="reliabilityFailStat">Fail: —</span>
+              <span id="reliabilityPathStat">Avg route: —</span>
+            </div>
+            <div class="result-bars" id="reliabilityBars" aria-label="reliability run chart"></div>
+          </div>
+
           <div class="notes guide">
-            <p>Start here if you are new to this topic</p>
+            <p>Demo script</p>
             <ul>
-              <li><b>Think of this as a wafer-scale chip:</b> many small compute/memory tiles connected by a mesh.</li>
-              <li><b>Each tile</b> represents an independent block with local compute and local memory access.</li>
-              <li><b>Data routing:</b> packets move from left edge (Input) to right edge (Output) via neighboring healthy tiles and links.</li>
-              <li><b>Defect behavior:</b> red tiles and red links are unusable; the path is rerouted around them when possible.</li>
-              <li><b>Remap behavior:</b> up to a small spare budget can convert selected small defect clusters into usable tiles (green).</li>
-              <li><b>Model simplification:</b> this page tracks a single test path through the chip, not full parallel traffic.</li>
-              <li><b>Outcome:</b> this shows how Cerebras can preserve compute flow even when defects are expected in large chips.</li>
+              <li><b>Demo flow:</b> Generate chip map → pulse packet route.</li>
+              <li><b>Demo mode:</b> enable <b>Loop packet pulse</b> and tune speed while narrating.</li>
+              <li><b>Readout:</b> status bar and KPIs update after packet path pulses.</li>
+              <li><b>What to watch:</b> repaired/active path, blocked routes, and cluster repair behavior under pressure.</li>
             </ul>
           </div>
 
           <div class="notes">
-            <p>Color and map legend (this page)</p>
+            <p>Legend</p>
             <ul>
-              <li><b>Blue tile:</b> healthy compute tile.</li>
-              <li><b>Green tile:</b> remapped/replaced tile from spare-capacity planning.</li>
-              <li><b>Red tile:</b> defective tile (not available).</li>
-              <li><b>Red line:</b> failed inter-tile link.</li>
-              <li><b>Yellow path:</b> active packet route for this map.</li>
+            <li><b>Gold tile:</b> healthy compute tile.</li>
+            <li><b>Olive-amber tile:</b> remapped/replaced tile from spare-capacity planning.</li>
+            <li><b>Muted rust tile:</b> defective tile (not available).</li>
+            <li><b>Dark line:</b> failed inter-tile link.</li>
+            <li><b>Amber path:</b> active packet route for this map.</li>
             </ul>
           </div>
 
@@ -483,28 +670,20 @@
               <b id="linkCount">—</b>
             </div>
             <div class="kpi">
-              Success (no remap)
-              <b id="simSuccessNoRemap">—</b>
-            </div>
-            <div class="kpi">
-              Simulation success
-              <b id="simSuccess">—</b>
-            </div>
-            <div class="kpi">
-              Mean path (no remap)
-              <b id="simAvgPathNoRemap">—</b>
-            </div>
-            <div class="kpi">
-              Mean simulated path
-              <b id="simAvgPath">—</b>
-            </div>
-            <div class="kpi">
               Routed packet
               <b id="pathLength">—</b>
             </div>
             <div class="kpi">
               Utilization
               <b id="utilization">—</b>
+            </div>
+            <div class="kpi">
+              Remap utilization
+              <b id="remapUtil">—</b>
+            </div>
+            <div class="kpi">
+              Reliability (40 runs)
+              <b id="reliabilityRate">—</b>
             </div>
           </div>
 
@@ -514,10 +693,11 @@
             <div class="item"><span class="swatch" style="background:var(--bad)"></span>Defective tile</div>
             <div class="item"><span class="swatch" style="background:var(--io)"></span>I/O edge</div>
             <div class="item"><span class="swatch" style="background:var(--path)"></span>Active packet path</div>
-            <div class="item"><span class="swatch" style="background:#dc2626"></span>Bad fabric link</div>
+            <div class="item"><span class="swatch" style="background:var(--panel);border:1px dashed var(--bad);"></span>Defect cluster outline</div>
+            <div class="item"><span class="swatch" style="background:var(--bad)"></span>Bad fabric link</div>
           </div>
 
-          <div class="notes">
+          <div class="notes hide-on-capture">
             <p>What this depicts</p>
             <ul>
               <li>Each tile is a simplified compute/fabric region with local SRAM and packet/weight-like dataflow behavior.</li>
@@ -526,27 +706,28 @@
               <li>Inter-tile links can fail and routes are remapped through alternate mesh paths when possible.</li>
               <li>Small clustered defects can be repaired as a cluster, which is closer to practical spare-tile remap behavior.</li>
               <li>Clustered defects may still fail if repair budget is low or components are too large for the model.</li>
+              <li><b>3D view:</b> drag to rotate, scroll to zoom; same active state and route are shown.</li>
               <li>Accuracy note: this is a concept-level simulator, not a full power/timing/clock-domain model.</li>
-              <li>Real WSE systems also use additional redundancy features beyond tile-level remap, including link-layer reroute mechanisms.</li>
+              <li>Real WSE systems also use additional redundancy features beyond this tile-level model.</li>
             </ul>
-            <small>This simulator is intentionally educational and simplified; it helps beginners understand where locality and remap priority matter.</small>
+            <small>Built for real-time interaction and systems-level understanding. Exact architecture details are available in the source links.</small>
           </div>
 
-          <div class="notes">
-            <p>Source Notes (from cited materials)</p>
+          <div class="notes hide-on-capture">
+            <p>Source notes (from cited materials)</p>
             <ul>
               <li>Wafer-scale size: WSE-3 is reported as ~46,225 mm² vs a H100-like GPU at ~814 mm².</li>
               <li>Core size argument: WSE-3 core area is cited around ~0.05 mm² (about 100x smaller than an H100-style ~6.2 mm² SM core).</li>
               <li>Yield comparison framing (blog): one 46,225 mm² wafer-scale chip per 300mm wafer vs ~72 GPU dies for an 814 mm² 5nm-style chip in their walkthrough example.</li>
-              <li>Defect tolerance outcome: blog and papers attribute WSE yield to small fault domains + rerouting + limited spare capacity; this simulator uses that same high-level idea.</li>
+              <li>Defect tolerance outcome: the model reflects small fault domains + local rerouting + limited spare capacity, then evaluates path completion under repeated randomized runs.</li>
               <li>WSI fabric behavior (IEEE Micro): shorter on-chip links are modeled as local inter-tile links; failed links can block mesh paths and force alternate local routing in this model.</li>
               <li>Cerebras WSE-3 reporting: ~93% usable silicon area and ~900,000 active cores (from the public WSE-3 discussion).</li>
               <li>Yield framing in this page is a simplification, meant to show concept-level effects of defect clusters, links, and remap budget.</li>
             </ul>
           </div>
 
-          <span class="tag">Based on public Cerebras defect-tolerance material</span>
-          <div class="links">
+          <span class="tag hide-on-capture">Based on public Cerebras defect-tolerance material</span>
+          <div class="links hide-on-capture">
             <a href="https://www.cerebras.ai/blog/100x-defect-tolerance-how-cerebras-solved-the-yield-problem" target="_blank" rel="noreferrer">Cerebras blog</a>
             <a href="https://8968533.fs1.hubspotusercontent-na2.net/hubfs/8968533/IEEE%20Micro%202021-11%20Path%20to%20Wafer-Scale%20Integration.pdf" target="_blank" rel="noreferrer">IEEE Micro paper</a>
             <a href="https://cdn.sanity.io/files/e4qjo92p/production/b3779b8136a3a03a7b31913cb680e33d68423e58.pdf" target="_blank" rel="noreferrer">WSI report</a>
@@ -585,14 +766,19 @@
       const threeTileElements = new Map();
       let routePath = [];
       let pulseTimer = null;
+      let pulseRunning = false;
       let currentRate = 0.12;
       let currentLinkRate = 0.06;
       let currentView = "2d";
-      let simulationRunning = false;
-      let unrecoverableDefects = 0;
       let linkDefectCount = 0;
       let unrepairedClusterCount = 0;
       let maxSpareRepairs = 0;
+      let lastRepairPlan = [];
+      let lastRepairMeta = null;
+      let lastPreRepairRouteLength = 0;
+      let lastPreRepairRouteExists = false;
+      let lastBadClusters = [];
+      let reliabilityRuns = 40;
       const links = {
         right: [],
         down: [],
@@ -609,33 +795,40 @@
       const linkDefectRate = document.getElementById("linkFaultRate");
       const linkDefectLabel = document.getElementById("linkDefectLabel");
       const linkDefectValue = document.getElementById("linkDefectValue");
-      const simRuns = document.getElementById("simRuns");
-      const simRunsLabel = document.getElementById("simRunsLabel");
-      const simRunsValue = document.getElementById("simRunsValue");
+      const pulseSpeed = document.getElementById("pulseSpeed");
+      const pulseSpeedLabel = document.getElementById("pulseSpeedLabel");
+      const pulseSpeedValue = document.getElementById("pulseSpeedValue");
+      const pulseLoop = document.getElementById("pulseLoop");
       const allowRepair = document.getElementById("allowRepair");
       const showMesh = document.getElementById("showMesh");
+      const showClusters = document.getElementById("showClusters");
       const animateBtn = document.getElementById("animate");
+      const runSimulationBtn = document.getElementById("runSimulation");
       const shuffleBtn = document.getElementById("shuffle");
-      const simulateBtn = document.getElementById("simulate");
       const status = document.getElementById("status");
       const healthyCount = document.getElementById("healthyCount");
       const repairCount = document.getElementById("repairCount");
-      const simSuccessNoRemap = document.getElementById("simSuccessNoRemap");
-      const simSuccess = document.getElementById("simSuccess");
-      const simAvgPath = document.getElementById("simAvgPath");
-      const simAvgPathNoRemap = document.getElementById("simAvgPathNoRemap");
       const linkCount = document.getElementById("linkCount");
       const pathLength = document.getElementById("pathLength");
       const utilization = document.getElementById("utilization");
+      const remapUtil = document.getElementById("remapUtil");
+      const reliabilityRate = document.getElementById("reliabilityRate");
+      const reliabilityBars = document.getElementById("reliabilityBars");
+      const reliabilitySuccessStat = document.getElementById("reliabilitySuccessStat");
+      const reliabilityFailStat = document.getElementById("reliabilityFailStat");
+      const reliabilityPathStat = document.getElementById("reliabilityPathStat");
       const view2dBtn = document.getElementById("view2d");
       const view3dBtn = document.getElementById("view3d");
       const canvas3d = document.getElementById("wafer3d");
+      const captureModeToggle = document.getElementById("captureMode");
+      const autoRotate3dToggle = document.getElementById("autoRotate3d");
+      const resetViewBtn = document.getElementById("resetView");
 
       const start = { r: Math.floor(rows / 2), c: 0 };
       const end = { r: Math.floor(rows / 2), c: cols - 1 };
 
-      const sourceColor = "fill:#0ea5e9;stroke:#0c4a6e;stroke-width:2;";
-      const sinkColor = "fill:#ec4899;stroke:#9f1239;stroke-width:2;";
+      const sourceColor = "fill:#b8852f;stroke:#8a5f20;stroke-width:2;";
+      const sinkColor = "fill:#9c6b39;stroke:#6e4a14;stroke-width:2;";
 
       let scene;
       let camera;
@@ -650,6 +843,7 @@
       let threeAngleY = -0.84;
       let threeTargetY = -0.84;
       let threeZoom = 1;
+      let threeAutoRotate = false;
       let pointerDrag = false;
       let lastPointerX = 0;
       let lastPointerY = 0;
@@ -696,11 +890,24 @@
           }
         }
 
+        lastBadClusters = components;
         return components;
       }
 
       function currentBadClusterCount() {
-        return connectedBadComponents().length;
+        return lastBadClusters.length;
+      }
+
+      function repairMetaDefaults() {
+        return {
+          used: 0,
+          requested: 0,
+          selectedComponents: 0,
+          skippedByScore: 0,
+          skippedByBudget: 0,
+          budgetExhausted: false,
+          available: maxSpareRepairs,
+        };
       }
 
       function isIO(r, c) {
@@ -883,7 +1090,7 @@
       }
 
       function buildRepairPlan(enabled = true) {
-        if (!enabled || !allowRepair.checked) return [];
+        if (!enabled || !allowRepair.checked) return { plan: [], meta: repairMetaDefaults() };
 
         const baseRouteResult = routeDistanceMap();
         const fromStart = baseRouteResult.dist;
@@ -938,11 +1145,23 @@
         const repairPool = Math.min(maxSpareRepairs, rows * cols);
         let remaining = repairPool;
         const selected = [];
+        let skippedByScore = 0;
+        let skippedByBudget = 0;
+        let requested = 0;
+        const meta = repairMetaDefaults();
+        meta.available = repairPool;
 
         for (let i = 0; i < candidates.length && remaining > 0; i++) {
           const candidate = candidates[i];
-          if (candidate.score < 8) continue;
-          if (candidate.component.length > remaining) continue;
+          requested += candidate.component.length;
+          if (candidate.score < 8) {
+            skippedByScore += candidate.component.length;
+            continue;
+          }
+          if (candidate.component.length > remaining) {
+            skippedByBudget += candidate.component.length;
+            continue;
+          }
 
           for (let j = 0; j < candidate.component.length; j++) {
             selected.push(candidate.component[j]);
@@ -950,7 +1169,13 @@
           remaining -= candidate.component.length;
         }
 
-        return selected;
+        meta.used = repairPool - remaining;
+        meta.requested = requested;
+        meta.selectedComponents = selected.length;
+        meta.skippedByScore = skippedByScore;
+        meta.skippedByBudget = skippedByBudget;
+        meta.budgetExhausted = remaining === 0 && selected.length < candidates.length;
+        return { plan: selected, meta };
       }
 
       function applyRepairPlan(plan) {
@@ -992,10 +1217,10 @@
       }
 
       function tileColor3D(state, c) {
-        if (state === "bad") return 0xef4444;
-        if (state === "repair") return 0x22c55e;
-        if (state === "io") return c === 0 ? 0x0ea5e9 : 0xec4899;
-        return 0x93c5fd;
+        if (state === "bad") return 0x8c2f36;
+        if (state === "repair") return 0x5d9348;
+        if (state === "io") return c === 0 ? 0xb8852f : 0x9c6b39;
+        return 0xd7b16a;
       }
 
       function worldForTile(r, c) {
@@ -1013,7 +1238,7 @@
         }
 
         scene = new THREE.Scene();
-        scene.background = new THREE.Color(0xf8fbff);
+        scene.background = new THREE.Color(0x292018);
         camera = new THREE.PerspectiveCamera(45, 1, 0.1, 5000);
 
         renderer = new THREE.WebGLRenderer({ canvas: canvas3d, antialias: true });
@@ -1023,7 +1248,7 @@
 
         const ambient = new THREE.AmbientLight(0xffffff, 0.7);
         const keyLight = new THREE.DirectionalLight(0xffffff, 0.9);
-        const fillLight = new THREE.DirectionalLight(0x9cc4ff, 0.7);
+        const fillLight = new THREE.DirectionalLight(0xceb176, 0.7);
         keyLight.position.set(12, 16, 8);
         fillLight.position.set(-10, 12, -8);
         scene.add(ambient, keyLight, fillLight);
@@ -1035,8 +1260,8 @@
         tileGeometry = new THREE.BoxGeometry(0.9, 0.3, 0.9);
         const packetGeometry = new THREE.SphereGeometry(0.25, 16, 12);
         const packetMaterial = new THREE.MeshStandardMaterial({
-          color: 0xffffff,
-          emissive: 0x331100,
+          color: 0xf6e6be,
+          emissive: 0x8c6a26,
         });
         packetMesh = new THREE.Mesh(packetGeometry, packetMaterial);
         packetMesh.visible = false;
@@ -1085,6 +1310,10 @@
       function animateThree() {
         requestAnimationFrame(animateThree);
         if (!renderer || !camera || !scene) return;
+
+        if (threeAutoRotate && !pointerDrag) {
+          threeTargetY += 0.003;
+        }
 
         threeAngleX += (threeTargetX - threeAngleX) * 0.1;
         threeAngleY += (threeTargetY - threeAngleY) * 0.1;
@@ -1159,7 +1388,7 @@
           const base = tileColor3D(tile.state, tile.c);
           mesh.material.color.setHex(base);
           if (routeSet.has(tileKey) && routePath.length > 1) {
-            mesh.material.emissive.setHex(0x443100);
+            mesh.material.emissive.setHex(0xbf8f2a);
             mesh.material.emissiveIntensity = 0.45;
           } else {
             mesh.material.emissive.setHex(0x000000);
@@ -1191,7 +1420,7 @@
         marker.setAttribute("orient", "auto");
         const mPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
         mPath.setAttribute("d", "M0,0 L9,4.5 L0,9 Z");
-        mPath.setAttribute("fill", "#0f172a");
+        mPath.setAttribute("fill", "#4d3920");
         marker.appendChild(mPath);
         defs.appendChild(marker);
         svg.appendChild(defs);
@@ -1202,8 +1431,8 @@
         frame.setAttribute("width", contentW - 16);
         frame.setAttribute("height", contentH - 16);
         frame.setAttribute("rx", 12);
-        frame.setAttribute("fill", "#ffffff");
-        frame.setAttribute("stroke", "#cbd5e1");
+        frame.setAttribute("fill", "#fbf3de");
+        frame.setAttribute("stroke", "#e4cf9f");
         frame.setAttribute("stroke-width", 1.5);
         svg.appendChild(frame);
 
@@ -1212,6 +1441,10 @@
         meshGroup.setAttribute("opacity", "0.55");
         svg.appendChild(meshGroup);
 
+        const clusterOutlinesGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        clusterOutlinesGroup.setAttribute("id", "clusterOutlines");
+        svg.appendChild(clusterOutlinesGroup);
+
         const tilesGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
         tilesGroup.setAttribute("id", "tiles");
         svg.appendChild(tilesGroup);
@@ -1219,7 +1452,7 @@
         const pathGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
         pathGroup.setAttribute("id", "path");
         pathGroup.setAttribute("fill", "none");
-        pathGroup.setAttribute("stroke", "#0f172a");
+        pathGroup.setAttribute("stroke", "#f6cc57");
         pathGroup.setAttribute("stroke-width", 4);
         pathGroup.setAttribute("stroke-linecap", "round");
         pathGroup.setAttribute("marker-end", "url(#arr)");
@@ -1244,18 +1477,18 @@
             rect.setAttribute("data-c", c);
 
             if (state === "io") {
-              rect.setAttribute("fill", "#0ea5e9");
+              rect.setAttribute("fill", "#b8852f");
               if (c === 0) rect.setAttribute("style", sourceColor);
               else if (c === cols - 1) rect.setAttribute("style", sinkColor);
             } else if (state === "good") {
-              rect.setAttribute("fill", "#93c5fd");
+              rect.setAttribute("fill", "#d7b16a");
             } else if (state === "repair") {
-              rect.setAttribute("fill", "#22c55e");
+              rect.setAttribute("fill", "#5d9348");
             } else {
-              rect.setAttribute("fill", "#ef4444");
+              rect.setAttribute("fill", "#8c2f36");
             }
 
-            rect.setAttribute("stroke", "#fff");
+            rect.setAttribute("stroke", "#e8d7b2");
             rect.setAttribute("stroke-width", 1);
             rect.setAttribute("class", `cell ${state}`);
             const title = document.createElementNS("http://www.w3.org/2000/svg", "title");
@@ -1306,14 +1539,72 @@
           }
         }
 
+        const baseRoute = routeDistanceMap();
+        const baseRoutePath = reconstructPathFromPrev(baseRoute.prev, baseRoute.dist);
+        lastPreRepairRouteExists = baseRoute.dist[end.r][end.c] >= 0;
+        lastPreRepairRouteLength = lastPreRepairRouteExists ? baseRoutePath.length : 0;
+        const repairResult = includeRepair ? buildRepairPlan(true) : { plan: [], meta: repairMetaDefaults() };
+        lastRepairPlan = repairResult.plan || [];
+        lastRepairMeta = repairResult.meta || repairMetaDefaults();
+
         if (includeRepair) {
-          const repairPlan = buildRepairPlan(true);
-          applyRepairPlan(repairPlan);
+          applyRepairPlan(lastRepairPlan);
         }
 
-        unrecoverableDefects = grid.filter((t) => t.state === "bad").length;
+        connectedBadComponents();
         linkDefectCount = countBadLinks();
         unrepairedClusterCount = currentBadClusterCount();
+      }
+
+      function drawClusterOutlines() {
+        const outlines = document.getElementById("clusterOutlines");
+        if (!outlines) return;
+        while (outlines.firstChild) {
+          outlines.removeChild(outlines.firstChild);
+        }
+        if (!showClusters || !showClusters.checked || !lastBadClusters.length) return;
+
+        for (let ci = 0; ci < lastBadClusters.length; ci++) {
+          const component = lastBadClusters[ci];
+          if (!component || component.length === 0) continue;
+
+          let minR = rows;
+          let maxR = 0;
+          let minC = cols;
+          let maxC = 0;
+          for (let i = 0; i < component.length; i++) {
+            const tile = component[i];
+            minR = Math.min(minR, tile.r);
+            maxR = Math.max(maxR, tile.r);
+            minC = Math.min(minC, tile.c);
+            maxC = Math.max(maxC, tile.c);
+          }
+
+          const x = 20 + minC * (tileSize + gap) - 1;
+          const y = 20 + minR * (tileSize + gap) - 1;
+          const w = (maxC - minC + 1) * tileSize + (maxC - minC) * gap + 2;
+          const h = (maxR - minR + 1) * tileSize + (maxR - minR) * gap + 2;
+          const stroke = component.length > maxRepairableComponentSize ? "#8c2f36" : "#6e2a2a";
+
+          const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+          rect.setAttribute("x", x);
+          rect.setAttribute("y", y);
+          rect.setAttribute("width", w);
+          rect.setAttribute("height", h);
+          rect.setAttribute("rx", 6);
+          rect.setAttribute("stroke", stroke);
+          rect.setAttribute("class", "cluster-outline");
+          outlines.appendChild(rect);
+
+          if (component.length > 1) {
+            const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+            label.setAttribute("x", x + w / 2);
+            label.setAttribute("y", y + h / 2 + 4);
+            label.setAttribute("class", "cluster-label");
+            label.textContent = `C${ci + 1} (${component.length})`;
+            outlines.appendChild(label);
+          }
+        }
       }
 
       function drawMesh(show = true) {
@@ -1341,7 +1632,7 @@
               if (rightHealthy) {
                 line.setAttribute("stroke", "var(--mesh)");
               } else {
-                line.setAttribute("stroke", "#dc2626");
+                line.setAttribute("stroke", "#8c2f36");
                 line.setAttribute("stroke-dasharray", "4 4");
               }
               line.setAttribute("stroke-width", 1.6);
@@ -1361,7 +1652,7 @@
               if (downHealthy) {
                 line.setAttribute("stroke", "var(--mesh)");
               } else {
-                line.setAttribute("stroke", "#dc2626");
+                line.setAttribute("stroke", "#8c2f36");
                 line.setAttribute("stroke-dasharray", "4 4");
               }
               line.setAttribute("stroke-width", 1.6);
@@ -1377,6 +1668,10 @@
           grid: grid.map((tile) => ({ r: tile.r, c: tile.c, state: tile.state })),
           right: links.right.slice(),
           down: links.down.slice(),
+          repairPlan: lastRepairPlan.map((tile) => ({ r: tile.r, c: tile.c })),
+          repairMeta: lastRepairMeta ? { ...lastRepairMeta } : repairMetaDefaults(),
+          preRouteExists: lastPreRepairRouteExists,
+          preRouteLength: lastPreRepairRouteLength,
           rate: currentRate,
           linkRate: currentLinkRate,
         };
@@ -1393,77 +1688,13 @@
         currentRate = snapshot.rate;
         currentLinkRate = snapshot.linkRate;
         maxSpareRepairs = Math.floor(rows * cols * (Number(repairBudget.value) / 100));
-        unrecoverableDefects = grid.filter((t) => t.state === "bad").length;
         linkDefectCount = countBadLinks();
+        connectedBadComponents();
         unrepairedClusterCount = currentBadClusterCount();
-      }
-
-      function runReliabilitySimulation() {
-        if (simulationRunning) return;
-        simulationRunning = true;
-        simulateBtn.disabled = true;
-        simulateBtn.textContent = "Running simulation...";
-        clearInterval(pulseTimer);
-        pulseTimer = null;
-        if (packetMesh) {
-          packetMesh.visible = false;
-        }
-
-        const iterations = Number(simRuns.value);
-        const withRemapEnabled = allowRepair.checked;
-        const savedGrid = cloneGridState();
-        let successesWithRemap = 0;
-        let totalPathWithRemap = 0;
-        let successesNoRemap = 0;
-        let totalPathNoRemap = 0;
-
-        for (let i = 0; i < iterations; i++) {
-          randomizeGrid({ includeRepair: false });
-
-          const noRemapLen = shortestRouteLength();
-          if (noRemapLen > 0) {
-            successesNoRemap++;
-            totalPathNoRemap += noRemapLen;
-          }
-
-          if (withRemapEnabled) {
-            const preRemap = cloneGridState();
-            const repairPlan = buildRepairPlan(true);
-            applyRepairPlan(repairPlan);
-            const remapLen = shortestRouteLength();
-            if (remapLen > 0) {
-              successesWithRemap++;
-              totalPathWithRemap += remapLen;
-            }
-            restoreGridState(preRemap);
-          } else {
-            if (noRemapLen > 0) {
-              successesWithRemap++;
-              totalPathWithRemap += noRemapLen;
-            }
-          }
-        }
-
-        restoreGridState(savedGrid);
-        createLayout();
-        drawMesh(showMesh.checked);
-        paintTiles();
-
-        const remapPassRate = Math.round((successesWithRemap / iterations) * 1000) / 10;
-        const noRemapPassRate = Math.round((successesNoRemap / iterations) * 1000) / 10;
-        simSuccessNoRemap.textContent = `${successesNoRemap}/${iterations} (${noRemapPassRate}%)`;
-        simSuccess.textContent = `${successesWithRemap}/${iterations} (${remapPassRate}%)`;
-        simAvgPathNoRemap.textContent = successesNoRemap
-          ? `${Math.round((totalPathNoRemap / successesNoRemap) * 10) / 10}`
-          : "—";
-        simAvgPath.textContent = successesWithRemap
-          ? `${Math.round((totalPathWithRemap / successesWithRemap) * 10) / 10}`
-          : "—";
-        status.textContent = `Simulation complete over ${iterations} chips. Tile fault: ${Math.round(currentRate * 100)}%, link fault: ${Math.round(currentLinkRate * 100)}%.`;
-
-        simulateBtn.disabled = false;
-        simulateBtn.textContent = "Run reliability simulation";
-        simulationRunning = false;
+        lastRepairPlan = (snapshot.repairPlan || []).map((tile) => grid[tile.r * cols + tile.c]).filter(Boolean);
+        lastRepairMeta = snapshot.repairMeta ? { ...snapshot.repairMeta } : repairMetaDefaults();
+        lastPreRepairRouteLength = snapshot.preRouteLength || 0;
+        lastPreRepairRouteExists = snapshot.preRouteExists || false;
       }
 
       function paintTiles() {
@@ -1487,7 +1718,7 @@
               healthy++;
             }
             if (tile.state === "io") {
-              el.setAttribute("fill", tile.c === 0 ? "#0ea5e9" : "#ec4899");
+              el.setAttribute("fill", tile.c === 0 ? "#b8852f" : "#9c6b39");
             } else if (tile.state === "repair") {
               el.setAttribute("fill", "var(--repair)");
             } else {
@@ -1511,6 +1742,16 @@
         }
 
         if (routePath.length > 1) {
+          const baseRouteText = lastPreRepairRouteExists
+            ? `Raw path baseline length: ${lastPreRepairRouteLength || "n/a"} tiles.`
+            : "Raw path was blocked before remap.";
+          const remapText = allowRepair.checked ? `Remap used: ${lastRepairPlan.length} tiles.` : "Remap disabled.";
+          const clusterText = unrepairedClusterCount > 0
+            ? `${unrepairedClusterCount} defect clusters still unrepaired.`
+            : "No unrepaired defect clusters remain.";
+          const linkText = linkDefectCount > 0
+            ? `${linkDefectCount} bad links remain.`
+            : "No bad links remain.";
           for (let i = 0; i < routePath.length - 1; i++) {
             const a = routePath[i];
             const b = routePath[i + 1];
@@ -1527,27 +1768,38 @@
             pathEdges.appendChild(ln);
           }
           pathLength.textContent = `${routePath.length}`;
-          if (bad === 0 && linkDefectCount === 0) {
-            status.textContent = "Route found with no faulty tiles or links in this map.";
-          } else if (allowRepair.checked) {
-            const repairedText = `Used ${repair} spare repairs.`;
-            const clusterText = unrepairedClusterCount > 0
-              ? `${unrepairedClusterCount} unrepaired defect clusters remain.`
-              : "No unrepaired defect clusters remain.";
-            const linkText = linkDefectCount > 0
-              ? `${linkDefectCount} bad links remain.`
-              : "No bad links remain.";
-            status.textContent = `Route found. Packet follows remapped + healthy nodes around blocked areas. ${repairedText} ${clusterText} ${linkText}`.trim();
-          } else {
-            status.textContent = "Route found by avoiding unrepaired faulty tiles.";
-          }
+          const remapOutcome = allowRepair.checked
+            ? lastPreRepairRouteExists
+              ? "Path exists in baseline; remap may still improve robustness."
+              : "Raw map was blocked. Remap created an alternate feasible route."
+            : "Remap disabled. Route uses existing healthy links/tiles.";
+          status.textContent = `Route found. ${remapOutcome} ${baseRouteText} ${remapText} ${clusterText} ${linkText}`.trim();
         } else {
           pathLength.textContent = "blocked";
-          const repairText = allowRepair.checked
-            ? `${unrepairedClusterCount} unrepaired defect clusters; ${linkDefectCount} bad links.`
-            : "Try lowering defects and checking mesh links.";
-          status.textContent = `No valid route from input to output. ${repairText}`;
+          const reasons = [];
+          if (!lastPreRepairRouteExists) {
+            reasons.push("No route in the raw fault map.");
+          }
+          if (allowRepair.checked && lastRepairMeta) {
+            if (lastRepairMeta.budgetExhausted && maxSpareRepairs > 0) {
+              reasons.push(`Remap budget exhausted at ${lastRepairPlan.length}/${maxSpareRepairs} tiles.`);
+            }
+            if (linkDefectCount > 0) reasons.push(`${linkDefectCount} faulty links remain.`);
+            if (unrepairedClusterCount > 0) reasons.push(`${unrepairedClusterCount} unrepaired defect clusters remain.`);
+            if (lastRepairMeta.skippedByScore > 0 && !lastRepairMeta.budgetExhausted) {
+              reasons.push("Low-priority clusters were skipped to preserve repair budget.");
+            }
+          } else if (!allowRepair.checked) {
+            reasons.push("Enable remap for spare-tile recovery behavior.");
+          }
+          if (reasons.length === 0) {
+            reasons.push(`No route found with current configuration.`);
+          }
+          status.textContent = `No valid route from input to output. ${reasons.join(" ")}`;
         }
+        const remapPct = maxSpareRepairs > 0 ? Math.round((lastRepairPlan.length / maxSpareRepairs) * 100) : 0;
+        remapUtil.textContent = `${remapPct}% (${lastRepairPlan.length}/${maxSpareRepairs})`;
+        drawClusterOutlines();
 
         if (threeInited) paint3DTiles();
       }
@@ -1564,10 +1816,31 @@
         packetMesh.visible = true;
       }
 
+      function setCaptureMode(enabled) {
+        document.body.classList.toggle("capture-mode", enabled);
+      }
+
+      function resetThreeView() {
+        threeTargetX = 0.62;
+        threeTargetY = -0.84;
+        threeAngleX = 0.62;
+        threeAngleY = -0.84;
+        threeZoom = 1;
+        if (threeInited) {
+          paint3DTiles();
+        }
+      }
+
       function clearPulse() {
+        if (pulseTimer) {
+          clearTimeout(pulseTimer);
+          pulseTimer = null;
+        }
+        pulseRunning = false;
+        animateBtn.textContent = "Pulse one packet path";
         routePath.forEach((p) => {
           const el = tileElements.get(key(p.r, p.c));
-          if (el) el.classList.remove("flow");
+          if (el) el.classList.remove("path", "flow");
         });
 
         if (packetMesh) {
@@ -1576,9 +1849,121 @@
         if (threeInited) paint3DTiles();
       }
 
-      function pulsePath() {
-        clearInterval(pulseTimer);
+      function clearReliabilityFrame() {
+        if (!reliabilityBars) return;
+        reliabilityBars.textContent = "";
+        reliabilitySuccessStat.textContent = "Success: —";
+        reliabilityFailStat.textContent = "Fail: —";
+        reliabilityPathStat.textContent = "Avg route: —";
+      }
+
+      function renderReliabilityBars(results) {
+        if (!reliabilityBars) return;
+        reliabilityBars.textContent = "";
+
+        if (!results || results.length === 0) {
+          const empty = document.createElement("div");
+          empty.textContent = "No runs completed.";
+          empty.style.color = "#6f5431";
+          empty.style.fontSize = "12px";
+          reliabilityBars.appendChild(empty);
+          return;
+        }
+
+        const successes = results.filter((result) => result.success).length;
+        const failures = results.length - successes;
+        const validPaths = results.filter((result) => result.pathLength > 0).map((result) => result.pathLength);
+        const maxPath = Math.max(1, ...validPaths, 1);
+        const avgPath = validPaths.length > 0
+          ? (validPaths.reduce((sum, value) => sum + value, 0) / validPaths.length).toFixed(1)
+          : "—";
+
+        reliabilitySuccessStat.textContent = `Success: ${successes}/${results.length}`;
+        reliabilityFailStat.textContent = `Fail: ${failures}/${results.length}`;
+        reliabilityPathStat.textContent = `Avg route: ${avgPath}`;
+
+        for (let i = 0; i < results.length; i++) {
+          const result = results[i];
+          const bar = document.createElement("span");
+          bar.className = `result-bar ${result.success ? "success" : "fail"}`;
+          const pathValue = result.success ? result.pathLength : 1;
+          const height = Math.max(6, Math.round((pathValue / maxPath) * 66));
+          bar.style.height = `${height}px`;
+          const repairedText = allowRepair.checked ? `, repair tiles ${result.repairCount}` : "";
+          bar.title = `Run ${i + 1}: ${result.success ? "routed" : "blocked"} | path ${result.pathLength || 0}${repairedText} | bad ${result.badTiles} tiles, ${result.badLinks} links`;
+          reliabilityBars.appendChild(bar);
+        }
+      }
+
+      function runYieldSimulation() {
+        status.textContent = `Running reliability simulation (${reliabilityRuns} maps)...`;
+        runSimulationBtn.disabled = true;
         clearPulse();
+        clearReliabilityFrame();
+
+        const snapshot = cloneGridState();
+        let routed = 0;
+        let totalPath = 0;
+        let totalRepairs = 0;
+        let totalBad = 0;
+        let totalLinks = 0;
+        const runResults = [];
+
+        for (let i = 0; i < reliabilityRuns; i++) {
+          randomizeGrid({ includeRepair: allowRepair.checked });
+          routePacket();
+
+          const isRouted = routePath.length > 1;
+          const badCount = grid.filter((tile) => tile.state === "bad").length;
+          const badLinks = linkDefectCount;
+          const repairCount = allowRepair.checked ? lastRepairPlan.length : 0;
+
+          runResults.push({
+            success: isRouted,
+            pathLength: routePath.length,
+            badTiles: badCount,
+            badLinks,
+            repairCount,
+          });
+
+          if (isRouted) {
+            routed++;
+            totalPath += routePath.length;
+          }
+
+          totalBad += badCount;
+          totalLinks += badLinks;
+          if (allowRepair.checked) {
+            totalRepairs += repairCount;
+          }
+        }
+
+        restoreGridState(snapshot);
+        createLayout();
+        drawMesh(showMesh.checked);
+        paintTiles();
+        renderReliabilityBars(runResults);
+
+        const routedRate = Math.round((routed / reliabilityRuns) * 1000) / 10;
+        const avgPath = routed > 0 ? Math.round((totalPath / routed) * 10) / 10 : 0;
+        const avgBad = Math.round(totalBad / reliabilityRuns);
+        const avgLinks = Math.round(totalLinks / reliabilityRuns);
+        const avgRepairs = routed > 0 ? Math.round((totalRepairs / routed) * 10) / 10 : 0;
+
+        reliabilityRate.textContent = `${routedRate}% (${routed}/${reliabilityRuns})`;
+        const summary = `${routedRate}% with ${routed} routes over ${reliabilityRuns} maps`;
+        status.textContent = `Reliability simulation complete: ${summary}. Avg route ${avgPath}, avg bad tiles ${avgBad}, avg bad links ${avgLinks}.${allowRepair.checked ? ` Avg remap usage ${avgRepairs}/${maxSpareRepairs}.` : ""}`;
+
+        runSimulationBtn.disabled = false;
+      }
+
+      function pulsePath() {
+        const speed = Number(pulseSpeed.value);
+        if (pulseRunning) {
+          clearPulse();
+          status.textContent = "Pulse paused.";
+          return;
+        }
 
         if (!routePath || routePath.length === 0) {
           status.textContent = "No route to animate.";
@@ -1586,7 +1971,17 @@
         }
 
         let i = 0;
-        pulseTimer = setInterval(() => {
+        clearPulse();
+        pulseRunning = true;
+        animateBtn.textContent = "Stop packet pulse";
+        status.textContent = `Pulsing route (${routePath.length} hops).`;
+
+        const step = () => {
+          if (!pulseRunning || !routePath || routePath.length === 0) {
+            clearPulse();
+            return;
+          }
+
           if (i > 0) {
             const prev = tileElements.get(key(routePath[i - 1].r, routePath[i - 1].c));
             if (prev) prev.classList.remove("flow");
@@ -1595,10 +1990,21 @@
           if (i >= routePath.length) {
             const tail = tileElements.get(key(routePath[routePath.length - 1].r, routePath[routePath.length - 1].c));
             if (tail) tail.classList.remove("flow");
-            clearInterval(pulseTimer);
-            pulseTimer = null;
             if (packetMesh) packetMesh.visible = false;
+
+            if (pulseLoop.checked && pulseRunning) {
+              pulseTimer = setTimeout(() => {
+                if (!pulseRunning) return;
+                clearPulse();
+                i = 0;
+                step();
+              }, 260);
+              return;
+            }
+
             status.textContent = "Packet delivered. Toggle regenerate for a new map.";
+            animateBtn.textContent = "Pulse one packet path";
+            pulseRunning = false;
             return;
           }
 
@@ -1606,7 +2012,16 @@
           const tile = tileElements.get(key(p.r, p.c));
           if (tile) tile.classList.add("path", "flow");
           setPacketPosition(i - 1);
-        }, 80);
+          pulseTimer = setTimeout(step, speed);
+        };
+
+        step();
+      }
+
+      function updatePulseSpeedLabel() {
+        if (!pulseSpeedLabel || !pulseSpeedValue) return;
+        pulseSpeedLabel.textContent = "interval";
+        pulseSpeedValue.textContent = `${Math.round(Number(pulseSpeed.value))}ms`;
       }
 
       function setView(view) {
@@ -1621,6 +2036,8 @@
         }
 
         currentView = view;
+        document.body.classList.toggle("view-3d", view === "3d");
+        document.body.classList.toggle("view-2d", view === "2d");
         svg.style.display = view === "3d" ? "none" : "block";
         canvas3d.style.display = view === "3d" ? "block" : "none";
         if (view === "3d") {
@@ -1632,7 +2049,7 @@
       }
 
       function redrawAll() {
-        clearInterval(pulseTimer);
+        clearPulse();
         randomizeGrid();
         createLayout();
         drawMesh(showMesh.checked);
@@ -1644,13 +2061,10 @@
         linkDefectValue.textContent = `${Math.round(currentLinkRate * 100)}%`;
         linkDefectLabel.textContent = `fabric link fault probability`;
         repairBudget.disabled = !allowRepair.checked;
-        simRunsValue.textContent = `${Number(simRuns.value)} runs`;
-        simRunsLabel.textContent = `reliability simulation`;
-        simSuccessNoRemap.textContent = "—";
-        simSuccess.textContent = "—";
-        simAvgPathNoRemap.textContent = "—";
-        simAvgPath.textContent = "—";
-        status.textContent = "Start here if you are new: tune controls, generate a chip map, then run the packet path or reliability simulation.";
+        updatePulseSpeedLabel();
+        status.textContent = "Suggested flow: generate a new chip map, then pulse packet route.";
+        reliabilityRate.textContent = "—";
+        clearReliabilityFrame();
 
         if (threeInited) {
           rebuildThreeGrid();
@@ -1665,19 +2079,33 @@
 
       defectRate.addEventListener("input", redrawAll);
       repairBudget.addEventListener("input", redrawAll);
-      simRuns.addEventListener("input", redrawAll);
       allowRepair.addEventListener("change", redrawAll);
       linkDefectRate.addEventListener("input", redrawAll);
+      pulseSpeed.addEventListener("input", updatePulseSpeedLabel);
+      captureModeToggle.addEventListener("change", (event) => {
+        setCaptureMode(event.target.checked);
+      });
+      runSimulationBtn.addEventListener("click", runYieldSimulation);
+      autoRotate3dToggle.addEventListener("change", (event) => {
+        threeAutoRotate = event.target.checked;
+      });
+      resetViewBtn.addEventListener("click", () => {
+        if (!threeInited) {
+          initThree();
+        }
+        resetThreeView();
+      });
       showMesh.addEventListener("change", onShowMeshChange);
       shuffleBtn.addEventListener("click", redrawAll);
       animateBtn.addEventListener("click", pulsePath);
-      simulateBtn.addEventListener("click", runReliabilitySimulation);
       view2dBtn.addEventListener("click", () => setView("2d"));
       view3dBtn.addEventListener("click", () => setView("3d"));
       window.addEventListener("resize", () => {
         if (currentView === "3d") resizeThree();
       });
 
+      threeAutoRotate = autoRotate3dToggle ? autoRotate3dToggle.checked : false;
+      setCaptureMode(true);
       redrawAll();
       setView("2d");
     </script>

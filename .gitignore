@@ -1,7 +1,4 @@
 /.quarto/
-.DS_Store
-posts/.DS_Store
-
 **/*.quarto_ipynb
 AGENTS.md
-.DS_Store
+*.DS_Store
