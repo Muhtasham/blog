@@ -1,17 +1,17 @@
 ---
 title: "Meta-Engineering: Letting Codex-Spark Simulates the Silicon that it runs on"
-description: "You can just build things"
+description: "Prompting a wafer-scale chip simulator at 1,000 tokens per second"
 author: "muhtasham"
 date: "2026-02-14"
 image: "images/thumbnail.png"
 image-alt: "Cerebras defect-tolerance simulator and Codex-Spark real-time coding workflow"
-categories: [cerebras, hardware, simulation, codex-spark, real-time-llm]
+categories: [llm, agents, software-engineering]
 title-block-banner: true
 ---
 
 ## A Chip Simulating Itself
 
-**Codex-Spark** runs on **Cerebras WSE-3**, the same chip that runs OpenAI’s GPT OSS 120B at 3,000 tokens/s, I used it to build an interactive simulator of the same chip. The hardware helped explain itself—a recursive loop of silicon and AI.
+[GPT-5.3-Codex-Spark](https://openai.com/index/introducing-gpt-5-3-codex-spark/) is a smaller version of Codex optimized for fast inference. Powered by the **Cerebras Wafer-Scale Engine**, it runs at over **1,000 tokens/s**—the same chip that runs OpenAI's GPT OSS 120B at 3,000 tokens/s. I used it to build an interactive simulator of that very chip. The hardware helped explain itself—a recursive loop of silicon and AI.
 
 This isn't just meta for fun. It's a preview of how we'll build technical tools: the hardware becomes an active participant in teaching its own architecture.
 
@@ -21,7 +21,7 @@ When you manufacture a chip the size of a dinner plate with ~900,000 cores, defe
 
 But how do you explain defect-tolerant mesh routing to someone who's never thought about chip yields?
 
-I'm a **Cerebras Fellow** and **Codex Ambassador**. Right after [GPT-5.3-Codex-Spark](https://openai.com/index/introducing-gpt-5-3-codex-spark/) launched, I wanted to build something immediately graspable—a single interactive page where you adjust defect rates, run remap logic, and watch packets reroute in real time.
+Being a [Cerebras Fellow](https://www.cerebras.ai/fellows) and now [Codex Ambassador](https://developers.openai.com/codex/ambassadors/), so right after Codex-Spark launched, I wanted to build something immediately graspable—a single interactive page where you adjust defect rates, run remap logic, and watch packets reroute in real time.
 
 The tight iteration loop (prompt → verify → refine) made it possible to clarify both the explanation and the routing logic until everything clicked.
 
@@ -67,6 +67,8 @@ This project is as much about the workflow as it is about hardware simulation. B
 4. **You can ask for features, not just code**: examples like source-note cards, clearer beginner text, and route status semantics were all handled the same way through conversation.
 
 ### The Latency Breakthrough That Enables This
+
+On agentic software engineering benchmarks like **SWE-Bench Pro** and **Terminal-Bench 2.0**, Codex-Spark produces more capable responses than GPT-5.1-Codex-mini while completing tasks in a fraction of the time. It excels at precise edits, plan revision, and contextual questions about your codebase—exactly the tight loop this simulator needed.
 
 As OpenAI trained Codex-Spark, they realized model speed was just part of the equation for real-time collaboration. They implemented **end-to-end latency improvements** that benefit all models:
 
