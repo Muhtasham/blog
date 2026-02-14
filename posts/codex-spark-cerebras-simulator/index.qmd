@@ -9,6 +9,8 @@ categories: [llm, agents, software-engineering]
 title-block-banner: true
 ---
 
+![Four trillion transistors. 125 petaflops. One silicon wafer.](images/chip.png)
+
 ## A Chip Simulating Itself
 
 [GPT-5.3-Codex-Spark](https://openai.com/index/introducing-gpt-5-3-codex-spark/) is a smaller version of Codex optimized for fast inference. Powered by the **Cerebras Wafer-Scale Engine**, it runs at over **1,000 tokens/s**—the same chip that runs OpenAI's GPT OSS 120B at 3,000 tokens/s. I used it to build an interactive simulator of that very chip. The hardware helped explain itself—a recursive loop of silicon and AI.
