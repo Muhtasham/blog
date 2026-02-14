@@ -1,6 +1,6 @@
 ---
-title: "Using Codex to Simulate the Hardware It Runs On"
-description: "Meta-Engineering, letting Codex-Spark Simulates the Silicon that it runs on"
+title: "Meta-Engineering: Letting Codex-Spark Simulates the Silicon that it runs on"
+description: "You can just build things"
 author: "muhtasham"
 date: "2026-02-14"
 image: "images/thumbnail.png"
