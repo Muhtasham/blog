@@ -13,7 +13,11 @@ title-block-banner: true
 
 [GPT-5.3-Codex-Spark](https://openai.com/index/introducing-gpt-5-3-codex-spark/) is a smaller version of Codex optimized for fast inference. Powered by the **Cerebras Wafer-Scale Engine**, it runs at over **1,000 tokens/s**—the same chip that runs OpenAI's GPT OSS 120B at 3,000 tokens/s. I used it to build an interactive simulator of that very chip. The hardware helped explain itself—a recursive loop of silicon and AI.
 
-This isn't just meta for fun. It's a preview of how we'll build technical tools: the hardware becomes an active participant in teaching its own architecture.
+This isn't just meta for fun. The infra behind this is coming in screaming hot—directly from the surface of the sun—but it's a cool glimpse into what will become mainstream in the next few months. And when your hardware is literally sparking at thousands of tokens per second...
+
+::: {.callout-tip appearance="simple"}
+...this one sparks joy ✨
+:::
 
 ## Why Wafer-Scale?
 
