@@ -33,7 +33,7 @@ When you manufacture ~900,000 cores on a dinner-plate-sized chip, defects aren't
 
 But how do you explain defect-tolerant mesh routing to someone who's never thought about chip yields?
 
-Being a [Cerebras Fellow](https://www.cerebras.ai/fellows) and now [Codex Ambassador](https://developers.openai.com/codex/ambassadors/), so right after Codex-Spark launched, I wanted to build something immediately graspable—a single interactive page where you adjust defect rates, run remap logic, and watch packets reroute in real time.
+As a [Cerebras Fellow](https://www.cerebras.ai/fellows) and [Codex Ambassador](https://developers.openai.com/codex/ambassadors/), right after Codex-Spark launched, I wanted to build something immediately graspable—a single interactive page where you adjust defect rates, run remap logic, and watch packets reroute in real time.
 
 The tight iteration loop (prompt → verify → refine) made it possible to clarify both the explanation and the routing logic until everything clicked.
 
@@ -43,9 +43,26 @@ This simulator is the result. It was built through prompting Codex-Spark and ref
 - [IEEE Micro: Path to Successful Wafer-Scale Integration](https://8968533.fs1.hubspotusercontent-na2.net/hubfs/8968533/IEEE%20Micro%202021-11%20Path%20to%20Wafer%20Scale%20Integration.pdf)
 - [Cerebras WSE architecture whitepaper](https://cdn.sanity.io/files/e4qjo92p/production/b3779b8136a3a03a7b31913cb680e33d68423e58.pdf)
 
-Codex-Spark is also powered by [Cerebras’ Wafer Scale Engine 3](https://www.cerebras.ai/chip), a purpose-built AI accelerator for high-speed inference that gives the model a latency-first serving tier. That is why this post is able to move from idea to working interaction so quickly.
+Codex-Spark is also powered by [Cerebras' Wafer Scale Engine 3](https://www.cerebras.ai/chip), a purpose-built AI accelerator for high-speed inference that gives the model a latency-first serving tier. That is why this post is able to move from idea to working interaction so quickly.
 
-## Try It First
+## What the Simulator Shows
+
+The simulation has three practical layers:
+
+- A **tile mesh**: simplified compute regions connected by a mesh network.
+- **Fault controls**: manufacturing defects, inter-tile link defects, remap budget, and reliability-run count.
+- **Packet flow + remap**: route search around blocked regions and optional repair conversion using spare capacity.
+
+Each render reports:
+
+- healthy vs defective/repaired tiles
+- bad links and blocked connectivity
+- route found / blocked outcomes
+- path length and a reliability summary from repeated random trials
+
+That output mirrors the core lesson from wafer-scale systems: local defects are manageable when routing options and spare resources are intelligently coordinated.
+
+## Try It
 
 The simulator is embedded below and uses client-side JavaScript only. Start with the defaults, then experiment.
 
@@ -100,19 +117,10 @@ This is why "ask for a feature, see it work, ask for the next pass" actually wor
 </div>
 ```
 
-## What this simulator shows
+## The Loop Closes
 
-The simulation has three practical layers:
+A chip that runs AI fast enough to explain itself in real time. A simulator built in minutes instead of weeks because the latency finally disappeared. Hardware teaching its own architecture through the models it accelerates.
 
-- A **tile mesh**: simplified compute regions connected by a mesh network.
-- **Fault controls**: manufacturing defects, inter-tile link defects, remap budget, and reliability-run count.
-- **Packet flow + remap**: route search around blocked regions and optional repair conversion using spare capacity.
+This is the recursion we're entering: the infrastructure gets fast enough that building on it feels instant, so we build tools that explain the infrastructure, which makes the next person faster, which pushes the infrastructure further.
 
-Each render reports:
-
-- healthy vs defective/repaired tiles
-- bad links and blocked connectivity
-- route found / blocked outcomes
-- path length and a reliability summary from repeated random trials
-
-That output mirrors the core lesson from wafer-scale systems: local defects are manageable when routing options and spare resources are intelligently coordinated.
+The wafer isn't just running the model. It's teaching you how it works while you use it. And that feedback loop—silicon to software to understanding and back—is what sparks next.

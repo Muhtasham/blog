@@ -216,7 +216,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="the-problem-900000-cores-guaranteed-defects">The Problem: 900,000 Cores, Guaranteed Defects</h2>
 <p>When you manufacture ~900,000 cores on a dinner-plate-sized chip, defects aren’t a matter of <em>if</em>—they’re <em>how many</em>. The Cerebras approach: assume defects will happen, then route around them intelligently.</p>
 <p>But how do you explain defect-tolerant mesh routing to someone who’s never thought about chip yields?</p>
-<p>Being a <a href="https://www.cerebras.ai/fellows">Cerebras Fellow</a> and now <a href="https://developers.openai.com/codex/ambassadors/">Codex Ambassador</a>, so right after Codex-Spark launched, I wanted to build something immediately graspable—a single interactive page where you adjust defect rates, run remap logic, and watch packets reroute in real time.</p>
+<p>As a <a href="https://www.cerebras.ai/fellows">Cerebras Fellow</a> and <a href="https://developers.openai.com/codex/ambassadors/">Codex Ambassador</a>, right after Codex-Spark launched, I wanted to build something immediately graspable—a single interactive page where you adjust defect rates, run remap logic, and watch packets reroute in real time.</p>
 <p>The tight iteration loop (prompt → verify → refine) made it possible to clarify both the explanation and the routing logic until everything clicked.</p>
 <p>This simulator is the result. It was built through prompting Codex-Spark and references these public sources:</p>
 <ul>
@@ -226,8 +226,25 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>Codex-Spark is also powered by <a href="https://www.cerebras.ai/chip">Cerebras’ Wafer Scale Engine 3</a>, a purpose-built AI accelerator for high-speed inference that gives the model a latency-first serving tier. That is why this post is able to move from idea to working interaction so quickly.</p>
 </section>
-<section id="try-it-first" class="level2">
-<h2 class="anchored" data-anchor-id="try-it-first">Try It First</h2>
+<section id="what-the-simulator-shows" class="level2">
+<h2 class="anchored" data-anchor-id="what-the-simulator-shows">What the Simulator Shows</h2>
+<p>The simulation has three practical layers:</p>
+<ul>
+<li>A <strong>tile mesh</strong>: simplified compute regions connected by a mesh network.</li>
+<li><strong>Fault controls</strong>: manufacturing defects, inter-tile link defects, remap budget, and reliability-run count.</li>
+<li><strong>Packet flow + remap</strong>: route search around blocked regions and optional repair conversion using spare capacity.</li>
+</ul>
+<p>Each render reports:</p>
+<ul>
+<li>healthy vs defective/repaired tiles</li>
+<li>bad links and blocked connectivity</li>
+<li>route found / blocked outcomes</li>
+<li>path length and a reliability summary from repeated random trials</li>
+</ul>
+<p>That output mirrors the core lesson from wafer-scale systems: local defects are manageable when routing options and spare resources are intelligently coordinated.</p>
+</section>
+<section id="try-it" class="level2">
+<h2 class="anchored" data-anchor-id="try-it">Try It</h2>
 <p>The simulator is embedded below and uses client-side JavaScript only. Start with the defaults, then experiment.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -283,22 +300,11 @@ Note
 </div>
 </section>
 </section>
-<section id="what-this-simulator-shows" class="level2">
-<h2 class="anchored" data-anchor-id="what-this-simulator-shows">What this simulator shows</h2>
-<p>The simulation has three practical layers:</p>
-<ul>
-<li>A <strong>tile mesh</strong>: simplified compute regions connected by a mesh network.</li>
-<li><strong>Fault controls</strong>: manufacturing defects, inter-tile link defects, remap budget, and reliability-run count.</li>
-<li><strong>Packet flow + remap</strong>: route search around blocked regions and optional repair conversion using spare capacity.</li>
-</ul>
-<p>Each render reports:</p>
-<ul>
-<li>healthy vs defective/repaired tiles</li>
-<li>bad links and blocked connectivity</li>
-<li>route found / blocked outcomes</li>
-<li>path length and a reliability summary from repeated random trials</li>
-</ul>
-<p>That output mirrors the core lesson from wafer-scale systems: local defects are manageable when routing options and spare resources are intelligently coordinated.</p>
+<section id="the-loop-closes" class="level2">
+<h2 class="anchored" data-anchor-id="the-loop-closes">The Loop Closes</h2>
+<p>A chip that runs AI fast enough to explain itself in real time. A simulator built in minutes instead of weeks because the latency finally disappeared. Hardware teaching its own architecture through the models it accelerates.</p>
+<p>This is the recursion we’re entering: the infrastructure gets fast enough that building on it feels instant, so we build tools that explain the infrastructure, which makes the next person faster, which pushes the infrastructure further.</p>
+<p>The wafer isn’t just running the model. It’s teaching you how it works while you use it. And that feedback loop—silicon to software to understanding and back—is what sparks next.</p>
 
 
 </section>

@@ -708,11 +708,9 @@
           <div class="notes">
             <p>Legend</p>
             <ul>
-            <li><b>Gold tile:</b> healthy compute tile.</li>
-            <li><b>Olive-amber tile:</b> remapped/replaced tile from spare-capacity planning.</li>
-            <li><b>Muted rust tile:</b> defective tile (not available).</li>
-            <li><b>Dark line:</b> failed inter-tile link.</li>
-            <li><b>Amber path:</b> active packet route for this map.</li>
+            <li><b>Repair marker:</b> clusters assigned spare tiles are shown in the remap color.</li>
+            <li><b>Mesh markers:</b> cluster outlines and failed links are drawn when enabled.</li>
+            <li><b>Path marker:</b> the highlighted route is the current packet walk through healthy nodes.</li>
             </ul>
           </div>
 
@@ -767,11 +765,12 @@
           <div class="notes hide-on-capture">
             <p>Source notes (from cited materials)</p>
             <ul>
-              <li>Wafer-scale size: WSE-3 is reported as ~46,225 mm² vs a H100-like GPU at ~814 mm².</li>
+              <li>Wafer-scale size: WSE-3 is reported as ~46,225 mm² in the defect-tolerance framing, and ~46,250 mm² in CS-3 product materials, versus a H100-size area in the ~800 mm² class.</li>
               <li>Core size argument: WSE-3 core area is cited around ~0.05 mm² (about 100x smaller than an H100-style ~6.2 mm² SM core).</li>
-              <li>Yield comparison framing (blog): one 46,225 mm² wafer-scale chip per 300mm wafer vs ~72 GPU dies for an 814 mm² 5nm-style chip in their walkthrough example.</li>
+              <li>Yield comparison framing (blog): one 46,225 mm² wafer-scale chip per 300mm wafer vs roughly ~72 H100-size chips at around 814 mm² in their walkthrough.</li>
               <li>Manufacturing geometry context: conventional wafers are typically diced into many reticle-sized dies; WSE uses field stitching and keeps one contiguous active wafer-scale array.</li>
               <li>Defect tolerance outcome: the model reflects small fault domains + local rerouting + limited spare capacity, then evaluates path completion under repeated randomized runs.</li>
+              <li>IEEE 2021 context note: WSE-2-era papers describe stitched 525 mm² reticles and a low (roughly 1%) spare PE reserve with local rerouting at PE granularity; this simulator maps that idea at tile granularity, not reticle scale.</li>
               <li>WSI fabric behavior (IEEE Micro): shorter on-chip links are modeled as local inter-tile links; failed links can block mesh paths and force alternate local routing in this model.</li>
               <li>Cerebras WSE-3 reporting: ~93% usable silicon area and ~900,000 active cores (from the public WSE-3 discussion).</li>
               <li>Yield framing in this page is a simplification, meant to show concept-level effects of defect clusters, links, and remap budget.</li>
