@@ -1547,9 +1547,6 @@
             rect.addEventListener("pointerenter", showTileTooltip);
             rect.addEventListener("pointermove", showTileTooltip);
             rect.addEventListener("pointerleave", hideTileTooltip);
-            const title = document.createElementNS("http://www.w3.org/2000/svg", "title");
-            title.textContent = `Tile (${r}, ${c}) · state=${state} · route=${routePath.some((p) => p.r === r && p.c === c) ? "active" : "inactive"}`;
-            rect.appendChild(title);
 
             tilesGroup.appendChild(rect);
             tileElements.set(key(r, c), rect);
@@ -2005,7 +2002,10 @@
           const height = Math.max(6, Math.round((pathValue / maxPath) * 66));
           bar.style.height = `${height}px`;
           const repairedText = allowRepair.checked ? `, repair tiles ${result.repairCount}` : "";
-          bar.title = `Run ${i + 1}: ${result.success ? "routed" : "blocked"} | path ${result.pathLength || 0}${repairedText} | bad ${result.badTiles} tiles, ${result.badLinks} links`;
+          bar.setAttribute(
+            "aria-label",
+            `Run ${i + 1}: ${result.success ? "routed" : "blocked"} | path ${result.pathLength || 0}${repairedText} | bad ${result.badTiles} tiles, ${result.badLinks} links`,
+          );
           reliabilityBars.appendChild(bar);
         }
       }
