@@ -403,21 +403,28 @@
     "href": "posts/codex-spark-cerebras-simulator/index.html",
     "title": "Meta-Engineering: Letting Codex-Spark Simulates the Silicon that it runs on",
     "section": "",
-    "text": "Four trillion transistors. 125 petaflops. One silicon wafer."
+    "text": "GPT-5.3-Codex-Spark is a smaller version of Codex optimized for fast inference. Powered by the Cerebras Wafer-Scale Engine, it runs at over 1,000 tokens/s—the same chip that runs OpenAI’s GPT OSS 120B at 3,000 tokens/s. I used it to build an interactive simulator of that very chip. The hardware helped explain itself—a recursive loop of silicon and AI.\nThis isn’t just meta for fun. It’s a preview of how we’ll build technical tools: the hardware becomes an active participant in teaching its own architecture."
   },
   {
     "objectID": "posts/codex-spark-cerebras-simulator/index.html#a-chip-simulating-itself",
     "href": "posts/codex-spark-cerebras-simulator/index.html#a-chip-simulating-itself",
     "title": "Meta-Engineering: Letting Codex-Spark Simulates the Silicon that it runs on",
-    "section": "A Chip Simulating Itself",
-    "text": "A Chip Simulating Itself\nGPT-5.3-Codex-Spark is a smaller version of Codex optimized for fast inference. Powered by the Cerebras Wafer-Scale Engine, it runs at over 1,000 tokens/s—the same chip that runs OpenAI’s GPT OSS 120B at 3,000 tokens/s. I used it to build an interactive simulator of that very chip. The hardware helped explain itself—a recursive loop of silicon and AI.\nThis isn’t just meta for fun. It’s a preview of how we’ll build technical tools: the hardware becomes an active participant in teaching its own architecture."
+    "section": "",
+    "text": "GPT-5.3-Codex-Spark is a smaller version of Codex optimized for fast inference. Powered by the Cerebras Wafer-Scale Engine, it runs at over 1,000 tokens/s—the same chip that runs OpenAI’s GPT OSS 120B at 3,000 tokens/s. I used it to build an interactive simulator of that very chip. The hardware helped explain itself—a recursive loop of silicon and AI.\nThis isn’t just meta for fun. It’s a preview of how we’ll build technical tools: the hardware becomes an active participant in teaching its own architecture."
+  },
+  {
+    "objectID": "posts/codex-spark-cerebras-simulator/index.html#why-wafer-scale",
+    "href": "posts/codex-spark-cerebras-simulator/index.html#why-wafer-scale",
+    "title": "Meta-Engineering: Letting Codex-Spark Simulates the Silicon that it runs on",
+    "section": "Why Wafer-Scale?",
+    "text": "Why Wafer-Scale?\n\n\n\nFour trillion transistors. 125 petaflops. One silicon wafer.\n\n\nLook closely at the Cerebras chip—you’ll notice a grid-and-holes pattern covering the entire surface. That’s because wafers this large are normally diced into dozens of separate chips. Cerebras instead etches one giant chip across the entire wafer.\nWhy? On-chip memory. A wafer-scale design can pack 44GB of SRAM directly into the chip. Standard GPUs have tens of megabytes. That difference matters: inference typically spends significant time streaming model weights from external memory into the GPU. With enough SRAM to fit the entire model, those transfers happen at SRAM speed instead—yielding a 15x speedup."
   },
   {
     "objectID": "posts/codex-spark-cerebras-simulator/index.html#the-problem-900000-cores-guaranteed-defects",
     "href": "posts/codex-spark-cerebras-simulator/index.html#the-problem-900000-cores-guaranteed-defects",
     "title": "Meta-Engineering: Letting Codex-Spark Simulates the Silicon that it runs on",
     "section": "The Problem: 900,000 Cores, Guaranteed Defects",
-    "text": "The Problem: 900,000 Cores, Guaranteed Defects\nWhen you manufacture a chip the size of a dinner plate with ~900,000 cores, defects aren’t a matter of if—they’re how many. Traditional chips are small enough that a single defect ruins the whole die. Wafer-scale engines like Cerebras WSE flip that model: assume defects will happen, then route around them intelligently.\nBut how do you explain defect-tolerant mesh routing to someone who’s never thought about chip yields?\nBeing a Cerebras Fellow and now Codex Ambassador, so right after Codex-Spark launched, I wanted to build something immediately graspable—a single interactive page where you adjust defect rates, run remap logic, and watch packets reroute in real time.\nThe tight iteration loop (prompt → verify → refine) made it possible to clarify both the explanation and the routing logic until everything clicked.\nThis simulator is the result. It was built through prompting Codex-Spark and references these public sources:\n\nCerebras 100x defect tolerance post\nIEEE Micro: Path to Successful Wafer-Scale Integration\nCerebras WSE architecture whitepaper\n\nCodex-Spark is also powered by Cerebras’ Wafer Scale Engine 3, a purpose-built AI accelerator for high-speed inference that gives the model a latency-first serving tier. That is why this post is able to move from idea to working interaction so quickly."
+    "text": "The Problem: 900,000 Cores, Guaranteed Defects\nWhen you manufacture ~900,000 cores on a dinner-plate-sized chip, defects aren’t a matter of if—they’re how many. The Cerebras approach: assume defects will happen, then route around them intelligently.\nBut how do you explain defect-tolerant mesh routing to someone who’s never thought about chip yields?\nBeing a Cerebras Fellow and now Codex Ambassador, so right after Codex-Spark launched, I wanted to build something immediately graspable—a single interactive page where you adjust defect rates, run remap logic, and watch packets reroute in real time.\nThe tight iteration loop (prompt → verify → refine) made it possible to clarify both the explanation and the routing logic until everything clicked.\nThis simulator is the result. It was built through prompting Codex-Spark and references these public sources:\n\nCerebras 100x defect tolerance post\nIEEE Micro: Path to Successful Wafer-Scale Integration\nCerebras WSE architecture whitepaper\n\nCodex-Spark is also powered by Cerebras’ Wafer Scale Engine 3, a purpose-built AI accelerator for high-speed inference that gives the model a latency-first serving tier. That is why this post is able to move from idea to working interaction so quickly."
   },
   {
     "objectID": "posts/codex-spark-cerebras-simulator/index.html#try-it-first",

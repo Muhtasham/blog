@@ -318,6 +318,34 @@
         line-height: 1.35;
       }
 
+      .mini-legend {
+        margin: 10px 0 14px;
+        display: grid;
+        gap: 8px;
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      }
+
+      .mini-legend-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #fff9ea;
+        border: 1px solid #e2ccb7;
+        border-radius: 999px;
+        padding: 8px 10px;
+        color: #4d3920;
+        font-size: 12px;
+        line-height: 1.2;
+      }
+
+      .mini-legend-chip {
+        width: 12px;
+        height: 12px;
+        border-radius: 999px;
+        border: 1px solid rgba(74, 47, 20, 0.35);
+        flex-shrink: 0;
+      }
+
       .stats {
         display: grid;
         gap: 10px;
@@ -453,6 +481,30 @@
         text-decoration: underline;
       }
 
+      .tile-tooltip {
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translate(-2px, -10px);
+        padding: 8px 10px;
+        border-radius: 8px;
+        border: 1px solid #d9bd87;
+        background: #fff6d8;
+        color: #3f2f1d;
+        box-shadow: 0 10px 22px rgba(53, 40, 20, 0.18);
+        font-size: 12px;
+        line-height: 1.35;
+        max-width: 220px;
+        pointer-events: none;
+        display: none;
+        z-index: 4;
+        white-space: nowrap;
+      }
+
+      .cell {
+        cursor: help;
+      }
+
       .link-dot {
         width: 10px;
         height: 10px;
@@ -524,8 +576,15 @@
     <main>
       <h1 class="title">Cerebras Wafer-Scale Defect-Tolerance Simulator</h1>
       <p class="subtitle">
-        An interactive systems view of how a wafer-scale chip stays operational when faults appear. Gold tiles are healthy compute regions, muted copper-red tiles are defective, and olive-amber tiles are repaired/active spare tiles. Move the controls to test defect rates, link failures, and remap budget.
+        An interactive systems view of how a wafer-scale chip stays operational when faults appear. Use the controls to stress defects, links, and remap budget and watch packet flow adapt.
       </p>
+      <div class="mini-legend">
+        <div class="mini-legend-item"><span class="mini-legend-chip" style="background: var(--good-soft);"></span>Healthy tile</div>
+        <div class="mini-legend-item"><span class="mini-legend-chip" style="background: var(--repair);"></span>Repaired / remapped tile</div>
+        <div class="mini-legend-item"><span class="mini-legend-chip" style="background: var(--bad);"></span>Defective tile</div>
+        <div class="mini-legend-item"><span class="mini-legend-chip" style="background: var(--io);"></span>I/O edge</div>
+        <div class="mini-legend-item"><span class="mini-legend-chip" style="background: var(--path);"></span>Active path</div>
+      </div>
 
       <section class="board">
         <article class="panel visual">
@@ -545,6 +604,7 @@
           <div class="chip-wrap">
             <svg id="wafer" viewBox="0 0 980 620" aria-label="cerebras-chip-visualization"></svg>
             <canvas id="wafer3d" aria-label="cerebras-chip-3d-visualization"></canvas>
+            <div id="tileTooltip" class="tile-tooltip" aria-live="polite"></div>
           </div>
         </article>
 
@@ -688,29 +748,20 @@
           </div>
 
           <div class="legend">
-            <div class="item"><span class="swatch" style="background:var(--good-soft)"></span>Healthy compute tile</div>
-            <div class="item"><span class="swatch" style="background:var(--repair)"></span>Repaired / remapped tile</div>
-            <div class="item"><span class="swatch" style="background:var(--bad)"></span>Defective tile</div>
-            <div class="item"><span class="swatch" style="background:var(--io)"></span>I/O edge</div>
-            <div class="item"><span class="swatch" style="background:var(--path)"></span>Active packet path</div>
             <div class="item"><span class="swatch" style="background:var(--panel);border:1px dashed var(--bad);"></span>Defect cluster outline</div>
+            <div class="item"><span class="swatch" style="background:var(--mesh);border:1px dashed var(--ink);"></span>Mesh link overlay</div>
             <div class="item"><span class="swatch" style="background:var(--bad)"></span>Bad fabric link</div>
           </div>
-
           <div class="notes hide-on-capture">
             <p>What this depicts</p>
             <ul>
-              <li>Each tile is a simplified compute/fabric region with local SRAM and packet/weight-like dataflow behavior.</li>
-              <li>Data moves only across healthy neighboring tiles and healthy inter-tile links.</li>
-              <li>Remap is based on small connected defect clusters with a locality + route-criticality scoring model.</li>
-              <li>Inter-tile links can fail and routes are remapped through alternate mesh paths when possible.</li>
-              <li>Small clustered defects can be repaired as a cluster, which is closer to practical spare-tile remap behavior.</li>
-              <li>Clustered defects may still fail if repair budget is low or components are too large for the model.</li>
-              <li><b>3D view:</b> drag to rotate, scroll to zoom; same active state and route are shown.</li>
+              <li>Each tile is a simplified compute/fabric region with local SRAM and packet-style dataflow behavior.</li>
+              <li>Modeled as one continuous wafer-scale die, with faults and link failures injected per control settings.</li>
+              <li>Data moves only across healthy neighboring tiles and healthy links; failed links force reroutes.</li>
+              <li>Remap uses local repair clusters + criticality-aware scoring, plus a spare tile budget.</li>
               <li>Accuracy note: this is a concept-level simulator, not a full power/timing/clock-domain model.</li>
-              <li>Real WSE systems also use additional redundancy features beyond this tile-level model.</li>
+              <li>Built for real-time interaction and systems-level understanding. Exact architecture details are in source links.</li>
             </ul>
-            <small>Built for real-time interaction and systems-level understanding. Exact architecture details are available in the source links.</small>
           </div>
 
           <div class="notes hide-on-capture">
@@ -719,6 +770,7 @@
               <li>Wafer-scale size: WSE-3 is reported as ~46,225 mm² vs a H100-like GPU at ~814 mm².</li>
               <li>Core size argument: WSE-3 core area is cited around ~0.05 mm² (about 100x smaller than an H100-style ~6.2 mm² SM core).</li>
               <li>Yield comparison framing (blog): one 46,225 mm² wafer-scale chip per 300mm wafer vs ~72 GPU dies for an 814 mm² 5nm-style chip in their walkthrough example.</li>
+              <li>Manufacturing geometry context: conventional wafers are typically diced into many reticle-sized dies; WSE uses field stitching and keeps one contiguous active wafer-scale array.</li>
               <li>Defect tolerance outcome: the model reflects small fault domains + local rerouting + limited spare capacity, then evaluates path completion under repeated randomized runs.</li>
               <li>WSI fabric behavior (IEEE Micro): shorter on-chip links are modeled as local inter-tile links; failed links can block mesh paths and force alternate local routing in this model.</li>
               <li>Cerebras WSE-3 reporting: ~93% usable silicon area and ~900,000 active cores (from the public WSE-3 discussion).</li>
@@ -823,6 +875,7 @@
       const captureModeToggle = document.getElementById("captureMode");
       const autoRotate3dToggle = document.getElementById("autoRotate3d");
       const resetViewBtn = document.getElementById("resetView");
+      const tileTooltip = document.getElementById("tileTooltip");
 
       const start = { r: Math.floor(rows / 2), c: 0 };
       const end = { r: Math.floor(rows / 2), c: cols - 1 };
@@ -1475,6 +1528,7 @@
             rect.setAttribute("rx", 5);
             rect.setAttribute("data-r", r);
             rect.setAttribute("data-c", c);
+            rect.setAttribute("data-state", state);
 
             if (state === "io") {
               rect.setAttribute("fill", "#b8852f");
@@ -1491,8 +1545,11 @@
             rect.setAttribute("stroke", "#e8d7b2");
             rect.setAttribute("stroke-width", 1);
             rect.setAttribute("class", `cell ${state}`);
+            rect.addEventListener("pointerenter", showTileTooltip);
+            rect.addEventListener("pointermove", showTileTooltip);
+            rect.addEventListener("pointerleave", hideTileTooltip);
             const title = document.createElementNS("http://www.w3.org/2000/svg", "title");
-            title.textContent = `(${r}, ${c}) ${state}`;
+            title.textContent = `Tile (${r}, ${c}) · state=${state} · route=${routePath.some((p) => p.r === r && p.c === c) ? "active" : "inactive"}`;
             rect.appendChild(title);
 
             tilesGroup.appendChild(rect);
@@ -1820,6 +1877,64 @@
         document.body.classList.toggle("capture-mode", enabled);
       }
 
+      function hideTileTooltip() {
+        if (tileTooltip) {
+          tileTooltip.style.display = "none";
+        }
+      }
+
+      function showTileTooltip(event) {
+        if (!tileTooltip || currentView !== "2d") return;
+
+        const el = event.currentTarget;
+        if (!el) return;
+
+        const r = Number(el.dataset.r);
+        const c = Number(el.dataset.c);
+        const state = el.dataset.state || tileState(r, c);
+        const isIOCell = isIO(r, c);
+
+        const routeSet = new Set();
+        for (let i = 0; i < routePath.length; i++) {
+          routeSet.add(key(routePath[i].r, routePath[i].c));
+        }
+        const inPath = routeSet.has(key(r, c));
+
+        const clusterText = isBadTileByState(state)
+          ? "in defect set"
+          : tileState(r, c) === "repair"
+            ? "remapped"
+            : isIOCell
+              ? "I/O boundary"
+              : "healthy";
+
+        const rightHealth = c + 1 < cols ? linkHealth(r, c, r, c + 1) : false;
+        const leftHealth = c - 1 >= 0 ? linkHealth(r, c, r, c - 1) : false;
+        const downHealth = r + 1 < rows ? linkHealth(r, c, r + 1, c) : false;
+        const upHealth = r - 1 >= 0 ? linkHealth(r, c, r - 1, c) : false;
+        const goodLinks = Number(rightHealth) + Number(leftHealth) + Number(downHealth) + Number(upHealth);
+
+        tileTooltip.innerHTML = `
+          <strong>Tile ${r},${c}</strong><br/>
+          State: ${state}<br/>
+          Route: ${inPath ? "active" : "inactive"}<br/>
+          Link health: ${goodLinks}/4<br/>
+          ${clusterText}
+        `;
+
+        const bounds = chipWrap.getBoundingClientRect();
+        tileTooltip.style.display = "block";
+        tileTooltip.style.left = `${Math.min(
+          bounds.width - 180,
+          Math.max(0, event.clientX - bounds.left + 10),
+        )}px`;
+        tileTooltip.style.top = `${Math.max(0, event.clientY - bounds.top - 28)}px`;
+      }
+
+      function isBadTileByState(state) {
+        return state === "bad";
+      }
+
       function resetThreeView() {
         threeTargetX = 0.62;
         threeTargetY = -0.84;
@@ -1832,6 +1947,7 @@
       }
 
       function clearPulse() {
+        hideTileTooltip();
         if (pulseTimer) {
           clearTimeout(pulseTimer);
           pulseTimer = null;
@@ -2025,6 +2141,9 @@
       }
 
       function setView(view) {
+        if (view !== "2d") {
+          hideTileTooltip();
+        }
         if (view === "3d" && !threeInited) {
           const ok = initThree();
           if (!ok) {

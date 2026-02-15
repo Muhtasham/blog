@@ -186,20 +186,25 @@ ul.task-list li input[type="checkbox"] {
 
 
 
+<section id="a-chip-simulating-itself" class="level2">
+<h2 class="anchored" data-anchor-id="a-chip-simulating-itself">A Chip Simulating Itself</h2>
+<p><a href="https://openai.com/index/introducing-gpt-5-3-codex-spark/">GPT-5.3-Codex-Spark</a> is a smaller version of Codex optimized for fast inference. Powered by the <strong>Cerebras Wafer-Scale Engine</strong>, it runs at over <strong>1,000 tokens/s</strong>—the same chip that runs OpenAI’s GPT OSS 120B at 3,000 tokens/s. I used it to build an interactive simulator of that very chip. The hardware helped explain itself—a recursive loop of silicon and AI.</p>
+<p>This isn’t just meta for fun. It’s a preview of how we’ll build technical tools: the hardware becomes an active participant in teaching its own architecture.</p>
+</section>
+<section id="why-wafer-scale" class="level2">
+<h2 class="anchored" data-anchor-id="why-wafer-scale">Why Wafer-Scale?</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/chip.png" class="img-fluid figure-img"></p>
 <figcaption>Four trillion transistors. 125 petaflops. One silicon wafer.</figcaption>
 </figure>
 </div>
-<section id="a-chip-simulating-itself" class="level2">
-<h2 class="anchored" data-anchor-id="a-chip-simulating-itself">A Chip Simulating Itself</h2>
-<p><a href="https://openai.com/index/introducing-gpt-5-3-codex-spark/">GPT-5.3-Codex-Spark</a> is a smaller version of Codex optimized for fast inference. Powered by the <strong>Cerebras Wafer-Scale Engine</strong>, it runs at over <strong>1,000 tokens/s</strong>—the same chip that runs OpenAI’s GPT OSS 120B at 3,000 tokens/s. I used it to build an interactive simulator of that very chip. The hardware helped explain itself—a recursive loop of silicon and AI.</p>
-<p>This isn’t just meta for fun. It’s a preview of how we’ll build technical tools: the hardware becomes an active participant in teaching its own architecture.</p>
+<p>Look closely at the Cerebras chip—you’ll notice a grid-and-holes pattern covering the entire surface. That’s because wafers this large are normally diced into dozens of separate chips. Cerebras instead etches one giant chip across the entire wafer.</p>
+<p>Why? <strong>On-chip memory.</strong> A wafer-scale design can pack <strong>44GB of SRAM</strong> directly into the chip. Standard GPUs have tens of megabytes. That difference matters: inference typically spends significant time streaming model weights from external memory into the GPU. With enough SRAM to fit the entire model, those transfers happen at SRAM speed instead—yielding a <strong>15x speedup</strong>.</p>
 </section>
 <section id="the-problem-900000-cores-guaranteed-defects" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem-900000-cores-guaranteed-defects">The Problem: 900,000 Cores, Guaranteed Defects</h2>
-<p>When you manufacture a chip the size of a dinner plate with ~900,000 cores, defects aren’t a matter of <em>if</em>—they’re <em>how many</em>. Traditional chips are small enough that a single defect ruins the whole die. Wafer-scale engines like Cerebras WSE flip that model: assume defects will happen, then route around them intelligently.</p>
+<p>When you manufacture ~900,000 cores on a dinner-plate-sized chip, defects aren’t a matter of <em>if</em>—they’re <em>how many</em>. The Cerebras approach: assume defects will happen, then route around them intelligently.</p>
 <p>But how do you explain defect-tolerant mesh routing to someone who’s never thought about chip yields?</p>
 <p>Being a <a href="https://www.cerebras.ai/fellows">Cerebras Fellow</a> and now <a href="https://developers.openai.com/codex/ambassadors/">Codex Ambassador</a>, so right after Codex-Spark launched, I wanted to build something immediately graspable—a single interactive page where you adjust defect rates, run remap logic, and watch packets reroute in real time.</p>
 <p>The tight iteration loop (prompt → verify → refine) made it possible to clarify both the explanation and the routing logic until everything clicked.</p>
