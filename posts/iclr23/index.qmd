@@ -1,6 +1,5 @@
 ---
 title: "Exploring the Latest Advancements in Transfer Learning: A Summary of ICLR'23 Transfer Learning-Related Papers"
-
 date: "2023-01-23"
 categories: [papers, iclr, transfer-learning]
 image: "painting.jpeg"

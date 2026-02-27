@@ -1,7 +1,6 @@
 ---
 title: "CodeClash: Training AI Agents for Long-Horizon Programming"
 description: "Expanding code post-training beyond unit tests to competitive, long-horizon programming tasks with CodeClash's new training arenas"
-
 date: "2026-01-07"
 image: "images/arenas.png"
 categories: [llm, agents, software-engineering]

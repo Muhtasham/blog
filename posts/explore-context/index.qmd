@@ -1,7 +1,6 @@
 ---
 title: "Exploring Ways to Extend Context Length in Transformers"
 image: "long.JPG"
-
 date: "2023-08-07"
 date-modified: "2023-09-19"
 categories: [llm, papers]

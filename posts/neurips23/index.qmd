@@ -1,6 +1,5 @@
 ---
 title: "NeurIPS 2023: Trends, Talks, and Technologies"
-
 date: "2023-12-17"
 toc: true
 image: "nola.jpg"

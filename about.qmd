@@ -5,16 +5,16 @@ about:
   links:
     - icon: github
       text: GitHub
-      href: https://github.com/muhtasham
+      href: https://dub.sh/gitb
     - icon: google
       text: Google Scholar
-      href: https://scholar.google.de/citations?user=Ce-Rb1sAAAAJ&hl=en
+      href: https://dub.sh/gsch
     - icon: git
       text: HuggingFace
-      href: https://huggingface.co/muhtasham
+      href: https://dub.sh/hfco
     - icon: twitter
       text: Twitter
-      href: https://twitter.com/muhtasham9
+      href: https://dub.sh/8ttNCHg
 ---
 
 I love to build. That's how I operate.

@@ -1,7 +1,6 @@
 ---
 title: "From Programmer to Harness Engineer"
 description: "Codex didn't make me a faster programmer. It changed what programming means."
-
 date: "2026-02-23"
 image: "images/thumbnail.svg"
 image-alt: "Hub-and-spoke diagram: a central engineer node connected by amber dashed lines to six purple agent nodes"

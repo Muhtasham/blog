@@ -1,6 +1,5 @@
 ---
 title: "The Future of AI is Modular: Insights from ModCon 2023"
-
 date: "2023-12-04"
 toc: true
 image: "mac.jpeg"

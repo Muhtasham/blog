@@ -1,6 +1,5 @@
 ---
 title: "A Philosophical Dive into Deep Learning: My Experience at the NYU Conference"
-
 date: "2023-03-28"
 categories: [conference]
 image: "banner.jpeg"
