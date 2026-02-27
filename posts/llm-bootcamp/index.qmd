@@ -1,6 +1,6 @@
 ---
-title: "🌉 A Deep Dive into the LLM Bootcamp Experience: Revolutionizing AI-Powered Applications"
-author: "muhtasham"
+title: "A Deep Dive into the LLM Bootcamp Experience: Revolutionizing AI-Powered Applications"
+
 date: "2023-04-26"
 image: "sf.jpg"
 categories: [llm, deep-learning]

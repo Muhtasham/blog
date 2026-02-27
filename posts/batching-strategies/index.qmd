@@ -1,7 +1,7 @@
 ---
-title: "🚀 LLM Inference Deep Dive: Metrics, Batching & GPU Optimization"
+title: "LLM Inference Deep Dive: Metrics, Batching & GPU Optimization"
 description: "Technical exploration of LLM inference metrics, batching strategies, and GPU optimization with TensorRT-LLM - from latency metrics to in-flight batching"
-author: "muhtasham"
+
 date: "2024-12-09"
 image: "images/thumbnail.jpg"
 categories: [llm, papers, performance]

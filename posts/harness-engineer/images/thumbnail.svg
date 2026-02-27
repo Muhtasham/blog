@@ -1,0 +1,54 @@
+<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="42%">
+      <stop offset="0%" stop-color="#78350f" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#0d1117" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="800" height="800" fill="#0d1117"/>
+  <rect width="800" height="800" fill="url(#glow)"/>
+
+  <!-- Connection lines -->
+  <g stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="7 5" opacity="0.42" fill="none">
+    <line x1="400" y1="332" x2="400" y2="214"/>
+    <line x1="449" y1="362" x2="542" y2="307"/>
+    <line x1="449" y1="422" x2="542" y2="477"/>
+    <line x1="400" y1="452" x2="400" y2="570"/>
+    <line x1="351" y1="422" x2="258" y2="477"/>
+    <line x1="351" y1="362" x2="258" y2="307"/>
+  </g>
+
+  <!-- Central node -->
+  <circle cx="400" cy="392" r="62" fill="#1a1f2e" stroke="#f59e0b" stroke-width="2.5"/>
+  <circle cx="400" cy="392" r="49" fill="none" stroke="#f59e0b" stroke-width="0.75" opacity="0.28"/>
+  <circle cx="400" cy="371" r="14" fill="#f59e0b"/>
+  <path d="M375 424 C375 405 388 396 400 396 C412 396 425 405 425 424 L425 432 L375 432 Z" fill="#f59e0b"/>
+  <text x="400" y="478" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#f59e0b" text-anchor="middle" letter-spacing="3" opacity="0.85">ENGINEER</text>
+
+  <!-- 6 agent nodes — hexagonal, center (400,392) radius 210 -->
+  <g fill="#161b22" stroke="#8b5cf6" stroke-width="1.75">
+    <circle cx="400" cy="182" r="34"/>
+    <circle cx="582" cy="287" r="34"/>
+    <circle cx="582" cy="497" r="34"/>
+    <circle cx="400" cy="602" r="34"/>
+    <circle cx="218" cy="497" r="34"/>
+    <circle cx="218" cy="287" r="34"/>
+  </g>
+  <g fill="#8b5cf6" opacity="0.8">
+    <circle cx="400" cy="182" r="11"/>
+    <circle cx="582" cy="287" r="11"/>
+    <circle cx="582" cy="497" r="11"/>
+    <circle cx="400" cy="602" r="11"/>
+    <circle cx="218" cy="497" r="11"/>
+    <circle cx="218" cy="287" r="11"/>
+  </g>
+  <g font-family="ui-monospace, monospace" font-size="11" fill="#4b5563" text-anchor="middle">
+    <text x="400" y="232">agent</text>
+    <text x="582" y="337">agent</text>
+    <text x="582" y="547">agent</text>
+    <text x="400" y="652">agent</text>
+    <text x="218" y="547">agent</text>
+    <text x="218" y="337">agent</text>
+  </g>
+</svg>

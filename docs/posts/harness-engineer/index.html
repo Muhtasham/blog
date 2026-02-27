@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2026-01-07">
-<meta name="description" content="Expanding code post-training beyond unit tests to competitive, long-horizon programming tasks with CodeClash’s new training arenas">
+<meta name="dcterms.date" content="2026-02-23">
+<meta name="description" content="Codex didn’t make me a faster programmer. It changed what programming means.">
 
-<title>CodeClash: Training AI Agents for Long-Horizon Programming – Koding Harness: notes on agent-first engineering</title>
+<title>From Programmer to Harness Engineer – Koding Harness: notes on agent-first engineering</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -95,13 +95,12 @@ document.addEventListener('DOMContentLoaded', function() {
 setTimeout(function() { document.documentElement.classList.add('ready'); }, 800);
 </script>
 <script>!function(key,origin){if(window.AR)return;window.AR={loaded:!0};var d=document,s=d.createElement("script");s.async=!0;s.src=origin+"/cdn/pixel.js";s.dataset.siteId=key;s.dataset.collectUrl=origin+"/collect";s.dataset.handshakeMessage="AcctRev pixel ready for SITE_3JHWW417.";var t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);}("SITE_3JHWW417","https://de-stealthy.fly.dev");</script>
-<noscript></noscript><meta name="twitter:title" content="CodeClash: Training AI Agents for Long-Horizon Programming – Koding Harness: notes on agent-first engineering">
-<meta name="twitter:description" content="Expanding code post-training beyond unit tests to competitive, long-horizon programming tasks with CodeClash’s new training arenas">
-<meta name="twitter:image" content="https://muhtasham.github.io/blog/posts/codeclash-training/images/arenas.png">
+<noscript></noscript><meta name="twitter:title" content="From Programmer to Harness Engineer – Koding Harness: notes on agent-first engineering">
+<meta name="twitter:description" content="Codex didn’t make me a faster programmer. It changed what programming means.">
+<meta name="twitter:image" content="https://muhtasham.github.io/blog/posts/harness-engineer/images/thumbnail.svg">
 <meta name="twitter:creator" content="muhtasham9">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image-height" content="1218">
-<meta name="twitter:image-width" content="1190">
+<meta name="twitter:image:alt" content="Hub-and-spoke diagram: a central engineer node connected by amber dashed lines to six purple agent nodes">
 </head><body class="nav-fixed quarto-light"><img src="https://de-stealthy.fly.dev/p.gif?s=SITE_3JHWW417&amp;e=page_view" width="1" height="1" alt="">
 
 
@@ -141,10 +140,10 @@ setTimeout(function() { document.documentElement.classList.add('ready'); }, 800)
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">CodeClash: Training AI Agents for Long-Horizon Programming</h1>
+      <h1 class="title">From Programmer to Harness Engineer</h1>
                   <div>
         <div class="description">
-          Expanding code post-training beyond unit tests to competitive, long-horizon programming tasks with CodeClash’s new training arenas
+          Codex didn’t make me a faster programmer. It changed what programming means.
         </div>
       </div>
                           <div class="quarto-categories">
@@ -162,7 +161,7 @@ setTimeout(function() { document.documentElement.classList.add('ready'); }, 800)
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">January 7, 2026</p>
+        <p class="date">February 23, 2026</p>
       </div>
     </div>
     
@@ -178,12 +177,10 @@ setTimeout(function() { document.documentElement.classList.add('ready'); }, 800)
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#from-task-completion-to-goal-pursuit" id="toc-from-task-completion-to-goal-pursuit" class="nav-link active" data-scroll-target="#from-task-completion-to-goal-pursuit">From Task Completion to Goal Pursuit</a>
-  <ul class="collapse">
-  <li><a href="#the-9-training-arenas" id="toc-the-9-training-arenas" class="nav-link" data-scroll-target="#the-9-training-arenas">The 9 Training Arenas</a></li>
-  </ul></li>
-  <li><a href="#why-competitive-code-training" id="toc-why-competitive-code-training" class="nav-link" data-scroll-target="#why-competitive-code-training">Why Competitive Code Training?</a></li>
-  <li><a href="#whats-next-open-questions-and-the-road-ahead" id="toc-whats-next-open-questions-and-the-road-ahead" class="nav-link" data-scroll-target="#whats-next-open-questions-and-the-road-ahead">What’s Next: Open Questions and the Road Ahead</a></li>
+  <li><a href="#the-simulation" id="toc-the-simulation" class="nav-link active" data-scroll-target="#the-simulation">The Simulation</a></li>
+  <li><a href="#software-dependencies" id="toc-software-dependencies" class="nav-link" data-scroll-target="#software-dependencies">Software Dependencies</a></li>
+  <li><a href="#documentation" id="toc-documentation" class="nav-link" data-scroll-target="#documentation">Documentation</a></li>
+  <li><a href="#the-new-skill" id="toc-the-new-skill" class="nav-link" data-scroll-target="#the-new-skill">The New Skill</a></li>
   </ul>
 </nav>
     </div>
@@ -194,134 +191,66 @@ setTimeout(function() { document.documentElement.classList.add('ready'); }, 800)
 
 
 
-<p><strong>Excited to share the release of CC:Train - CodeClash’s official training split!</strong></p>
-<p>Training only on narrowly defined tasks or GitHub issues doesn’t lead to true AI software engineers. Models need to be trained to pursue goals rather than carry out implementation-level tasks.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/arenas.png" class="img-fluid figure-img"></p>
-<figcaption>CodeClash’s 9 training arenas spanning Bridge, Chess, Figgie, Gomoku, Halite II/III, and MIT BattleCode 2023-2025</figcaption>
-</figure>
+<section id="the-simulation" class="level2">
+<h2 class="anchored" data-anchor-id="the-simulation">The Simulation</h2>
+<p>I’ve been trying to simulate what using Codex heavily for the next year would do to my perspectives on software engineering - as I transition from being a computer programmer to a harness engineer.</p>
+<p>There are many things that would change. But two have stuck with me in a way that feels structural, not superficial.</p>
+</section>
+<section id="software-dependencies" class="level2">
+<h2 class="anchored" data-anchor-id="software-dependencies">Software Dependencies</h2>
+<p>I think large open-source systems - Linux, MySQL, NumPy - will remain just as important. They encode decades of operational hardening, edge-case handling, and community trust that no session can replicate. That doesn’t change.</p>
+<p>But smaller software libraries feel different now.</p>
+<p>The classic tradeoff has always been: reimplement poorly, or depend externally. “Depend externally” won because reimplementation was costly - in time, in correctness, in maintenance. Pulling in a library made sense even if it came with baggage.</p>
+<p>That cost curve is shifting. When moderately scoped functionality can be generated, tested, and reasoned about within a harness session, internal ownership becomes genuinely cheaper. Not in the “not-invented-here” ego sense - in the surface-area-control sense.</p>
+<p>Consider what the past decade has actually looked like: supply chain vulnerabilities, malicious updates, subtle API breaks from maintainers who lost interest, packages abandoned mid-dependency graph. Every external library is a trust relationship with a stranger’s future priorities.</p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p>Folks made great headway at training on SWE-bench style tasks in 2025. <strong>In 2026, what if we expanded code post-training to long-horizon, competitive, head-to-head coding tasks?</strong></p>
-<ul>
-<li><strong>2025:</strong> Train on SWE-bench (single tasks)</li>
-<li><strong>2026:</strong> Train on CodeClash (long horizon, open-ended objectives)</li>
-</ul>
-<section id="from-task-completion-to-goal-pursuit" class="level2">
-<h2 class="anchored" data-anchor-id="from-task-completion-to-goal-pursuit">From Task Completion to Goal Pursuit</h2>
-<p>SWE-bench-style training teaches models to <strong>carry out implementation-level tasks</strong>, not to <strong>pursue goals</strong>. When you train a model to fix a specific bug or implement a narrowly-scoped feature, you’re teaching task completion. But real software engineering is goal-oriented - it’s about understanding high-level objectives, making strategic decisions, and iterating based on feedback to pursue better solutions.</p>
-<p>Today’s SWE agents rely on outcome-based RL with unit tests. But this breaks at long horizons: imagine coding PyTorch from scratch - how do you get dense feedback from hours-long rollouts that aren’t unit-test-verifiable? We need a new paradigm.</p>
-<p><strong>Enter CodeClash.</strong></p>
-<p>As an initial step, we’ve released <strong>CC:Train</strong> - CodeClash’s official training split of 9 new arenas.</p>
-<p><a href="https://codeclash.ai/">CodeClash</a> is a very long horizon SWE benchmark that requires agents to <strong>write code, observe logs from that code running against another agent’s code, rewrite their code, and then repeat that cycle</strong>.</p>
-<p>We now have a training set for it - looking forward to models getting even better on long horizon programming.</p>
-<section id="the-9-training-arenas" class="level3">
-<h3 class="anchored" data-anchor-id="the-9-training-arenas">The 9 Training Arenas</h3>
-<ul>
-<li><strong>Bridge</strong> - Imperfect information card game</li>
-<li><strong>Chess</strong> - Perfect information classical board game</li>
-<li><strong>Figgie</strong> - Multi-player trading and strategy game</li>
-<li><strong>Gomoku</strong> - Classic board game with multi-player support</li>
-<li><strong>Halite II</strong> - Multi-player space strategy competition</li>
-<li><strong>Halite III</strong> - Enhanced multi-player space combat</li>
-<li><strong>MIT BattleCode 2023</strong> - Head-to-head programming competition</li>
-<li><strong>MIT BattleCode 2024</strong> - Next generation BattleCode</li>
-<li><strong>MIT BattleCode 2025</strong> - Latest BattleCode iteration</li>
-</ul>
-<p>These arenas span diverse properties:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Property</th>
-<th>Examples</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Information</strong></td>
-<td>Perfect (Chess) vs.&nbsp;Imperfect (Bridge)</td>
-</tr>
-<tr class="even">
-<td><strong>Format</strong></td>
-<td>Classical (Gomoku) vs.&nbsp;Custom (BattleCode)</td>
-</tr>
-<tr class="odd">
-<td><strong>Players</strong></td>
-<td>Head-to-head (Chess) vs.&nbsp;Multi-player (Figgie)</td>
-</tr>
-</tbody>
-</table>
+<div class="callout-body-container">
+<p>I wonder if the emerging best practice will be to reduce dependencies and write our own where the scope is bounded - not out of pride, but out of hard-won supply chain caution and a cost curve that finally makes it practical.</p>
+</div>
+</div>
+</div>
+<p>This isn’t a rule. It’s a recalibration. When implementation cost drops, architectural defaults change.</p>
 </section>
+<section id="documentation" class="level2">
+<h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
+<p>When I built products before, the “specification” was split: design intent in Figma, decisions in Slack, scope in Linear, truth in code. And the vast majority of actual behavior - the long tail of functionality - was an emergent property of the code I wrote. If you wanted to know why something worked a certain way, you read the implementation.</p>
+<p>That model breaks with agent-produced code.</p>
+<p>The conundrum is this: in a Codex session, it’s not clear which parts of the code were <em>prompted</em> (explicitly specified) and which parts were <em>vibed</em> (implicitly inferred). Some behavior was directly asked for. Some emerged from the iteration arc. Some was a reasonable guess the model made and I accepted without thinking.</p>
+<p>Over time, in a large system, that ambiguity compounds. The harness will “forget” past instructions. And replaying prompts isn’t the answer - a good chunk of interactions in any real session are interactive and effectively transient. You can’t reconstruct the reasoning from the transcript.</p>
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>My intuition: documentation will be as important an output of a Codex session as the code itself. Not after the fact - as a co-equal artifact, written during the session, capturing the substantive product decisions made along the way.</p>
+</div>
+</div>
+</div>
+<p>And those docs need to live in the repo - versioned with the code, available as context for future sessions. Not in Notion. Not in Slack. In the repository, adjacent to the thing they explain, discoverable by the agent that will eventually work on it next.</p>
+<p>This maps directly to what OpenAI’s <a href="https://openai.com/index/harness-engineering-leveraging-codex-in-an-agent-first-world/">harness engineering post</a> describes: a short <code>AGENTS.md</code> as a table of contents, a structured <code>docs/</code> directory as the system of record, and the hard-won lesson that a monolithic instruction file rots instantly. The framing that resonated most:</p>
+<blockquote class="blockquote">
+<p><em>From the agent’s point of view, anything it can’t access in-context while running effectively doesn’t exist.</em></p>
+</blockquote>
+<p>That’s the reframe. Documentation isn’t commentary for future humans. It’s memory for future agents.</p>
 </section>
-<section id="why-competitive-code-training" class="level2">
-<h2 class="anchored" data-anchor-id="why-competitive-code-training">Why Competitive Code Training?</h2>
-<p>The key insight is that <strong>competition trains goal-oriented development, not task completion</strong>.</p>
-<p>CodeClash doesn’t give agents a specific bug to fix or a narrow feature to implement. Instead, it gives them a goal: <strong>build a bot that wins</strong>. The agent must:</p>
+<section id="the-new-skill" class="level2">
+<h2 class="anchored" data-anchor-id="the-new-skill">The New Skill</h2>
+<p>The harness engineer doesn’t compete with Codex on output speed. That competition is already over.</p>
+<p>What they do instead:</p>
 <ul>
-<li>Understand the game mechanics and strategic landscape</li>
-<li>Design an architecture that balances multiple objectives</li>
-<li>Write code, observe how it performs in competition, and iterate</li>
-<li>Make judgment calls about what “better” means (faster execution? smarter strategy? more robust error handling?)</li>
-<li>Pursue continuous improvement over extended sessions</li>
+<li>Define invariants that must survive across sessions</li>
+<li>Curate context so the next session starts with the right map</li>
+<li>Design approval boundaries so automation stays governable</li>
+<li>Encode institutional memory in durable, repo-local form</li>
 </ul>
-<p>This is fundamentally different from SWE-bench-style training:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 50%">
-<col style="width: 50%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>SWE-bench Style</th>
-<th>CodeClash Style</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>“Fix this specific bug”</td>
-<td>“Build the best bot you can”</td>
-</tr>
-<tr class="even">
-<td>Task completion</td>
-<td>Goal pursuit</td>
-</tr>
-<tr class="odd">
-<td>Binary pass/fail from tests</td>
-<td>Continuous improvement from competition</td>
-</tr>
-<tr class="even">
-<td>Implementation-level</td>
-<td>Strategic-level</td>
-</tr>
-<tr class="odd">
-<td>Narrow scope</td>
-<td>Open-ended optimization</td>
-</tr>
-</tbody>
-</table>
-<p>Competition provides dense reward signals for goal-oriented development:</p>
-<ul>
-<li>Win/loss outcomes give clear feedback on strategic decisions</li>
-<li>Performance metrics (reaction time, strategy efficiency) provide gradients for improvement</li>
-<li>Iterative refinement is naturally incentivized - there’s always a better bot to build</li>
-<li>Bad development practices (code slop, redundancy, poor organization) hurt competitive performance</li>
-<li>Agents learn to balance competing objectives rather than satisfy a fixed specification</li>
-</ul>
-<p>Instead of asking “does this code pass tests?”, we ask “can this code outcompete alternatives?” - which is much closer to how human engineers think about software quality.</p>
-</section>
-<section id="whats-next-open-questions-and-the-road-ahead" class="level2">
-<h2 class="anchored" data-anchor-id="whats-next-open-questions-and-the-road-ahead">What’s Next: Open Questions and the Road Ahead</h2>
-<p>The release of CC:Train is just the beginning. We’ve spent 2025 perfecting training on SWE-bench-style single tasks. In 2026, it’s time to expand to truly long-horizon, goal-oriented development.</p>
-<p>We’re curious about several research directions:</p>
-<p><strong>Can self-play RL work?</strong> Rather than optimizing for test passage, what if we optimize for defeating other agents through competitive self-play?</p>
-<p><strong>Does it transfer?</strong> Does training on Halite II/III improve performance on Halite I? What about completely different games like Gomoku? Most importantly: does training on open-ended code tasks improve performance on traditional benchmarks like SWE-bench, HumanEval, or MBPP?</p>
-<p><strong>Does competition improve code quality?</strong> Competition naturally punishes bad practices - single-use scripts, redundant code, poor organization, and “code slop” that accumulates over long sessions. Can competitive training mitigate these issues?</p>
-<p>True AI software engineers won’t come from training on narrower and narrower GitHub issues. They’ll come from training on open-ended goals that require strategic thinking, iterating based on emergent feedback, balancing competing objectives, and developing intuition for software quality through competitive episodes.</p>
-<hr>
-<p>CC:Train is available now at <a href="https://codeclash.ai/">codeclash.ai</a>. Check out the <a href="https://codeclash.ai/insights/20251231_train_split/">detailed announcement</a> for full arena specifications, baseline results, and training guidelines.</p>
-<p>We’re excited to see what the community builds with these arenas. If you’re working on code post-training or long-horizon agent development, we’d love to hear from you on our <a href="https://codeclash.ai/">Slack</a> or <a href="https://github.com/codeclash-ai">GitHub</a>.</p>
-<hr>
-<p><em>This work is a collaboration between the CodeClash team: Muhtasham Oblokulov, Aryan Siddiqui, and John Yang.</em></p>
+<p>The interesting work shifts from <em>producing</em> lines of code to designing systems that can safely absorb machine-generated code over time - sessions, months, years - without drifting from intent.</p>
+<p>That’s not prompt engineering. That’s infrastructure design.</p>
+<p>And it’s qualitatively different from what programming has meant for the past fifty years.</p>
 
 
 </section>

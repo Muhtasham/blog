@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="muhtasham">
 <meta name="dcterms.date" content="2023-05-22">
 
-<title>💫 StarCoder: A Revolutionary Code Generation Model – Machine Learners Guide to Real World</title>
+<title>StarCoder: A Revolutionary Code Generation Model – Koding Harness: notes on agent-first engineering</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,6 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../favicon.svg" rel="icon" type="image/svg+xml">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -77,7 +77,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-81715ac95647305e48b59454a2bf3ba4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -105,8 +105,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<style>
+  html:not(.ready) { opacity: 0; }
+  html.ready { opacity: 1; }
+  :root {
+    --kh-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    --kh-accent: #059669;
+    --kh-border: #e5e7eb;
+  }
+  body { background: #fff; font-family: var(--kh-mono); }
+  .navbar { background: #fff !important; border-bottom: 1px solid var(--kh-border) !important; box-shadow: none !important; }
+  .navbar-brand, .nav-link { font-family: var(--kh-mono); }
+  h1, h2, h3, h4 { font-family: var(--kh-mono); }
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      document.documentElement.classList.add('ready');
+    });
+  });
+});
+setTimeout(function() { document.documentElement.classList.add('ready'); }, 800);
+</script>
 <script>!function(key,origin){if(window.AR)return;window.AR={loaded:!0};var d=document,s=d.createElement("script");s.async=!0;s.src=origin+"/cdn/pixel.js";s.dataset.siteId=key;s.dataset.collectUrl=origin+"/collect";s.dataset.handshakeMessage="AcctRev pixel ready for SITE_3JHWW417.";var t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);}("SITE_3JHWW417","https://de-stealthy.fly.dev");</script>
-<noscript></noscript><meta name="twitter:title" content="💫 StarCoder: A Revolutionary Code Generation Model – Machine Learners Guide to Real World">
+<noscript></noscript><meta name="twitter:title" content="StarCoder: A Revolutionary Code Generation Model – Koding Harness: notes on agent-first engineering">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://muhtasham.github.io/blog/posts/starcoder/sf-stars.jpg">
 <meta name="twitter:creator" content="muhtasham9">
@@ -114,7 +137,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </head><body class="nav-fixed quarto-light"><img src="https://de-stealthy.fly.dev/p.gif?s=SITE_3JHWW417&amp;e=page_view" width="1" height="1" alt="">
 
 
-<link rel="stylesheet" href="../../styles.css">
 
 
 
@@ -127,7 +149,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
     </a>
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Machine Learners Guide to Real World</span>
+    <span class="navbar-title">Koding Harness: notes on agent-first engineering</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -140,26 +162,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://huggingface.co/muhtasham"> <i class="bi bi-gpu-card" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/muhtasham"> <i class="bi bi-cpu" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/muhtasham9"> <i class="bi bi-hash" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/muhtasham/"> <i class="bi bi-file-earmark-person" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -171,7 +173,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">💫 StarCoder: A Revolutionary Code Generation Model</h1>
+      <h1 class="title">StarCoder: A Revolutionary Code Generation Model</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">llm</div>
                 <div class="quarto-category">papers</div>
@@ -182,12 +184,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
   <div class="quarto-title-meta">
 
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>muhtasham </p>
-            </div>
-    </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>

@@ -1,6 +1,6 @@
 ---
-title: "👾 Watermark Security in Language Models"
-author: "muhtasham"
+title: "Watermark Security in Language Models"
+
 date: "2023-11-20"
 date-modified: "2023-12-04"
 categories: [llm, papers, security, tokenizer]

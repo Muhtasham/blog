@@ -1,6 +1,6 @@
 ---
-title: "🤗 Herzlich Wilkommen!"
-author: "muhtasham"
+title: "Herzlich Wilkommen!"
+
 date: "2022-12-25"
 categories: [news]
 image: "IMG_4667.jpg"

@@ -1,0 +1,74 @@
+---
+title: "From Programmer to Harness Engineer"
+description: "Codex didn't make me a faster programmer. It changed what programming means."
+
+date: "2026-02-23"
+image: "images/thumbnail.svg"
+image-alt: "Hub-and-spoke diagram: a central engineer node connected by amber dashed lines to six purple agent nodes"
+categories: [llm, agents, software-engineering]
+title-block-banner: true
+toc: true
+---
+
+## The Simulation
+
+I've been trying to simulate what using Codex heavily for the next year would do to my perspectives on software engineering - as I transition from being a computer programmer to a harness engineer.
+
+There are many things that would change. But two have stuck with me in a way that feels structural, not superficial.
+
+## Software Dependencies
+
+I think large open-source systems - Linux, MySQL, NumPy - will remain just as important. They encode decades of operational hardening, edge-case handling, and community trust that no session can replicate. That doesn't change.
+
+But smaller software libraries feel different now.
+
+The classic tradeoff has always been: reimplement poorly, or depend externally. "Depend externally" won because reimplementation was costly - in time, in correctness, in maintenance. Pulling in a library made sense even if it came with baggage.
+
+That cost curve is shifting. When moderately scoped functionality can be generated, tested, and reasoned about within a harness session, internal ownership becomes genuinely cheaper. Not in the "not-invented-here" ego sense - in the surface-area-control sense.
+
+Consider what the past decade has actually looked like: supply chain vulnerabilities, malicious updates, subtle API breaks from maintainers who lost interest, packages abandoned mid-dependency graph. Every external library is a trust relationship with a stranger's future priorities.
+
+::: {.callout-note appearance="simple"}
+I wonder if the emerging best practice will be to reduce dependencies and write our own where the scope is bounded - not out of pride, but out of hard-won supply chain caution and a cost curve that finally makes it practical.
+:::
+
+This isn't a rule. It's a recalibration. When implementation cost drops, architectural defaults change.
+
+## Documentation
+
+When I built products before, the "specification" was split: design intent in Figma, decisions in Slack, scope in Linear, truth in code. And the vast majority of actual behavior - the long tail of functionality - was an emergent property of the code I wrote. If you wanted to know why something worked a certain way, you read the implementation.
+
+That model breaks with agent-produced code.
+
+The conundrum is this: in a Codex session, it's not clear which parts of the code were *prompted* (explicitly specified) and which parts were *vibed* (implicitly inferred). Some behavior was directly asked for. Some emerged from the iteration arc. Some was a reasonable guess the model made and I accepted without thinking.
+
+Over time, in a large system, that ambiguity compounds. The harness will "forget" past instructions. And replaying prompts isn't the answer - a good chunk of interactions in any real session are interactive and effectively transient. You can't reconstruct the reasoning from the transcript.
+
+::: {.callout-tip appearance="simple"}
+My intuition: documentation will be as important an output of a Codex session as the code itself. Not after the fact - as a co-equal artifact, written during the session, capturing the substantive product decisions made along the way.
+:::
+
+And those docs need to live in the repo - versioned with the code, available as context for future sessions. Not in Notion. Not in Slack. In the repository, adjacent to the thing they explain, discoverable by the agent that will eventually work on it next.
+
+This maps directly to what OpenAI's [harness engineering post](https://openai.com/index/harness-engineering-leveraging-codex-in-an-agent-first-world/) describes: a short `AGENTS.md` as a table of contents, a structured `docs/` directory as the system of record, and the hard-won lesson that a monolithic instruction file rots instantly. The framing that resonated most:
+
+> *From the agent's point of view, anything it can't access in-context while running effectively doesn't exist.*
+
+That's the reframe. Documentation isn't commentary for future humans. It's memory for future agents.
+
+## The New Skill
+
+The harness engineer doesn't compete with Codex on output speed. That competition is already over.
+
+What they do instead:
+
+- Define invariants that must survive across sessions
+- Curate context so the next session starts with the right map
+- Design approval boundaries so automation stays governable
+- Encode institutional memory in durable, repo-local form
+
+The interesting work shifts from *producing* lines of code to designing systems that can safely absorb machine-generated code over time - sessions, months, years - without drifting from intent.
+
+That's not prompt engineering. That's infrastructure design.
+
+And it's qualitatively different from what programming has meant for the past fifty years.

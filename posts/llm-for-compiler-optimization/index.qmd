@@ -1,6 +1,6 @@
 ---
-title: "🖥️​ LLMs for Compiler Optimization: A Deep Dive"
-author: "muhtasham"
+title: "LLMs for Compiler Optimization: A Deep Dive"
+
 date: "2023-09-19"
 image: "chm-min.png"
 categories: [llm, papers]

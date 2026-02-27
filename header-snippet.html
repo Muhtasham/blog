@@ -1,2 +1,25 @@
+<style>
+  html:not(.ready) { opacity: 0; }
+  html.ready { opacity: 1; }
+  :root {
+    --kh-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    --kh-accent: #059669;
+    --kh-border: #e5e7eb;
+  }
+  body { background: #fff; font-family: var(--kh-mono); }
+  .navbar { background: #fff !important; border-bottom: 1px solid var(--kh-border) !important; box-shadow: none !important; }
+  .navbar-brand, .nav-link { font-family: var(--kh-mono); }
+  h1, h2, h3, h4 { font-family: var(--kh-mono); }
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      document.documentElement.classList.add('ready');
+    });
+  });
+});
+setTimeout(function() { document.documentElement.classList.add('ready'); }, 800);
+</script>
 <script>!function(key,origin){if(window.AR)return;window.AR={loaded:!0};var d=document,s=d.createElement("script");s.async=!0;s.src=origin+"/cdn/pixel.js";s.dataset.siteId=key;s.dataset.collectUrl=origin+"/collect";s.dataset.handshakeMessage="AcctRev pixel ready for SITE_3JHWW417.";var t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);}("SITE_3JHWW417","https://de-stealthy.fly.dev");</script>
 <noscript><img src="https://de-stealthy.fly.dev/p.gif?s=SITE_3JHWW417&e=page_view" width="1" height="1" alt="" /></noscript>

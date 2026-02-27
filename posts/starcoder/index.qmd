@@ -1,6 +1,6 @@
 ---
-title: "💫 StarCoder: A Revolutionary Code Generation Model"
-author: "muhtasham"
+title: "StarCoder: A Revolutionary Code Generation Model"
+
 date: "2023-05-22"
 format:
   html:

@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="muhtasham">
-<meta name="dcterms.date" content="2023-04-26">
+<meta name="dcterms.date" content="2026-02-19">
+<meta name="description" content="Thread, turn, item: the three primitives that turn an AI assistant into engineering infrastructure.">
 
-<title>🌁 Mastering the Art of Building a Defensible Business: Insights from a Discussion Panel – Machine Learners Guide to Real World</title>
+<title>Designing an AI-Native SDLC with Codex App Server – Koding Harness: notes on agent-first engineering</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -32,6 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../favicon.svg" rel="icon" type="image/svg+xml">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -42,7 +43,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-81715ac95647305e48b59454a2bf3ba4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,16 +71,39 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>
+  html:not(.ready) { opacity: 0; }
+  html.ready { opacity: 1; }
+  :root {
+    --kh-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    --kh-accent: #059669;
+    --kh-border: #e5e7eb;
+  }
+  body { background: #fff; font-family: var(--kh-mono); }
+  .navbar { background: #fff !important; border-bottom: 1px solid var(--kh-border) !important; box-shadow: none !important; }
+  .navbar-brand, .nav-link { font-family: var(--kh-mono); }
+  h1, h2, h3, h4 { font-family: var(--kh-mono); }
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      document.documentElement.classList.add('ready');
+    });
+  });
+});
+setTimeout(function() { document.documentElement.classList.add('ready'); }, 800);
+</script>
 <script>!function(key,origin){if(window.AR)return;window.AR={loaded:!0};var d=document,s=d.createElement("script");s.async=!0;s.src=origin+"/cdn/pixel.js";s.dataset.siteId=key;s.dataset.collectUrl=origin+"/collect";s.dataset.handshakeMessage="AcctRev pixel ready for SITE_3JHWW417.";var t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);}("SITE_3JHWW417","https://de-stealthy.fly.dev");</script>
-<noscript></noscript><meta name="twitter:title" content="🌁 Mastering the Art of Building a Defensible Business: Insights from a Discussion Panel – Machine Learners Guide to Real World">
-<meta name="twitter:description" content="">
-<meta name="twitter:image" content="https://muhtasham.github.io/blog/posts/vc-fireside-chat/point-vista.jpg">
+<noscript></noscript><meta name="twitter:title" content="Designing an AI-Native SDLC with Codex App Server – Koding Harness: notes on agent-first engineering">
+<meta name="twitter:description" content="Thread, turn, item: the three primitives that turn an AI assistant into engineering infrastructure.">
+<meta name="twitter:image" content="https://muhtasham.github.io/blog/posts/codex-app-server/images/thumbnail.svg">
 <meta name="twitter:creator" content="muhtasham9">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image:alt" content="Pipeline diagram showing THREAD → TURN → ITEM primitives with event stream and approval gate">
 </head><body class="nav-fixed quarto-light"><img src="https://de-stealthy.fly.dev/p.gif?s=SITE_3JHWW417&amp;e=page_view" width="1" height="1" alt="">
 
 
-<link rel="stylesheet" href="../../styles.css">
 
 
 
@@ -92,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
     </a>
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Machine Learners Guide to Real World</span>
+    <span class="navbar-title">Koding Harness: notes on agent-first engineering</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -105,26 +129,6 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://huggingface.co/muhtasham"> <i class="bi bi-gpu-card" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/muhtasham"> <i class="bi bi-cpu" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/muhtasham9"> <i class="bi bi-hash" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/muhtasham/"> <i class="bi bi-file-earmark-person" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -136,9 +140,16 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">🌁 Mastering the Art of Building a Defensible Business: Insights from a Discussion Panel</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">venture-captial</div>
+      <h1 class="title">Designing an AI-Native SDLC with Codex App Server</h1>
+                  <div>
+        <div class="description">
+          Thread, turn, item: the three primitives that turn an AI assistant into engineering infrastructure.
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">llm</div>
+                <div class="quarto-category">agents</div>
+                <div class="quarto-category">software-engineering</div>
               </div>
                   </div>
   </div>
@@ -146,17 +157,11 @@ ul.task-list li input[type="checkbox"] {
   
   <div class="quarto-title-meta">
 
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>muhtasham </p>
-            </div>
-    </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">April 26, 2023</p>
+        <p class="date">February 19, 2026</p>
       </div>
     </div>
     
@@ -172,18 +177,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction:</a></li>
-  <li><a href="#asking-the-right-questions-to-vcs" id="toc-asking-the-right-questions-to-vcs" class="nav-link" data-scroll-target="#asking-the-right-questions-to-vcs">Asking the Right Questions to VCs:</a></li>
-  <li><a href="#challenging-the-status-quo" id="toc-challenging-the-status-quo" class="nav-link" data-scroll-target="#challenging-the-status-quo">Challenging the Status Quo:</a></li>
-  <li><a href="#saving-money-on-gpus" id="toc-saving-money-on-gpus" class="nav-link" data-scroll-target="#saving-money-on-gpus">Saving Money on GPUs:</a></li>
-  <li><a href="#embracing-change-and-adaptation" id="toc-embracing-change-and-adaptation" class="nav-link" data-scroll-target="#embracing-change-and-adaptation">Embracing Change and Adaptation:</a></li>
-  <li><a href="#creating-value-for-users" id="toc-creating-value-for-users" class="nav-link" data-scroll-target="#creating-value-for-users">Creating Value for Users:</a></li>
-  <li><a href="#vcs-love-for-tools-and-platforms" id="toc-vcs-love-for-tools-and-platforms" class="nav-link" data-scroll-target="#vcs-love-for-tools-and-platforms">VCs’ Love for Tools and Platforms:</a></li>
-  <li><a href="#llmops-and-multimodal-markets" id="toc-llmops-and-multimodal-markets" class="nav-link" data-scroll-target="#llmops-and-multimodal-markets">LLMOps and Multimodal Markets:</a></li>
-  <li><a href="#bringing-products-and-users-to-the-table" id="toc-bringing-products-and-users-to-the-table" class="nav-link" data-scroll-target="#bringing-products-and-users-to-the-table">Bringing Products and Users to the Table:</a></li>
-  <li><a href="#turnover-technology" id="toc-turnover-technology" class="nav-link" data-scroll-target="#turnover-technology">Turnover Technology:</a></li>
-  <li><a href="#the-impermanence-of-ai-models" id="toc-the-impermanence-of-ai-models" class="nav-link" data-scroll-target="#the-impermanence-of-ai-models">The Impermanence of AI Models:</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion:</a></li>
+  <li><a href="#the-ui-is-not-the-point" id="toc-the-ui-is-not-the-point" class="nav-link active" data-scroll-target="#the-ui-is-not-the-point">The UI Is Not the Point</a></li>
+  <li><a href="#the-mental-model-sdlc-as-an-evented-agent-workflow" id="toc-the-mental-model-sdlc-as-an-evented-agent-workflow" class="nav-link" data-scroll-target="#the-mental-model-sdlc-as-an-evented-agent-workflow">The Mental Model: SDLC as an Evented Agent Workflow</a></li>
+  <li><a href="#why-app-server-is-the-integration-surface-you-actually-want" id="toc-why-app-server-is-the-integration-surface-you-actually-want" class="nav-link" data-scroll-target="#why-app-server-is-the-integration-surface-you-actually-want">Why App Server Is the Integration Surface You Actually Want</a></li>
+  <li><a href="#architecture-patterns-that-map-to-real-customers" id="toc-architecture-patterns-that-map-to-real-customers" class="nav-link" data-scroll-target="#architecture-patterns-that-map-to-real-customers">Architecture Patterns That Map to Real Customers</a></li>
+  <li><a href="#safety-and-control-approvals-arent-ux---theyre-your-control-plane" id="toc-safety-and-control-approvals-arent-ux---theyre-your-control-plane" class="nav-link" data-scroll-target="#safety-and-control-approvals-arent-ux---theyre-your-control-plane">Safety and Control: Approvals Aren’t UX - They’re Your Control Plane</a></li>
+  <li><a href="#agents.md-table-of-contents-not-encyclopedia" id="toc-agents.md-table-of-contents-not-encyclopedia" class="nav-link" data-scroll-target="#agents.md-table-of-contents-not-encyclopedia">AGENTS.md: Table of Contents, Not Encyclopedia</a></li>
+  <li><a href="#a-rollout-playbook-that-avoids-the-cool-demo-no-adoption-trap" id="toc-a-rollout-playbook-that-avoids-the-cool-demo-no-adoption-trap" class="nav-link" data-scroll-target="#a-rollout-playbook-that-avoids-the-cool-demo-no-adoption-trap">A Rollout Playbook That Avoids the “Cool Demo, No Adoption” Trap</a></li>
+  <li><a href="#what-good-looks-like" id="toc-what-good-looks-like" class="nav-link" data-scroll-target="#what-good-looks-like">What “Good” Looks Like</a></li>
   </ul>
 </nav>
     </div>
@@ -194,60 +195,110 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction:</h2>
-<p>The landscape of artificial intelligence (AI) startups is rapidly evolving, and so are the strategies for building a successful and defensible business. A recent discussion panel featured Sarah Catanzaro (Amplify Partners) and Matt Bornstein (a16z), who shared their insights on how to navigate the challenging world of AI startups. The panel was moderated by Josh Tobin (gantry), during LLM bootcamp 2023 in San Francisco.</p>
+<section id="the-ui-is-not-the-point" class="level2">
+<h2 class="anchored" data-anchor-id="the-ui-is-not-the-point">The UI Is Not the Point</h2>
+<p>Codex shows up in many surfaces - web, CLI, IDE, desktop. But the interesting part isn’t the UI. It’s the harness: the agent loop, tooling, and persistence that makes Codex usable as a dependable engineering partner.</p>
+<p>OpenAI’s Codex App Server is the bridge that exposes that harness to clients through a bidirectional, UI-friendly event stream.</p>
+<p>This post is a practical guide to designing and rolling out AI-assisted developer workflows that are production-minded: observable, permissioned, and adoptable by real teams. It draws on OpenAI’s own <a href="https://openai.com/index/harness-engineering-leveraging-codex-in-an-agent-first-world/">harness engineering post</a> - a detailed account of building a million-line product with three engineers and zero manually-written code.</p>
 </section>
-<section id="asking-the-right-questions-to-vcs" class="level2">
-<h2 class="anchored" data-anchor-id="asking-the-right-questions-to-vcs">Asking the Right Questions to VCs:</h2>
-<p>The panelists emphasized the importance of asking the right questions to venture capitalists (VCs). Understanding their perspectives, investment strategies, and areas of interest can provide valuable insights for entrepreneurs seeking funding and support.</p>
+<section id="the-mental-model-sdlc-as-an-evented-agent-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="the-mental-model-sdlc-as-an-evented-agent-workflow">The Mental Model: SDLC as an Evented Agent Workflow</h2>
+<p>Most orgs try to “add AI” at the edges - autocomplete, ad-hoc chat. That can help, but it doesn’t reliably change throughput or quality because it doesn’t integrate with the actual system of work: planning, code review, CI, deployment, incident response.</p>
+<p>App Server’s core contribution is a stable set of conversation primitives that let you treat agent work as durable, auditable, and renderable:</p>
+<ul>
+<li><strong>Thread</strong>: durable container for a session; can be resumed, forked, or archived.</li>
+<li><strong>Turn</strong>: one unit of agent work initiated by user input.</li>
+<li><strong>Item</strong>: atomic unit of input/output with a lifecycle (<code>started → optional deltas → completed</code>).</li>
+</ul>
+<p>Once you internalize thread/turn/item, you stop building “a chat box” and start building an agent workflow that plugs into the SDLC.</p>
+<p>OpenAI’s internal team discovered the same pattern from the other direction: starting with an empty git repository in August 2025, they shipped ~1,500 pull requests over five months - averaging 3.5 PRs per engineer per day, throughput that compounded as the team scaled.</p>
 </section>
-<section id="challenging-the-status-quo" class="level2">
-<h2 class="anchored" data-anchor-id="challenging-the-status-quo">Challenging the Status Quo:</h2>
-<p>Entrepreneurs should not hesitate to test their ideas, even if they contradict the opinions of VCs. Trusting your instincts and validating your hypothesis in the market is crucial for success.</p>
-<blockquote class="twitter-tweet blockquote">
-<p lang="en" dir="ltr">
-Whenever a VC gives you advice, just remember that Apple flouts all the “rules” and is bigger than the entire VC industry.<br><br>1. “Hardware is Hard”<br>2. “Consumer HW is even harder”<br>3. “Start with a problem, not with a cool technology”<br>4. Can’t differentiate on quality
-</p>
-— Tapa Ghosh (<span class="citation" data-cites="semiDL">@semiDL</span>) <a href="https://twitter.com/semiDL/status/1652478027274780672?ref_src=twsrc%5Etfw">April 30, 2023</a>
-</blockquote>
-<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<section id="why-app-server-is-the-integration-surface-you-actually-want" class="level2">
+<h2 class="anchored" data-anchor-id="why-app-server-is-the-integration-surface-you-actually-want">Why App Server Is the Integration Surface You Actually Want</h2>
+<p>For deployment engineering, you’re not just calling a model. You’re integrating a harness with:</p>
+<ul>
+<li><strong>Session semantics</strong> - persistence, reconnects, forks</li>
+<li><strong>Streaming progress</strong> - users see what’s happening, not just the final answer</li>
+<li><strong>Tool execution hooks</strong> - shell and file actions</li>
+<li><strong>Approval gates</strong> - policy and safety control</li>
+</ul>
+<p>The early lesson from OpenAI’s team: progress was slower than expected at first, <em>not because Codex was incapable</em>, but because the environment was underspecified. The agent lacked the tools, abstractions, and structure to make progress toward high-level goals. App Server gives you the surface to fix that.</p>
 </section>
-<section id="saving-money-on-gpus" class="level2">
-<h2 class="anchored" data-anchor-id="saving-money-on-gpus">Saving Money on GPUs:</h2>
-<p>The panelists advised against investing heavily in GPUs before achieving product-market fit. It is essential to validate your business model and product before committing significant resources to AI hardware.</p>
+<section id="architecture-patterns-that-map-to-real-customers" class="level2">
+<h2 class="anchored" data-anchor-id="architecture-patterns-that-map-to-real-customers">Architecture Patterns That Map to Real Customers</h2>
+<p>App Server supports three client topologies that mirror how teams ship software:</p>
+<p><strong>Local IDE / Desktop</strong> Run App Server as a long-lived child process; keep a bidirectional channel open; pin server versions for reproducibility.</p>
+<p><strong>Hosted / Web Runtime</strong> Keep state server-side so long-running tasks survive tab closes and network drops; stream events to UI.</p>
+<p><strong>CLI / Automation</strong> Use the same semantics without requiring an IDE. Consistency across surfaces matters more than surface preference.</p>
+<p>The choice is less about taste and more about where your SDLC state lives - developer laptop vs.&nbsp;controlled runtime - and how you want governance to work.</p>
 </section>
-<section id="embracing-change-and-adaptation" class="level2">
-<h2 class="anchored" data-anchor-id="embracing-change-and-adaptation">Embracing Change and Adaptation:</h2>
-<p>Founders should be prepared to pivot and adapt to the ever-changing AI landscape. Regular reevaluation of business strategies and product offerings is key to staying relevant and competitive.</p>
+<section id="safety-and-control-approvals-arent-ux---theyre-your-control-plane" class="level2">
+<h2 class="anchored" data-anchor-id="safety-and-control-approvals-arent-ux---theyre-your-control-plane">Safety and Control: Approvals Aren’t UX - They’re Your Control Plane</h2>
+<p>Agentic coding gets risky precisely when it becomes useful: running commands, modifying files, creating diffs, pushing changes. The App Server protocol supports approval requests that pause work until the client allows or denies an action.</p>
+<p>A production rollout should treat approvals as first-class:</p>
+<ul>
+<li><strong>Default-deny</strong> for sensitive actions - network, secrets, prod-adjacent tooling</li>
+<li><strong>Scoped allowlists</strong> - command prefixes, repo-local constraints</li>
+<li><strong>Audit-friendly logs</strong> - who approved what, when, and why</li>
+<li><strong>Break-glass mode</strong> for incident response - explicitly invoked, explicitly recorded</li>
+</ul>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>If you want adoption at scale, engineers need to feel the system is predictable and contained. Governance is what makes adoption possible, not a constraint on it.</p>
+</div>
+</div>
+</div>
 </section>
-<section id="creating-value-for-users" class="level2">
-<h2 class="anchored" data-anchor-id="creating-value-for-users">Creating Value for Users:</h2>
-<p>A crucial factor in building a defensible business is the amount of value your product or service creates for users. Ensuring that your offering addresses a genuine need and provides tangible benefits can help to build a loyal customer base.</p>
+<section id="agents.md-table-of-contents-not-encyclopedia" class="level2">
+<h2 class="anchored" data-anchor-id="agents.md-table-of-contents-not-encyclopedia">AGENTS.md: Table of Contents, Not Encyclopedia</h2>
+<p>One of the clearest lessons from OpenAI’s deployment: treating <code>AGENTS.md</code> as a monolithic instruction file fails.</p>
+<p>The failure modes are predictable:</p>
+<ul>
+<li><strong>Context is scarce.</strong> A giant instruction file crowds out the task, the code, and the relevant docs.</li>
+<li><strong>Too much guidance becomes non-guidance.</strong> When everything is “important,” nothing is.</li>
+<li><strong>It rots instantly.</strong> A monolithic manual turns into a graveyard of stale rules agents can’t verify.</li>
+</ul>
+<p>The working alternative: keep <code>AGENTS.md</code> short (~100 lines) and treat it as a map, not a manual - pointing to a structured <code>docs/</code> directory that serves as the actual system of record. Design docs, execution plans, architectural invariants, product specs: all versioned, co-located, discoverable.</p>
+<div class="callout callout-style-simple callout-tip">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>The test for documentation quality:</strong> could a fresh agent session, given only the repo, understand why this decision was made and what it should not change?</p>
+</div>
+</div>
+</div>
+<p>This enables <em>progressive disclosure</em>: agents start with a small, stable entry point and are taught where to look next, rather than being overwhelmed upfront. Enforcement is mechanical - linters and CI jobs validate that the knowledge base is cross-linked, fresh, and structured correctly.</p>
 </section>
-<section id="vcs-love-for-tools-and-platforms" class="level2">
-<h2 class="anchored" data-anchor-id="vcs-love-for-tools-and-platforms">VCs’ Love for Tools and Platforms:</h2>
-<p>The panelists highlighted that VCs are particularly interested in investing in tools and platforms, as they can enable the growth of entire ecosystems.</p>
+<section id="a-rollout-playbook-that-avoids-the-cool-demo-no-adoption-trap" class="level2">
+<h2 class="anchored" data-anchor-id="a-rollout-playbook-that-avoids-the-cool-demo-no-adoption-trap">A Rollout Playbook That Avoids the “Cool Demo, No Adoption” Trap</h2>
+<p>The highest-leverage loop is <strong>plan → execute → review</strong>, with humans setting invariants and the agent filling in bounded work.</p>
+<p>A pragmatic rollout sequence:</p>
+<ol type="1">
+<li><p><strong>Pick one workflow with obvious value and clear boundaries.</strong> Good starting points: PR review assistance, test-failure triage, safe refactors, doc generation.</p></li>
+<li><p><strong>Define “done” in SDLC terms.</strong> Not “agent produced code” - but “engineer merged a change with confidence,” or “incident resolved with a clear action log.”</p></li>
+<li><p><strong>Instrument the workflow using thread/turn/item.</strong> Make progress visible (streaming), make outcomes reviewable (diffs), make actions governable (approvals).</p></li>
+<li><p><strong>Only then expand to the next workflow.</strong> Scale breadth after you have predictability - not before.</p></li>
+</ol>
+<p>OpenAI’s team found that corrections are cheap and waiting is expensive at high agent throughput. That inverts conventional gate-heavy merge philosophy. The prerequisite for that inversion: enforcement built into the repo, not enforced by humans reviewing every line.</p>
 </section>
-<section id="llmops-and-multimodal-markets" class="level2">
-<h2 class="anchored" data-anchor-id="llmops-and-multimodal-markets">LLMOps and Multimodal Markets:</h2>
-<p>According to the panelists, the markets for low-latency machine learning operations (LLMOps) and multimodal AI applications are currently booming, presenting numerous opportunities for entrepreneurs.</p>
-</section>
-<section id="bringing-products-and-users-to-the-table" class="level2">
-<h2 class="anchored" data-anchor-id="bringing-products-and-users-to-the-table">Bringing Products and Users to the Table:</h2>
-<p>Ideally, startups should approach investors with an existing product and user base. Demonstrating traction and market interest can significantly improve the chances of securing funding.</p>
-</section>
-<section id="turnover-technology" class="level2">
-<h2 class="anchored" data-anchor-id="turnover-technology">Turnover Technology:</h2>
-<p>The panelists noted that turnover technology is a hot area for investment. Tools that help companies improve their employee turnover rates and streamline operations are particularly attractive to VCs.</p>
-</section>
-<section id="the-impermanence-of-ai-models" class="level2">
-<h2 class="anchored" data-anchor-id="the-impermanence-of-ai-models">The Impermanence of AI Models:</h2>
-<p>The panelists warned against spending too much time and resources on training AI models, as they can become obsolete within months. Additionally, entrepreneurs should consider whether their models will outperform the next generation of AI models, such as GPT-5, before investing significant resources.</p>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion">Conclusion:</h2>
-<p>Building a defensible AI business requires a combination of perseverance, adaptability, and a keen understanding of market trends. By focusing on creating value for users, targeting high-growth sectors, and making strategic investments in technology, entrepreneurs can increase their chances of success in the ever-evolving world of AI.</p>
+<section id="what-good-looks-like" class="level2">
+<h2 class="anchored" data-anchor-id="what-good-looks-like">What “Good” Looks Like</h2>
+<p>A successful Codex deployment doesn’t feel like magic. It feels like:</p>
+<ul>
+<li>The agent is productive <strong>inside constraints</strong></li>
+<li>Progress is observable <strong>as events</strong></li>
+<li>Actions are governed by <strong>explicit approvals</strong></li>
+<li>Results are reviewable <strong>as diffs and artifacts</strong></li>
+<li>Teams can standardize usage <strong>without forcing a single UI</strong></li>
+</ul>
+<p>And over time, it compounds. OpenAI’s team runs background cleanup agents on a regular cadence - scanning for stale docs, architectural drift, and quality regressions, then opening targeted fix-up pull requests. Human taste captured once, enforced continuously on every line of code.</p>
+<p>That’s the difference between “AI features” and an AI-native SDLC built for real engineering organizations.</p>
 
 
 </section>

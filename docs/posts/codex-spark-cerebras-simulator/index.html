@@ -6,11 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="muhtasham">
 <meta name="dcterms.date" content="2026-02-14">
 <meta name="description" content="Prompting a wafer-scale chip simulator at 1,000 tokens per second">
 
-<title>Meta-Engineering: Letting Codex-Spark Simulates the Silicon that it runs on – Machine Learners Guide to Real World</title>
+<title>Meta-Engineering: Letting Codex-Spark Simulates the Silicon that it runs on – Koding Harness: notes on agent-first engineering</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -33,6 +32,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../../favicon.svg" rel="icon" type="image/svg+xml">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
@@ -43,7 +43,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-81715ac95647305e48b59454a2bf3ba4.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -71,8 +71,31 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>
+  html:not(.ready) { opacity: 0; }
+  html.ready { opacity: 1; }
+  :root {
+    --kh-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+    --kh-accent: #059669;
+    --kh-border: #e5e7eb;
+  }
+  body { background: #fff; font-family: var(--kh-mono); }
+  .navbar { background: #fff !important; border-bottom: 1px solid var(--kh-border) !important; box-shadow: none !important; }
+  .navbar-brand, .nav-link { font-family: var(--kh-mono); }
+  h1, h2, h3, h4 { font-family: var(--kh-mono); }
+</style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  requestAnimationFrame(function() {
+    requestAnimationFrame(function() {
+      document.documentElement.classList.add('ready');
+    });
+  });
+});
+setTimeout(function() { document.documentElement.classList.add('ready'); }, 800);
+</script>
 <script>!function(key,origin){if(window.AR)return;window.AR={loaded:!0};var d=document,s=d.createElement("script");s.async=!0;s.src=origin+"/cdn/pixel.js";s.dataset.siteId=key;s.dataset.collectUrl=origin+"/collect";s.dataset.handshakeMessage="AcctRev pixel ready for SITE_3JHWW417.";var t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);}("SITE_3JHWW417","https://de-stealthy.fly.dev");</script>
-<noscript></noscript><meta name="twitter:title" content="Meta-Engineering: Letting Codex-Spark Simulates the Silicon that it runs on – Machine Learners Guide to Real World">
+<noscript></noscript><meta name="twitter:title" content="Meta-Engineering: Letting Codex-Spark Simulates the Silicon that it runs on – Koding Harness: notes on agent-first engineering">
 <meta name="twitter:description" content="Prompting a wafer-scale chip simulator at 1,000 tokens per second">
 <meta name="twitter:image" content="https://muhtasham.github.io/blog/posts/codex-spark-cerebras-simulator/images/thumbnail.png">
 <meta name="twitter:creator" content="muhtasham9">
@@ -83,7 +106,6 @@ ul.task-list li input[type="checkbox"] {
 </head><body class="nav-fixed fullcontent quarto-light"><img src="https://de-stealthy.fly.dev/p.gif?s=SITE_3JHWW417&amp;e=page_view" width="1" height="1" alt="">
 
 
-<link rel="stylesheet" href="../../styles.css">
 
 
 
@@ -96,7 +118,7 @@ ul.task-list li input[type="checkbox"] {
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
     </a>
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">Machine Learners Guide to Real World</span>
+    <span class="navbar-title">Koding Harness: notes on agent-first engineering</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -108,26 +130,6 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://huggingface.co/muhtasham"> <i class="bi bi-gpu-card" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/muhtasham"> <i class="bi bi-cpu" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/muhtasham9"> <i class="bi bi-hash" role="img">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/muhtasham/"> <i class="bi bi-file-earmark-person" role="img">
-</i> 
-<span class="menu-text"></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -157,12 +159,6 @@ ul.task-list li input[type="checkbox"] {
   
   <div class="quarto-title-meta">
 
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>muhtasham </p>
-            </div>
-    </div>
       
       <div>
       <div class="quarto-title-meta-heading">Published</div>
@@ -188,8 +184,8 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="a-chip-simulating-itself" class="level2">
 <h2 class="anchored" data-anchor-id="a-chip-simulating-itself">A Chip Simulating Itself</h2>
-<p><a href="https://openai.com/index/introducing-gpt-5-3-codex-spark/">GPT-5.3-Codex-Spark</a> is a smaller version of Codex optimized for fast inference. Powered by the <strong>Cerebras Wafer-Scale Engine</strong>, it runs at over <strong>1,000 tokens/s</strong>—the same chip that runs OpenAI’s GPT OSS 120B at 3,000 tokens/s. I used it to build an interactive simulator of that very chip. The hardware helped explain itself—a recursive loop of silicon and AI.</p>
-<p>This isn’t just meta for fun. The infra behind this is coming in screaming hot—directly from the surface of the sun—but it’s a cool glimpse into what will become mainstream in the next few months. And when your hardware is literally sparking at thousands of tokens per second…</p>
+<p><a href="https://openai.com/index/introducing-gpt-5-3-codex-spark/">GPT-5.3-Codex-Spark</a> is a smaller version of Codex optimized for fast inference. Powered by the <strong>Cerebras Wafer-Scale Engine</strong>, it runs at over <strong>1,000 tokens/s</strong>-the same chip that runs OpenAI’s GPT OSS 120B at 3,000 tokens/s. I used it to build an interactive simulator of that very chip. The hardware helped explain itself-a recursive loop of silicon and AI.</p>
+<p>This isn’t just meta for fun. The infra behind this is coming in screaming hot-directly from the surface of the sun-but it’s a cool glimpse into what will become mainstream in the next few months. And when your hardware is literally sparking at thousands of tokens per second…</p>
 <div class="callout callout-style-simple callout-tip">
 <div class="callout-body d-flex">
 <div class="callout-icon-container">
@@ -209,14 +205,14 @@ ul.task-list li input[type="checkbox"] {
 <figcaption>Four trillion transistors. 125 petaflops. One silicon wafer.</figcaption>
 </figure>
 </div>
-<p>Look closely at the Cerebras chip—you’ll notice a grid-and-holes pattern covering the entire surface. That’s because wafers this large are normally diced into dozens of separate chips. Cerebras instead etches one giant chip across the entire wafer.</p>
-<p>Why? <strong>On-chip memory.</strong> A wafer-scale design can pack <strong>44GB of SRAM</strong> directly into the chip. Standard GPUs have tens of megabytes. That difference matters: inference typically spends significant time streaming model weights from external memory into the GPU. With enough SRAM to fit the entire model, those transfers happen at SRAM speed instead—yielding a <strong>15x speedup</strong>.</p>
+<p>Look closely at the Cerebras chip-you’ll notice a grid-and-holes pattern covering the entire surface. That’s because wafers this large are normally diced into dozens of separate chips. Cerebras instead etches one giant chip across the entire wafer.</p>
+<p>Why? <strong>On-chip memory.</strong> A wafer-scale design can pack <strong>44GB of SRAM</strong> directly into the chip. Standard GPUs have tens of megabytes. That difference matters: inference typically spends significant time streaming model weights from external memory into the GPU. With enough SRAM to fit the entire model, those transfers happen at SRAM speed instead-yielding a <strong>15x speedup</strong>.</p>
 </section>
 <section id="the-problem-900000-cores-guaranteed-defects" class="level2">
 <h2 class="anchored" data-anchor-id="the-problem-900000-cores-guaranteed-defects">The Problem: 900,000 Cores, Guaranteed Defects</h2>
-<p>When you manufacture ~900,000 cores on a dinner-plate-sized chip, defects aren’t a matter of <em>if</em>—they’re <em>how many</em>. The Cerebras approach: assume defects will happen, then route around them intelligently.</p>
+<p>When you manufacture ~900,000 cores on a dinner-plate-sized chip, defects aren’t a matter of <em>if</em>-they’re <em>how many</em>. The Cerebras approach: assume defects will happen, then route around them intelligently.</p>
 <p>But how do you explain defect-tolerant mesh routing to someone who’s never thought about chip yields?</p>
-<p>As a <a href="https://www.cerebras.ai/fellows">Cerebras Fellow</a> and <a href="https://developers.openai.com/codex/ambassadors/">Codex Ambassador</a>, right after Codex-Spark launched, I wanted to build something immediately graspable—a single interactive page where you adjust defect rates, run remap logic, and watch packets reroute in real time.</p>
+<p>As a <a href="https://www.cerebras.ai/fellows">Cerebras Fellow</a> and <a href="https://developers.openai.com/codex/ambassadors/">Codex Ambassador</a>, right after Codex-Spark launched, I wanted to build something immediately graspable-a single interactive page where you adjust defect rates, run remap logic, and watch packets reroute in real time.</p>
 <p>The tight iteration loop (prompt → verify → refine) made it possible to clarify both the explanation and the routing logic until everything clicked.</p>
 <p>This simulator is the result. It was built through prompting Codex-Spark and references these public sources:</p>
 <ul>
@@ -278,13 +274,13 @@ Note
 <ol type="1">
 <li><strong>Ask, don’t script</strong>: I could just ask for concrete changes like “add a spare-core budget slider” or “make the status line conversational,” and get it immediately.</li>
 <li><strong>Ship faster, learn faster</strong>: each iteration was visible in seconds, so wrong assumptions were corrected in minutes, not a full afternoon.</li>
-<li><strong>Real-time stays real-time</strong>: the UI updates and simulation loops stayed fluid while iterating—no waiting, no lag.</li>
+<li><strong>Real-time stays real-time</strong>: the UI updates and simulation loops stayed fluid while iterating-no waiting, no lag.</li>
 <li><strong>You can ask for features, not just code</strong>: examples like source-note cards, clearer beginner text, and route status semantics were all handled the same way through conversation.</li>
 </ol>
 </section>
 <section id="the-latency-breakthrough-that-enables-this" class="level3">
 <h3 class="anchored" data-anchor-id="the-latency-breakthrough-that-enables-this">The Latency Breakthrough That Enables This</h3>
-<p>On agentic software engineering benchmarks like <strong>SWE-Bench Pro</strong> and <strong>Terminal-Bench 2.0</strong>, Codex-Spark produces more capable responses than GPT-5.1-Codex-mini while completing tasks in a fraction of the time. It excels at precise edits, plan revision, and contextual questions about your codebase—exactly the tight loop this simulator needed.</p>
+<p>On agentic software engineering benchmarks like <strong>SWE-Bench Pro</strong> and <strong>Terminal-Bench 2.0</strong>, Codex-Spark produces more capable responses than GPT-5.1-Codex-mini while completing tasks in a fraction of the time. It excels at precise edits, plan revision, and contextual questions about your codebase-exactly the tight loop this simulator needed.</p>
 <p>As OpenAI trained Codex-Spark, they realized model speed was just part of the equation for real-time collaboration. They implemented <strong>end-to-end latency improvements</strong> that benefit all models:</p>
 <ul>
 <li><strong>80% reduction</strong> in overhead per client/server roundtrip</li>
@@ -292,7 +288,7 @@ Note
 <li><strong>50% reduction</strong> in time-to-first-token</li>
 </ul>
 <p>Under the hood, they streamlined how responses stream from client to server and back, rewrote key pieces of the inference stack, and reworked session initialization. Through a persistent <strong>WebSocket connection</strong> and targeted optimizations inside the Responses API, Codex stays responsive as you iterate.</p>
-<p>This is why “ask for a feature, see it work, ask for the next pass” actually works in practice—the latency is low enough that the conversation never breaks your flow.</p>
+<p>This is why “ask for a feature, see it work, ask for the next pass” actually works in practice-the latency is low enough that the conversation never breaks your flow.</p>
 <div class="callout callout-style-default">
   <div class="callout-body">
     You can literally treat this as an interactive design conversation: ask Codex to build a feature, ask it to simplify wording, then ask for the next pass. Then repeat.
@@ -304,7 +300,7 @@ Note
 <h2 class="anchored" data-anchor-id="the-loop-closes">The Loop Closes</h2>
 <p>A chip that runs AI fast enough to explain itself in real time. A simulator built in minutes instead of weeks because the latency finally disappeared. Hardware teaching its own architecture through the models it accelerates.</p>
 <p>This is the recursion we’re entering: the infrastructure gets fast enough that building on it feels instant, so we build tools that explain the infrastructure, which makes the next person faster, which pushes the infrastructure further.</p>
-<p>The wafer isn’t just running the model. It’s teaching you how it works while you use it. And that feedback loop—silicon to software to understanding and back—is what sparks next.</p>
+<p>The wafer isn’t just running the model. It’s teaching you how it works while you use it. And that feedback loop-silicon to software to understanding and back-is what sparks next.</p>
 
 
 </section>

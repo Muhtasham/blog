@@ -79,5 +79,11 @@
   },
   "posts/codex-spark-cerebras-simulator/index.qmd": {
     "index.html": "55083f84"
+  },
+  "posts/harness-engineer/index.qmd": {
+    "index.html": "1fe04194"
+  },
+  "posts/codex-app-server/index.qmd": {
+    "index.html": "85938819"
   }
 }

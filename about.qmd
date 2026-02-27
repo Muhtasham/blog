@@ -1,6 +1,5 @@
 ---
 title: "About"
-image: profile.jpeg
 about:
   template: solana
   links:
@@ -18,8 +17,10 @@ about:
       href: https://twitter.com/muhtasham9
 ---
 
-I love to build, this summarizes how I operate.
+I love to build. That's how I operate.
 
-While it's not easy thing I am trying concentrating intensely on the right problems, and remaining open to fresh perspectives.
+These days, working on: coding agent harnesses, RL/inference infra, and benchmarking evals (especially for long horizon code).
 
-Founders: I also participate in angel rounds. No warms needed, decision in 15min, your terms.
+Concentrating intensely on the right problems, remaining open to fresh perspectives.
+
+Founders: I also participate in angel rounds. No warm intro needed, decision in 15 min, your terms.

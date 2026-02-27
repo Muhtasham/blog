@@ -2,6 +2,8 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/harness-engineer/index.html",
+      "/posts/codex-app-server/index.html",
       "/posts/codex-spark-cerebras-simulator/index.html",
       "/posts/codeclash-training/index.html",
       "/posts/batching-strategies/index.html",
@@ -15,7 +17,6 @@
       "/posts/sama-fireside-chat/index.html",
       "/posts/starcoder/index.html",
       "/posts/llm-bootcamp/index.html",
-      "/posts/vc-fireside-chat/index.html",
       "/posts/phildeeplearning/index.html",
       "/posts/iclr23/index.html",
       "/posts/reflections22/index.html",
