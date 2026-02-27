@@ -94,14 +94,26 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 setTimeout(function() { document.documentElement.classList.add('ready'); }, 800);
 </script>
+<script>
+console.log('%c POST /v1/responses', 'color:#4b5563;font-family:monospace;font-size:10px;');
+console.log({
+  id: "resp_khblog",
+  object: "response",
+  model: "kodex",
+  output: [{
+    type: "message",
+    role: "assistant",
+    content: [{ type: "output_text", text: "hey. you found the terminal. makes sense." }]
+  }],
+  usage: { input_tokens: 8, output_tokens: 9, total_tokens: 17 }
+});
+</script>
 <script>!function(key,origin){if(window.AR)return;window.AR={loaded:!0};var d=document,s=d.createElement("script");s.async=!0;s.src=origin+"/cdn/pixel.js";s.dataset.siteId=key;s.dataset.collectUrl=origin+"/collect";s.dataset.handshakeMessage="AcctRev pixel ready for SITE_3JHWW417.";var t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);}("SITE_3JHWW417","https://de-stealthy.fly.dev");</script>
 <noscript></noscript><meta name="twitter:title" content="Meta-Engineering: Letting Codex-Spark Simulates the Silicon that it runs on – Koding Harness: notes on agent-first engineering">
 <meta name="twitter:description" content="Prompting a wafer-scale chip simulator at 1,000 tokens per second">
-<meta name="twitter:image" content="https://muhtasham.github.io/blog/posts/codex-spark-cerebras-simulator/images/thumbnail.png">
+<meta name="twitter:image" content="https://muhtasham.github.io/blog/posts/codex-spark-cerebras-simulator/images/thumbnail.svg">
 <meta name="twitter:creator" content="muhtasham9">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image-height" content="1524">
-<meta name="twitter:image-width" content="1784">
 <meta name="twitter:image:alt" content="Cerebras defect-tolerance simulator and Codex-Spark real-time coding workflow">
 </head><body class="nav-fixed fullcontent quarto-light"><img src="https://de-stealthy.fly.dev/p.gif?s=SITE_3JHWW417&amp;e=page_view" width="1" height="1" alt="">
 

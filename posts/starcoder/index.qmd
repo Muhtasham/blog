@@ -6,7 +6,7 @@ format:
     code-fold: false
 toc: true
 number-sections: false
-image: "sf-stars.jpg"
+image: "images/thumbnail.svg"
 categories: [llm, papers]
 ---
 

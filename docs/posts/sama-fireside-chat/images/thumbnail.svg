@@ -1,0 +1,100 @@
+<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glow-sama-bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#3d1a00" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#0d1117" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow-sama-fire" cx="50%" cy="52%" r="18%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#0d1117" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="800" fill="#0d1117"/>
+  <rect width="800" height="800" fill="url(#glow-sama-bg)"/>
+  <rect width="800" height="800" fill="url(#glow-sama-fire)"/>
+
+  <!-- Title -->
+  <text x="400" y="62" font-family="ui-monospace, monospace" font-size="13" font-weight="700" fill="#f59e0b" text-anchor="middle" letter-spacing="4">FIRESIDE CHAT</text>
+  <text x="400" y="84" font-family="ui-monospace, monospace" font-size="10" fill="#4b5563" text-anchor="middle" letter-spacing="3">SAM ALTMAN  ·  TU MUNICH  ·  2023</text>
+
+  <!-- Left person (host) -->
+  <circle cx="210" cy="330" r="88" fill="#1a0d00" stroke="#f59e0b" stroke-width="2"/>
+  <circle cx="210" cy="305" r="22" fill="#f59e0b"/>
+  <path d="M168 370 C168 344 186 332 210 332 C234 332 252 344 252 370 L252 386 L168 386 Z" fill="#f59e0b"/>
+  <text x="210" y="444" font-family="ui-monospace, monospace" font-size="10" font-weight="700" fill="#f59e0b" text-anchor="middle" letter-spacing="2">HOST</text>
+  <text x="210" y="462" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle">TUM moderator</text>
+
+  <!-- Right person (Sam Altman) -->
+  <circle cx="590" cy="330" r="88" fill="#1a0d00" stroke="#fb923c" stroke-width="2"/>
+  <circle cx="590" cy="305" r="22" fill="#fb923c"/>
+  <path d="M548 370 C548 344 566 332 590 332 C614 332 632 344 632 370 L632 386 L548 386 Z" fill="#fb923c"/>
+  <text x="590" y="444" font-family="ui-monospace, monospace" font-size="10" font-weight="700" fill="#fb923c" text-anchor="middle" letter-spacing="2">SAM ALTMAN</text>
+  <text x="590" y="462" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle">OpenAI CEO</text>
+
+  <!-- Fire glow between them -->
+  <ellipse cx="400" cy="355" rx="42" ry="60" fill="#f59e0b" opacity="0.12"/>
+  <ellipse cx="400" cy="342" rx="26" ry="44" fill="#f97316" opacity="0.16"/>
+  <ellipse cx="400" cy="332" rx="15" ry="30" fill="#fb923c" opacity="0.22"/>
+  <ellipse cx="400" cy="324" rx="8"  ry="18" fill="#fbbf24" opacity="0.28"/>
+
+  <!-- Conversation arcs -->
+  <g fill="none" stroke-width="1.2" opacity="0.35">
+    <path d="M300 318 Q400 272 500 318" stroke="#f59e0b"/>
+    <path d="M299 344 Q400 308 501 344" stroke="#f59e0b"/>
+    <path d="M300 370 Q400 344 500 370" stroke="#f59e0b"/>
+  </g>
+  <g fill="none" stroke="#fb923c" stroke-width="0.9" stroke-dasharray="5 4" opacity="0.22">
+    <path d="M302 304 Q400 256 498 304"/>
+    <path d="M300 384 Q400 356 500 384"/>
+  </g>
+
+  <!-- Speech bubble — left -->
+  <ellipse cx="188" cy="210" rx="88" ry="34" fill="#0f0600" stroke="#f59e0b" stroke-width="1.5"/>
+  <circle cx="208" cy="248" r="5" fill="#0f0600" stroke="#f59e0b" stroke-width="1"/>
+  <circle cx="210" cy="262" r="3" fill="#0f0600" stroke="#f59e0b" stroke-width="1"/>
+  <text x="188" y="206" font-family="ui-monospace, monospace" font-size="9" fill="#f59e0b" text-anchor="middle">AI regulation</text>
+  <text x="188" y="222" font-family="ui-monospace, monospace" font-size="8" fill="#4b5563" text-anchor="middle">user interface</text>
+
+  <!-- Speech bubble — right -->
+  <ellipse cx="612" cy="210" rx="88" ry="34" fill="#0f0600" stroke="#fb923c" stroke-width="1.5"/>
+  <circle cx="592" cy="248" r="5" fill="#0f0600" stroke="#fb923c" stroke-width="1"/>
+  <circle cx="590" cy="262" r="3" fill="#0f0600" stroke="#fb923c" stroke-width="1"/>
+  <text x="612" y="206" font-family="ui-monospace, monospace" font-size="9" fill="#fb923c" text-anchor="middle">AGI timeline</text>
+  <text x="612" y="222" font-family="ui-monospace, monospace" font-size="8" fill="#4b5563" text-anchor="middle">safety · alignment</text>
+
+  <!-- Divider -->
+  <line x1="60" y1="510" x2="740" y2="510" stroke="#f59e0b" stroke-width="0.75" opacity="0.3"/>
+
+  <!-- Stats row -->
+  <rect x="80"  y="526" width="180" height="74" rx="6" fill="#0a0600" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="170" y="550" font-family="ui-monospace, monospace" font-size="9"  fill="#4b5563" text-anchor="middle" letter-spacing="2">LOCATION</text>
+  <text x="170" y="578" font-family="ui-monospace, monospace" font-size="14" font-weight="700" fill="#f59e0b" text-anchor="middle">TU Munich</text>
+  <text x="170" y="594" font-family="ui-monospace, monospace" font-size="9"  fill="#4b5563" text-anchor="middle">DLD 2023</text>
+
+  <rect x="310" y="526" width="180" height="74" rx="6" fill="#0a0600" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="400" y="550" font-family="ui-monospace, monospace" font-size="9"  fill="#4b5563" text-anchor="middle" letter-spacing="2">ORGANIZATION</text>
+  <text x="400" y="578" font-family="ui-monospace, monospace" font-size="14" font-weight="700" fill="#f59e0b" text-anchor="middle">OpenAI</text>
+  <text x="400" y="594" font-family="ui-monospace, monospace" font-size="9"  fill="#4b5563" text-anchor="middle">ChatGPT · GPT-4</text>
+
+  <rect x="540" y="526" width="180" height="74" rx="6" fill="#0a0600" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="630" y="550" font-family="ui-monospace, monospace" font-size="9"  fill="#4b5563" text-anchor="middle" letter-spacing="2">TOPIC</text>
+  <text x="630" y="578" font-family="ui-monospace, monospace" font-size="14" font-weight="700" fill="#f59e0b" text-anchor="middle">AI Safety</text>
+  <text x="630" y="594" font-family="ui-monospace, monospace" font-size="9"  fill="#4b5563" text-anchor="middle">regulation · future</text>
+
+  <!-- Topic tags -->
+  <g font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">
+    <rect x="80"  y="618" width="130" height="24" rx="4" fill="#0f172a" stroke="#f59e0b" stroke-width="1"/>
+    <text x="145" y="635" fill="#94a3b8">AI governance</text>
+    <rect x="224" y="618" width="104" height="24" rx="4" fill="#0f172a" stroke="#f59e0b" stroke-width="1"/>
+    <text x="276" y="635" fill="#94a3b8">ChatGPT</text>
+    <rect x="342" y="618" width="116" height="24" rx="4" fill="#0f172a" stroke="#f59e0b" stroke-width="1"/>
+    <text x="400" y="635" fill="#94a3b8">AGI timeline</text>
+    <rect x="472" y="618" width="148" height="24" rx="4" fill="#0f172a" stroke="#f59e0b" stroke-width="1"/>
+    <text x="546" y="635" fill="#94a3b8">open vs closed</text>
+    <rect x="634" y="618" width="86" height="24" rx="4" fill="#0f172a" stroke="#f59e0b" stroke-width="1"/>
+    <text x="677" y="635" fill="#94a3b8">safety</text>
+  </g>
+
+  <text x="400" y="692" font-family="ui-monospace, monospace" font-size="11" fill="#94a3b8" text-anchor="middle" letter-spacing="2">fireside conversation</text>
+  <text x="400" y="712" font-family="ui-monospace, monospace" font-size="9"  fill="#4b5563" text-anchor="middle">artificial intelligence · safety · the future</text>
+</svg>

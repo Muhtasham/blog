@@ -3,7 +3,7 @@ title: "Reflections from an Evening with NVIDIA's Jensen Huang"
 date: "2023-07-04"
 toc: true
 number-sections: false
-image: "cuda-galaxy.jpeg"
+image: "images/thumbnail.svg"
 categories: [llm, deep-learning]
 ---
 

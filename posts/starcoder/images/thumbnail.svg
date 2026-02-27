@@ -1,0 +1,126 @@
+<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glow-starcoder" cx="50%" cy="44%" r="44%">
+      <stop offset="0%" stop-color="#083344" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0d1117" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="800" fill="#0d1117"/>
+  <rect width="800" height="800" fill="url(#glow-starcoder)"/>
+
+  <!-- Title -->
+  <text x="400" y="60" font-family="ui-monospace, monospace" font-size="13" font-weight="700" fill="#22d3ee" text-anchor="middle" letter-spacing="4">STARCODER</text>
+  <text x="400" y="82" font-family="ui-monospace, monospace" font-size="10" fill="#4b5563" text-anchor="middle" letter-spacing="3">15B · OPEN-SOURCE CODE GENERATION</text>
+
+  <!-- Proper 5-pointed star polygon
+       Center (400, 305), outer R=155, inner r=62
+       Outer pts: A(400,150) B(547,257) C(491,430) D(309,430) E(253,257)
+       Inner pts: a(436,255) b(459,324) c(400,367) d(341,324) e(364,255) -->
+  <!-- Faint star fill -->
+  <polygon points="400,150 436,255 547,257 459,324 491,430 400,367 309,430 341,324 253,257 364,255"
+           fill="#071e26" stroke="none"/>
+  <!-- Star border -->
+  <polygon points="400,150 436,255 547,257 459,324 491,430 400,367 309,430 341,324 253,257 364,255"
+           fill="none" stroke="#22d3ee" stroke-width="2" stroke-linejoin="round"/>
+
+  <!-- Background constellation dots -->
+  <g fill="#22d3ee" opacity="0.3">
+    <circle cx="118" cy="175" r="2.5"/>
+    <circle cx="682" cy="158" r="3"/>
+    <circle cx="744" cy="338" r="2"/>
+    <circle cx="88"  cy="418" r="1.5"/>
+    <circle cx="702" cy="456" r="2.5"/>
+    <circle cx="158" cy="536" r="2"/>
+    <circle cx="638" cy="534" r="1.5"/>
+    <circle cx="338" cy="114" r="1.5"/>
+    <circle cx="464" cy="102" r="2"/>
+    <circle cx="218" cy="458" r="1.5"/>
+    <circle cx="578" cy="472" r="2"/>
+  </g>
+  <!-- Faint constellation lines from outer points outward -->
+  <g stroke="#22d3ee" stroke-width="0.5" opacity="0.18" fill="none">
+    <line x1="400" y1="150" x2="338" y2="114"/>
+    <line x1="400" y1="150" x2="464" y2="102"/>
+    <line x1="547" y1="257" x2="682" y2="158"/>
+    <line x1="547" y1="257" x2="702" y2="456"/>
+    <line x1="491" y1="430" x2="578" y2="472"/>
+    <line x1="309" y1="430" x2="218" y2="458"/>
+    <line x1="253" y1="257" x2="118" y2="175"/>
+    <line x1="253" y1="257" x2="88"  y2="418"/>
+  </g>
+
+  <!-- Glow at star center -->
+  <circle cx="400" cy="305" r="28" fill="#22d3ee" opacity="0.08"/>
+  <circle cx="400" cy="305" r="14" fill="#22d3ee" opacity="0.12"/>
+  <circle cx="400" cy="305" r="5"  fill="#22d3ee" opacity="0.7"/>
+
+  <!-- Dots at the 5 outer points -->
+  <g fill="#22d3ee">
+    <circle cx="400" cy="150" r="7"/>   <!-- top        -->
+    <circle cx="547" cy="257" r="7"/>   <!-- top-right  -->
+    <circle cx="491" cy="430" r="7"/>   <!-- bot-right  -->
+    <circle cx="309" cy="430" r="7"/>   <!-- bot-left   -->
+    <circle cx="253" cy="257" r="7"/>   <!-- top-left   -->
+  </g>
+
+  <!-- Code token labels — one per outer point -->
+  <!-- Top -->
+  <rect x="338" y="114" width="124" height="22" rx="4" fill="#071e26" stroke="#22d3ee" stroke-width="1"/>
+  <text x="400" y="130" font-family="ui-monospace, monospace" font-size="9" fill="#22d3ee" text-anchor="middle">def sort(arr):</text>
+
+  <!-- Top-right -->
+  <rect x="558" y="245" width="136" height="22" rx="4" fill="#071e26" stroke="#22d3ee" stroke-width="1"/>
+  <text x="626" y="261" font-family="ui-monospace, monospace" font-size="9" fill="#22d3ee" text-anchor="middle">return arr[::-1]</text>
+
+  <!-- Bot-right -->
+  <rect x="502" y="442" width="110" height="22" rx="4" fill="#071e26" stroke="#22d3ee" stroke-width="1"/>
+  <text x="557" y="458" font-family="ui-monospace, monospace" font-size="9" fill="#22d3ee" text-anchor="middle">O(n log n)</text>
+
+  <!-- Bot-left -->
+  <rect x="190" y="442" width="106" height="22" rx="4" fill="#071e26" stroke="#22d3ee" stroke-width="1"/>
+  <text x="243" y="458" font-family="ui-monospace, monospace" font-size="9" fill="#22d3ee" text-anchor="middle">for i in range:</text>
+
+  <!-- Top-left -->
+  <rect x="108" y="245" width="132" height="22" rx="4" fill="#071e26" stroke="#22d3ee" stroke-width="1"/>
+  <text x="174" y="261" font-family="ui-monospace, monospace" font-size="9" fill="#22d3ee" text-anchor="middle">if __name__==...</text>
+
+  <!-- Divider -->
+  <line x1="60" y1="506" x2="740" y2="506" stroke="#0891b2" stroke-width="0.75" opacity="0.3"/>
+
+  <!-- Stats row -->
+  <rect x="80"  y="522" width="180" height="74" rx="6" fill="#050e10" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="170" y="546" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle" letter-spacing="2">PARAMETERS</text>
+  <text x="170" y="577" font-family="ui-monospace, monospace" font-size="30" font-weight="700" fill="#22d3ee" text-anchor="middle">15B</text>
+  <text x="170" y="591" font-family="ui-monospace, monospace" font-size="8" fill="#4b5563" text-anchor="middle">transformer model</text>
+
+  <rect x="310" y="522" width="180" height="74" rx="6" fill="#050e10" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="400" y="546" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle" letter-spacing="2">LANGUAGES</text>
+  <text x="400" y="577" font-family="ui-monospace, monospace" font-size="30" font-weight="700" fill="#22d3ee" text-anchor="middle">80+</text>
+  <text x="400" y="591" font-family="ui-monospace, monospace" font-size="8" fill="#4b5563" text-anchor="middle">programming languages</text>
+
+  <rect x="540" y="522" width="180" height="74" rx="6" fill="#050e10" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="630" y="546" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle" letter-spacing="2">TRAINING</text>
+  <text x="630" y="577" font-family="ui-monospace, monospace" font-size="30" font-weight="700" fill="#22d3ee" text-anchor="middle">1T</text>
+  <text x="630" y="591" font-family="ui-monospace, monospace" font-size="8" fill="#4b5563" text-anchor="middle">tokens</text>
+
+  <!-- Language tags -->
+  <g font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">
+    <rect x="80"  y="614" width="78" height="22" rx="4" fill="#071e26" stroke="#22d3ee" stroke-width="1"/>
+    <text x="119" y="630" fill="#94a3b8">Python</text>
+    <rect x="170" y="614" width="78" height="22" rx="4" fill="#071e26" stroke="#22d3ee" stroke-width="1"/>
+    <text x="209" y="630" fill="#94a3b8">Java</text>
+    <rect x="260" y="614" width="78" height="22" rx="4" fill="#071e26" stroke="#22d3ee" stroke-width="1"/>
+    <text x="299" y="630" fill="#94a3b8">C++</text>
+    <rect x="350" y="614" width="78" height="22" rx="4" fill="#071e26" stroke="#22d3ee" stroke-width="1"/>
+    <text x="389" y="630" fill="#94a3b8">JS</text>
+    <rect x="440" y="614" width="78" height="22" rx="4" fill="#071e26" stroke="#22d3ee" stroke-width="1"/>
+    <text x="479" y="630" fill="#94a3b8">Rust</text>
+    <rect x="530" y="614" width="78" height="22" rx="4" fill="#071e26" stroke="#22d3ee" stroke-width="1"/>
+    <text x="569" y="630" fill="#94a3b8">Go</text>
+    <rect x="620" y="614" width="100" height="22" rx="4" fill="#071e26" stroke="#22d3ee" stroke-width="1"/>
+    <text x="670" y="630" fill="#94a3b8">+74 more</text>
+  </g>
+
+  <text x="400" y="680" font-family="ui-monospace, monospace" font-size="11" fill="#94a3b8" text-anchor="middle" letter-spacing="2">open-source code intelligence</text>
+  <text x="400" y="700" font-family="ui-monospace, monospace" font-size="9"  fill="#4b5563" text-anchor="middle">BigCode · HuggingFace · SF inspiration</text>
+</svg>

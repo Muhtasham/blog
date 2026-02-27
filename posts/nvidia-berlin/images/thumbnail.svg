@@ -1,0 +1,168 @@
+<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glow-nvidia" cx="50%" cy="50%" r="45%">
+      <stop offset="0%" stop-color="#052e16" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#0d1117" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="800" fill="#0d1117"/>
+  <rect width="800" height="800" fill="url(#glow-nvidia)"/>
+
+  <!-- Title -->
+  <text x="400" y="64" font-family="ui-monospace, monospace" font-size="13" font-weight="700" fill="#22c55e" text-anchor="middle" letter-spacing="4">CUDA GRID</text>
+  <text x="400" y="86" font-family="ui-monospace, monospace" font-size="10" fill="#4b5563" text-anchor="middle" letter-spacing="3">NVIDIA  ·  STREAMING MULTIPROCESSORS</text>
+
+  <!-- SM grid (6x8 = 48 SMs) -->
+  <!-- Each SM is a rectangle with inner thread blocks -->
+  <text x="106" y="126" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" letter-spacing="2">CUDA GRID  (48 SMs)</text>
+
+  <!-- SM grid -->
+  <g>
+    <!-- Row 1 -->
+    <g fill="#061a0e" stroke="#22c55e" stroke-width="1.2">
+      <rect x="68" y="136" width="86" height="64" rx="4"/>
+      <rect x="162" y="136" width="86" height="64" rx="4"/>
+      <rect x="256" y="136" width="86" height="64" rx="4"/>
+      <rect x="350" y="136" width="86" height="64" rx="4"/>
+      <rect x="444" y="136" width="86" height="64" rx="4"/>
+      <rect x="538" y="136" width="86" height="64" rx="4"/>
+      <rect x="632" y="136" width="86" height="64" rx="4" stroke="#4ade80" stroke-width="1.75"/>
+    </g>
+    <!-- Row 1 SM labels -->
+    <g font-family="ui-monospace, monospace" font-size="8" fill="#22c55e" text-anchor="middle">
+      <text x="111" y="160">SM 0</text>
+      <text x="205" y="160">SM 1</text>
+      <text x="299" y="160">SM 2</text>
+      <text x="393" y="160">SM 3</text>
+      <text x="487" y="160">SM 4</text>
+      <text x="581" y="160">SM 5</text>
+      <text x="675" y="160">SM 6 ★</text>
+    </g>
+    <!-- Thread block dots inside SM row1 -->
+    <g fill="#22c55e" opacity="0.5">
+      <circle cx="90" cy="178" r="3"/><circle cx="103" cy="178" r="3"/><circle cx="116" cy="178" r="3"/><circle cx="129" cy="178" r="3"/>
+      <circle cx="184" cy="178" r="3"/><circle cx="197" cy="178" r="3"/><circle cx="210" cy="178" r="3"/><circle cx="223" cy="178" r="3"/>
+      <circle cx="278" cy="178" r="3"/><circle cx="291" cy="178" r="3"/><circle cx="304" cy="178" r="3"/><circle cx="317" cy="178" r="3"/>
+      <circle cx="372" cy="178" r="3"/><circle cx="385" cy="178" r="3"/><circle cx="398" cy="178" r="3"/><circle cx="411" cy="178" r="3"/>
+      <circle cx="466" cy="178" r="3"/><circle cx="479" cy="178" r="3"/><circle cx="492" cy="178" r="3"/><circle cx="505" cy="178" r="3"/>
+      <circle cx="560" cy="178" r="3"/><circle cx="573" cy="178" r="3"/><circle cx="586" cy="178" r="3"/><circle cx="599" cy="178" r="3"/>
+      <circle cx="654" cy="178" r="3"/><circle cx="667" cy="178" r="3"/><circle cx="680" cy="178" r="3"/><circle cx="693" cy="178" r="3"/>
+    </g>
+
+    <!-- Row 2 -->
+    <g fill="#061a0e" stroke="#22c55e" stroke-width="1.2">
+      <rect x="68" y="208" width="86" height="64" rx="4"/>
+      <rect x="162" y="208" width="86" height="64" rx="4"/>
+      <rect x="256" y="208" width="86" height="64" rx="4"/>
+      <rect x="350" y="208" width="86" height="64" rx="4"/>
+      <rect x="444" y="208" width="86" height="64" rx="4"/>
+      <rect x="538" y="208" width="86" height="64" rx="4"/>
+      <rect x="632" y="208" width="86" height="64" rx="4"/>
+    </g>
+    <g font-family="ui-monospace, monospace" font-size="8" fill="#22c55e" text-anchor="middle">
+      <text x="111" y="232">SM 7</text>
+      <text x="205" y="232">SM 8</text>
+      <text x="299" y="232">SM 9</text>
+      <text x="393" y="232">SM 10</text>
+      <text x="487" y="232">SM 11</text>
+      <text x="581" y="232">SM 12</text>
+      <text x="675" y="232">SM 13</text>
+    </g>
+    <g fill="#22c55e" opacity="0.45">
+      <circle cx="90" cy="250" r="3"/><circle cx="103" cy="250" r="3"/><circle cx="116" cy="250" r="3"/><circle cx="129" cy="250" r="3"/>
+      <circle cx="184" cy="250" r="3"/><circle cx="197" cy="250" r="3"/><circle cx="210" cy="250" r="3"/><circle cx="223" cy="250" r="3"/>
+      <circle cx="278" cy="250" r="3"/><circle cx="291" cy="250" r="3"/><circle cx="304" cy="250" r="3"/><circle cx="317" cy="250" r="3"/>
+      <circle cx="372" cy="250" r="3"/><circle cx="385" cy="250" r="3"/><circle cx="398" cy="250" r="3"/><circle cx="411" cy="250" r="3"/>
+      <circle cx="466" cy="250" r="3"/><circle cx="479" cy="250" r="3"/><circle cx="492" cy="250" r="3"/><circle cx="505" cy="250" r="3"/>
+      <circle cx="560" cy="250" r="3"/><circle cx="573" cy="250" r="3"/><circle cx="586" cy="250" r="3"/><circle cx="599" cy="250" r="3"/>
+      <circle cx="654" cy="250" r="3"/><circle cx="667" cy="250" r="3"/><circle cx="680" cy="250" r="3"/><circle cx="693" cy="250" r="3"/>
+    </g>
+
+    <!-- Row 3 -->
+    <g fill="#061a0e" stroke="#22c55e" stroke-width="1.2">
+      <rect x="68" y="280" width="86" height="64" rx="4"/>
+      <rect x="162" y="280" width="86" height="64" rx="4"/>
+      <rect x="256" y="280" width="86" height="64" rx="4"/>
+      <rect x="350" y="280" width="86" height="64" rx="4"/>
+      <rect x="444" y="280" width="86" height="64" rx="4"/>
+      <rect x="538" y="280" width="86" height="64" rx="4"/>
+      <rect x="632" y="280" width="86" height="64" rx="4"/>
+    </g>
+    <g font-family="ui-monospace, monospace" font-size="8" fill="#22c55e" text-anchor="middle">
+      <text x="111" y="304">SM 14</text>
+      <text x="205" y="304">SM 15</text>
+      <text x="299" y="304">SM 16</text>
+      <text x="393" y="304">SM 17</text>
+      <text x="487" y="304">SM 18</text>
+      <text x="581" y="304">SM 19</text>
+      <text x="675" y="304">SM 20</text>
+    </g>
+    <g fill="#22c55e" opacity="0.4">
+      <circle cx="90" cy="322" r="3"/><circle cx="103" cy="322" r="3"/><circle cx="116" cy="322" r="3"/><circle cx="129" cy="322" r="3"/>
+      <circle cx="184" cy="322" r="3"/><circle cx="197" cy="322" r="3"/><circle cx="210" cy="322" r="3"/><circle cx="223" cy="322" r="3"/>
+      <circle cx="278" cy="322" r="3"/><circle cx="291" cy="322" r="3"/><circle cx="304" cy="322" r="3"/><circle cx="317" cy="322" r="3"/>
+      <circle cx="372" cy="322" r="3"/><circle cx="385" cy="322" r="3"/><circle cx="398" cy="322" r="3"/><circle cx="411" cy="322" r="3"/>
+      <circle cx="466" cy="322" r="3"/><circle cx="479" cy="322" r="3"/><circle cx="492" cy="322" r="3"/><circle cx="505" cy="322" r="3"/>
+      <circle cx="560" cy="322" r="3"/><circle cx="573" cy="322" r="3"/><circle cx="586" cy="322" r="3"/><circle cx="599" cy="322" r="3"/>
+      <circle cx="654" cy="322" r="3"/><circle cx="667" cy="322" r="3"/><circle cx="680" cy="322" r="3"/><circle cx="693" cy="322" r="3"/>
+    </g>
+
+    <!-- Rows 4-6 (dim, compact) -->
+    <g fill="#030d07" stroke="#22c55e" stroke-width="0.8" opacity="0.6">
+      <rect x="68" y="352" width="86" height="50" rx="3"/>
+      <rect x="162" y="352" width="86" height="50" rx="3"/>
+      <rect x="256" y="352" width="86" height="50" rx="3"/>
+      <rect x="350" y="352" width="86" height="50" rx="3"/>
+      <rect x="444" y="352" width="86" height="50" rx="3"/>
+      <rect x="538" y="352" width="86" height="50" rx="3"/>
+      <rect x="632" y="352" width="86" height="50" rx="3"/>
+      <rect x="68" y="410" width="86" height="50" rx="3"/>
+      <rect x="162" y="410" width="86" height="50" rx="3"/>
+      <rect x="256" y="410" width="86" height="50" rx="3"/>
+      <rect x="350" y="410" width="86" height="50" rx="3"/>
+      <rect x="444" y="410" width="86" height="50" rx="3"/>
+      <rect x="538" y="410" width="86" height="50" rx="3"/>
+      <rect x="632" y="410" width="86" height="50" rx="3"/>
+      <rect x="68" y="468" width="86" height="50" rx="3"/>
+      <rect x="162" y="468" width="86" height="50" rx="3"/>
+      <rect x="256" y="468" width="86" height="50" rx="3"/>
+      <rect x="350" y="468" width="86" height="50" rx="3"/>
+      <rect x="444" y="468" width="86" height="50" rx="3"/>
+      <rect x="538" y="468" width="86" height="50" rx="3"/>
+      <rect x="632" y="468" width="86" height="50" rx="3"/>
+    </g>
+    <g font-family="ui-monospace, monospace" font-size="7" fill="#22c55e" opacity="0.5" text-anchor="middle">
+      <text x="111" y="381">SM 21-27</text>
+      <text x="111" y="439">SM 28-34</text>
+      <text x="111" y="497">SM 35-41</text>
+    </g>
+  </g>
+
+  <!-- CUDA label -->
+  <text x="400" y="548" font-family="ui-monospace, monospace" font-size="42" font-weight="700" fill="#22c55e" text-anchor="middle" opacity="0.12" letter-spacing="12">CUDA</text>
+
+  <!-- Metrics row -->
+  <line x1="60" y1="560" x2="740" y2="560" stroke="#22c55e" stroke-width="0.75" opacity="0.3"/>
+
+  <rect x="80" y="578" width="180" height="76" rx="6" fill="#020e06" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="170" y="602" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle" letter-spacing="2">SMs</text>
+  <text x="170" y="632" font-family="ui-monospace, monospace" font-size="32" font-weight="700" fill="#22c55e" text-anchor="middle">128</text>
+  <text x="170" y="648" font-family="ui-monospace, monospace" font-size="8" fill="#4b5563" text-anchor="middle">H100 SXM</text>
+
+  <rect x="310" y="578" width="180" height="76" rx="6" fill="#020e06" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="400" y="602" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle" letter-spacing="2">THREADS / WARP</text>
+  <text x="400" y="632" font-family="ui-monospace, monospace" font-size="32" font-weight="700" fill="#22c55e" text-anchor="middle">32</text>
+  <text x="400" y="648" font-family="ui-monospace, monospace" font-size="8" fill="#4b5563" text-anchor="middle">SIMT execution</text>
+
+  <rect x="540" y="578" width="180" height="76" rx="6" fill="#020e06" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="630" y="602" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle" letter-spacing="2">TFLOPS</text>
+  <text x="630" y="632" font-family="ui-monospace, monospace" font-size="32" font-weight="700" fill="#22c55e" text-anchor="middle">989</text>
+  <text x="630" y="648" font-family="ui-monospace, monospace" font-size="8" fill="#4b5563" text-anchor="middle">FP8 tensor ops</text>
+
+  <!-- Jensen quote area -->
+  <rect x="80" y="672" width="640" height="60" rx="6" fill="#020e06" stroke="#16a34a" stroke-width="1"/>
+  <text x="400" y="696" font-family="ui-monospace, monospace" font-size="10" fill="#4b5563" text-anchor="middle" letter-spacing="1">"The more you buy, the more you save."</text>
+  <text x="400" y="716" font-family="ui-monospace, monospace" font-size="10" fill="#22c55e" text-anchor="middle" letter-spacing="1">— Jensen Huang, Berlin 2023</text>
+
+  <text x="400" y="760" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle">CUDA · GPU revolution · accelerated computing</text>
+</svg>

@@ -1,0 +1,168 @@
+<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glow-os" cx="50%" cy="50%" r="46%">
+      <stop offset="0%" stop-color="#3d1a00" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#0d1117" stop-opacity="0"/>
+    </radialGradient>
+    <marker id="arr-os" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 0 6, 7 3" fill="#f59e0b"/>
+    </marker>
+    <marker id="arr-g" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 0 6, 7 3" fill="#22c55e"/>
+    </marker>
+    <marker id="arr-r" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 0 6, 7 3" fill="#ef4444"/>
+    </marker>
+  </defs>
+  <rect width="800" height="800" fill="#0d1117"/>
+  <rect width="800" height="800" fill="url(#glow-os)"/>
+
+  <!-- Title -->
+  <text x="400" y="60" font-family="ui-monospace, monospace" font-size="13" font-weight="700" fill="#f59e0b" text-anchor="middle" letter-spacing="4">OS CONCEPTS IN LLMs</text>
+  <text x="400" y="82" font-family="ui-monospace, monospace" font-size="10" fill="#4b5563" text-anchor="middle" letter-spacing="3">VIRTUAL MEMORY  ·  PAGING  ·  BRANCH PREDICTION</text>
+
+  <!-- ── Centre divider ──────────────────────────────────────────── -->
+  <line x1="400" y1="100" x2="400" y2="530" stroke="#f59e0b" stroke-width="0.75" opacity="0.18" stroke-dasharray="6 4"/>
+
+  <!-- ══ LEFT COLUMN: Paged KV-Cache ════════════════════════════════ -->
+  <text x="200" y="108" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle" letter-spacing="2">PAGED KV-CACHE</text>
+
+  <!-- Page table -->
+  <rect x="62" y="120" width="100" height="238" rx="5" fill="#0a0d12" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="112" y="140" font-family="ui-monospace, monospace" font-size="8" fill="#4b5563" text-anchor="middle" letter-spacing="1">PAGE TABLE</text>
+  <g font-family="ui-monospace, monospace" font-size="9">
+    <rect x="72" y="148" width="80" height="20" rx="2" fill="#1c0f00" stroke="#f59e0b" stroke-width="0.75"/>
+    <text x="112" y="163" fill="#f59e0b" text-anchor="middle">0 → frm 3</text>
+    <rect x="72" y="172" width="80" height="20" rx="2" fill="#1c0f00" stroke="#f59e0b" stroke-width="0.75"/>
+    <text x="112" y="187" fill="#f59e0b" text-anchor="middle">1 → frm 7</text>
+    <rect x="72" y="196" width="80" height="20" rx="2" fill="#1c0f00" stroke="#f59e0b" stroke-width="0.75"/>
+    <text x="112" y="211" fill="#f59e0b" text-anchor="middle">2 → frm 1</text>
+    <rect x="72" y="220" width="80" height="20" rx="2" fill="#3d1a00" stroke="#fbbf24" stroke-width="1"/>
+    <text x="112" y="235" fill="#fbbf24" text-anchor="middle">3 → frm 5 ★</text>
+    <rect x="72" y="244" width="80" height="20" rx="2" fill="#1c0f00" stroke="#f59e0b" stroke-width="0.75"/>
+    <text x="112" y="259" fill="#f59e0b" text-anchor="middle">4 → frm 2</text>
+    <rect x="72" y="268" width="80" height="20" rx="2" fill="#1c0f00" stroke="#f59e0b" stroke-width="0.75"/>
+    <text x="112" y="283" fill="#f59e0b" text-anchor="middle">5 → frm 9</text>
+    <rect x="72" y="292" width="80" height="20" rx="2" fill="#1c0f00" stroke="#f59e0b" stroke-width="0.75"/>
+    <text x="112" y="307" fill="#f59e0b" text-anchor="middle">6 → frm 6</text>
+    <rect x="72" y="316" width="80" height="20" rx="2" fill="#1c0f00" stroke="#f59e0b" stroke-width="0.75"/>
+    <text x="112" y="331" fill="#f59e0b" text-anchor="middle">7 → frm 4</text>
+  </g>
+
+  <!-- Arrow →  -->
+  <line x1="164" y1="236" x2="192" y2="236" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arr-os)"/>
+
+  <!-- KV frames -->
+  <rect x="196" y="120" width="108" height="238" rx="5" fill="#0a0d12" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="250" y="140" font-family="ui-monospace, monospace" font-size="8" fill="#4b5563" text-anchor="middle" letter-spacing="1">KV FRAMES</text>
+  <g font-family="ui-monospace, monospace" font-size="9">
+    <rect x="206" y="148" width="88" height="20" rx="2" fill="#1c0f00" stroke="#f59e0b" stroke-width="0.75"/>
+    <text x="250" y="163" fill="#f59e0b" text-anchor="middle">K[0] V[0]</text>
+    <rect x="206" y="172" width="88" height="20" rx="2" fill="#1c0f00" stroke="#f59e0b" stroke-width="0.75"/>
+    <text x="250" y="187" fill="#f59e0b" text-anchor="middle">K[1] V[1]</text>
+    <rect x="206" y="196" width="88" height="20" rx="2" fill="#3d1a00" stroke="#fbbf24" stroke-width="1"/>
+    <text x="250" y="211" fill="#fbbf24" text-anchor="middle">K[2] V[2] ←</text>
+    <rect x="206" y="220" width="88" height="20" rx="2" fill="#1c0f00" stroke="#f59e0b" stroke-width="0.75"/>
+    <text x="250" y="235" fill="#f59e0b" text-anchor="middle">K[3] V[3]</text>
+    <rect x="206" y="244" width="88" height="20" rx="2" fill="#1c0f00" stroke="#f59e0b" stroke-width="0.75"/>
+    <text x="250" y="259" fill="#f59e0b" text-anchor="middle">K[4] V[4]</text>
+    <rect x="206" y="268" width="88" height="20" rx="2" fill="#1c0f00" stroke="#f59e0b" stroke-width="0.75"/>
+    <text x="250" y="283" fill="#f59e0b" text-anchor="middle">K[5] V[5]</text>
+    <rect x="206" y="292" width="88" height="20" rx="2" fill="#051005" stroke="#22c55e" stroke-width="0.75"/>
+    <text x="250" y="307" fill="#22c55e" text-anchor="middle">free</text>
+    <rect x="206" y="316" width="88" height="20" rx="2" fill="#051005" stroke="#22c55e" stroke-width="0.75"/>
+    <text x="250" y="331" fill="#22c55e" text-anchor="middle">free</text>
+  </g>
+
+  <!-- vLLM label -->
+  <text x="200" y="380" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle">↳ vLLM paged attention</text>
+  <!-- punchcard mini-visual -->
+  <rect x="62" y="396" width="246" height="60" rx="4" fill="#0a0802" stroke="#78350f" stroke-width="1.5"/>
+  <text x="185" y="414" font-family="ui-monospace, monospace" font-size="8" fill="#78350f" text-anchor="middle" letter-spacing="1">PUNCHCARD · OG TOKENIZER</text>
+  <g fill="#f59e0b" opacity="0.65">
+    <rect x="76"  y="422" width="6" height="9" rx="1"/> <rect x="90"  y="422" width="6" height="9" rx="1"/>
+    <rect x="118" y="422" width="6" height="9" rx="1"/> <rect x="146" y="422" width="6" height="9" rx="1"/>
+    <rect x="160" y="422" width="6" height="9" rx="1"/> <rect x="188" y="422" width="6" height="9" rx="1"/>
+    <rect x="216" y="422" width="6" height="9" rx="1"/> <rect x="272" y="422" width="6" height="9" rx="1"/>
+    <rect x="76"  y="436" width="6" height="9" rx="1"/> <rect x="104" y="436" width="6" height="9" rx="1"/>
+    <rect x="132" y="436" width="6" height="9" rx="1"/> <rect x="160" y="436" width="6" height="9" rx="1"/>
+    <rect x="202" y="436" width="6" height="9" rx="1"/> <rect x="244" y="436" width="6" height="9" rx="1"/>
+    <rect x="258" y="436" width="6" height="9" rx="1"/>
+  </g>
+  <text x="185" y="468" font-family="ui-monospace, monospace" font-size="8" fill="#78350f" text-anchor="middle">IBM 029 · 80-column card</text>
+
+  <!-- ══ RIGHT COLUMN: Branch Prediction ════════════════════════════ -->
+  <text x="588" y="108" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle" letter-spacing="2">BRANCH PREDICTION</text>
+
+  <!-- Instruction fetch box -->
+  <rect x="428" y="120" width="316" height="56" rx="5" fill="#0a0d12" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="444" y="142" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563">PC: 0x4008a0</text>
+  <text x="444" y="162" font-family="ui-monospace, monospace" font-size="11" fill="#f59e0b">BEQ r1, r2, &lt;target&gt;</text>
+
+  <!-- Stem line down -->
+  <line x1="586" y1="176" x2="586" y2="210" stroke="#f59e0b" stroke-width="1.5"/>
+  <!-- Fork point dot -->
+  <circle cx="586" cy="212" r="5" fill="#f59e0b"/>
+
+  <!-- Taken branch (left-down) -->
+  <path d="M586 212 Q530 248 490 278" fill="none" stroke="#22c55e" stroke-width="1.8" marker-end="url(#arr-g)"/>
+  <text x="492" y="268" font-family="ui-monospace, monospace" font-size="9" fill="#22c55e">taken</text>
+  <rect x="428" y="290" width="136" height="56" rx="4" fill="#071410" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="496" y="312" font-family="ui-monospace, monospace" font-size="9" fill="#22c55e" text-anchor="middle">speculative</text>
+  <text x="496" y="330" font-family="ui-monospace, monospace" font-size="9" fill="#22c55e" text-anchor="middle">execution</text>
+
+  <!-- Not taken branch (right-down) -->
+  <path d="M586 212 Q642 248 682 278" fill="none" stroke="#ef4444" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#arr-r)"/>
+  <text x="654" y="268" font-family="ui-monospace, monospace" font-size="9" fill="#ef4444">not taken</text>
+  <rect x="608" y="290" width="136" height="56" rx="4" fill="#1a0808" stroke="#ef4444" stroke-width="1.5" opacity="0.7"/>
+  <text x="676" y="312" font-family="ui-monospace, monospace" font-size="9" fill="#ef4444" text-anchor="middle">flush on</text>
+  <text x="676" y="330" font-family="ui-monospace, monospace" font-size="9" fill="#ef4444" text-anchor="middle">mispredict</text>
+
+  <!-- BTB result box -->
+  <rect x="490" y="364" width="196" height="52" rx="5" fill="#0a0d12" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="588" y="386" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle">BTB hit</text>
+  <text x="588" y="406" font-family="ui-monospace, monospace" font-size="10" fill="#f59e0b" text-anchor="middle">predict_taken = true</text>
+
+  <!-- LLM analogy: speculative decoding -->
+  <rect x="428" y="434" width="316" height="60" rx="5" fill="#0a0d12" stroke="#8b5cf6" stroke-width="1.5" stroke-dasharray="5 3"/>
+  <text x="586" y="456" font-family="ui-monospace, monospace" font-size="9" fill="#8b5cf6" text-anchor="middle" letter-spacing="1">LLM ANALOGY</text>
+  <text x="586" y="474" font-family="ui-monospace, monospace" font-size="10" fill="#a78bfa" text-anchor="middle">speculative decoding</text>
+  <text x="586" y="490" font-family="ui-monospace, monospace" font-size="8" fill="#4b5563" text-anchor="middle">draft model predicts · verifier accepts/rejects</text>
+
+  <!-- ══ Bottom stats ════════════════════════════════════════════════ -->
+  <line x1="60" y1="542" x2="740" y2="542" stroke="#f59e0b" stroke-width="0.75" opacity="0.3"/>
+
+  <rect x="80"  y="558" width="180" height="74" rx="6" fill="#0a0600" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="170" y="582" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle" letter-spacing="2">PAGE SIZE</text>
+  <text x="170" y="612" font-family="ui-monospace, monospace" font-size="30" font-weight="700" fill="#f59e0b" text-anchor="middle">16</text>
+  <text x="170" y="626" font-family="ui-monospace, monospace" font-size="8" fill="#4b5563" text-anchor="middle">tokens / KV block</text>
+
+  <rect x="310" y="558" width="180" height="74" rx="6" fill="#0a0600" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="400" y="582" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle" letter-spacing="2">BRANCH ACC</text>
+  <text x="400" y="612" font-family="ui-monospace, monospace" font-size="30" font-weight="700" fill="#f59e0b" text-anchor="middle">97%</text>
+  <text x="400" y="626" font-family="ui-monospace, monospace" font-size="8" fill="#4b5563" text-anchor="middle">modern predictor</text>
+
+  <rect x="540" y="558" width="180" height="74" rx="6" fill="#0a0600" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="630" y="582" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle" letter-spacing="2">SPEC DECODE</text>
+  <text x="630" y="612" font-family="ui-monospace, monospace" font-size="30" font-weight="700" fill="#a78bfa" text-anchor="middle">3×</text>
+  <text x="630" y="626" font-family="ui-monospace, monospace" font-size="8" fill="#4b5563" text-anchor="middle">throughput gain</text>
+
+  <text x="400" y="672" font-family="ui-monospace, monospace" font-size="11" fill="#94a3b8" text-anchor="middle" letter-spacing="2">operating systems meet transformers</text>
+  <text x="400" y="692" font-family="ui-monospace, monospace" font-size="9"  fill="#4b5563" text-anchor="middle">virtual memory · TLB · speculative execution → LLM inference</text>
+
+  <!-- Concept tags -->
+  <g font-family="ui-monospace, monospace" font-size="9" text-anchor="middle">
+    <rect x="80"  y="710" width="100" height="22" rx="4" fill="#1c0f00" stroke="#f59e0b" stroke-width="1"/>
+    <text x="130" y="726" fill="#94a3b8">vLLM</text>
+    <rect x="194" y="710" width="120" height="22" rx="4" fill="#1c0f00" stroke="#f59e0b" stroke-width="1"/>
+    <text x="254" y="726" fill="#94a3b8">paged attention</text>
+    <rect x="328" y="710" width="144" height="22" rx="4" fill="#1c0f00" stroke="#f59e0b" stroke-width="1"/>
+    <text x="400" y="726" fill="#94a3b8">speculative decode</text>
+    <rect x="486" y="710" width="100" height="22" rx="4" fill="#1c0f00" stroke="#8b5cf6" stroke-width="1"/>
+    <text x="536" y="726" fill="#94a3b8">branch BTB</text>
+    <rect x="600" y="710" width="120" height="22" rx="4" fill="#1c0f00" stroke="#f59e0b" stroke-width="1"/>
+    <text x="660" y="726" fill="#94a3b8">KV eviction</text>
+  </g>
+
+  <text x="400" y="762" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle">punched card → tokenizer → transformer · the loop closes</text>
+</svg>

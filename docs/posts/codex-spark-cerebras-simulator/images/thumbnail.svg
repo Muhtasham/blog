@@ -1,0 +1,127 @@
+<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glow-cerebras" cx="50%" cy="48%" r="44%">
+      <stop offset="0%" stop-color="#0a3040" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#0d1117" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="800" fill="#0d1117"/>
+  <rect width="800" height="800" fill="url(#glow-cerebras)"/>
+
+  <!-- Title -->
+  <text x="400" y="66" font-family="ui-monospace, monospace" font-size="13" font-weight="700" fill="#0891b2" text-anchor="middle" letter-spacing="4">CODEX-SPARK</text>
+  <text x="400" y="88" font-family="ui-monospace, monospace" font-size="10" fill="#4b5563" text-anchor="middle" letter-spacing="3">CEREBRAS WAFER-SCALE ENGINE</text>
+
+  <!-- Wafer die - hexagonal grid pattern centered -->
+  <!-- Outer wafer circle -->
+  <circle cx="400" cy="390" r="240" fill="none" stroke="#0891b2" stroke-width="1.5" opacity="0.25"/>
+  <circle cx="400" cy="390" r="236" fill="#080e16" opacity="0.6"/>
+
+  <!-- Hex grid of compute tiles - row by row -->
+  <!-- Row 1 (top, 3 tiles) -->
+  <g fill="#0a1e28" stroke="#0891b2" stroke-width="1">
+    <polygon points="340,182 360,172 380,182 380,202 360,212 340,202" opacity="0.7"/>
+    <polygon points="380,182 400,172 420,182 420,202 400,212 380,202" opacity="0.7"/>
+    <polygon points="420,182 440,172 460,182 460,202 440,212 420,202" opacity="0.7"/>
+  </g>
+  <!-- Row 2 (5 tiles) -->
+  <g fill="#0a1e28" stroke="#0891b2" stroke-width="1">
+    <polygon points="300,218 320,208 340,218 340,238 320,248 300,238" opacity="0.7"/>
+    <polygon points="340,218 360,208 380,218 380,238 360,248 340,238" opacity="0.8"/>
+    <polygon points="380,218 400,208 420,218 420,238 400,248 380,238" opacity="0.9"/>
+    <polygon points="420,218 440,208 460,218 460,238 440,248 420,238" opacity="0.8"/>
+    <polygon points="460,218 480,208 500,218 500,238 480,248 460,238" opacity="0.7"/>
+  </g>
+  <!-- Row 3 (7 tiles) -->
+  <g fill="#0a2030" stroke="#0891b2" stroke-width="1">
+    <polygon points="260,254 280,244 300,254 300,274 280,284 260,274" opacity="0.7"/>
+    <polygon points="300,254 320,244 340,254 340,274 320,284 300,274" opacity="0.85"/>
+    <polygon points="340,254 360,244 380,254 380,274 360,284 340,274" opacity="0.9"/>
+    <polygon points="380,254 400,244 420,254 420,274 400,284 380,274" fill="#0d2d3d" opacity="1"/>
+    <polygon points="420,254 440,244 460,254 460,274 440,284 420,274" opacity="0.9"/>
+    <polygon points="460,254 480,244 500,254 500,274 480,284 460,274" opacity="0.85"/>
+    <polygon points="500,254 520,244 540,254 540,274 520,284 500,274" opacity="0.7"/>
+  </g>
+  <!-- Row 4 (9 tiles) - widest visible -->
+  <g fill="#0a2030" stroke="#0891b2" stroke-width="1">
+    <polygon points="220,290 240,280 260,290 260,310 240,320 220,310" opacity="0.6"/>
+    <polygon points="260,290 280,280 300,290 300,310 280,320 260,310" opacity="0.8"/>
+    <polygon points="300,290 320,280 340,290 340,310 320,320 300,310" opacity="0.9"/>
+    <polygon points="340,290 360,280 380,290 380,310 360,320 340,310" opacity="0.95"/>
+    <polygon points="380,290 400,280 420,290 420,310 400,320 380,310" fill="#0e3347" opacity="1"/>
+    <polygon points="420,290 440,280 460,290 460,310 440,320 420,310" opacity="0.95"/>
+    <polygon points="460,290 480,280 500,290 500,310 480,320 460,310" opacity="0.9"/>
+    <polygon points="500,290 520,280 540,290 540,310 520,320 500,310" opacity="0.8"/>
+    <polygon points="540,290 560,280 580,290 580,310 560,320 540,310" opacity="0.6"/>
+  </g>
+  <!-- Row 5 (center row, 9 tiles, brightest) -->
+  <g fill="#0c2840" stroke="#0891b2" stroke-width="1.2">
+    <polygon points="220,326 240,316 260,326 260,346 240,356 220,346" opacity="0.65"/>
+    <polygon points="260,326 280,316 300,326 300,346 280,356 260,346" opacity="0.85"/>
+    <polygon points="300,326 320,316 340,326 340,346 320,356 300,346" opacity="0.95"/>
+    <polygon points="340,326 360,316 380,326 380,346 360,356 340,346" fill="#0f3850"/>
+    <polygon points="380,326 400,316 420,326 420,346 400,356 380,346" fill="#104060" stroke="#22d3ee" stroke-width="1.5"/>
+    <polygon points="420,326 440,316 460,326 460,346 440,356 420,346" fill="#0f3850"/>
+    <polygon points="460,326 480,316 500,326 500,346 480,356 460,346" opacity="0.95"/>
+    <polygon points="500,326 520,316 540,326 540,346 520,356 500,346" opacity="0.85"/>
+    <polygon points="540,326 560,316 580,326 580,346 560,356 540,346" opacity="0.65"/>
+  </g>
+  <!-- Row 6 -->
+  <g fill="#0a2030" stroke="#0891b2" stroke-width="1">
+    <polygon points="220,362 240,352 260,362 260,382 240,392 220,382" opacity="0.6"/>
+    <polygon points="260,362 280,352 300,362 300,382 280,392 260,382" opacity="0.8"/>
+    <polygon points="300,362 320,352 340,362 340,382 320,392 300,382" opacity="0.9"/>
+    <polygon points="340,362 360,352 380,362 380,382 360,392 340,382" opacity="0.95"/>
+    <polygon points="380,362 400,352 420,362 420,382 400,392 380,382" fill="#0e3347" opacity="1"/>
+    <polygon points="420,362 440,352 460,362 460,382 440,392 420,382" opacity="0.95"/>
+    <polygon points="460,362 480,352 500,362 500,382 480,392 460,382" opacity="0.9"/>
+    <polygon points="500,362 520,352 540,362 540,382 520,392 500,382" opacity="0.8"/>
+    <polygon points="540,362 560,352 580,362 580,382 560,392 540,382" opacity="0.6"/>
+  </g>
+  <!-- Row 7 -->
+  <g fill="#0a1e28" stroke="#0891b2" stroke-width="1">
+    <polygon points="260,398 280,388 300,398 300,418 280,428 260,418" opacity="0.7"/>
+    <polygon points="300,398 320,388 340,398 340,418 320,428 300,418" opacity="0.85"/>
+    <polygon points="340,398 360,388 380,398 380,418 360,428 340,418" opacity="0.9"/>
+    <polygon points="380,398 400,388 420,398 420,418 400,428 380,418" fill="#0d2d3d" opacity="1"/>
+    <polygon points="420,398 440,388 460,398 460,418 440,428 420,418" opacity="0.9"/>
+    <polygon points="460,398 480,388 500,398 500,418 480,428 460,418" opacity="0.85"/>
+    <polygon points="500,398 520,388 540,398 540,418 520,428 500,418" opacity="0.7"/>
+  </g>
+  <!-- Row 8 -->
+  <g fill="#0a1e28" stroke="#0891b2" stroke-width="1">
+    <polygon points="300,434 320,424 340,434 340,454 320,464 300,454" opacity="0.7"/>
+    <polygon points="340,434 360,424 380,434 380,454 360,464 340,454" opacity="0.8"/>
+    <polygon points="380,434 400,424 420,434 420,454 400,464 380,454" opacity="0.9"/>
+    <polygon points="420,434 440,424 460,434 460,454 440,464 420,454" opacity="0.8"/>
+    <polygon points="460,434 480,424 500,434 500,454 480,464 460,454" opacity="0.7"/>
+  </g>
+  <!-- Row 9 -->
+  <g fill="#0a1e28" stroke="#0891b2" stroke-width="1">
+    <polygon points="340,470 360,460 380,470 380,490 360,500 340,490" opacity="0.7"/>
+    <polygon points="380,470 400,460 420,470 420,490 400,500 380,490" opacity="0.7"/>
+    <polygon points="420,470 440,460 460,470 460,490 440,500 420,490" opacity="0.7"/>
+  </g>
+
+  <!-- Token speed counter panel -->
+  <rect x="84" y="554" width="248" height="108" rx="8" fill="#080e14" stroke="#0891b2" stroke-width="2"/>
+  <text x="208" y="580" font-family="ui-monospace, monospace" font-size="10" fill="#4b5563" text-anchor="middle" letter-spacing="3">TOKEN SPEED</text>
+  <text x="208" y="630" font-family="ui-monospace, monospace" font-size="40" font-weight="700" fill="#0891b2" text-anchor="middle">1024</text>
+  <text x="208" y="652" font-family="ui-monospace, monospace" font-size="11" fill="#94a3b8" text-anchor="middle">tokens / second</text>
+
+  <!-- Chip self-simulation panel -->
+  <rect x="468" y="554" width="248" height="108" rx="8" fill="#080e14" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="592" y="580" font-family="ui-monospace, monospace" font-size="10" fill="#4b5563" text-anchor="middle" letter-spacing="2">SELF-SIMULATION</text>
+  <text x="592" y="612" font-family="ui-monospace, monospace" font-size="12" fill="#22d3ee" text-anchor="middle">chip → model</text>
+  <text x="592" y="632" font-family="ui-monospace, monospace" font-size="12" fill="#22d3ee" text-anchor="middle">model → chip</text>
+  <text x="592" y="652" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle">recursive abstraction</text>
+
+  <!-- Bottom label -->
+  <text x="400" y="704" font-family="ui-monospace, monospace" font-size="11" fill="#94a3b8" text-anchor="middle" letter-spacing="2">wafer-scale integration</text>
+  <text x="400" y="724" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle" letter-spacing="1">850,000 AI cores on a single die</text>
+
+  <!-- Speed bar -->
+  <rect x="100" y="744" width="600" height="10" rx="3" fill="#080e14" stroke="#0891b2" stroke-width="1"/>
+  <rect x="100" y="744" width="576" height="10" rx="3" fill="#0891b2" opacity="0.6"/>
+  <text x="712" y="753" font-family="ui-monospace, monospace" font-size="9" fill="#0891b2">96%</text>
+</svg>

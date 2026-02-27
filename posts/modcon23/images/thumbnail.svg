@@ -1,0 +1,90 @@
+<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glow-modcon" cx="50%" cy="50%" r="45%">
+      <stop offset="0%" stop-color="#3d1a00" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#0d1117" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="800" fill="#0d1117"/>
+  <rect width="800" height="800" fill="url(#glow-modcon)"/>
+
+  <!-- Title -->
+  <text x="400" y="62" font-family="ui-monospace, monospace" font-size="13" font-weight="700" fill="#f97316" text-anchor="middle" letter-spacing="4">MODCON 2023</text>
+  <text x="400" y="84" font-family="ui-monospace, monospace" font-size="10" fill="#4b5563" text-anchor="middle" letter-spacing="3">MODULAR AI  ·  MOJO LANGUAGE</text>
+
+  <!-- ── Hex cluster centred at (400, 330) ─────────────────────────── -->
+  <!-- Connection lines (drawn first, underneath) -->
+  <g stroke="#f97316" stroke-width="1.2" opacity="0.25" fill="none">
+    <!-- center → top        --> <line x1="400" y1="267" x2="400" y2="235"/>
+    <!-- center → top-right  --> <line x1="457" y1="300" x2="490" y2="282"/>
+    <!-- center → bot-right  --> <line x1="457" y1="363" x2="490" y2="381"/>
+    <!-- center → bottom     --> <line x1="400" y1="395" x2="400" y2="427"/>
+    <!-- center → bot-left   --> <line x1="343" y1="363" x2="310" y2="381"/>
+    <!-- center → top-left   --> <line x1="343" y1="300" x2="310" y2="282"/>
+  </g>
+
+  <!-- Center hex: MOJO — pointy-top, r=65, center (400,330) -->
+  <!-- points: top=(400,265) tr=(456,298) br=(456,363) bot=(400,396) bl=(344,363) tl=(344,298) -->
+  <polygon points="400,265 456,298 456,363 400,396 344,363 344,298"
+           fill="#1c0a00" stroke="#f97316" stroke-width="2.5"/>
+  <text x="400" y="322" font-family="ui-monospace, monospace" font-size="18" font-weight="700" fill="#f97316" text-anchor="middle">MOJO</text>
+  <text x="400" y="346" font-family="ui-monospace, monospace" font-size="11" fill="#fb923c" text-anchor="middle" opacity="0.9">language core</text>
+  <text x="400" y="364" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle">🔥 python syntax, C speed</text>
+
+  <!-- Surrounding 6 hexes: r=46, centre-to-centre ≈ 133px -->
+  <!-- Top  (400, 197) -->
+  <polygon points="400,151 440,174 440,220 400,243 360,220 360,174"
+           fill="#140800" stroke="#fb923c" stroke-width="1.75"/>
+  <text x="400" y="201" font-family="ui-monospace, monospace" font-size="11" fill="#fb923c" text-anchor="middle">Python</text>
+  <text x="400" y="218" font-family="ui-monospace, monospace" font-size="9"  fill="#4b5563" text-anchor="middle">compat</text>
+
+  <!-- Top-right  (515, 264) -->
+  <polygon points="515,218 555,241 555,287 515,310 475,287 475,241"
+           fill="#140800" stroke="#fb923c" stroke-width="1.75"/>
+  <text x="515" y="272" font-family="ui-monospace, monospace" font-size="11" fill="#fb923c" text-anchor="middle">MLIR</text>
+  <text x="515" y="289" font-family="ui-monospace, monospace" font-size="9"  fill="#4b5563" text-anchor="middle">backend</text>
+
+  <!-- Bot-right  (515, 397) -->
+  <polygon points="515,351 555,374 555,420 515,443 475,420 475,374"
+           fill="#140800" stroke="#fb923c" stroke-width="1.75"/>
+  <text x="515" y="405" font-family="ui-monospace, monospace" font-size="11" fill="#fb923c" text-anchor="middle">GPU</text>
+  <text x="515" y="422" font-family="ui-monospace, monospace" font-size="9"  fill="#4b5563" text-anchor="middle">kernels</text>
+
+  <!-- Bottom  (400, 463) -->
+  <polygon points="400,417 440,440 440,486 400,509 360,486 360,440"
+           fill="#140800" stroke="#fb923c" stroke-width="1.75"/>
+  <text x="400" y="471" font-family="ui-monospace, monospace" font-size="11" fill="#fb923c" text-anchor="middle">hardware</text>
+  <text x="400" y="488" font-family="ui-monospace, monospace" font-size="9"  fill="#4b5563" text-anchor="middle">portability</text>
+
+  <!-- Bot-left  (285, 397) -->
+  <polygon points="285,351 325,374 325,420 285,443 245,420 245,374"
+           fill="#140800" stroke="#fb923c" stroke-width="1.75"/>
+  <text x="285" y="405" font-family="ui-monospace, monospace" font-size="11" fill="#fb923c" text-anchor="middle">auto-tune</text>
+  <text x="285" y="422" font-family="ui-monospace, monospace" font-size="9"  fill="#4b5563" text-anchor="middle">optimize</text>
+
+  <!-- Top-left  (285, 264) -->
+  <polygon points="285,218 325,241 325,287 285,310 245,287 245,241"
+           fill="#140800" stroke="#fb923c" stroke-width="1.75"/>
+  <text x="285" y="272" font-family="ui-monospace, monospace" font-size="11" fill="#fb923c" text-anchor="middle">type</text>
+  <text x="285" y="289" font-family="ui-monospace, monospace" font-size="9"  fill="#4b5563" text-anchor="middle">system</text>
+
+  <!-- Divider -->
+  <line x1="80" y1="545" x2="720" y2="545" stroke="#f97316" stroke-width="0.75" opacity="0.3"/>
+
+  <!-- Code snippet -->
+  <rect x="100" y="558" width="600" height="108" rx="6" fill="#0a0600" stroke="#f97316" stroke-width="1.5"/>
+  <text x="120" y="579"  font-family="ui-monospace, monospace" font-size="10" fill="#4b5563"># Python syntax, C performance</text>
+  <text x="120" y="599"  font-family="ui-monospace, monospace" font-size="11" fill="#f97316">fn <tspan fill="#fb923c">matmul</tspan><tspan fill="#94a3b8">(a: Tensor, b: Tensor) -&gt; Tensor:</tspan></text>
+  <text x="120" y="619"  font-family="ui-monospace, monospace" font-size="11" fill="#94a3b8">    <tspan fill="#94a3b8">let result = Tensor(a.rows, b.cols)</tspan></text>
+  <text x="120" y="639"  font-family="ui-monospace, monospace" font-size="11" fill="#94a3b8">    <tspan fill="#fb923c">@simd</tspan><tspan fill="#94a3b8"> for i in range(a.rows): ...</tspan></text>
+  <text x="120" y="657"  font-family="ui-monospace, monospace" font-size="10" fill="#4b5563"># 35,000× faster than Python</text>
+
+  <!-- Footer -->
+  <text x="400" y="705" font-family="ui-monospace, monospace" font-size="11" fill="#94a3b8" text-anchor="middle" letter-spacing="2">modular computing paradigm</text>
+  <text x="400" y="725" font-family="ui-monospace, monospace" font-size="9"  fill="#4b5563" text-anchor="middle">composable · portable · performant</text>
+
+  <rect x="292" y="742" width="100" height="26" rx="4" fill="#1c0a00" stroke="#f97316" stroke-width="1.5"/>
+  <text x="342" y="760" font-family="ui-monospace, monospace" font-size="10" font-weight="700" fill="#f97316" text-anchor="middle">35,000×</text>
+  <rect x="408" y="742" width="100" height="26" rx="4" fill="#1c0a00" stroke="#c2410c" stroke-width="1"/>
+  <text x="458" y="760" font-family="ui-monospace, monospace" font-size="10" fill="#c2410c" text-anchor="middle">vs Python</text>
+</svg>

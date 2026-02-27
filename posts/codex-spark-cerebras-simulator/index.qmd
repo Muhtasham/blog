@@ -2,7 +2,7 @@
 title: "Meta-Engineering: Letting Codex-Spark Simulates the Silicon that it runs on"
 description: "Prompting a wafer-scale chip simulator at 1,000 tokens per second"
 date: "2026-02-14"
-image: "images/thumbnail.png"
+image: "images/thumbnail.svg"
 image-alt: "Cerebras defect-tolerance simulator and Codex-Spark real-time coding workflow"
 categories: [llm, agents, software-engineering]
 title-block-banner: true

@@ -1,0 +1,151 @@
+<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glow-batching" cx="50%" cy="50%" r="45%">
+      <stop offset="0%" stop-color="#1e3a5f" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#0d1117" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="800" fill="#0d1117"/>
+  <rect width="800" height="800" fill="url(#glow-batching)"/>
+
+  <!-- Title -->
+  <text x="400" y="72" font-family="ui-monospace, monospace" font-size="13" font-weight="700" fill="#3b82f6" text-anchor="middle" letter-spacing="4">IN-FLIGHT BATCHING</text>
+  <text x="400" y="94" font-family="ui-monospace, monospace" font-size="10" fill="#4b5563" text-anchor="middle" letter-spacing="2">LLM INFERENCE PIPELINE</text>
+
+  <!-- Queue label -->
+  <text x="108" y="148" font-family="ui-monospace, monospace" font-size="10" fill="#4b5563" text-anchor="middle" letter-spacing="2">QUEUE</text>
+
+  <!-- Incoming request blocks -->
+  <g fill="#0f172a" stroke="#3b82f6" stroke-width="1.5">
+    <rect x="60" y="160" width="96" height="36" rx="4"/>
+    <rect x="60" y="204" width="96" height="36" rx="4"/>
+    <rect x="60" y="248" width="96" height="36" rx="4"/>
+    <rect x="60" y="292" width="96" height="36" rx="4"/>
+    <rect x="60" y="336" width="96" height="36" rx="4"/>
+    <rect x="60" y="380" width="96" height="36" rx="4"/>
+  </g>
+  <g font-family="ui-monospace, monospace" font-size="10" fill="#3b82f6" text-anchor="middle">
+    <text x="108" y="183">req_001</text>
+    <text x="108" y="227">req_002</text>
+    <text x="108" y="271">req_003</text>
+    <text x="108" y="315">req_004</text>
+    <text x="108" y="359">req_005</text>
+    <text x="108" y="403">req_006</text>
+  </g>
+
+  <!-- Arrow from queue to batch engine -->
+  <line x1="158" y1="290" x2="218" y2="290" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.6"/>
+  <polygon points="218,286 228,290 218,294" fill="#3b82f6"/>
+
+  <!-- Batch Engine box -->
+  <rect x="230" y="210" width="160" height="160" rx="8" fill="#0f172a" stroke="#3b82f6" stroke-width="2"/>
+  <text x="310" y="248" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#3b82f6" text-anchor="middle" letter-spacing="2">BATCH</text>
+  <text x="310" y="264" font-family="ui-monospace, monospace" font-size="11" font-weight="700" fill="#3b82f6" text-anchor="middle" letter-spacing="2">ENGINE</text>
+  <!-- IFB label -->
+  <rect x="262" y="278" width="96" height="24" rx="4" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+  <text x="310" y="294" font-family="ui-monospace, monospace" font-size="10" font-weight="700" fill="#60a5fa" text-anchor="middle" letter-spacing="3">IFB</text>
+  <!-- small metric -->
+  <text x="310" y="340" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle">continuous batching</text>
+  <text x="310" y="356" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle">iteration-level</text>
+
+  <!-- Arrow from engine to GPU block -->
+  <line x1="392" y1="290" x2="452" y2="290" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.6"/>
+  <polygon points="452,286 462,290 452,294" fill="#3b82f6"/>
+
+  <!-- GPU / Parallel processing block -->
+  <rect x="464" y="168" width="268" height="244" rx="8" fill="#0a0f1a" stroke="#1d4ed8" stroke-width="1.5"/>
+  <text x="598" y="196" font-family="ui-monospace, monospace" font-size="10" fill="#4b5563" text-anchor="middle" letter-spacing="3">PARALLEL TOKEN STREAMS</text>
+
+  <!-- 4 parallel token stream rows -->
+  <g font-family="ui-monospace, monospace" font-size="10">
+    <!-- stream 1 -->
+    <text x="476" y="226" fill="#94a3b8">s1:</text>
+    <rect x="500" y="212" width="22" height="18" rx="2" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+    <rect x="526" y="212" width="22" height="18" rx="2" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+    <rect x="552" y="212" width="22" height="18" rx="2" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+    <rect x="578" y="212" width="22" height="18" rx="2" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+    <rect x="604" y="212" width="22" height="18" rx="2" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+    <rect x="630" y="212" width="22" height="18" rx="2" fill="#3b82f6" stroke="#3b82f6" stroke-width="1" opacity="0.7"/>
+    <rect x="656" y="212" width="22" height="18" rx="2" fill="#0f172a" stroke="#1d4ed8" stroke-width="1" opacity="0.4"/>
+    <rect x="682" y="212" width="22" height="18" rx="2" fill="#0f172a" stroke="#1d4ed8" stroke-width="1" opacity="0.4"/>
+    <!-- stream 2 -->
+    <text x="476" y="258" fill="#94a3b8">s2:</text>
+    <rect x="500" y="244" width="22" height="18" rx="2" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+    <rect x="526" y="244" width="22" height="18" rx="2" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+    <rect x="552" y="244" width="22" height="18" rx="2" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+    <rect x="578" y="244" width="22" height="18" rx="2" fill="#3b82f6" stroke="#3b82f6" stroke-width="1" opacity="0.7"/>
+    <rect x="604" y="244" width="22" height="18" rx="2" fill="#0f172a" stroke="#1d4ed8" stroke-width="1" opacity="0.4"/>
+    <rect x="630" y="244" width="22" height="18" rx="2" fill="#0f172a" stroke="#1d4ed8" stroke-width="1" opacity="0.4"/>
+    <rect x="656" y="244" width="22" height="18" rx="2" fill="#0f172a" stroke="#1d4ed8" stroke-width="1" opacity="0.4"/>
+    <rect x="682" y="244" width="22" height="18" rx="2" fill="#0f172a" stroke="#1d4ed8" stroke-width="1" opacity="0.4"/>
+    <!-- stream 3 -->
+    <text x="476" y="290" fill="#94a3b8">s3:</text>
+    <rect x="500" y="276" width="22" height="18" rx="2" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+    <rect x="526" y="276" width="22" height="18" rx="2" fill="#1e3a5f" stroke="#3b82f6" stroke-width="1"/>
+    <rect x="552" y="276" width="22" height="18" rx="2" fill="#3b82f6" stroke="#3b82f6" stroke-width="1" opacity="0.7"/>
+    <rect x="578" y="276" width="22" height="18" rx="2" fill="#3b82f6" stroke="#3b82f6" stroke-width="1" opacity="0.7"/>
+    <rect x="604" y="276" width="22" height="18" rx="2" fill="#3b82f6" stroke="#3b82f6" stroke-width="1" opacity="0.7"/>
+    <rect x="630" y="276" width="22" height="18" rx="2" fill="#0f172a" stroke="#1d4ed8" stroke-width="1" opacity="0.4"/>
+    <rect x="656" y="276" width="22" height="18" rx="2" fill="#0f172a" stroke="#1d4ed8" stroke-width="1" opacity="0.4"/>
+    <rect x="682" y="276" width="22" height="18" rx="2" fill="#0f172a" stroke="#1d4ed8" stroke-width="1" opacity="0.4"/>
+    <!-- stream 4 -->
+    <text x="476" y="322" fill="#94a3b8">s4:</text>
+    <rect x="500" y="308" width="22" height="18" rx="2" fill="#3b82f6" stroke="#3b82f6" stroke-width="1" opacity="0.7"/>
+    <rect x="526" y="308" width="22" height="18" rx="2" fill="#3b82f6" stroke="#3b82f6" stroke-width="1" opacity="0.7"/>
+    <rect x="552" y="308" width="22" height="18" rx="2" fill="#3b82f6" stroke="#3b82f6" stroke-width="1" opacity="0.7"/>
+    <rect x="578" y="308" width="22" height="18" rx="2" fill="#3b82f6" stroke="#3b82f6" stroke-width="1" opacity="0.7"/>
+    <rect x="604" y="308" width="22" height="18" rx="2" fill="#3b82f6" stroke="#3b82f6" stroke-width="1" opacity="0.7"/>
+    <rect x="630" y="308" width="22" height="18" rx="2" fill="#3b82f6" stroke="#3b82f6" stroke-width="1" opacity="0.7"/>
+    <rect x="656" y="308" width="22" height="18" rx="2" fill="#0f172a" stroke="#1d4ed8" stroke-width="1" opacity="0.4"/>
+    <rect x="682" y="308" width="22" height="18" rx="2" fill="#0f172a" stroke="#1d4ed8" stroke-width="1" opacity="0.4"/>
+    <!-- stream 5 -->
+    <text x="476" y="354" fill="#94a3b8">s5:</text>
+    <rect x="500" y="340" width="22" height="18" rx="2" fill="#0f172a" stroke="#1d4ed8" stroke-width="1" opacity="0.5"/>
+    <rect x="526" y="340" width="22" height="18" rx="2" fill="#3b82f6" stroke="#3b82f6" stroke-width="1" opacity="0.7"/>
+    <rect x="552" y="340" width="22" height="18" rx="2" fill="#3b82f6" stroke="#3b82f6" stroke-width="1" opacity="0.7"/>
+    <rect x="578" y="340" width="22" height="18" rx="2" fill="#0f172a" stroke="#1d4ed8" stroke-width="1" opacity="0.4"/>
+    <rect x="604" y="340" width="22" height="18" rx="2" fill="#0f172a" stroke="#1d4ed8" stroke-width="1" opacity="0.4"/>
+    <rect x="630" y="340" width="22" height="18" rx="2" fill="#0f172a" stroke="#1d4ed8" stroke-width="1" opacity="0.4"/>
+    <rect x="656" y="340" width="22" height="18" rx="2" fill="#0f172a" stroke="#1d4ed8" stroke-width="1" opacity="0.4"/>
+    <rect x="682" y="340" width="22" height="18" rx="2" fill="#0f172a" stroke="#1d4ed8" stroke-width="1" opacity="0.4"/>
+  </g>
+
+  <!-- Metrics row -->
+  <line x1="60" y1="460" x2="740" y2="460" stroke="#1d4ed8" stroke-width="1" opacity="0.3"/>
+
+  <!-- TTFT metric -->
+  <rect x="80" y="490" width="160" height="80" rx="6" fill="#0f172a" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="160" y="516" font-family="ui-monospace, monospace" font-size="10" fill="#4b5563" text-anchor="middle" letter-spacing="2">TTFT</text>
+  <text x="160" y="544" font-family="ui-monospace, monospace" font-size="22" font-weight="700" fill="#3b82f6" text-anchor="middle">42ms</text>
+  <text x="160" y="562" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle">time to first token</text>
+
+  <!-- ITL metric -->
+  <rect x="320" y="490" width="160" height="80" rx="6" fill="#0f172a" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="400" y="516" font-family="ui-monospace, monospace" font-size="10" fill="#4b5563" text-anchor="middle" letter-spacing="2">ITL</text>
+  <text x="400" y="544" font-family="ui-monospace, monospace" font-size="22" font-weight="700" fill="#3b82f6" text-anchor="middle">8ms</text>
+  <text x="400" y="562" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle">inter-token latency</text>
+
+  <!-- Throughput metric -->
+  <rect x="560" y="490" width="160" height="80" rx="6" fill="#0f172a" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="640" y="516" font-family="ui-monospace, monospace" font-size="10" fill="#4b5563" text-anchor="middle" letter-spacing="2">THROUGHPUT</text>
+  <text x="640" y="544" font-family="ui-monospace, monospace" font-size="22" font-weight="700" fill="#3b82f6" text-anchor="middle">4.2k</text>
+  <text x="640" y="562" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle">tokens / second</text>
+
+  <!-- GPU utilization bar -->
+  <text x="400" y="622" font-family="ui-monospace, monospace" font-size="10" fill="#4b5563" text-anchor="middle" letter-spacing="3">GPU UTILIZATION</text>
+  <rect x="100" y="634" width="600" height="16" rx="4" fill="#0f172a" stroke="#1d4ed8" stroke-width="1"/>
+  <rect x="100" y="634" width="522" height="16" rx="4" fill="#1d4ed8" opacity="0.7"/>
+  <text x="712" y="647" font-family="ui-monospace, monospace" font-size="10" fill="#3b82f6">87%</text>
+
+  <!-- TensorRT label -->
+  <text x="400" y="692" font-family="ui-monospace, monospace" font-size="11" fill="#94a3b8" text-anchor="middle" letter-spacing="2">TensorRT-LLM</text>
+  <text x="400" y="712" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle" letter-spacing="1">optimized inference engine</text>
+
+  <!-- bottom legend dots -->
+  <circle cx="280" cy="748" r="5" fill="#3b82f6" opacity="0.8"/>
+  <text x="292" y="752" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563">prefill</text>
+  <circle cx="360" cy="748" r="5" fill="#1d4ed8" opacity="0.4"/>
+  <text x="372" y="752" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563">waiting</text>
+  <circle cx="440" cy="748" r="5" fill="#0f172a" stroke="#1d4ed8" stroke-width="1"/>
+  <text x="452" y="752" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563">decode</text>
+</svg>

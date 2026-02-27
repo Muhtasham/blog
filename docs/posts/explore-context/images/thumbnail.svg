@@ -1,0 +1,240 @@
+<svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glow-context" cx="50%" cy="50%" r="45%">
+      <stop offset="0%" stop-color="#1e0a4a" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#0d1117" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="800" fill="#0d1117"/>
+  <rect width="800" height="800" fill="url(#glow-context)"/>
+
+  <!-- Title -->
+  <text x="400" y="64" font-family="ui-monospace, monospace" font-size="13" font-weight="700" fill="#8b5cf6" text-anchor="middle" letter-spacing="4">CONTEXT LENGTH</text>
+  <text x="400" y="86" font-family="ui-monospace, monospace" font-size="10" fill="#4b5563" text-anchor="middle" letter-spacing="3">ATTENTION COMPLEXITY</text>
+
+  <!-- Token sequence at top -->
+  <text x="60" y="132" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" letter-spacing="2">TOKEN SEQUENCE  (n = 16)</text>
+
+  <!-- Token blocks row -->
+  <g fill="#1a0f35" stroke="#8b5cf6" stroke-width="1.2">
+    <rect x="60" y="142" width="34" height="34" rx="3"/>
+    <rect x="100" y="142" width="34" height="34" rx="3"/>
+    <rect x="140" y="142" width="34" height="34" rx="3"/>
+    <rect x="180" y="142" width="34" height="34" rx="3"/>
+    <rect x="220" y="142" width="34" height="34" rx="3"/>
+    <rect x="260" y="142" width="34" height="34" rx="3"/>
+    <rect x="300" y="142" width="34" height="34" rx="3"/>
+    <rect x="340" y="142" width="34" height="34" rx="3"/>
+    <rect x="380" y="142" width="34" height="34" rx="3"/>
+    <rect x="420" y="142" width="34" height="34" rx="3"/>
+    <rect x="460" y="142" width="34" height="34" rx="3"/>
+    <rect x="500" y="142" width="34" height="34" rx="3"/>
+    <rect x="540" y="142" width="34" height="34" rx="3"/>
+    <rect x="580" y="142" width="34" height="34" rx="3"/>
+    <rect x="620" y="142" width="34" height="34" rx="3"/>
+    <rect x="660" y="142" width="34" height="34" rx="3"/>
+  </g>
+  <g font-family="ui-monospace, monospace" font-size="9" fill="#8b5cf6" text-anchor="middle">
+    <text x="77" y="164">t1</text>
+    <text x="117" y="164">t2</text>
+    <text x="157" y="164">t3</text>
+    <text x="197" y="164">t4</text>
+    <text x="237" y="164">t5</text>
+    <text x="277" y="164">t6</text>
+    <text x="317" y="164">t7</text>
+    <text x="357" y="164">t8</text>
+    <text x="397" y="164">t9</text>
+    <text x="437" y="164">t10</text>
+    <text x="477" y="164">t11</text>
+    <text x="517" y="164">t12</text>
+    <text x="557" y="164">t13</text>
+    <text x="597" y="164">t14</text>
+    <text x="637" y="164">t15</text>
+    <text x="677" y="164">t16</text>
+  </g>
+
+  <!-- Attention arcs fanning out from last token (t16 at x=677) to all previous -->
+  <!-- Each arc bows upward from t16 back to t_i -->
+  <g fill="none" stroke-width="1" opacity="0.6">
+    <path d="M677 142 Q677 80 637 142" stroke="#8b5cf6" opacity="0.9"/>
+    <path d="M677 142 Q677 60 597 142" stroke="#8b5cf6" opacity="0.85"/>
+    <path d="M677 142 Q677 46 557 142" stroke="#7c3aed" opacity="0.8"/>
+    <path d="M677 142 Q677 34 517 142" stroke="#7c3aed" opacity="0.75"/>
+    <path d="M677 142 Q677 24 477 142" stroke="#6d28d9" opacity="0.7"/>
+    <path d="M677 142 Q677 14 437 142" stroke="#6d28d9" opacity="0.65"/>
+    <path d="M677 142 Q677 6 397 142" stroke="#5b21b6" opacity="0.6"/>
+    <path d="M677 142 Q577 -8 357 142" stroke="#5b21b6" opacity="0.55"/>
+    <path d="M677 142 Q517 -16 317 142" stroke="#4c1d95" opacity="0.5"/>
+    <path d="M677 142 Q457 -22 277 142" stroke="#4c1d95" opacity="0.45"/>
+    <path d="M677 142 Q397 -26 237 142" stroke="#3b0764" opacity="0.4"/>
+    <path d="M677 142 Q337 -28 197 142" stroke="#3b0764" opacity="0.35"/>
+    <path d="M677 142 Q277 -28 157 142" stroke="#2e1065" opacity="0.3"/>
+    <path d="M677 142 Q237 -26 117 142" stroke="#2e1065" opacity="0.25"/>
+    <path d="M677 142 Q197 -24 77 142" stroke="#1e1b4b" opacity="0.2"/>
+  </g>
+
+  <!-- Attention matrix visualization -->
+  <text x="60" y="244" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" letter-spacing="2">ATTENTION MATRIX  O(n²)</text>
+
+  <!-- 16x16 attention heatmap grid -->
+  <g>
+    <!-- Row labels -->
+    <g font-family="ui-monospace, monospace" font-size="7" fill="#475569" text-anchor="end">
+      <text x="90" y="272">t1</text>
+      <text x="90" y="292">t2</text>
+      <text x="90" y="312">t4</text>
+      <text x="90" y="332">t8</text>
+      <text x="90" y="352">t12</text>
+      <text x="90" y="372">t16</text>
+    </g>
+    <!-- Mini heatmap: 16 cols x 6 rows (sampled) -->
+    <g opacity="0.85">
+      <!-- row t1: only attends to t1 -->
+      <rect x="96" y="260" width="16" height="16" rx="1" fill="#8b5cf6"/>
+      <rect x="114" y="260" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="132" y="260" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="150" y="260" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="168" y="260" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="186" y="260" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="204" y="260" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="222" y="260" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="240" y="260" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="258" y="260" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="276" y="260" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="294" y="260" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="312" y="260" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="330" y="260" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="348" y="260" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="366" y="260" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <!-- row t2 -->
+      <rect x="96" y="280" width="16" height="16" rx="1" fill="#5b21b6" opacity="0.5"/>
+      <rect x="114" y="280" width="16" height="16" rx="1" fill="#8b5cf6"/>
+      <rect x="132" y="280" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="150" y="280" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="168" y="280" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="186" y="280" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="204" y="280" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="222" y="280" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="240" y="280" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="258" y="280" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="276" y="280" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="294" y="280" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="312" y="280" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="330" y="280" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="348" y="280" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="366" y="280" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <!-- row t4 - causal mask triangle -->
+      <rect x="96" y="300" width="16" height="16" rx="1" fill="#5b21b6" opacity="0.4"/>
+      <rect x="114" y="300" width="16" height="16" rx="1" fill="#6d28d9" opacity="0.5"/>
+      <rect x="132" y="300" width="16" height="16" rx="1" fill="#7c3aed" opacity="0.6"/>
+      <rect x="150" y="300" width="16" height="16" rx="1" fill="#8b5cf6"/>
+      <rect x="168" y="300" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="186" y="300" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="204" y="300" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="222" y="300" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="240" y="300" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="258" y="300" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="276" y="300" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="294" y="300" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="312" y="300" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="330" y="300" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="348" y="300" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="366" y="300" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <!-- row t8 -->
+      <rect x="96" y="320" width="16" height="16" rx="1" fill="#4c1d95" opacity="0.4"/>
+      <rect x="114" y="320" width="16" height="16" rx="1" fill="#5b21b6" opacity="0.5"/>
+      <rect x="132" y="320" width="16" height="16" rx="1" fill="#6d28d9" opacity="0.55"/>
+      <rect x="150" y="320" width="16" height="16" rx="1" fill="#7c3aed" opacity="0.6"/>
+      <rect x="168" y="320" width="16" height="16" rx="1" fill="#7c3aed" opacity="0.65"/>
+      <rect x="186" y="320" width="16" height="16" rx="1" fill="#8b5cf6" opacity="0.7"/>
+      <rect x="204" y="320" width="16" height="16" rx="1" fill="#8b5cf6" opacity="0.8"/>
+      <rect x="222" y="320" width="16" height="16" rx="1" fill="#8b5cf6"/>
+      <rect x="240" y="320" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="258" y="320" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="276" y="320" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="294" y="320" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="312" y="320" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="330" y="320" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="348" y="320" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="366" y="320" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <!-- row t12 -->
+      <rect x="96" y="340" width="16" height="16" rx="1" fill="#3b0764" opacity="0.3"/>
+      <rect x="114" y="340" width="16" height="16" rx="1" fill="#4c1d95" opacity="0.4"/>
+      <rect x="132" y="340" width="16" height="16" rx="1" fill="#5b21b6" opacity="0.5"/>
+      <rect x="150" y="340" width="16" height="16" rx="1" fill="#6d28d9" opacity="0.55"/>
+      <rect x="168" y="340" width="16" height="16" rx="1" fill="#7c3aed" opacity="0.6"/>
+      <rect x="186" y="340" width="16" height="16" rx="1" fill="#7c3aed" opacity="0.65"/>
+      <rect x="204" y="340" width="16" height="16" rx="1" fill="#8b5cf6" opacity="0.7"/>
+      <rect x="222" y="340" width="16" height="16" rx="1" fill="#8b5cf6" opacity="0.75"/>
+      <rect x="240" y="340" width="16" height="16" rx="1" fill="#8b5cf6" opacity="0.8"/>
+      <rect x="258" y="340" width="16" height="16" rx="1" fill="#8b5cf6" opacity="0.85"/>
+      <rect x="276" y="340" width="16" height="16" rx="1" fill="#8b5cf6" opacity="0.9"/>
+      <rect x="294" y="340" width="16" height="16" rx="1" fill="#8b5cf6"/>
+      <rect x="312" y="340" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="330" y="340" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="348" y="340" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <rect x="366" y="340" width="16" height="16" rx="1" fill="#1a0f35"/>
+      <!-- row t16 - full row lit -->
+      <rect x="96" y="360" width="16" height="16" rx="1" fill="#3b0764" opacity="0.3"/>
+      <rect x="114" y="360" width="16" height="16" rx="1" fill="#4c1d95" opacity="0.4"/>
+      <rect x="132" y="360" width="16" height="16" rx="1" fill="#5b21b6" opacity="0.5"/>
+      <rect x="150" y="360" width="16" height="16" rx="1" fill="#5b21b6" opacity="0.55"/>
+      <rect x="168" y="360" width="16" height="16" rx="1" fill="#6d28d9" opacity="0.6"/>
+      <rect x="186" y="360" width="16" height="16" rx="1" fill="#7c3aed" opacity="0.65"/>
+      <rect x="204" y="360" width="16" height="16" rx="1" fill="#7c3aed" opacity="0.7"/>
+      <rect x="222" y="360" width="16" height="16" rx="1" fill="#8b5cf6" opacity="0.75"/>
+      <rect x="240" y="360" width="16" height="16" rx="1" fill="#8b5cf6" opacity="0.8"/>
+      <rect x="258" y="360" width="16" height="16" rx="1" fill="#8b5cf6" opacity="0.85"/>
+      <rect x="276" y="360" width="16" height="16" rx="1" fill="#8b5cf6" opacity="0.88"/>
+      <rect x="294" y="360" width="16" height="16" rx="1" fill="#8b5cf6" opacity="0.9"/>
+      <rect x="312" y="360" width="16" height="16" rx="1" fill="#8b5cf6" opacity="0.92"/>
+      <rect x="330" y="360" width="16" height="16" rx="1" fill="#8b5cf6" opacity="0.95"/>
+      <rect x="348" y="360" width="16" height="16" rx="1" fill="#8b5cf6" opacity="0.97"/>
+      <rect x="366" y="360" width="16" height="16" rx="1" fill="#a78bfa"/>
+    </g>
+  </g>
+  <!-- col labels under matrix -->
+  <g font-family="ui-monospace, monospace" font-size="7" fill="#475569" text-anchor="middle">
+    <text x="104" y="390">t1</text>
+    <text x="122" y="390">t2</text>
+    <text x="158" y="390">t4</text>
+    <text x="230" y="390">t8</text>
+    <text x="302" y="390">t12</text>
+    <text x="374" y="390">t16</text>
+  </g>
+
+  <!-- Complexity chart -->
+  <text x="60" y="434" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" letter-spacing="2">COMPUTE COST vs SEQUENCE LENGTH</text>
+
+  <!-- axes -->
+  <line x1="80" y1="560" x2="740" y2="560" stroke="#475569" stroke-width="1" opacity="0.5"/>
+  <line x1="80" y1="448" x2="80" y2="560" stroke="#475569" stroke-width="1" opacity="0.5"/>
+
+  <!-- O(n^2) curve -->
+  <path d="M80,558 Q200,555 300,540 Q400,510 500,460 Q580,424 660,392 Q700,376 740,356" fill="none" stroke="#8b5cf6" stroke-width="2"/>
+  <text x="748" y="356" font-family="ui-monospace, monospace" font-size="9" fill="#8b5cf6">O(n²)</text>
+
+  <!-- O(n) line (linear attention) -->
+  <line x1="80" y1="558" x2="740" y2="490" stroke="#10b981" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="748" y="494" font-family="ui-monospace, monospace" font-size="9" fill="#10b981">O(n)</text>
+
+  <!-- axis labels -->
+  <text x="410" y="576" font-family="ui-monospace, monospace" font-size="9" fill="#475569" text-anchor="middle">sequence length  →</text>
+  <text x="68" y="504" font-family="ui-monospace, monospace" font-size="9" fill="#475569" text-anchor="middle" transform="rotate(-90 68 504)">FLOPs</text>
+
+  <!-- Positional embedding panel -->
+  <rect x="80" y="598" width="280" height="80" rx="6" fill="#0f0a1e" stroke="#8b5cf6" stroke-width="1.5"/>
+  <text x="220" y="622" font-family="ui-monospace, monospace" font-size="10" fill="#4b5563" text-anchor="middle" letter-spacing="2">POS EMBEDDING</text>
+  <text x="220" y="646" font-family="ui-monospace, monospace" font-size="11" fill="#8b5cf6" text-anchor="middle">RoPE / ALiBi / NTK</text>
+  <text x="220" y="664" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle">extrapolation strategies</text>
+
+  <!-- Context window panel -->
+  <rect x="440" y="598" width="280" height="80" rx="6" fill="#0f0a1e" stroke="#7c3aed" stroke-width="1.5"/>
+  <text x="580" y="622" font-family="ui-monospace, monospace" font-size="10" fill="#4b5563" text-anchor="middle" letter-spacing="2">CONTEXT WINDOW</text>
+  <text x="580" y="646" font-family="ui-monospace, monospace" font-size="20" font-weight="700" fill="#8b5cf6" text-anchor="middle">1M+</text>
+  <text x="580" y="664" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle">tokens (extended)</text>
+
+  <!-- bottom -->
+  <text x="400" y="722" font-family="ui-monospace, monospace" font-size="11" fill="#94a3b8" text-anchor="middle" letter-spacing="2">transformer attention mechanisms</text>
+  <text x="400" y="742" font-family="ui-monospace, monospace" font-size="9" fill="#4b5563" text-anchor="middle">flash attention · sparse attention · sliding window</text>
+</svg>

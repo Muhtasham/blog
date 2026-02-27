@@ -3,7 +3,7 @@ title: "Navigating the AI Landscape: My Takeaways from Sam Altman's Discussion"
 date: "2023-05-27"
 toc: true
 number-sections: false
-image: "greathwy.jpg"
+image: "images/thumbnail.svg"
 categories: [llm]
 ---
 
