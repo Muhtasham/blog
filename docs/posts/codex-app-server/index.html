@@ -192,7 +192,7 @@ console.log({
    
   <ul>
   <li><a href="#the-ui-is-not-the-point" id="toc-the-ui-is-not-the-point" class="nav-link active" data-scroll-target="#the-ui-is-not-the-point">The UI Is Not the Point</a></li>
-  <li><a href="#the-mental-model-sdlc-as-an-evented-agent-workflow" id="toc-the-mental-model-sdlc-as-an-evented-agent-workflow" class="nav-link" data-scroll-target="#the-mental-model-sdlc-as-an-evented-agent-workflow">The Mental Model: SDLC as an Evented Agent Workflow</a></li>
+  <li><a href="#the-mental-model-software-development-life-cycle-sdlc-as-an-evented-agent-workflow" id="toc-the-mental-model-software-development-life-cycle-sdlc-as-an-evented-agent-workflow" class="nav-link" data-scroll-target="#the-mental-model-software-development-life-cycle-sdlc-as-an-evented-agent-workflow">The Mental Model: Software Development Life Cycle (SDLC) as an Evented Agent Workflow</a></li>
   <li><a href="#why-app-server-is-the-integration-surface-you-actually-want" id="toc-why-app-server-is-the-integration-surface-you-actually-want" class="nav-link" data-scroll-target="#why-app-server-is-the-integration-surface-you-actually-want">Why App Server Is the Integration Surface You Actually Want</a></li>
   <li><a href="#architecture-patterns-that-map-to-real-customers" id="toc-architecture-patterns-that-map-to-real-customers" class="nav-link" data-scroll-target="#architecture-patterns-that-map-to-real-customers">Architecture Patterns That Map to Real Customers</a></li>
   <li><a href="#safety-and-control-approvals-arent-ux---theyre-your-control-plane" id="toc-safety-and-control-approvals-arent-ux---theyre-your-control-plane" class="nav-link" data-scroll-target="#safety-and-control-approvals-arent-ux---theyre-your-control-plane">Safety and Control: Approvals Aren’t UX - They’re Your Control Plane</a></li>
@@ -215,8 +215,8 @@ console.log({
 <p>OpenAI’s Codex App Server is the bridge that exposes that harness to clients through a bidirectional, UI-friendly event stream.</p>
 <p>This post is a practical guide to designing and rolling out AI-assisted developer workflows that are production-minded: observable, permissioned, and adoptable by real teams. It draws on OpenAI’s own <a href="https://openai.com/index/harness-engineering-leveraging-codex-in-an-agent-first-world/">harness engineering post</a> - a detailed account of building a million-line product with three engineers and zero manually-written code.</p>
 </section>
-<section id="the-mental-model-sdlc-as-an-evented-agent-workflow" class="level2">
-<h2 class="anchored" data-anchor-id="the-mental-model-sdlc-as-an-evented-agent-workflow">The Mental Model: SDLC as an Evented Agent Workflow</h2>
+<section id="the-mental-model-software-development-life-cycle-sdlc-as-an-evented-agent-workflow" class="level2">
+<h2 class="anchored" data-anchor-id="the-mental-model-software-development-life-cycle-sdlc-as-an-evented-agent-workflow">The Mental Model: Software Development Life Cycle (SDLC) as an Evented Agent Workflow</h2>
 <p>Most orgs try to “add AI” at the edges - autocomplete, ad-hoc chat. That can help, but it doesn’t reliably change throughput or quality because it doesn’t integrate with the actual system of work: planning, code review, CI, deployment, incident response.</p>
 <p>App Server’s core contribution is a stable set of conversation primitives that let you treat agent work as durable, auditable, and renderable:</p>
 <ul>

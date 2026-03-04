@@ -17,7 +17,7 @@ OpenAI's Codex App Server is the bridge that exposes that harness to clients thr
 
 This post is a practical guide to designing and rolling out AI-assisted developer workflows that are production-minded: observable, permissioned, and adoptable by real teams. It draws on OpenAI's own [harness engineering post](https://openai.com/index/harness-engineering-leveraging-codex-in-an-agent-first-world/) - a detailed account of building a million-line product with three engineers and zero manually-written code.
 
-## The Mental Model: SDLC as an Evented Agent Workflow
+## The Mental Model: Software Development Life Cycle (SDLC) as an Evented Agent Workflow
 
 Most orgs try to "add AI" at the edges - autocomplete, ad-hoc chat. That can help, but it doesn't reliably change throughput or quality because it doesn't integrate with the actual system of work: planning, code review, CI, deployment, incident response.
 
